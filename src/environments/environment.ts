@@ -4,14 +4,15 @@
 
 export const environment = {
   production: false,
-  firebase:{
-    apiKey: "AIzaSyC7ypCEligvG5nbvrIiDZp_yrDL-JcTtUU",
-    authDomain: "oshop-e9657.firebaseapp.com",
-    databaseURL: "https://oshop-e9657.firebaseio.com",
-    projectId: "oshop-e9657",
-    storageBucket: "oshop-e9657.appspot.com",
-    messagingSenderId: "538826248465",
-    appId: "1:538826248465:web:063d1821727fa5ea"
+  firebase: {
+    apiKey: 'AIzaSyC-WmdG5XWVrZVSkgWmSRu8zjrV8nOHPxc',
+    authDomain: 'hms-ekushay.firebaseapp.com',
+    databaseURL: 'https://hms-ekushay.firebaseio.com',
+    projectId: 'hms-ekushay',
+    storageBucket: 'hms-ekushay.appspot.com',
+    messagingSenderId: '162376155657',
+    appId: '1:162376155657:web:a200efb43e5cf137c5eed8',
+    measurementId: 'G-50K5LX7GRH'
   }
 };
 

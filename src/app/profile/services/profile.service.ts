@@ -27,7 +27,7 @@ export class ProfileService {
 		private mutate: MutationDatabaseService,
 		private util: UtilityService,
 		private sharedService: SharedService,
-		private rootService:RootService,
+		private rootService: RootService,
 		public dialog: MatDialog
 	) {}
 
@@ -74,9 +74,8 @@ export class ProfileService {
 		this.mutate.updateSingleData(entity, id, data).pipe(first()).subscribe((response) => {
 			if (response == errorMessages.updated) {
 				this.openUpdatedSnackBar();
-				debugger;
 				if (data && data.name) {
-					
+
 					this.rootService.$Username.next(data.name);
 				}
 			} else {
@@ -86,6 +85,7 @@ export class ProfileService {
 	}
 
 	touchAllfields(formgroup: FormGroup) {
+		// tslint:disable-next-line: indent
 		this.util.touchAllFieldsOfForm(formgroup);
 	}
 
@@ -109,5 +109,5 @@ export class ProfileService {
 	}
 
 
-	
+
 }
