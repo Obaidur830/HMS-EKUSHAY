@@ -1,6 +1,6 @@
 {
   "projects": {
-  
-    "hms-ekushay": "hms-ekushay"
+    "hms-ekushay": "hms-ekushay",
+    "default": "hms-ekushay"
   }
 }
