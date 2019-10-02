@@ -12,25 +12,25 @@ import { FormGroup } from '@angular/forms';
 	providedIn: 'root'
 })
 export class AuthenticationService {
-	constructor(private angularfireauth: AngularFireAuth, private angularfirestore: AngularFirestore,private util:UtilityService) {}
+    constructor(private angularfireauth: AngularFireAuth, private angularfirestore: AngularFirestore, private util: UtilityService) {}
 
-	signUp(user: UserInformation): Observable<any> {
-		return new Observable((observer) => {
-			this.angularfireauth.auth
-				.createUserWithEmailAndPassword(user.email, user.password)
-				.then((accepted) => {
-					user.metaData.uid = accepted.user.uid;
-					this.createCustomUser(user.metaData);
-					this.sendEmailVerification();
-					observer.next(accepted);
-				})
-				.catch((err) => {
-					observer.next(err);
-				});
-		});
-	}
+    signUp(user: UserInformation): Observable<any> {
+        return new Observable((observer) => {
+            this.angularfireauth.auth
+                .createUserWithEmailAndPassword(user.email, user.password)
+                .then((accepted) => {
+                    user.metaData.uid = accepted.user.uid;
+                    this.createCustomUser(user.metaData);
+                    this.sendEmailVerification();
+                    observer.next(accepted);
+                })
+                .catch((err) => {
+                    observer.next(err);
+                });
+        });
+    }
 
-	sendEmailVerification(){
+	sendEmailVerification() {
 		this.angularfireauth.auth.currentUser.sendEmailVerification();
 	}
 
@@ -38,10 +38,10 @@ export class AuthenticationService {
 		this.angularfireauth.auth.signOut();
 	}
 
-	createCustomUser(user: CustomerUserInformation) {
-		let personCollection = this.angularfirestore.collection<UserInformation>(Entities.Person);
-		personCollection.doc(user.uid).set(user);
-	}
+    createCustomUser(user: CustomerUserInformation) {
+        const personCollection = this.angularfirestore.collection<UserInformation>(Entities.Person);
+        personCollection.doc(user.uid).set(user);
+    }
 
 	signin(user: UserInformation): Observable<any> {
 		return new Observable((observer) => {
@@ -56,22 +56,22 @@ export class AuthenticationService {
 		});
 	}
 
-	getCurrentUser(){
+	getCurrentUser() {
 		return this.angularfireauth.auth.currentUser;
 	}
 
-	sendPasswordResetEmail(user:UserInformation):Observable<any>{
-		return new Observable(observer=>{
-			this.angularfireauth.auth.sendPasswordResetEmail(user.email).then(acc=>{
+	sendPasswordResetEmail(user: UserInformation): Observable<any> {
+		return new Observable(observer => {
+			this.angularfireauth.auth.sendPasswordResetEmail(user.email).then(acc => {
 				observer.next(acc);
-			}).catch(err=>{
+			}).catch(err => {
 				observer.next(err);
 			});
 		});
 
 	}
 
-	touchAllfields(group:FormGroup){
-		this.util.touchAllFieldsOfForm(group);
-	}
+    touchAllfields(group: FormGroup) {
+        this.util.touchAllFieldsOfForm(group);
+    }
 }

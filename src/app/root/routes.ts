@@ -19,22 +19,22 @@ export const routes: Routes = [
 			{
 				path: 'shopping-cart',
 				loadChildren: '../shopping-cart/shopping-cart.module#ShoppingCartModule',
-				canActivate: [ AuthguardService ]
+				canActivate: [AuthguardService]
 			},
 			{
 				path: 'profile',
 				loadChildren: '../profile/profile.module#ProfileModule',
-				canActivate: [ AuthguardService ]
+				canActivate: [AuthguardService]
 			},
 			{
 				path: 'product',
 				loadChildren: '../product/product.module#ProductModule',
-				canActivate: [ AuthguardService ]
+				canActivate: [AuthguardService]
 			},
 			{
 				path: 'enquiry',
 				loadChildren: '../enquiry/enquiry.module#EnquiryModule',
-				canActivate: [ AuthguardService ]
+				canActivate: [AuthguardService]
 			},
 			{
 				path: 'admin',
@@ -45,7 +45,7 @@ export const routes: Routes = [
 			{
 				path: 'category',
 				loadChildren: '../category/category.module#CategoryModule',
-				canActivate: [ AuthguardService, AdminguardGuard]
+				canActivate: [AuthguardService, AdminguardGuard]
 
 			},
 			{

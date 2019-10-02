@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 	menuItems;
 	selectedRow: number;
 	_unsubscribeAll: Subject<any>;
-	
+
     // $menuIndex = this.menuIndex.asObservable();
 	constructor(
 		private breakpointObserver: BreakpointObserver,
@@ -38,7 +38,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 		private corequery: QueryDatabaseService,
 		private sharedService: SharedService,
 		private rootService: RootService,
-		private security:SecurityService
+		private security: SecurityService
 	) {
 		this._unsubscribeAll = new Subject();
 	}
@@ -59,24 +59,23 @@ export class NavbarComponent implements OnInit, OnDestroy {
 		this.makeSideBar();
 
 		this.rootService.$Username.subscribe((res) => {
-			this.Username=res;
+			this.Username = res;
 		});
 
-		this.rootService.$menuIndex.subscribe(res=>{
-			this.selectedRow=res;
-		})
+		this.rootService.$menuIndex.subscribe(res => {
+			this.selectedRow = res;
+		});
 	}
 
-	makeSideBar(){
-		this.security.isAdmin().pipe(first()).subscribe(res=>{
-			if(res){
+	makeSideBar() {
+		this.security.isAdmin().pipe(first()).subscribe(res => {
+			if (res) {
 				this.sidebar = defaultConst.sidebar;
+			} else {
+				this.sidebar = defaultConst.sidebarforcustomersupplier;
 			}
-			else{
-				this.sidebar=defaultConst.sidebarforcustomersupplier;
-			}
-		})
-		
+		});
+
 
 	}
 

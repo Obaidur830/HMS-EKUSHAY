@@ -12,73 +12,73 @@ import { ShoppingCartDefaultComponent } from 'src/app/shopping-cart/shopping-car
 import { OrderSuccessComponent } from 'src/app/shopping-cart/order-success/order-success.component';
 
 export const authenticationRoutes: Routes = [
-	{
-		path: '',
-		redirectTo: 'sign-in'
-	},
-	{
-		path: 'sign-in',
-		component: SignInComponent
-	},
-	{
-		path: 'sign-up',
-		component: SignUpComponent
-	},
-	{
-		path: 'account-recovery',
-		component: AccountRecoveryComponent
-	}
-];
-
-export const categoryRoutes: Routes = [
-	{
-		path: '',
-		component: CategoryDefaultComponent
-	}
-];
-
-export const adminRoutes: Routes = [
-	{
-		path: '',
-		component: AdminDefaultComponent
-	}
-];
-
-export const enquiryRoutes: Routes = [
-	{
-		path: '',
-		component: EnquiryDefaultComponent
-	}
-];
-export const productRoutes: Routes = [
-	{
-		path: '',
-		component: ProductDefaultComponent
-	}
-];
-
-export const profileRoutes: Routes = [
-	{
-		path: '',
-		component: ProfileDefaultComponent
-	}
-];
-
-export const purchaseRoutes:Routes=[
   {
-    path:'',
-    component:PurchaseDefaultComponent
+    path: '',
+    redirectTo: 'sign-in'
+  },
+  {
+    path: 'sign-in',
+    component: SignInComponent
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent
+  },
+  {
+    path: 'account-recovery',
+    component: AccountRecoveryComponent
   }
 ];
 
-export const shoppingcartRoutes:Routes=[
+export const categoryRoutes: Routes = [
   {
-    path:'',
-    component:ShoppingCartDefaultComponent
+    path: '',
+    component: CategoryDefaultComponent
+  }
+];
+
+export const adminRoutes: Routes = [
+  {
+    path: '',
+    component: AdminDefaultComponent
+  }
+];
+
+export const enquiryRoutes: Routes = [
+    {
+         path: '',
+        component: EnquiryDefaultComponent
+    }
+];
+export const productRoutes: Routes = [
+    {
+        path: '',
+        component: ProductDefaultComponent
+    }
+];
+
+export const profileRoutes: Routes = [
+   {
+       path: '',
+        component: ProfileDefaultComponent
+   }
+];
+
+export const purchaseRoutes: Routes = [
+  {
+    path: '',
+    component: PurchaseDefaultComponent
+  }
+];
+
+export const shoppingcartRoutes: Routes = [
+  {
+    path: '',
+    component: ShoppingCartDefaultComponent
   },
   {
-    path:'order',
-    component:OrderSuccessComponent,
+    path: 'order',
+    component: OrderSuccessComponent,
 
   }
 ]

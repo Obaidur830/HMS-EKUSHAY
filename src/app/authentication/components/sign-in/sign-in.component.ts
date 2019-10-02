@@ -10,61 +10,58 @@ import { UtilityService } from '../../../core/utility-service/utility.service';
 import * as _ from 'lodash';
 
 @Component({
-	selector: 'app-sign-in',
-	templateUrl: './sign-in.component.html',
-	styleUrls: [ './sign-in.component.scss' ]
+    selector: 'app-sign-in',
+    templateUrl: './sign-in.component.html',
+    styleUrls: [ './sign-in.component.scss' ]
 })
 export class SignInComponent implements OnInit {
-	constructor(
-		private authenticationservice: AuthenticationService,
-		private fb: FormBuilder,
-		private router: Router,
-		private errorMessages: ValidationErrorMessages,
-		private util: UtilityService
-	) {}
+    constructor(
+        private authenticationservice: AuthenticationService,
+        private fb: FormBuilder,
+        private router: Router,
+        private errorMessages: ValidationErrorMessages,
+        private util: UtilityService
+    ) {}
 
-	signinform: FormGroup;
-	userInformation: UserInformation;
-	isLoading: boolean = false;
-	ngOnInit() {
-		this.makeSignInForm();
-	}
+    signinform: FormGroup;
+    userInformation: UserInformation;
+    // tslint:disable-next-line: no-inferrable-types
+    isLoading: boolean = false;
+   ngOnInit() {
+      this.makeSignInForm();
+   }
 
-	makeSignInForm() {
-		this.signinform = this.fb.group({
-			email: [ '', [ Validators.required, Validators.email ] ],
-			password: [ '', Validators.required ]
-		});
-	}
+    makeSignInForm() {
+        this.signinform = this.fb.group({
+            email: [ '', [ Validators.required, Validators.email ] ],
+            password: [ '', Validators.required ]
+       });
+    }
 
-	onSubmit() {
-		if(this.signinform.valid){
-			this.isLoading = true;
-			this.userInformation = {
-				email: this.signinform.value.email,
-				password: this.signinform.value.password
-			};
-			// setTimeout(()=>{
-			// 	this.signinUser(this.userInformation);
-			// }, 4000);
-			this.signinUser(this.userInformation);
-		}
-		
-	}
+    onSubmit() {
+        if (this.signinform.valid) {
+            this.isLoading = true;
+            this.userInformation = {
+                email: this.signinform.value.email,
+                password: this.signinform.value.password
+           };
 
-	signinUser(user: UserInformation) {
-		this.authenticationservice.signin(user).pipe(first()).subscribe((res) => {
-			if (res && res.code) {
-				// console.log(res.code);
-				this.validateSignIn(res.code);
-				this.isLoading = false;
-			} else {
-				this.router.navigate([ urlPaths.Product.ProductList.url ]);
-				this.isLoading = false;
+            this.signinUser(this.userInformation);
+        }
+    }
 
-			}
-		});
-	}
+    signinUser(user: UserInformation) {
+        this.authenticationservice.signin(user).pipe(first()).subscribe((res) => {
+            if (res && res.code) {
+                // console.log(res.code);
+                this.validateSignIn(res.code);
+                this.isLoading = false;
+            } else {
+                this.router.navigate([ urlPaths.Product.ProductList.url ]);
+                this.isLoading = false;
+            }
+        });
+    }
 
 	routeToSignup() {
 		this.router.navigate([ urlPaths.Authentication.Signup.url ]);
@@ -76,9 +73,9 @@ export class SignInComponent implements OnInit {
 	validateSignIn(errorCode) {
 		this.updateform();
 		
-		let errobj={};
-		errobj[errorCode]=true;
-		if(errorCode==signinErrorCode["Wrong password"].code){
+		const errobj = {};
+		errobj[errorCode] = true;
+		if (errorCode === signinErrorCode['Wrong password'].code) {
 			this.signinform.controls.password.setErrors(errobj);
 		}
 		else{
@@ -87,7 +84,7 @@ export class SignInComponent implements OnInit {
 	}
 
 	updateform() {
-		let controlsvalues = this.util.getFormControlsValueFromFormGroup(this.signinform);
+		const controlsvalues = this.util.getFormControlsValueFromFormGroup(this.signinform);
 		_.forEach(controlsvalues, (value) => {
 			this.signinform.get(value).markAsTouched();
 		});
