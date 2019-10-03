@@ -63,38 +63,36 @@ export class SignInComponent implements OnInit {
         });
     }
 
-	routeToSignup() {
-		this.router.navigate([ urlPaths.Authentication.Signup.url ]);
-	}
-	routeToAccountRecovery() {
-		this.router.navigate([ urlPaths.Authentication.AccountRecovery.url ]);
-	}
+    routeToSignup() {
+        this.router.navigate([ urlPaths.Authentication.Signup.url ]);
+    }
+    routeToAccountRecovery() {
+        this.router.navigate([ urlPaths.Authentication.AccountRecovery.url ]);
+    }
 
-	validateSignIn(errorCode) {
-		this.updateform();
-		
-		const errobj = {};
-		errobj[errorCode] = true;
-		if (errorCode === signinErrorCode['Wrong password'].code) {
-			this.signinform.controls.password.setErrors(errobj);
-		}
-		else{
-			this.signinform.controls.email.setErrors(errobj);
-		}
-	}
+    validateSignIn(errorCode) {
+        this.updateform();
+        const errobj = {};
+        errobj[errorCode] = true;
+        if (errorCode === signinErrorCode['Wrong password'].code) {
+            this.signinform.controls.password.setErrors(errobj);
+        } else {
+            this.signinform.controls.email.setErrors(errobj);
+        }
+    }
 
-	updateform() {
-		const controlsvalues = this.util.getFormControlsValueFromFormGroup(this.signinform);
-		_.forEach(controlsvalues, (value) => {
-			this.signinform.get(value).markAsTouched();
-		});
-	}
+    updateform() {
+       const controlsvalues = this.util.getFormControlsValueFromFormGroup(this.signinform);
+       _.forEach(controlsvalues, (value) => {
+            this.signinform.get(value).markAsTouched();
+        });
+    }
 
-	emailError() {
-		// return 'asdf';
-		return this.errorMessages.authMessageForEmail(this.signinform.get('email'));
-	}
-	passwordError(){
-		return this.errorMessages.authMessageForPassword(this.signinform.get('password'));
-	}
+    emailError() {
+     // return 'asdf';
+        return this.errorMessages.authMessageForEmail(this.signinform.get('email'));
+    }
+    passwordError() {
+        return this.errorMessages.authMessageForPassword(this.signinform.get('password'));
+    }
 }
