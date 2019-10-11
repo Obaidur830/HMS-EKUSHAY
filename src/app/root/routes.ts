@@ -31,6 +31,12 @@ export const routes: Routes = [
 				loadChildren: '../product/product.module#ProductModule',
 				canActivate: [AuthguardService]
 			},
+			
+			{
+				path: 'student',
+				loadChildren: '../student/student.module#StudentModule',
+				canActivate: [AuthguardService]
+			},
 			{
 				path: 'enquiry',
 				loadChildren: '../enquiry/enquiry.module#EnquiryModule',

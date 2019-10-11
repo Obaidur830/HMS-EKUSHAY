@@ -1,6 +1,11 @@
 export const defaultConst = {
 	sidebarforcustomersupplier: [
 		{
+			name: 'Student',
+			url: 'student',
+			icon: 'wc'
+		},
+		{
 			name: 'Product',
 			url: 'product',
 			icon: 'weekend'
@@ -9,6 +14,11 @@ export const defaultConst = {
 			name: 'Enquiry',
 			url: 'enquiry',
 			icon: 'contact_support'
+		},
+		{
+			name: 'Purchase',
+			url: 'purchase',
+			icon: 'shopping_cart'
 		},
 		{
 			name: 'Purchase',
@@ -59,7 +69,7 @@ export const defaultConst = {
 		}
 	},
 	siteName: {
-		name: 'Windmart',
+		name: 'HMS-EKUSHAY',
 		url: 'https://oshop-e9657.firebaseapp.com/'
 	},
 	defaultEnquiryLimit: 5,

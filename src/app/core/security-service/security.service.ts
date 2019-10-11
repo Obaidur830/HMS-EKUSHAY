@@ -9,7 +9,7 @@ import { switchMap, first } from 'rxjs/operators';
 	providedIn: 'root'
 })
 export class SecurityService {
-	constructor(private query:QueryDatabaseService,) {}
+	constructor(private query: QueryDatabaseService,) {}
 
 	checkAuthorization(user: CustomerUserInformation, isRoleValid: string): boolean {
 		if (!user) return false;
