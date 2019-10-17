@@ -9,7 +9,7 @@ import { ConfigModule } from '../config/config.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { environment } from '../../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { CoreModule } from '../core/core.module';
@@ -24,12 +24,15 @@ import { SharedService } from '../shared/services/shared.service';
 import { AdminguardGuard } from '../core/security-service/adminguard.guard';
 import { SecurityService } from '../core/security-service/security.service';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+
+import { ReactiveFormsModule,FormsModule } from "@angular/forms";
+
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
     NavbarComponent,
-    AnonymousComponent,
+    AnonymousComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     SharedModule,
     ConfigModule,
     CoreModule,
+    ReactiveFormsModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
@@ -49,10 +54,12 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    
 
   ],
   providers: [AuthguardService, AdminguardGuard, RootService, SharedService, SecurityService],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

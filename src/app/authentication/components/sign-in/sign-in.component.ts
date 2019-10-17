@@ -57,7 +57,7 @@ export class SignInComponent implements OnInit {
                 this.validateSignIn(res.code);
                 this.isLoading = false;
             } else {
-                this.router.navigate([ urlPaths.Product.ProductList.url ]);
+                this.router.navigate([ urlPaths.Student.StudentList.url ]);
                 this.isLoading = false;
             }
         });

@@ -17,6 +17,7 @@ export enum ProductStatus{
 }
 
 export enum Entities {
+    Student='Student',
 	Person = 'Person',
 	Product = 'Product',
 	Category = 'Category',

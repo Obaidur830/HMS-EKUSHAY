@@ -10,7 +10,7 @@ import { ProfileDefaultComponent } from 'src/app/profile/components/profile-defa
 import { PurchaseDefaultComponent } from 'src/app/purchase/components/purchase-default/purchase-default.component';
 import { ShoppingCartDefaultComponent } from 'src/app/shopping-cart/shopping-cart-default/shopping-cart-default.component';
 import { OrderSuccessComponent } from 'src/app/shopping-cart/order-success/order-success.component';
-import { StudentManagementComponent } from 'src/app/student/components/student-management/student-management.component';
+import { StudentListComponent } from 'src/app/student/components/student-list/student-list.component';
 
 export const authenticationRoutes: Routes = [
   {
@@ -61,7 +61,7 @@ export const productRoutes: Routes = [
 export const studentRoutes: Routes = [
   {
       path: '',
-      component: StudentManagementComponent
+      component: StudentListComponent
   }
 ];
 

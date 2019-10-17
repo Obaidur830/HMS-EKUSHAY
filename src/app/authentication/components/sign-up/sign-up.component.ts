@@ -138,7 +138,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
     }
 
     routeToHome() {
-        this.router.navigate([ urlPaths.Product.ProductList.url ]);
+        this.router.navigate([ urlPaths.Student.StudentList.url ]);
     }
     ngOnDestroy() {
         this._unsubscribeAll.next();

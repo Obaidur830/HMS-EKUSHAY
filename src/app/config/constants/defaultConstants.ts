@@ -149,6 +149,11 @@ export const urlPaths = {
         ProductList: {
             url: 'product'
         }
-    }
+	},
+	Student: {
+       StudentList: {
+		   url: 'student'
+	   }
+	}
 };
 

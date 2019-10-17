@@ -23,15 +23,27 @@ export interface CustomerUserInformation {
 }
 
 export interface firebaseUserInformation {
-	displayName?:string;
-	email?:string;
-	emailVerified?:string;
-	isAnonymous?:string;
-	metadata?:string;
-	phoneNumber?:string;
-	photoURL?:string;
-	providerData?:string;
-	providerId?:string;
-	refreshToken?:string;
-	uid?:string;
+    displayName?: string;
+    email?: string;
+    emailVerified?: string;
+    isAnonymous?: string;
+    metadata?: string;
+    phoneNumber?: string;
+    photoURL?: string;
+    providerData?: string;
+    providerId?: string;
+    refreshToken?: string;
+    uid?: string;
 }
+
+export interface StudentInformation {
+    fullName: string,
+    email: string,
+    mobile: string,
+    city: string,
+    gender: string,
+    department: string,
+    hireDate: string,
+    isPermanent: boolean
+}
+
