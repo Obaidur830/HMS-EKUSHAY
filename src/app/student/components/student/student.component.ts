@@ -68,7 +68,7 @@ export class StudentComponent implements OnInit {
 
   onSubmit() {
     if (this.studentService.studentForm.valid) {
-      this.studentInformation={
+      this.studentInformation = {
         fullName: this.studentService.studentForm.value.fullName,
         email: this.studentService.studentForm.value.email,
         mobile: this.studentService.studentForm.value.mobile,
@@ -77,12 +77,12 @@ export class StudentComponent implements OnInit {
         department: this.studentService.studentForm.value.department,
         hireDate: this.studentService.studentForm.value.hireDate,
         isPermanent: this.studentService.studentForm.value.isPermanent
-
-      }
-      if (!this.studentService.studentForm.get('$key').value)
+      };
+      if (!this.studentService.studentForm.get('$key').value) {
         this.studentService.insertStudent(this.studentInformation);
-      else
+      } else {
         this.studentService.updateStudent(this.studentInformation);
+      }
       this.studentService.studentForm.reset();
       this.studentService.initializeFormGroup();
       this.notificationService.success(':: Submitted successfully');

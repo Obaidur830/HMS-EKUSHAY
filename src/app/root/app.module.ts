@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './root-default/root-default.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,7 +24,7 @@ import { AdminguardGuard } from '../core/security-service/adminguard.guard';
 import { SecurityService } from '../core/security-service/security.service';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
-import { ReactiveFormsModule,FormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -55,11 +54,8 @@ import { ReactiveFormsModule,FormsModule } from "@angular/forms";
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    
-
   ],
   providers: [AuthguardService, AdminguardGuard, RootService, SharedService, SecurityService],
   bootstrap: [AppComponent]
-  
 })
 export class AppModule { }

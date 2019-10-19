@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
-import { MatDialog, MatDialogConfig,MatIcon } from "@angular/material";
+import { MatDialog, MatDialogConfig, MatIcon } from '@angular/material';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { StudentService } from '../../service/student.service';
 import { StudentComponent } from '../student/student.component';
@@ -15,7 +15,7 @@ export class StudentListComponent implements OnInit {
     private dialog: MatDialog,
     private notificationService: NotificationService,
     private studentService: StudentService,
-    //private studentComponent: StudentComponent
+    // private studentComponent: StudentComponent
   ) { }
 
   listData: MatTableDataSource<any>;
@@ -29,8 +29,8 @@ export class StudentListComponent implements OnInit {
 
     this.studentService.getStudents().subscribe(
       list => {
-        let array = list.map(item => {
-          //let departmentName = this.departmentService.getDepartmentName(item.payload.val()['department']);
+        const array = list.map(item => {
+          // let departmentName = this.departmentService.getDepartmentName(item.payload.val()['department']);
           return {
             $key: item.payload.doc.id,
            // departmentName,
@@ -42,14 +42,14 @@ export class StudentListComponent implements OnInit {
         this.listData.paginator = this.paginator;
         this.listData.filterPredicate = (data, filter) => {
           return this.displayedColumns.some(ele => {
-            return ele != 'actions' && data[ele].toLowerCase().indexOf(filter) != -1;
+            return ele !== 'actions' && data[ele].toLowerCase().indexOf(filter) !== -1;
           });
         };
       });
   }
 
   onSearchClear() {
-    this.searchKey = "";
+    this.searchKey = '';
     this.applyFilter();
   }
 
@@ -59,27 +59,27 @@ export class StudentListComponent implements OnInit {
 
 
   onCreate() {
-    //this.studentService.makeStudentForm();
+    // this.studentService.makeStudentForm();
     this.studentService.initializeFormGroup();
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
-   this.dialog.open(StudentComponent,dialogConfig);
+    dialogConfig.width = '60%';
+    this.dialog.open(StudentComponent, dialogConfig);
   }
 
-  onEdit(row){
+  onEdit(row) {
    // this.studentService.makeStudentForm();
     this.studentService.populateForm(row);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
-   this.dialog.open(StudentComponent,dialogConfig);
+    dialogConfig.width = '60%';
+    this.dialog.open(StudentComponent, dialogConfig);
   }
 
-  onDelete($key){
-    if(confirm('Are you sure to delete this record ?')){
+  onDelete($key) {
+    if (confirm('Are you sure to delete this record ?')) {
     this.studentService.deleteStudent($key);
     this.notificationService.warn('! Deleted successfully');
     }

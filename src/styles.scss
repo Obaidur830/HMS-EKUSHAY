@@ -89,6 +89,22 @@ mat-radio-group mat-radio-button{
     margin-left: 5px;
 }
 
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color:#FF1A35; 
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  color:#FF1A35;
+  background-color:#FF1A35;
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color:rgba(95, 37, 255, 0.26);
+}
+
+// check box here
+
 .button-row button{
     margin: 5px;
 }
