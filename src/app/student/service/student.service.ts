@@ -4,7 +4,7 @@ import { DatePipe } from '@angular/common';
 import { Entities } from 'src/app/config/enums/default.enum';
 import { StudentInformation } from 'src/app/config/interfaces/user.interface';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-
+import * as moment from 'moment';
 @Injectable({
   providedIn: 'root'
 })
@@ -45,12 +45,14 @@ export class StudentService {
   }
 
   populateForm(studentInformation) {
-    //this.initializeFormGroup();
-    this.studentForm.setValue(studentInformation);
+    // timestamp to date conversion successfully
+    //console.log(new Date(studentInformation.hireDate.seconds * 1000));
+    const studentFormDetails = {...studentInformation, hireDate: new Date(studentInformation.hireDate.seconds * 1000)};
+    this.studentForm.setValue(studentFormDetails);
   }
 
   getStudents() {
-    return this.angularFirestore.collection('students').snapshotChanges();
+    return this.angularFirestore.collection<StudentInformation>(Entities.Student).snapshotChanges();
   }
 
   insertStudent(studentInformation) {
