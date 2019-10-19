@@ -21,11 +21,11 @@ export class StudentService {
     $key: new FormControl(null),
     fullName: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
-    mobile: new FormControl('', [Validators.required, Validators.minLength(11)]),
+    mobile: new FormControl('', [Validators.required, Validators.minLength(8)]),
     city: new FormControl(''),
     gender: new FormControl('1'),
-    department: new FormControl(0),
-    hireDate: new FormControl(''),
+    department: new FormControl(''),
+    hireDate: new FormControl('',Validators.required),
     isPermanent: new FormControl(false)
   });
 
@@ -38,7 +38,7 @@ export class StudentService {
       mobile: '',
       city: '',
       gender: '1',
-      department: 0,
+      department: '',
       hireDate: '',
       isPermanent: false
     });

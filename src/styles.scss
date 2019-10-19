@@ -137,6 +137,10 @@ mat-footer-row mat-footer-cell{
     font-style: italic;
 }
 
+// 
+.badge-leftx{
+  margin-left: 50px;
+}
 /* filter controls */
 .search-div{
 	margin: 10px;
@@ -150,7 +154,7 @@ mat-footer-row mat-footer-cell{
           border-radius: 10px;
 		  }
 		  .search-div div.mat-form-field-wrapper{
-			 height:30px;
+			 height:33px;
 		  }
 		  .search-form-field div.mat-form-field-underline {
 			bottom: 0em;

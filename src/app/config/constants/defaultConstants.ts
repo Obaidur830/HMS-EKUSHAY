@@ -1,14 +1,14 @@
 export const defaultConst = {
 	sidebarforcustomersupplier: [
 		{
-			name: 'Student',
-			url: 'student',
-			icon: 'wc'
-		},
-		{
 			name: 'Product',
 			url: 'product',
 			icon: 'weekend'
+		},
+		{
+			name: 'Student',
+			url: 'student',
+			icon: 'wc'
 		},
 		{
 			name: 'Enquiry',
@@ -145,15 +145,15 @@ export const urlPaths = {
             url: 'authentication/account-recovery'
         }
     },
+    Student: {
+        StudentList: {
+           url: 'student'
+        }
+    },
     Product: {
         ProductList: {
             url: 'product'
         }
-	},
-	Student: {
-       StudentList: {
-		   url: 'student'
-	   }
-	}
+    },
 };
 

@@ -63,7 +63,7 @@ export class StudentComponent implements OnInit {
   onClear() {
     this.studentService.studentForm.reset();
     this.studentService.initializeFormGroup();
-    this.notificationService.success(':: Submitted successfully');
+    this.notificationService.warn(':: clear studentForm successfully');
   }
 
   onSubmit() {

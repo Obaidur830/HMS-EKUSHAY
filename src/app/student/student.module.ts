@@ -10,6 +10,7 @@ import {MatTableModule} from '@angular/material/table';
 import { DatePipe } from '@angular/common';
 import { StudentService } from './service/student.service';
 import { StudentComponent } from './components/student/student.component';
+import {MatBadgeModule} from '@angular/material/badge';
 @NgModule({
   declarations: [StudentListComponent, StudentComponent],
   imports: [
@@ -32,6 +33,7 @@ import { StudentComponent } from './components/student/student.component';
     MatSortModule,
     MatPaginatorModule,
     MatInputModule, 
+    MatBadgeModule,
     RouterModule.forChild(studentRoutes)
   ],
   providers: [StudentService,DatePipe],

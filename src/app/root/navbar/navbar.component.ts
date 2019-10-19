@@ -132,7 +132,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 	}
 	route(url) {
 		this.router.navigateByUrl(url);
-		if (url == defaultConst.menu.profile.url) {
+		if (url === defaultConst.menu.profile.url) {
 			this.rootService.$menuIndex.next(-1);
 		}
 	}

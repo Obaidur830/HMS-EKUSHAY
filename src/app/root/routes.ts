@@ -27,16 +27,17 @@ export const routes: Routes = [
 				canActivate: [AuthguardService]
 			},
 			{
+				path: 'student',
+				loadChildren: '../student/student.module#StudentModule',
+				canActivate: [AuthguardService]
+			},
+			{
 				path: 'product',
 				loadChildren: '../product/product.module#ProductModule',
 				canActivate: [AuthguardService]
 			},
 			
-			{
-				path: 'student',
-				loadChildren: '../student/student.module#StudentModule',
-				canActivate: [AuthguardService]
-			},
+			
 			{
 				path: 'enquiry',
 				loadChildren: '../enquiry/enquiry.module#EnquiryModule',
