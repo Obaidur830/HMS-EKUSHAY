@@ -11,6 +11,7 @@ import { PurchaseDefaultComponent } from 'src/app/purchase/components/purchase-d
 import { ShoppingCartDefaultComponent } from 'src/app/shopping-cart/shopping-cart-default/shopping-cart-default.component';
 import { OrderSuccessComponent } from 'src/app/shopping-cart/order-success/order-success.component';
 import { StudentListComponent } from 'src/app/student/components/student-list/student-list.component';
+import { EmployeeListComponent } from 'src/app/employee/components/employee-list/employee-list.component';
 
 export const authenticationRoutes: Routes = [
   {
@@ -62,6 +63,13 @@ export const studentRoutes: Routes = [
   {
       path: '',
       component: StudentListComponent
+  }
+];
+
+export const employeeRoutes: Routes = [
+  {
+      path: '',
+      component: EmployeeListComponent
   }
 ];
 

@@ -1,9 +1,9 @@
 <mat-toolbar>
-  <span>{{studentService.studentForm.controls['$key'].value?"Modify Student":"New Student"}}</span>
+  <span>{{employeeService.employeeForm.controls['$key'].value?"Modify Employee":"New Employee"}}</span>
   <span class="fill-remaining-space"></span>
   <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
 </mat-toolbar>
-<form [formGroup]="studentService.studentForm" class="normal-form" (submit)="onSubmit()">
+<form [formGroup]="employeeService.employeeForm" class="normal-form" (submit)="onSubmit()">
   <mat-grid-list cols="2" rowHeight="300px">
     <mat-grid-tile>
       <div class="controles-container">
@@ -18,8 +18,8 @@
         </mat-form-field>
         <mat-form-field>
           <input formControlName="mobile" matInput placeholder="Mobile*">
-          <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
-          <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.</mat-error>
+          <mat-error *ngIf="employeeService.employeeForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
+          <mat-error *ngIf="employeeService.employeeForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="city" matInput placeholder="City">
@@ -52,7 +52,7 @@
           <mat-checkbox formControlName="isPermanent">Permanent Student</mat-checkbox>
         </div>
         <div class="button-row">
-          <button mat-raised-button color="primary" type="submit" [disabled]="studentService.studentForm.invalid">Submit</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="employeeService.employeeForm.invalid">Submit</button>
           <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
         </div>
       </div>

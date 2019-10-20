@@ -37,13 +37,24 @@ export interface firebaseUserInformation {
 }
 
 export interface StudentInformation {
-    fullName: string,
-    email: string,
-    mobile: string,
-    city: string,
-    gender: string,
-    department: string,
-    hireDate: string,
-    isPermanent: boolean
+    fullName: string;
+    email: string;
+    mobile: string;
+    city: string;
+    gender: string;
+    department: string;
+    hireDate: string;
+    isPermanent: boolean;
+}
+
+export interface EmployeeInformation {
+    fullName: string;
+    email: string;
+    mobile: string;
+    city: string;
+    gender: string;
+    department: string;
+    hireDate: string;
+    isPermanent: boolean;
 }
 

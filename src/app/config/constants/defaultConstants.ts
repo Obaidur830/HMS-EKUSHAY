@@ -1,106 +1,106 @@
 export const defaultConst = {
-	sidebarforcustomersupplier: [
-		{
-			name: 'Product',
-			url: 'product',
-			icon: 'weekend'
-		},
-		{
-			name: 'Student',
-			url: 'student',
-			icon: 'wc'
-		},
-		{
-			name: 'Enquiry',
-			url: 'enquiry',
-			icon: 'contact_support'
-		},
-		{
-			name: 'Purchase',
-			url: 'purchase',
-			icon: 'shopping_cart'
-		},
-		{
-			name: 'Purchase',
-			url: 'purchase',
-			icon: 'shopping_cart'
-		},
-	],
-	sidebar: [
-		{
-			name: 'Admin Panel',
-			url: 'admin',
-			icon: 'security'
-		},
-		{
-			name: 'Student',
-			url: 'student',
-			icon: 'wc'
-		},
-		{
-			name: 'Product',
-			url: 'product',
-			icon: 'weekend'
-		},
-		{
-			name: 'Enquiry',
-			url: 'enquiry',
-			icon: 'contact_support'
-		},
-		{
-			name: 'Category',
-			url: 'category',
-			icon: 'widgets'
-		},
-		{
-			name: 'Purchase',
-			url: 'purchase',
-			icon: 'shopping_cart'
-		}
-		// {
-		// 	name: 'Shopping Cart',
-		// 	url: 'shopping-cart',
-		// 	icon:'shopping_cart'
-		// },
-	],
-	menu: {
-		profile: {
-			name: 'My Profile',
-			url: 'profile'
-		},
-		logout: {
-			name: 'Logout',
-			url: 'sign-in'
-		}
-	},
-	siteName: {
-		name: 'HMS-EKUSHAY',
-		url: 'https://oshop-e9657.firebaseapp.com/'
-	},
-	defaultEnquiryLimit: 5,
-	defaultRatings: 50,
-	defaultPhonenumberCode: 'bd',
-	emailsent: 'Email sent successfully',
-	checkEmail: 'Verification email sent'
+    sidebarforcustomersupplier: [
+        {
+            name: 'Product',
+            url: 'product',
+            icon: 'weekend'
+        },
+        {
+            name: 'Student',
+            url: 'student',
+            icon: 'wc'
+        },
+        {
+            name: 'Employee',
+            url: 'employee',
+            icon: 'emoji_people'
+        },
+        {
+            name: 'Enquiry',
+            url: 'enquiry',
+            icon: 'contact_support'
+        },
+        {
+            name: 'Purchase',
+            url: 'purchase',
+            icon: 'shopping_cart'
+        },
+        {
+            name: 'Purchase',
+            url: 'purchase',
+            icon: 'shopping_cart'
+        },
+    ],
+    sidebar: [
+        {
+            name: 'Admin Panel',
+            url: 'admin',
+            icon: 'security'
+        },
+        {
+            name: 'Student',
+            url: 'student',
+            icon: 'wc'
+        },
+        {
+            name: 'Product',
+            url: 'product',
+            icon: 'weekend'
+        },
+        {
+           name: 'Enquiry',
+           url: 'enquiry',
+           icon: 'contact_support'
+        },
+        {
+            name: 'Category',
+            url: 'category',
+            icon: 'widgets'
+        },
+        {
+            name: 'Purchase',
+            url: 'purchase',
+            icon: 'shopping_cart'
+        }
+    ],
+    menu: {
+        profile: {
+            name: 'My Profile',
+            url: 'profile'
+        },
+        logout: {
+            name: 'Logout',
+            url: 'sign-in'
+        }
+    },
+    siteName: {
+        name: 'HMS-EKUSHAY',
+        url: 'https://oshop-e9657.firebaseapp.com/'
+    },
+    defaultEnquiryLimit: 5,
+    defaultRatings: 50,
+    defaultPhonenumberCode: 'bd',
+    emailsent: 'Email sent successfully',
+    checkEmail: 'Verification email sent'
 };
 
 export const signinErrorCode = {
-	'Invalid Email': {
-		code: 'auth/invalid-email',
-		message: 'Enter valid email address'
-	},
-	'User Disabled': {
-		code: 'auth/user-disabled',
-		message: 'Account with the corresponding email is disabled'
-	},
-	'User not found': {
-		code: 'auth/user-not-found',
-		message: 'No such user found with the corresponding email'
-	},
-	'Wrong password': {
-		code: 'auth/wrong-password',
-		message: 'Password does not match'
-	}
+    'Invalid Email': {
+        code: 'auth/invalid-email',
+        message: 'Enter valid email address'
+    },
+    'User Disabled': {
+        code: 'auth/user-disabled',
+        message: 'Account with the corresponding email is disabled'
+    },
+    'User not found': {
+        code: 'auth/user-not-found',
+        message: 'No such user found with the corresponding email'
+    },
+    'Wrong password': {
+        code: 'auth/wrong-password',
+        message: 'Password does not match'
+    }
 };
 
 export const recoverAccountCode = {

@@ -17,8 +17,9 @@ export enum ProductStatus{
 }
 
 export enum Entities {
-    Student='Student',
-	Person = 'Person',
+    Person = 'Person',
+    Student= 'Student',
+    Employee= 'Employee',
 	Product = 'Product',
 	Category = 'Category',
 	Location = 'Location',
@@ -29,8 +30,8 @@ export enum Entities {
 	Notification = 'Notification'
 }
 
-export enum EnquiryStatus{
-    Successful='Successful',
-    Unsuccessful='Unsuccessful',
-    Fraud='Fraud',
+export enum EnquiryStatus {
+    Successful= 'Successful',
+    Unsuccessful= 'Unsuccessful',
+    Fraud= 'Fraud',
 }

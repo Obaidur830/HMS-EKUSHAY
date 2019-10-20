@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../../service/student.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { MatDialogRef } from '@angular/material';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { StudentInformation } from 'src/app/config/interfaces/user.interface';
 
 @Component({
@@ -28,38 +27,6 @@ export class StudentComponent implements OnInit {
    // this.makeStudentForm();
     //this.initializeFormGroup();
   }
-  // makeStudentForm() {
-  //   this.studentForm = this.fb.group({
-  //     $key: new FormControl(null),
-  //     fullName: new FormControl('', Validators.required),
-  //     email: new FormControl('', Validators.email),
-  //     mobile: new FormControl('', [Validators.required, Validators.minLength(8)]),
-  //     city: new FormControl(''),
-  //     gender: new FormControl('1'),
-  //     department: new FormControl(0),
-  //     hireDate: new FormControl(''),
-  //     isPermanent: new FormControl(false)
-  //   });
-  // }
-
-  // initializeFormGroup() {
-  //   this.studentForm.setValue({
-  //     $key: null,
-  //     fullName: '',
-  //     email: '',
-  //     mobile: '',
-  //     city: '',
-  //     gender: '1',
-  //     department: 0,
-  //     hireDate: '',
-  //     isPermanent: false
-  //   });
-  // }
-  // populateForm(studentInformation) {
-  //   this.makeStudentForm();
-  //   this.initializeFormGroup();
-  //   this.studentForm.setValue(studentInformation);
-  // }
   onClear() {
     this.studentService.studentForm.reset();
     this.studentService.initializeFormGroup();
