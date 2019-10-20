@@ -4,6 +4,7 @@ import { MatDialog, MatDialogConfig, MatIcon } from '@angular/material';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { StudentService } from '../../service/student.service';
 import { StudentComponent } from '../student/student.component';
+import { DialogService } from 'src/app/shared/services/dialog.service';
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
@@ -15,6 +16,7 @@ export class StudentListComponent implements OnInit {
     private dialog: MatDialog,
     private notificationService: NotificationService,
     private studentService: StudentService,
+    private dialogService: DialogService
     // private studentComponent: StudentComponent
   ) { }
 
@@ -79,10 +81,18 @@ export class StudentListComponent implements OnInit {
   }
 
   onDelete($key) {
-    if (confirm('Are you sure to delete this record ?')) {
-    this.studentService.deleteStudent($key);
-    this.notificationService.warn('! Deleted successfully');
-    }
+    // if (confirm('Are you sure to delete this record ?')) {
+    // this.studentService.deleteStudent($key);
+    // this.notificationService.warn('! Deleted successfully');
+    // }
+
+    this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
+    .afterClosed().subscribe(res => {
+      if (res) {
+        this.studentService.deleteStudent($key);
+        this.notificationService.warn('! Deleted successfully');
+      }
+    });
   }
 
 }

@@ -16,8 +16,9 @@ import { SharedService } from './services/shared.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { DropzoneDirective } from './directives/dropzone.directive';
+import { MatConfirmDialogComponent } from './components/mat-confirm-dialog/mat-confirm-dialog.component';
 @NgModule({
-  declarations: [SnackbarComponent, DropzoneDirective],
+  declarations: [SnackbarComponent, DropzoneDirective, MatConfirmDialogComponent],
   imports: [
     MatToolbarModule,
     MatIconModule,
@@ -62,6 +63,6 @@ import { DropzoneDirective } from './directives/dropzone.directive';
     MatButtonToggleModule
   ],
   providers:[SharedService],
-  entryComponents:[SnackbarComponent]
+  entryComponents:[SnackbarComponent, MatConfirmDialogComponent]
 })
 export class SharedModule { }

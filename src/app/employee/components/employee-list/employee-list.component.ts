@@ -3,6 +3,7 @@ import { MatDialog, MatTableDataSource, MatPaginator, MatSort, MatDialogConfig }
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { EmployeeService } from '../../service/employee.service';
 import { EmployeeComponent } from '../employee/employee.component';
+import { DialogService } from 'src/app/shared/services/dialog.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -15,6 +16,7 @@ export class EmployeeListComponent implements OnInit {
     private dialog: MatDialog,
     private notificationService: NotificationService,
     private employeeService: EmployeeService,
+    private dialogService: DialogService
     // private studentComponent: StudentComponent
   ) { }
 
@@ -79,10 +81,18 @@ export class EmployeeListComponent implements OnInit {
   }
 
   onDelete($key) {
-    if (confirm('Are you sure to delete this record ?')) {
-    this.employeeService.deleteEmployee($key);
-    this.notificationService.warn('! Deleted successfully');
-    }
+    // if (confirm('Are you sure to delete this record ?')) {
+    // this.employeeService.deleteEmployee($key);
+    // this.notificationService.warn('! Deleted successfully');
+    // }
+
+    this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
+    .afterClosed().subscribe(res => {
+      if (res) {
+        this.employeeService.deleteEmployee($key);
+        this.notificationService.warn('! Deleted successfully');
+      }
+    });
   }
 
 }

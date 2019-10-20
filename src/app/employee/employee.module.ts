@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { employeeRoutes } from '../config/routes/lazyloadedRoutes.routes';
 import { EmployeeService } from './service/employee.service';
+import { MatConfirmDialogComponent } from '../shared/components/mat-confirm-dialog/mat-confirm-dialog.component';
+import { DialogService } from '../shared/services/dialog.service';
 
 @NgModule({
   declarations: [EmployeeComponent, EmployeeListComponent],
@@ -35,7 +37,7 @@ import { EmployeeService } from './service/employee.service';
     MatBadgeModule,
     RouterModule.forChild(employeeRoutes)
   ],
-  providers: [EmployeeService, DatePipe],
+  providers: [EmployeeService, DialogService, DatePipe],
   entryComponents: [EmployeeComponent]
 })
 export class EmployeeModule { }
