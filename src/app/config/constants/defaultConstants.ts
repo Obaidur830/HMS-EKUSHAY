@@ -33,6 +33,11 @@ export const defaultConst = {
 			icon: 'security'
 		},
 		{
+			name: 'Student',
+			url: 'student',
+			icon: 'wc'
+		},
+		{
 			name: 'Product',
 			url: 'product',
 			icon: 'weekend'
@@ -51,7 +56,7 @@ export const defaultConst = {
 			name: 'Purchase',
 			url: 'purchase',
 			icon: 'shopping_cart'
-		},
+		}
 		// {
 		// 	name: 'Shopping Cart',
 		// 	url: 'shopping-cart',

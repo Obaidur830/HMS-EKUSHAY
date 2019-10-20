@@ -24,7 +24,7 @@
       <div *ngFor="let content of sidebar;let i = index">
         <!-- <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px"> -->
             
-                <a mat-list-item (click)="route(content.url) ; selectRow(i)" [class.active]="i == selectedRow" class="cursor-pointer px-24 font-size-16">
+                <a mat-list-item (click)="route(content.url) ; selectRow(i)" [class.active]="i === selectedRow" class="cursor-pointer px-24 font-size-16">
                     <i class="material-icons-outlined mr-16">
                         {{content.icon}}
                         </i>

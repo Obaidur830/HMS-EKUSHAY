@@ -4,7 +4,8 @@ import { StudentListComponent } from './components/student-list/student-list.com
 import { RouterModule } from '@angular/router';
 import { studentRoutes } from '../config/routes/lazyloadedRoutes.routes';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatIconModule, MatListModule,MatPaginatorModule, MatSortModule, MatInputModule, MatGridListModule, MatRadioModule, MatSelectModule, MatDatepickerModule, MatCheckboxModule, MatDialogModule, MatNativeDateModule } from '@angular/material';
+// tslint:disable-next-line: max-line-length
+import { MatToolbarModule, MatButtonModule, MatIconModule, MatListModule, MatPaginatorModule, MatSortModule, MatInputModule, MatGridListModule, MatRadioModule, MatSelectModule, MatDatepickerModule, MatCheckboxModule, MatDialogModule, MatNativeDateModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import { DatePipe } from '@angular/common';
@@ -27,16 +28,16 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule, 
+    MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
     MatSortModule,
     MatPaginatorModule,
-    MatInputModule, 
+    MatInputModule,
     MatBadgeModule,
     RouterModule.forChild(studentRoutes)
   ],
-  providers: [StudentService,DatePipe],
-  entryComponents:[StudentComponent]
+  providers: [StudentService, DatePipe],
+  entryComponents: [StudentComponent]
 })
 export class StudentModule { }

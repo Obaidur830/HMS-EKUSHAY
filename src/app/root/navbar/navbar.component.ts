@@ -13,24 +13,24 @@ import { RootService } from '../services/root.service';
 import { SecurityService } from 'src/app/core/security-service/security.service';
 
 @Component({
-    selector: 'app-navbar',
-    templateUrl: './navbar.component.html',
-    styleUrls: [ './navbar.component.css' ]
+	selector: 'app-navbar',
+	templateUrl: './navbar.component.html',
+	styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-    isHandset$: Observable<boolean> = this.breakpointObserver
-        .observe(Breakpoints.Handset)
-        .pipe(map((result) => result.matches));
+	isHandset$: Observable<boolean> = this.breakpointObserver
+		.observe(Breakpoints.Handset)
+		.pipe(map((result) => result.matches));
 
-    title: string;
-    sidebar;
-    Username: string;
-    // $username: Observable<any>;
-    menuItems;
+	title: string;
+	sidebar;
+	Username: string;
+	// $username: Observable<any>;
+	menuItems;
 	selectedRow: number;
 	_unsubscribeAll: Subject<any>;
 
-    // $menuIndex = this.menuIndex.asObservable();
+	// $menuIndex = this.menuIndex.asObservable();
 	constructor(
 		private breakpointObserver: BreakpointObserver,
 		private aut: AuthenticationService,
@@ -48,6 +48,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 		this.setUsername();
 		this.selectedRow = 1;
 		this.route(defaultConst.sidebar[1].url);
+		//this.route(defaultConst.sidebar[1].url);
 		// console.log(this.isHandset$.subscribe(res=>console.log(res)));
 		// console.log(this.aut.getCurrentUser());
 	}
@@ -121,7 +122,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 			duration: 3,
 			horizontalPosition: 'right',
 			verticalPosition: 'top',
-			panelClass: [ 'default-snackbar' ]
+			panelClass: ['default-snackbar']
 		});
 	}
 

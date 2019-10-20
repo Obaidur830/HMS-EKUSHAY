@@ -37,7 +37,6 @@ export const routes: Routes = [
 				canActivate: [AuthguardService]
 			},
 			
-			
 			{
 				path: 'enquiry',
 				loadChildren: '../enquiry/enquiry.module#EnquiryModule',
