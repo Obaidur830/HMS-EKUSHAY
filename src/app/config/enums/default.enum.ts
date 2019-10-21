@@ -11,23 +11,24 @@ export enum RolesView{
 }
 
 export enum ProductStatus{
-    InStock='InStock',
-    SoldOut='SoldOut',
-    ComingSoon='ComingSoon',
+    InStock= 'InStock',
+    SoldOut= 'SoldOut',
+    ComingSoon= 'ComingSoon',
 }
 
 export enum Entities {
     Person = 'Person',
     Student= 'Student',
     Employee= 'Employee',
-	Product = 'Product',
-	Category = 'Category',
-	Location = 'Location',
-	Roles = 'Roles',
-	Enquiry = 'Enquiry',
-	Purchase = 'Purchase',
-	Brand = 'Brand',
-	Notification = 'Notification'
+    Product = 'Product',
+    Asset= 'Asset',
+    Category = 'Category',
+    Location = 'Location',
+    Roles = 'Roles',
+    Enquiry = 'Enquiry',
+    Purchase = 'Purchase',
+    Brand = 'Brand',
+    Notification = 'Notification'
 }
 
 export enum EnquiryStatus {

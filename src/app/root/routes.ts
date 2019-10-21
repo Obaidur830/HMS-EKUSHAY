@@ -41,6 +41,11 @@ export const routes: Routes = [
 				loadChildren: '../employee/employee.module#EmployeeModule',
 				canActivate: [AuthguardService]
 			},
+			{
+				path: 'asset',
+				loadChildren: '../store/store.module#StoreModule',
+				canActivate: [AuthguardService]
+			},
 			
 			{
 				path: 'enquiry',

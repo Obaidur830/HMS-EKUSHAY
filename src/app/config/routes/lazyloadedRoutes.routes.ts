@@ -12,6 +12,7 @@ import { ShoppingCartDefaultComponent } from 'src/app/shopping-cart/shopping-car
 import { OrderSuccessComponent } from 'src/app/shopping-cart/order-success/order-success.component';
 import { StudentListComponent } from 'src/app/student/components/student-list/student-list.component';
 import { EmployeeListComponent } from 'src/app/employee/components/employee-list/employee-list.component';
+import { AssetListComponent } from 'src/app/store/components/asset-list/asset-list.component';
 
 export const authenticationRoutes: Routes = [
   {
@@ -70,6 +71,13 @@ export const employeeRoutes: Routes = [
   {
       path: '',
       component: EmployeeListComponent
+  }
+];
+
+export const assetRoutes: Routes = [
+  {
+      path: '',
+      component: AssetListComponent
   }
 ];
 

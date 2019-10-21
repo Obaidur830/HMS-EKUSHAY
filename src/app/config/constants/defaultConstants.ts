@@ -16,6 +16,11 @@ export const defaultConst = {
             icon: 'emoji_people'
         },
         {
+            name: 'Asset',
+            url: 'asset',
+            icon: 'store'
+        },
+        {
             name: 'Enquiry',
             url: 'enquiry',
             icon: 'contact_support'

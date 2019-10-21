@@ -22,6 +22,7 @@ export interface CustomerUserInformation {
     photoURL?: string;
 }
 
+// tslint:disable-next-line: class-name
 export interface firebaseUserInformation {
     displayName?: string;
     email?: string;
@@ -48,6 +49,17 @@ export interface StudentInformation {
 }
 
 export interface EmployeeInformation {
+    fullName: string;
+    email: string;
+    mobile: string;
+    city: string;
+    gender: string;
+    department: string;
+    hireDate: string;
+    isPermanent: boolean;
+}
+
+export interface AssetInformation {
     fullName: string;
     email: string;
     mobile: string;
