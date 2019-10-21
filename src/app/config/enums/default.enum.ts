@@ -1,13 +1,13 @@
-export enum Roles{
-    Admin='Admin',
-    Customer='Customer',
-    Supplier='Supplier',
-    Anonymous='Anonymous'
+export enum Roles {
+    Admin= 'Admin',
+    Customer= 'Customer',
+    Supplier= 'Supplier',
+    Anonymous= 'Anonymous'
 }
 
 export enum RolesView{
-    Customer='Customer',
-    Supplier='Supplier'
+    Customer= 'Customer',
+    Supplier= 'Supplier'
 }
 
 export enum ProductStatus{
@@ -22,6 +22,7 @@ export enum Entities {
     Employee= 'Employee',
     Product = 'Product',
     Asset= 'Asset',
+    Transaction= 'Transaction',
     Category = 'Category',
     Location = 'Location',
     Roles = 'Roles',

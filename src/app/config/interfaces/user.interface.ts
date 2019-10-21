@@ -69,4 +69,13 @@ export interface AssetInformation {
     hireDate: string;
     isPermanent: boolean;
 }
-
+export interface TransactionInformation {
+    fullName: string;
+    email: string;
+    mobile: string;
+    city: string;
+    gender: string;
+    department: string;
+    hireDate: string;
+    isPermanent: boolean;
+}

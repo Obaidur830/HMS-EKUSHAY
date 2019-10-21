@@ -21,6 +21,11 @@ export const defaultConst = {
             icon: 'store'
         },
         {
+            name: 'Accounting',
+            url: 'transaction',
+            icon: 'account_tree'
+        },
+        {
             name: 'Enquiry',
             url: 'enquiry',
             icon: 'contact_support'

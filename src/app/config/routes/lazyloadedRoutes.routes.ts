@@ -13,6 +13,7 @@ import { OrderSuccessComponent } from 'src/app/shopping-cart/order-success/order
 import { StudentListComponent } from 'src/app/student/components/student-list/student-list.component';
 import { EmployeeListComponent } from 'src/app/employee/components/employee-list/employee-list.component';
 import { AssetListComponent } from 'src/app/store/components/asset-list/asset-list.component';
+import { TransactionListComponent } from 'src/app/accounting/components/transaction-list/transaction-list.component';
 
 export const authenticationRoutes: Routes = [
   {
@@ -78,6 +79,12 @@ export const assetRoutes: Routes = [
   {
       path: '',
       component: AssetListComponent
+  }
+];
+export const transactionRoutes: Routes = [
+  {
+      path: '',
+      component: TransactionListComponent
   }
 ];
 

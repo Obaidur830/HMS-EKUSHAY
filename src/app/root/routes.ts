@@ -46,7 +46,11 @@ export const routes: Routes = [
 				loadChildren: '../store/store.module#StoreModule',
 				canActivate: [AuthguardService]
 			},
-			
+			{
+				path: 'transaction',
+				loadChildren: '../accounting/accounting.module#AccountingModule',
+				canActivate: [AuthguardService]
+			},
 			{
 				path: 'enquiry',
 				loadChildren: '../enquiry/enquiry.module#EnquiryModule',
