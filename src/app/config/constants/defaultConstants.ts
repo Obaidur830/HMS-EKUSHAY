@@ -1,6 +1,11 @@
 export const defaultConst = {
     sidebarforcustomersupplier: [
         {
+            name: 'Dashboard',
+            url: 'home',
+            icon: 'home'
+        },
+        {
             name: 'Product',
             url: 'product',
             icon: 'weekend'
@@ -24,22 +29,7 @@ export const defaultConst = {
             name: 'Accounting',
             url: 'transaction',
             icon: 'account_tree'
-        },
-        {
-            name: 'Enquiry',
-            url: 'enquiry',
-            icon: 'contact_support'
-        },
-        {
-            name: 'Purchase',
-            url: 'purchase',
-            icon: 'shopping_cart'
-        },
-        {
-            name: 'Purchase',
-            url: 'purchase',
-            icon: 'shopping_cart'
-        },
+        }
     ],
     sidebar: [
         {
@@ -82,6 +72,10 @@ export const defaultConst = {
             name: 'Logout',
             url: 'sign-in'
         }
+    },
+    username: {
+        name: 'Login',
+        url: 'authentication/sign-in'
     },
     siteName: {
         name: 'HMS-EKUSHAY',

@@ -14,6 +14,7 @@ import { StudentListComponent } from 'src/app/student/components/student-list/st
 import { EmployeeListComponent } from 'src/app/employee/components/employee-list/employee-list.component';
 import { AssetListComponent } from 'src/app/store/components/asset-list/asset-list.component';
 import { TransactionListComponent } from 'src/app/accounting/components/transaction-list/transaction-list.component';
+import { DefaultHomeComponent } from 'src/app/home/components/default-home/default-home.component';
 
 export const authenticationRoutes: Routes = [
   {
@@ -60,7 +61,12 @@ export const productRoutes: Routes = [
         component: ProductDefaultComponent
     }
 ];
-
+export const homeRoutes: Routes = [
+  {
+      path: '',
+      component: DefaultHomeComponent
+  }
+];
 export const studentRoutes: Routes = [
   {
       path: '',
