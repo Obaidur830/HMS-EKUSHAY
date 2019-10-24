@@ -15,6 +15,8 @@ import { EmployeeListComponent } from 'src/app/employee/components/employee-list
 import { AssetListComponent } from 'src/app/store/components/asset-list/asset-list.component';
 import { TransactionListComponent } from 'src/app/accounting/components/transaction-list/transaction-list.component';
 import { DefaultHomeComponent } from 'src/app/home/components/default-home/default-home.component';
+import { NotificationListComponent } from 'src/app/notification/components/notification-list/notification-list.component';
+import { RoomListComponent } from 'src/app/room/components/room-list/room-list.component';
 
 export const authenticationRoutes: Routes = [
   {
@@ -93,7 +95,18 @@ export const transactionRoutes: Routes = [
       component: TransactionListComponent
   }
 ];
-
+export const notificationRoutes: Routes = [
+  {
+      path: '',
+      component: NotificationListComponent
+  }
+];
+export const residenceRoutes: Routes = [
+  {
+      path: '',
+      component: RoomListComponent
+  }
+];
 export const profileRoutes: Routes = [
    {
        path: '',

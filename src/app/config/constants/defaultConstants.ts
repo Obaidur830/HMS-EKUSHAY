@@ -29,6 +29,16 @@ export const defaultConst = {
             name: 'Accounting',
             url: 'transaction',
             icon: 'account_tree'
+        },
+        {
+            name: 'Notification',
+            url: 'notification',
+            icon: 'notification_important'
+        },
+        {
+            name: 'Residence',
+            url: 'residence',
+            icon: 'school'
         }
     ],
     sidebar: [

@@ -57,8 +57,13 @@ export const routes: Routes = [
 				canActivate: [AuthguardService]
 			},
 			{
-				path: 'enquiry',
-				loadChildren: '../enquiry/enquiry.module#EnquiryModule',
+				path: 'notification',
+				loadChildren: '../notification/notification.module#NotificationModule',
+				canActivate: [AuthguardService]
+			},
+			{
+				path: 'residence',
+				loadChildren: '../room/room.module#RoomModule',
 				canActivate: [AuthguardService]
 			},
 			{
