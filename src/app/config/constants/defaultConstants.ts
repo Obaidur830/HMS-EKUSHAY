@@ -97,7 +97,21 @@ export const defaultConst = {
     emailsent: 'Email sent successfully',
     checkEmail: 'Verification email sent'
 };
+export const residentialConstant = [
+     {
+         name: 'Residential Student',
+         url: 'student'
+      },
 
+      {
+        name: 'Residential Room',
+        url: 'room'
+     },
+     {
+        name: 'Residential Block',
+        url: 'block'
+     }
+];
 export const signinErrorCode = {
     'Invalid Email': {
         code: 'auth/invalid-email',

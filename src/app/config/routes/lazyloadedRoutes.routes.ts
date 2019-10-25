@@ -16,7 +16,10 @@ import { AssetListComponent } from 'src/app/store/components/asset-list/asset-li
 import { TransactionListComponent } from 'src/app/accounting/components/transaction-list/transaction-list.component';
 import { DefaultHomeComponent } from 'src/app/home/components/default-home/default-home.component';
 import { NotificationListComponent } from 'src/app/notification/components/notification-list/notification-list.component';
+import { DefaultResidencePageComponent } from 'src/app/room/components/default-residence-page/default-residence-page.component';
+import { ResidenceStudentListComponent } from 'src/app/room/components/residence-student-list/residence-student-list.component';
 import { RoomListComponent } from 'src/app/room/components/room-list/room-list.component';
+import { BlockListComponent } from 'src/app/room/components/block-list/block-list.component';
 
 export const authenticationRoutes: Routes = [
   {
@@ -104,7 +107,21 @@ export const notificationRoutes: Routes = [
 export const residenceRoutes: Routes = [
   {
       path: '',
-      component: RoomListComponent
+      component: DefaultResidencePageComponent,
+      children: [
+        {
+          path: 'student',
+          component: ResidenceStudentListComponent
+        },
+        {
+          path: 'room',
+          component: RoomListComponent
+        },
+        {
+          path: 'block',
+          component: BlockListComponent
+        }
+      ]
   }
 ];
 export const profileRoutes: Routes = [
@@ -131,4 +148,5 @@ export const shoppingcartRoutes: Routes = [
     component: OrderSuccessComponent,
 
   }
-]
+];
+

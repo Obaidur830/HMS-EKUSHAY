@@ -5,7 +5,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AngularFireAuthGuard, loggedIn, canActivate } from '@angular/fire/auth-guard';
 import { AuthguardService } from '../core/security-service/authguard.service';
 import { AdminguardGuard } from '../core/security-service/adminguard.guard';
-
 export const routes: Routes = [
 	{
 		path: '',
@@ -86,6 +85,7 @@ export const routes: Routes = [
 			}
 		]
 	},
+	
 	{
 		path: '',
 		component: AnonymousComponent,
