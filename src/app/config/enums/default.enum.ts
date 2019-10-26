@@ -23,6 +23,7 @@ export enum Entities {
     Product = 'Product',
     Asset= 'Asset',
     Transaction= 'Transaction',
+    Room= 'Room',
     Category = 'Category',
     Location = 'Location',
     Roles = 'Roles',

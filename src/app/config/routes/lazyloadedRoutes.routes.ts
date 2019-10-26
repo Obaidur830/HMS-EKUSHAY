@@ -110,6 +110,10 @@ export const residenceRoutes: Routes = [
       component: DefaultResidencePageComponent,
       children: [
         {
+          path: '',
+          component: ResidenceStudentListComponent
+        },
+        {
           path: 'student',
           component: ResidenceStudentListComponent
         },

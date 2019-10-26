@@ -7,13 +7,14 @@ import { LayoutModule } from '@angular/cdk/layout';
 // tslint:disable-next-line: max-line-length
 import { MatToolbarModule, MatButtonModule, MatRadioModule, MatTableModule, MatDialogModule, MatIconModule, MatListModule, MatGridListModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, MatSortModule, MatPaginatorModule, MatInputModule, MatBadgeModule, MatTabsModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StudentService } from '../student/service/student.service';
 import { DefaultResidencePageComponent } from './components/default-residence-page/default-residence-page.component';
 import { ResidenceStudentListComponent } from './components/residence-student-list/residence-student-list.component';
 import { BlockListComponent } from './components/block-list/block-list.component';
+import { RoomComponent } from './components/room/room.component';
+import { RoomService } from './service/room.service';
 
 @NgModule({
-  declarations: [RoomListComponent, DefaultResidencePageComponent, ResidenceStudentListComponent, BlockListComponent],
+  declarations: [RoomListComponent, DefaultResidencePageComponent, ResidenceStudentListComponent, BlockListComponent, RoomComponent],
   imports: [
     CommonModule,
     LayoutModule,
@@ -39,7 +40,7 @@ import { BlockListComponent } from './components/block-list/block-list.component
     MatTabsModule,
     RouterModule.forChild(residenceRoutes)
   ],
-  providers: [StudentService, DatePipe],
-
+  providers: [RoomService, DatePipe],
+  entryComponents: [RoomComponent]
 })
 export class RoomModule { }
