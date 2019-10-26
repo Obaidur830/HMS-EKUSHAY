@@ -9,7 +9,6 @@ import { Entities } from 'src/app/config/enums/default.enum';
   providedIn: 'root'
 })
 export class ResidentialStudentService {
- 
 
   constructor(
     private angularFirestore: AngularFirestore,
