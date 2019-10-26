@@ -49,22 +49,22 @@ export class RoomService {
   }
 
   getRooms() {
-    return this.angularFirestore.collection<ResidentialRoomInformation>(Entities.Block).snapshotChanges();
+    return this.angularFirestore.collection<ResidentialRoomInformation>(Entities.Room).snapshotChanges();
   }
 
   insertRoom(residentialRoomInformation) {
 
-    const roomCollection = this.angularFirestore.collection<ResidentialRoomInformation>(Entities.Block);
+    const roomCollection = this.angularFirestore.collection<ResidentialRoomInformation>(Entities.Room);
     roomCollection.doc(residentialRoomInformation.email).set(residentialRoomInformation);
   }
 
   updateRoom(residentialRoomInformation) {
-    const roomCollection = this.angularFirestore.collection<ResidentialRoomInformation>(Entities.Block);
+    const roomCollection = this.angularFirestore.collection<ResidentialRoomInformation>(Entities.Room);
     roomCollection.doc(residentialRoomInformation.email).update(residentialRoomInformation);
   }
 
   deleteRoom($key: string) {
-    const roomCollection = this.angularFirestore.collection<ResidentialRoomInformation>(Entities.Block);
+    const roomCollection = this.angularFirestore.collection<ResidentialRoomInformation>(Entities.Room);
     roomCollection.doc($key).delete();
   }
 }
