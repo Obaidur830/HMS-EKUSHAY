@@ -24,6 +24,7 @@ export enum Entities {
     Asset= 'Asset',
     Transaction= 'Transaction',
     Room= 'Room',
+    Block= 'Block',
     Category = 'Category',
     Location = 'Location',
     Roles = 'Roles',
