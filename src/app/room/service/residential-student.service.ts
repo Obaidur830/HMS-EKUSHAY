@@ -50,7 +50,8 @@ export class ResidentialStudentService {
   }
 
   getResidentialStudents() {
-    return this.angularFirestore.collection<StudentInformation>(Entities.Student).snapshotChanges();
+    return this.angularFirestore.collection<StudentInformation>(Entities.Student, ref=> ref.where
+     ('mobile', '==', '01757151094') ).snapshotChanges();
   }
 
   insertResidentialStudent(residentialStudentInformation) {

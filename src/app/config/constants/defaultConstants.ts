@@ -37,6 +37,8 @@ export const defaultConst = {
         },
         {
             name: 'Residence',
+            // residence can not be changed as it used in nav bar component
+            // directly. if you change, change in navbar and routes.ts
             url: 'residence',
             icon: 'school'
         }
