@@ -22,11 +22,11 @@ export class QueryDatabaseService {
         });
     }
 
-    getSingleData(collectionName: string, documentId:string): Observable<any> {
+    getSingleData(collectionName: string, documentId: string): Observable<any> {
         return new Observable((observer) => {
             this.angularfirestore.collection(collectionName).doc(documentId).get().pipe(first()).subscribe(
                 (res) => {
-                   observer.next(res.data()?res.data():null);
+                   observer.next(res.data() ? res.data() : null);
                 },
                 (err) => observer.error(err),
                 () => observer.complete()

@@ -55,84 +55,86 @@ export const adminRoutes: Routes = [
 ];
 
 export const enquiryRoutes: Routes = [
-    {
-         path: '',
-        component: EnquiryDefaultComponent
-    }
+  {
+    path: '',
+    component: EnquiryDefaultComponent
+  }
 ];
 export const productRoutes: Routes = [
-    {
-        path: '',
-        component: ProductDefaultComponent
-    }
+  {
+    path: '',
+    component: ProductDefaultComponent
+  }
 ];
 export const homeRoutes: Routes = [
   {
-      path: '',
-      component: DefaultHomeComponent
+    path: '',
+    component: DefaultHomeComponent
   }
 ];
 export const studentRoutes: Routes = [
   {
-      path: '',
-      component: StudentListComponent
+    path: '',
+    component: StudentListComponent
   }
 ];
 
 export const employeeRoutes: Routes = [
   {
-      path: '',
-      component: EmployeeListComponent
+    path: '',
+    component: EmployeeListComponent
   }
 ];
 
 export const assetRoutes: Routes = [
   {
-      path: '',
-      component: AssetListComponent
+    path: '',
+    component: AssetListComponent
   }
 ];
 export const transactionRoutes: Routes = [
   {
-      path: '',
-      component: TransactionListComponent
+    path: '',
+    component: TransactionListComponent
   }
 ];
 export const notificationRoutes: Routes = [
   {
-      path: '',
-      component: NotificationListComponent
+    path: '',
+    component: NotificationListComponent
   }
 ];
 export const residenceRoutes: Routes = [
   {
-      path: '',
-      component: DefaultResidencePageComponent,
-      children: [
-        {
-          path: '',
-          component: ResidenceStudentListComponent
-        },
-        {
-          path: 'student',
-          component: ResidenceStudentListComponent
-        },
-        {
-          path: 'room',
-          component: RoomListComponent
-        },
-        {
-          path: 'block',
-          component: BlockListComponent
-        }
-      ]
-  }
-];
+    path: '',
+    component: DefaultResidencePageComponent,
+    children: [
+      {
+        path: '',
+        // component: ResidenceStudentListComponent
+        redirectTo: 'student'
+      },
+      {
+        path: 'student',
+        component: ResidenceStudentListComponent
+      },
+      {
+        path: 'room',
+        component: RoomListComponent
+      },
+      {
+        path: 'block',
+        component: BlockListComponent
+      }
+    ]
+
+
+}];
 export const profileRoutes: Routes = [
-   {
-       path: '',
-        component: ProfileDefaultComponent
-   }
+  {
+    path: '',
+    component: ProfileDefaultComponent
+  }
 ];
 
 export const purchaseRoutes: Routes = [

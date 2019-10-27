@@ -4,7 +4,7 @@ import { Observable, Subject, Subscription, observable, BehaviorSubject } from '
 import { map, takeUntil, first } from 'rxjs/operators';
 import { AuthenticationService } from '../../authentication/services/authentication.service';
 import { Router } from '@angular/router';
-import { defaultConst } from '../../config/constants/defaultConstants';
+import { defaultConst, residentialConstant } from '../../config/constants/defaultConstants';
 import { QueryDatabaseService } from '../../core/database-service/query-database.service';
 import { Entities, Roles } from '../../config/enums/default.enum';
 import { CustomerUserInformation } from '../../config/interfaces/user.interface';
@@ -48,7 +48,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.initiateVariables();
         this.setUsername();
 
-       // this.route(defaultConst.sidebar[1].url);
+        // this.route(defaultConst.sidebar[1].url);
 
     }
 
@@ -81,6 +81,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
     checkAndSetRow() {
         const currentUrl = this.router.url;
+        if (currentUrl === '/residence') {
+            this.rootService.$ActiveLink.next(residentialConstant[0].url);
+        } else {
+            let cnt = 0;
+            for (const link of residentialConstant) {
+                if (currentUrl === '/residence/' + link.url) {
+                     this.rootService.$ActiveLink.next(link.url);
+                     if (this.setResidenceRow('residence')) {return ; }
+                }
+                cnt++;
+            }
+        }
         let count = 0;
         for (const i of this.sidebar) {
             if (currentUrl === `/${i.url}`) {
@@ -90,7 +102,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
             count += 1;
         }
     }
-
+    setResidenceRow(checkingRow) {
+        let count = 0;
+        for (const i of this.sidebar) {
+            if (checkingRow === i.url) {
+                this.selectedRow = count;
+                return true;
+            }
+            count += 1;
+        }
+        return false;
+    }
     setUsername() {
         this.corequery.getLoggedInUserID().pipe(takeUntil(this._unsubscribeAll)).subscribe((res) => {
             if (res) {
@@ -147,6 +169,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl(url);
         if (url === defaultConst.menu.profile.url) {
             this.rootService.$menuIndex.next(-1);
+        } else if (url === 'residence') {
+            this.rootService.$ActiveLink.next(residentialConstant[0].url);
         }
     }
     selectRow(index) {

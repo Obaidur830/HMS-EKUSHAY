@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class RootService {
   $Username = new BehaviorSubject('');
+  $ActiveLink = new BehaviorSubject('');
   // $username= this.Username.asObservable();
   $menuIndex = new BehaviorSubject<number>(1);
   constructor() { }
