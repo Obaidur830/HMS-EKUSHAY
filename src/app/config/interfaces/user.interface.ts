@@ -99,3 +99,14 @@ export interface ResidentialBlockInformation {
     hireDate: string;
     isPermanent: boolean;
 }
+
+export interface NotificationInformation {
+    fullName: string;
+    email: string;
+    mobile: string;
+    city: string;
+    gender: string;
+    department: string;
+    hireDate: string;
+    isPermanent: boolean;
+}
