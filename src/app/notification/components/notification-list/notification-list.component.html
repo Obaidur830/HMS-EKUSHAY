@@ -1,6 +1,6 @@
 <div class="search-div pt-20">
     <button color="primary" mat-raised-button (click)="onCreate()">
-      <mat-icon>add</mat-icon>Create
+      <mat-icon>add</mat-icon>new
     </button>
     <mat-form-field class="search-form-field" floatLabel="never">
       <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
@@ -8,7 +8,7 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
-    <mat-icon matBadge="15" matBadgeColor="primary">wc</mat-icon>
+    <mat-icon class="ml-50" matBadge={{totalNotification}} matBadgeColor="primary">wc</mat-icon>
   
   </div>
   <!-- <div class="row"> -->

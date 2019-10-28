@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NotificationService } from 'src/app/shared/services/notification.service';
+import { MatDialog, MatTableDataSource, MatPaginator, MatSort, MatDialogConfig } from '@angular/material';
+import { DialogService } from 'src/app/shared/services/dialog.service';
+import { Notification_Service } from '../../service/notification_.service';
+import { NotificationComponent } from '../notification/notification.component';
 
 @Component({
   selector: 'app-notification-list',
@@ -9,12 +14,12 @@ export class NotificationListComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private notificationService: NotificationService,
-    private roomService: RoomService,
+    private sharedNotificationService: NotificationService,
+    private notificationService: Notification_Service,
     private dialogService: DialogService
     // private studentComponent: StudentComponent
   ) { }
-
+  totalNotification;
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'department', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
@@ -24,7 +29,7 @@ export class NotificationListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.roomService.getRooms().subscribe(
+    this.notificationService.getNotifications().subscribe(
       list => {
         const array = list.map(item => {
           // let departmentName = this.departmentService.getDepartmentName(item.payload.val()['department']);
@@ -34,6 +39,7 @@ export class NotificationListComponent implements OnInit {
             ...item.payload.doc.data()
           };
         });
+        this.totalNotification = array.length;
         this.listData = new MatTableDataSource(array);
         this.listData.sort = this.sort;
         this.listData.paginator = this.paginator;
@@ -56,22 +62,22 @@ export class NotificationListComponent implements OnInit {
 
   onCreate() {
     // this.studentService.makeStudentForm();
-    this.roomService.initializeFormGroup();
+    this.notificationService.initializeFormGroup();
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '60%';
-    this.dialog.open(RoomComponent, dialogConfig);
+    this.dialog.open(NotificationComponent, dialogConfig);
   }
 
   onEdit(row) {
    // this.studentService.makeStudentForm();
-    this.roomService.populateForm(row);
+    this.notificationService.populateForm(row);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '60%';
-    this.dialog.open(RoomComponent, dialogConfig);
+    this.dialog.open(NotificationComponent, dialogConfig);
   }
 
   onDelete($key) {
@@ -83,8 +89,8 @@ export class NotificationListComponent implements OnInit {
     this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
     .afterClosed().subscribe(res => {
       if (res) {
-        this.roomService.deleteRoom($key);
-        this.notificationService.warn('! Deleted successfully');
+        this.notificationService.deleteNotification($key);
+        this.sharedNotificationService.warn('! Deleted successfully');
       }
     });
   }

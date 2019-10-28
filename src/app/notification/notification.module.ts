@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NotificationListComponent } from './components/notification-list/notification-list.component';
 import { RouterModule } from '@angular/router';
 import { notificationRoutes } from '../config/routes/lazyloadedRoutes.routes';
@@ -8,7 +8,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatRadioModule, MatTableModule, MatDialogModule, MatIconModule, MatListModule, MatGridListModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, MatSortModule, MatPaginatorModule, MatInputModule, MatBadgeModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationComponent } from './components/notification/notification.component';
-import { NotificationService } from './service/notification_.service';
+import { Notification_Service } from './service/notification_.service';
 
 @NgModule({
   declarations: [NotificationListComponent, NotificationComponent],
@@ -35,7 +35,7 @@ import { NotificationService } from './service/notification_.service';
     MatBadgeModule,
     RouterModule.forChild(notificationRoutes)
   ],
-  providers: [NotificationService],
+  providers: [Notification_Service, DatePipe],
   entryComponents: [NotificationComponent]
 })
 export class NotificationModule { }

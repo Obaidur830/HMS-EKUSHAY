@@ -1,9 +1,9 @@
 <mat-toolbar>
-  <span>{{roomService.residentialRoomForm.controls['$key'].value?"Modify Room":"New Room"}}</span>
+  <span>{{notificationService.notificationForm.controls['$key'].value?"Modify Notification":"New Notification"}}</span>
   <span class="fill-remaining-space"></span>
   <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
 </mat-toolbar>
-<form [formGroup]="roomService.residentialRoomForm" class="normal-form" (submit)="onSubmit()">
+<form [formGroup]="notificationService.notificationForm" class="normal-form" (submit)="onSubmit()">
   <mat-grid-list cols="2" rowHeight="300px">
     <mat-grid-tile>
       <div class="controles-container">
@@ -18,8 +18,8 @@
         </mat-form-field>
         <mat-form-field>
           <input formControlName="mobile" matInput placeholder="Mobile*">
-          <mat-error *ngIf="roomService.residentialRoomForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
-          <mat-error *ngIf="roomService.residentialRoomForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.</mat-error>
+          <mat-error *ngIf="notificationService.notificationForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
+          <mat-error *ngIf="notificationService.notificationForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="city" matInput placeholder="City">
@@ -52,7 +52,7 @@
           <mat-checkbox formControlName="isPermanent">Permanent Student</mat-checkbox>
         </div>
         <div class="button-row">
-          <button mat-raised-button color="primary" type="submit" [disabled]="roomService.residentialRoomForm.invalid">Submit</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="notificationService.notificationForm.invalid">Submit</button>
           <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
         </div>
       </div>

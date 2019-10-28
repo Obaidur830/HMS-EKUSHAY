@@ -8,7 +8,8 @@ import { Entities } from 'src/app/config/enums/default.enum';
 @Injectable({
   providedIn: 'root'
 })
-export class NotificationService {
+// tslint:disable-next-line: class-name
+export class Notification_Service {
 
   constructor(
     private angularFirestore: AngularFirestore,
