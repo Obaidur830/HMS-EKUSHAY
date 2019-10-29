@@ -25,13 +25,14 @@ export enum Entities {
     Transaction= 'Transaction',
     Room= 'Room',
     Block= 'Block',
+    Leave= 'Leave',
+    Notification = 'Notification',
     Category = 'Category',
     Location = 'Location',
     Roles = 'Roles',
     Enquiry = 'Enquiry',
     Purchase = 'Purchase',
     Brand = 'Brand',
-    Notification = 'Notification'
 }
 
 export enum EnquiryStatus {

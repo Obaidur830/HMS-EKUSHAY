@@ -110,3 +110,13 @@ export interface NotificationInformation {
     hireDate: string;
     isPermanent: boolean;
 }
+export interface LeaveInformation {
+    fullName: string;
+    email: string;
+    mobile: string;
+    city: string;
+    gender: string;
+    department: string;
+    hireDate: string;
+    isPermanent: boolean;
+}

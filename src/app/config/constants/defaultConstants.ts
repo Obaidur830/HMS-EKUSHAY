@@ -5,11 +5,11 @@ export const defaultConst = {
             url: 'home',
             icon: 'home'
         },
-        {
-            name: 'Product',
-            url: 'product',
-            icon: 'weekend'
-        },
+        // {
+        //     name: 'Product',
+        //     url: 'product',
+        //     icon: 'weekend'
+        // },
         {
             name: 'Student',
             url: 'student',
@@ -29,6 +29,11 @@ export const defaultConst = {
             name: 'Accounting',
             url: 'transaction',
             icon: 'account_tree'
+        },
+        {
+            name: 'Leave',
+            url: 'leave',
+            icon: 'flight_takeoff'
         },
         {
             name: 'Notification',

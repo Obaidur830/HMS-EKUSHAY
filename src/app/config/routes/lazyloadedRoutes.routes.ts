@@ -20,6 +20,7 @@ import { DefaultResidencePageComponent } from 'src/app/room/components/default-r
 import { ResidenceStudentListComponent } from 'src/app/room/components/residence-student-list/residence-student-list.component';
 import { RoomListComponent } from 'src/app/room/components/room-list/room-list.component';
 import { BlockListComponent } from 'src/app/room/components/block-list/block-list.component';
+import { LeaveListComponent } from 'src/app/leave/components/leave-list/leave-list.component';
 
 export const authenticationRoutes: Routes = [
   {
@@ -96,6 +97,12 @@ export const transactionRoutes: Routes = [
   {
     path: '',
     component: TransactionListComponent
+  }
+];
+export const leaveRoutes: Routes = [
+  {
+    path: '',
+    component: LeaveListComponent
   }
 ];
 export const notificationRoutes: Routes = [

@@ -56,6 +56,11 @@ export const routes: Routes = [
 				canActivate: [AuthguardService]
 			},
 			{
+				path: 'leave',
+				loadChildren: '../leave/leave.module#LeaveModule',
+				canActivate: [AuthguardService]
+			},
+			{
 				path: 'notification',
 				loadChildren: '../notification/notification.module#NotificationModule',
 				canActivate: [AuthguardService]
