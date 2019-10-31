@@ -119,6 +119,14 @@ export const residentialConstant = [
         url: 'block'
      }
 ];
+export const noticeBoardConstant = {
+    noticeBoard: {
+        name: 'Notice Board',
+        url: 'notice-board',
+        icon: 'emoji_flags'
+     }
+};
+
 export const signinErrorCode = {
     'Invalid Email': {
         code: 'auth/invalid-email',

@@ -7,6 +7,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+// tslint:disable-next-line: max-line-length
 import { MatCardModule, MatFormFieldModule, MatInputModule, MatDividerModule, MatProgressBarModule, MatSnackBarModule } from '@angular/material';
 import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
@@ -15,10 +16,10 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { SharedService } from './services/shared.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import { DropzoneDirective } from './directives/dropzone.directive';
 import { MatConfirmDialogComponent } from './components/mat-confirm-dialog/mat-confirm-dialog.component';
+
 @NgModule({
-  declarations: [SnackbarComponent, DropzoneDirective, MatConfirmDialogComponent],
+  declarations: [SnackbarComponent,  MatConfirmDialogComponent],
   imports: [
     MatToolbarModule,
     MatIconModule,
@@ -41,7 +42,7 @@ import { MatConfirmDialogComponent } from './components/mat-confirm-dialog/mat-c
     MatDialogModule,
     MatButtonToggleModule
   ],
-  exports:[
+  exports: [
     MatToolbarModule,
     MatIconModule,
     FlexLayoutModule,
@@ -62,7 +63,7 @@ import { MatConfirmDialogComponent } from './components/mat-confirm-dialog/mat-c
     MatDialogModule,
     MatButtonToggleModule
   ],
-  providers:[SharedService],
-  entryComponents:[SnackbarComponent, MatConfirmDialogComponent]
+  providers: [SharedService],
+  entryComponents: [SnackbarComponent, MatConfirmDialogComponent]
 })
 export class SharedModule { }

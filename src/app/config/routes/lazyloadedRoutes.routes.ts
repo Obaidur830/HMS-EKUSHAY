@@ -21,6 +21,7 @@ import { ResidenceStudentListComponent } from 'src/app/room/components/residence
 import { RoomListComponent } from 'src/app/room/components/room-list/room-list.component';
 import { BlockListComponent } from 'src/app/room/components/block-list/block-list.component';
 import { LeaveListComponent } from 'src/app/leave/components/leave-list/leave-list.component';
+import { UploaderComponent } from 'src/app/notice-board/components/uploader/uploader.component';
 
 export const authenticationRoutes: Routes = [
   {
@@ -143,7 +144,12 @@ export const profileRoutes: Routes = [
     component: ProfileDefaultComponent
   }
 ];
-
+export const noticeBoardRoutes: Routes = [
+  {
+    path: '',
+    component: UploaderComponent
+  }
+];
 export const purchaseRoutes: Routes = [
   {
     path: '',
