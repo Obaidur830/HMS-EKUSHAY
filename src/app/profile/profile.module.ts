@@ -10,9 +10,9 @@ import { profileRoutes } from '../config/routes/lazyloadedRoutes.routes';
 import { ProfilePictureUploadComponent } from './components/profile-picture-upload/profile-picture-upload.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 @NgModule({
-	declarations: [ ProfileDefaultComponent, PasswordChangeComponent, ProfilePictureUploadComponent ],
-	imports: [ CommonModule, RouterModule.forChild(profileRoutes), SharedModule,ImageCropperModule ],
-	providers: [ ProfileService, PasswordModalService ],
-	entryComponents: [ PasswordChangeComponent, ProfilePictureUploadComponent ]
+    declarations: [ProfileDefaultComponent, PasswordChangeComponent, ProfilePictureUploadComponent],
+    imports: [CommonModule, RouterModule.forChild(profileRoutes), SharedModule, ImageCropperModule],
+    providers: [ProfileService, PasswordModalService],
+    entryComponents: [PasswordChangeComponent, ProfilePictureUploadComponent]
 })
-export class ProfileModule {}
+export class ProfileModule { }

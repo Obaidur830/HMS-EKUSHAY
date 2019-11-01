@@ -5,11 +5,12 @@ import { UploaderComponent } from './components/uploader/uploader.component';
 import { RouterModule } from '@angular/router';
 import { noticeBoardRoutes } from '../config/routes/lazyloadedRoutes.routes';
 import { UploadTaskComponent } from './components/upload-task/upload-task.component';
+import { DropzoneDirective } from '../dropzone.directive/dropzone.directive';
 
 
 
 @NgModule({
-  declarations: [ UploaderComponent, UploadTaskComponent],
+  declarations: [ UploaderComponent, UploadTaskComponent, DropzoneDirective],
   imports: [
     CommonModule,
     RouterModule.forChild(noticeBoardRoutes)

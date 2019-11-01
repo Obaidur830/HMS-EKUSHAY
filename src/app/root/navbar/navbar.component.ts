@@ -4,7 +4,7 @@ import { Observable, Subject, Subscription, observable, BehaviorSubject } from '
 import { map, takeUntil, first } from 'rxjs/operators';
 import { AuthenticationService } from '../../authentication/services/authentication.service';
 import { Router } from '@angular/router';
-import { defaultConst, residentialConstant } from '../../config/constants/defaultConstants';
+import { defaultConst, residentialConstant, noticeBoardConstant } from '../../config/constants/defaultConstants';
 import { QueryDatabaseService } from '../../core/database-service/query-database.service';
 import { Entities, Roles } from '../../config/enums/default.enum';
 import { CustomerUserInformation } from '../../config/interfaces/user.interface';
@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     Username: string;
     // $username: Observable<any>;
     menuItems;
+    noticeBoardConstants;
     selectedRow: number;
     // tslint:disable-next-line: variable-name
     _unsubscribeAll: Subject<any>;
@@ -55,7 +56,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     initiateVariables() {
         this.title = defaultConst.siteName.name;
         this.menuItems = defaultConst.menu;
-
+        this.noticeBoardConstants = noticeBoardConstant;
         this.makeSideBar();
 
         this.rootService.$Username.subscribe((res) => {
@@ -83,6 +84,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
         const currentUrl = this.router.url;
         if (currentUrl === '/residence') {
             this.rootService.$ActiveLink.next(residentialConstant[0].url);
+        } else if (currentUrl === '/notice-board') {
+            this.rootService.$menuIndex.next(-1);
         } else {
             let cnt = 0;
             for (const link of residentialConstant) {
@@ -171,6 +174,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
             this.rootService.$menuIndex.next(-1);
         } else if (url === 'residence') {
             this.rootService.$ActiveLink.next(residentialConstant[0].url);
+        } else if (url === 'notice-board') {
+            this.rootService.$menuIndex.next(-1);
         }
     }
     selectRow(index) {
