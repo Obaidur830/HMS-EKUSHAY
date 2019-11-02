@@ -87,7 +87,7 @@ export class ProfileDefaultComponent implements OnInit, OnDestroy {
 		this.profileService.touchAllfields(this.profileform);
 	}
 
-	uploadImage(){
+	uploadImage() {
 		this.passwordmodal.openProfilePictureModal();
 	}
 

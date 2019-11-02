@@ -4,6 +4,10 @@ import { AngularFireUploadTask, AngularFireStorage } from '@angular/fire/storage
 import { Observable } from 'rxjs';
 import { MatDialogRef } from '@angular/material';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { finalize, first } from 'rxjs/operators';
+import { ProfileService } from '../../services/profile.service';
+import { CustomerUserInformation } from 'src/app/config/interfaces/user.interface';
+import { Entities } from 'src/app/config/enums/default.enum';
 @Component({
 	selector: 'app-profile-picture-upload',
 	templateUrl: './profile-picture-upload.component.html',
@@ -17,7 +21,12 @@ export class ProfilePictureUploadComponent implements OnInit {
 	isHovering: boolean;
 	imageChangedEvent: any = '';
 	croppedImage: any = '';
-	constructor(private storage: AngularFireStorage, public dialogRef: MatDialogRef<ProfilePictureUploadComponent>) {}
+	user: CustomerUserInformation;
+	constructor(
+		private storage: AngularFireStorage,
+		public dialogRef: MatDialogRef<ProfilePictureUploadComponent>,
+		 // tslint:disable-next-line: align
+		 private profileService: ProfileService) {}
 
 	toggleHover(event: boolean) {
 		this.isHovering = event;
@@ -45,6 +54,7 @@ export class ProfilePictureUploadComponent implements OnInit {
 	}
 	imageCropped(event: ImageCroppedEvent) {
 		this.croppedImage = event.base64;
+		console.log(this.croppedImage);
 	}
 	imageLoaded() {
 		// show cropper
@@ -56,8 +66,28 @@ export class ProfilePictureUploadComponent implements OnInit {
 		// show message
 	}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.profileService.getProfileInformation().pipe(first()).subscribe((res) => {
+			this.user = res;
+		});
+	}
 	onNoClick(): void {
 		this.dialogRef.close();
 	}
+    onSubmit() {
+        
+		if (this.croppedImage !== '') {
+		  const filePath = `Profiles_Pictures/my/_${new Date().getTime()}`;
+		  const fileRef = this.storage.ref(filePath);
+		  this.storage.upload(filePath, this.croppedImage).snapshotChanges().pipe(
+			finalize(() => {
+			  fileRef.getDownloadURL().subscribe((url) => {
+				this.user.photoURL = url;
+				this.profileService.updateProfileInformation(Entities.Person, this.user.uid, this.user);
+				this.onNoClick();
+			  });
+			})
+		  ).subscribe();
+		}
+	  }
 }

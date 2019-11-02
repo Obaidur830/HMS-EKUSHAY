@@ -72,7 +72,7 @@ export class ProfileService {
 
 	updateProfileInformation(entity, id, data) {
 		this.mutate.updateSingleData(entity, id, data).pipe(first()).subscribe((response) => {
-			if (response == errorMessages.updated) {
+			if (response === errorMessages.updated) {
 				this.openUpdatedSnackBar();
 				if (data && data.name) {
 
@@ -107,7 +107,13 @@ export class ProfileService {
 			verticalPosition: 'top'
 		});
 	}
-
+	getProfilePictureDetails() {
+		this.imageDetailList = this.firebase.list('imageDetails');
+	  }
+	
+	  insertProfilePictureDetails(imageDetails) {
+		this.imageDetailList.push(imageDetails);
+	  }
 
 
 }

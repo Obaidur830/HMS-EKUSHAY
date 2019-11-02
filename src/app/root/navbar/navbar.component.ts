@@ -86,6 +86,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
             this.rootService.$ActiveLink.next(residentialConstant[0].url);
         } else if (currentUrl === '/notice-board') {
             this.rootService.$menuIndex.next(-1);
+        } else if (currentUrl === '/profile') {
+            this.rootService.$menuIndex.next(-1);
         } else {
             let cnt = 0;
             for (const link of residentialConstant) {
