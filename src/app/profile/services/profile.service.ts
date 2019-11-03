@@ -108,11 +108,11 @@ export class ProfileService {
 		});
 	}
 	getProfilePictureDetails() {
-		this.imageDetailList = this.firebase.list('imageDetails');
+		// this.imageDetailList = this.firebase.list('imageDetails');
 	  }
 	
 	  insertProfilePictureDetails(imageDetails) {
-		this.imageDetailList.push(imageDetails);
+		// this.imageDetailList.push(imageDetails);
 	  }
 
 

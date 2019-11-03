@@ -120,3 +120,21 @@ export interface LeaveInformation {
     hireDate: string;
     isPermanent: boolean;
 }
+
+export interface FileUpload {
+    key?: string;
+    name: string;
+    url: string;
+    file: File;
+
+    // constructor(file: File) {
+    //   this.file = file;
+    // }
+  }
+export interface FileDetails {
+    key?: string;
+    name: string;
+    path: string;
+    url: string;
+    caption?: string;
+  }
