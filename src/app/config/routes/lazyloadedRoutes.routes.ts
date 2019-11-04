@@ -22,6 +22,7 @@ import { RoomListComponent } from 'src/app/room/components/room-list/room-list.c
 import { BlockListComponent } from 'src/app/room/components/block-list/block-list.component';
 import { LeaveListComponent } from 'src/app/leave/components/leave-list/leave-list.component';
 import { UploaderComponent } from 'src/app/notice-board/components/uploader/uploader.component';
+import { ListUploadComponent } from 'src/app/notice/components/list-upload/list-upload.component';
 
 export const authenticationRoutes: Routes = [
   {
@@ -148,6 +149,12 @@ export const noticeBoardRoutes: Routes = [
   {
     path: '',
     component: UploaderComponent
+  }
+];
+export const noticeRoutes: Routes = [
+  {
+    path: '',
+    component: ListUploadComponent
   }
 ];
 export const purchaseRoutes: Routes = [

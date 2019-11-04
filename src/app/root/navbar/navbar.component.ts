@@ -86,6 +86,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
             this.rootService.$ActiveLink.next(residentialConstant[0].url);
         } else if (currentUrl === '/notice-board') {
             this.rootService.$menuIndex.next(-1);
+        } else if (currentUrl === '/notice') {
+            this.rootService.$menuIndex.next(-1);
         } else if (currentUrl === '/profile') {
             this.rootService.$menuIndex.next(-1);
         } else {
@@ -177,6 +179,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
         } else if (url === 'residence') {
             this.rootService.$ActiveLink.next(residentialConstant[0].url);
         } else if (url === 'notice-board') {
+            this.rootService.$menuIndex.next(-1);
+        } else if (url === 'notice') {
             this.rootService.$menuIndex.next(-1);
         }
     }

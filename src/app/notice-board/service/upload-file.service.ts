@@ -23,7 +23,7 @@ export class UploadFileService {
     uploadTask.snapshotChanges().pipe(
       finalize(() => {
         storageRef.getDownloadURL().subscribe(downloadURL => {
-          console.log('File available at', downloadURL);
+          // console.log('File available at', downloadURL);
           fileUpload.url = downloadURL;
           fileUpload.name = fileUpload.file.name;
           const fileDetails: FileDetails = {
@@ -50,19 +50,17 @@ export class UploadFileService {
   }
 
   deleteFileUpload(fileDetails: FileDetails) {
-    this.deleteFileDatabase(fileDetails.key)
-      .then(() => {
-        this.deleteFileStorage(fileDetails.path);
-      })
-      .catch(error => console.log(error));
+    // console.log(fileDetails.key);
+    this.deleteFileDatabase(fileDetails.key);
+    this.deleteFileStorage(fileDetails.path);
   }
 
   private deleteFileDatabase(key: string) {
-    return this.db.collection<FileDetails>(Entities.Upload).doc(key).delete;
+    return this.db.collection<FileDetails>(Entities.Upload).doc(key).delete();
   }
 
   private deleteFileStorage(path: string) {
-    const storageRef = this.storage.ref(this.basePath);
-    storageRef.child(path).delete();
+    const storageRef = this.storage.ref(path).delete();
+    //storageRef.child(path).delete();
   }
 }

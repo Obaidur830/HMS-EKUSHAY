@@ -124,6 +124,11 @@ export const noticeBoardConstant = {
         name: 'Notice Board',
         url: 'notice-board',
         icon: 'emoji_flags'
+     },
+     notice: {
+        name: 'Notice',
+        url: 'notice',
+        icon: 'emoji_flags'
      }
 };
 

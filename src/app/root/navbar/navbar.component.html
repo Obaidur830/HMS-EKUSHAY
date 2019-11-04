@@ -62,13 +62,25 @@
 
           </div>
         </div>
-        <div (click)="route(noticeBoardConstants.noticeBoard.url)">
+        <!-- <div (click)="route(noticeBoardConstants.noticeBoard.url)">
           <i class="material-icons">
             emoji_flags
           </i>
           <span>noticeBoard</span>
-        </div> 
-        
+        </div>  -->
+        <div fxLayout="row" fxLayoutAlign="center center" class="mr-64" (click)="route(noticeBoardConstants.notice.url)">
+          <mat-icon class="material-icons-outlined cursor-pointer">
+           emoji_flags
+          </mat-icon>
+          <button mat-button class="font-size-16">notice</button>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="mr-64" (click)="route(noticeBoardConstants.noticeBoard.url)">
+          <mat-icon class="material-icons-outlined cursor-pointer">
+           emoji_flags
+          </mat-icon>
+          <button mat-button class="font-size-16">noticeBoard</button>
+        </div>
+
         <div [matMenuTriggerFor]="menu" fxLayout="row" fxLayoutAlign="center center" class="mr-64">
           <mat-icon class="material-icons-outlined cursor-pointer">
             settings
