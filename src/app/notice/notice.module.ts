@@ -4,13 +4,24 @@ import { ListUploadComponent } from './components/list-upload/list-upload.compon
 import { DetailsUploadComponent } from './components/details-upload/details-upload.component';
 import { RouterModule } from '@angular/router';
 import { noticeRoutes } from '../config/routes/lazyloadedRoutes.routes';
-import { MatListModule } from '@angular/material';
+// tslint:disable-next-line: max-line-length
+import { MatListModule, MatSortModule, MatPaginatorModule, MatTableModule, MatIconModule, MatFormFieldModule, MatButtonModule, MatInputModule } from '@angular/material';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ListUploadComponent, DetailsUploadComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
     MatListModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
     RouterModule.forChild(noticeRoutes)
   ]
 })

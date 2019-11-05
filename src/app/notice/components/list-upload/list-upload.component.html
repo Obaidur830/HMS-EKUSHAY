@@ -22,7 +22,7 @@
     </div>
   </mat-list-item>
 </mat-action-list> -->
-<table class="table table-hover">  
+<!-- <table class="table table-hover">  
   <thead>  
   <tr>  
       <td>Product Name</td>  
@@ -40,4 +40,51 @@
           <td><a [routerLink]="" class="btn btn-danger">Delete</a></td>  
       </tr>  
   </tbody>  
-</table>
+</table> -->
+
+
+<div class="filter-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+
+<div class="mat-elevation-z8 pl-10" style="width: 95%; ">
+  <mat-table [dataSource]="listData" matSort>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="caption">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Caption</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.caption}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button class="btn"><i class="fa fa-external-link"></i> preview</button>
+        <!-- <button class="btn-trash"><i class="fa fa-trash"></i> Trash</button> -->
+        <button class="btn"><i class="fa fa-download"></i> Download</button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="loading">
+      <mat-footer-cell *matFooterCellDef colspan="6">
+        Loading data...
+      </mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="noData">
+      <mat-footer-cell *matFooterCellDef colspan="6">
+        No data.
+      </mat-footer-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}">
+    </mat-footer-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+</div>
