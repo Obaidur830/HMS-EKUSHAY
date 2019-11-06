@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UploadFileService } from 'src/app/notice-board/service/upload-file.service';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-list-upload',
@@ -9,9 +10,9 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 })
 export class ListUploadComponent implements OnInit {
 
-  constructor(private uploadService: UploadFileService) { }
+  constructor(private uploadService: UploadFileService, private datePipe: DatePipe) { }
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['name', 'caption', 'actions'];
+  displayedColumns: string[] = ['name', 'type', 'modified', 'caption', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
@@ -23,6 +24,7 @@ export class ListUploadComponent implements OnInit {
          const fileUploadDetails = list.map(item => {
           return {
             key: item.payload.doc.id,
+            //modifiedDate: new Date(item.payload.doc.get('modifiedDate').v.seconds * 1000),
             ...item.payload.doc.data()
           };
         });

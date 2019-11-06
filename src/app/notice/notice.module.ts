@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ListUploadComponent } from './components/list-upload/list-upload.component';
 import { DetailsUploadComponent } from './components/details-upload/details-upload.component';
 import { RouterModule } from '@angular/router';
@@ -23,6 +23,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatSortModule,
     MatPaginatorModule,
     RouterModule.forChild(noticeRoutes)
-  ]
+  ],
+  providers: [DatePipe]
 })
 export class NoticeModule { }

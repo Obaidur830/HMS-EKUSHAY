@@ -134,7 +134,9 @@ export interface FileUpload {
 export interface FileDetails {
     key?: string;
     name: string;
+    type?: string;
     path: string;
     url: string;
+    modifiedDate?: number;
     caption?: string;
   }

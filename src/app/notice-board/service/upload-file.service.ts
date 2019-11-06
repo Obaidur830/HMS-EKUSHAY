@@ -22,14 +22,21 @@ export class UploadFileService {
 
     uploadTask.snapshotChanges().pipe(
       finalize(() => {
+        // storageRef.getMetadata().subscribe(d => {
+        //         d.
+        // });
         storageRef.getDownloadURL().subscribe(downloadURL => {
           // console.log('File available at', downloadURL);
-          fileUpload.url = downloadURL;
-          fileUpload.name = fileUpload.file.name;
+          // fileUpload.url = downloadURL;
+         // fileUpload.name = fileUpload.file.name;
+        // name=fileUpload.file.type;
+          // console.log(fileUpload.file);
           const fileDetails: FileDetails = {
             name: fileUpload.file.name,
+            type: fileUpload.file.type,
             path: filePath,
             url: downloadURL,
+            modifiedDate: Date.now(),
             caption: fileCaption
           };
           this.saveFileData(fileDetails);

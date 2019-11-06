@@ -13,7 +13,7 @@ export class StudentService {
   constructor(
     private angularFirestore: AngularFirestore,
     private datePipe: DatePipe,
-    //private fb: FormBuilder
+
   ) { }
 
 
@@ -25,7 +25,7 @@ export class StudentService {
     city: new FormControl(''),
     gender: new FormControl('1'),
     department: new FormControl(''),
-    hireDate: new FormControl('',Validators.required),
+    hireDate: new FormControl('', Validators.required),
     isPermanent: new FormControl(false)
   });
 
