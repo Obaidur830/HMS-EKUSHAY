@@ -3,6 +3,8 @@ import { finalize, tap } from 'rxjs/operators';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { FileUploadDialogComponent } from 'src/app/shared/components/file-upload-dialog/file-upload-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -19,10 +21,19 @@ export class UploadTaskComponent implements OnInit {
   percentage: Observable<number>;
   snapshot: Observable<any>;
   downloadURL: string;
-
-  constructor(private storage: AngularFireStorage, private db: AngularFirestore) { }
+   name;
+   animal;
+  constructor(private storage: AngularFireStorage, private db: AngularFirestore, public dialog: MatDialog) { }
 
   ngOnInit() {
+    // const dialogRef = this.dialog.open(FileUploadDialogComponent, {
+    //   width: '250px',
+    //   data: {name: this.name, animal: this.animal}
+    // });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   this.animal = result;
+    // });
     this.startUpload();
   }
 

@@ -11,7 +11,7 @@
   
   <div class="file">
     <label class=" ml-130 file-label">
-      <input class="file-input" type="file"  (change)="onDrop($event.target.files)">
+      <input class="file-input" type="file" multiple (change)="onDrop($event.target.files)">
     </label>
   </div>
 
@@ -29,15 +29,17 @@
   </div>
 </form>
 
-<div *ngIf="currentFileUpload" class="progress">
+<!-- <div *ngIf="currentFileUpload" class="progress">
     <div class="progress-bar progress-bar-info progress-bar-striped"
       role="progressbar" attr.aria-valuenow="{{percentage}}"
       aria-valuemin="0" aria-valuemax="100"
       [ngStyle]="{width:percentage+'%'}">
       {{percentage}}%</div>
-  </div>
+  </div> -->
  <h3 class="ml-40">Uploads</h3>
 
 <div class="ml-40" *ngFor="let file of files">
+  <!-- <p>file</p> -->
+  <button (click)="f(file)">click</button>
   <upload-task [file]="file"></upload-task>
 </div>

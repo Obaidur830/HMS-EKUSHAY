@@ -52,6 +52,7 @@ export class StudentService {
   }
 
   getStudents() {
+
     return this.angularFirestore.collection<StudentInformation>(Entities.Student).snapshotChanges();
   }
 

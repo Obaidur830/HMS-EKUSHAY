@@ -17,9 +17,10 @@ import { SharedService } from './services/shared.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatConfirmDialogComponent } from './components/mat-confirm-dialog/mat-confirm-dialog.component';
+import { FileUploadDialogComponent } from './components/file-upload-dialog/file-upload-dialog.component';
 
 @NgModule({
-  declarations: [SnackbarComponent,  MatConfirmDialogComponent],
+  declarations: [SnackbarComponent,  MatConfirmDialogComponent, FileUploadDialogComponent],
   imports: [
     MatToolbarModule,
     MatIconModule,
@@ -64,6 +65,6 @@ import { MatConfirmDialogComponent } from './components/mat-confirm-dialog/mat-c
     MatButtonToggleModule
   ],
   providers: [SharedService],
-  entryComponents: [SnackbarComponent, MatConfirmDialogComponent]
+  entryComponents: [SnackbarComponent, MatConfirmDialogComponent, FileUploadDialogComponent]
 })
 export class SharedModule { }
