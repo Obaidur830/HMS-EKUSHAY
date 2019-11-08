@@ -3,24 +3,23 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UploadFileService } from '../../service/upload-file.service';
 import { FileUpload } from 'src/app/config/interfaces/user.interface';
 import { FileUploadDialogComponent } from 'src/app/shared/components/file-upload-dialog/file-upload-dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-uploader',
   templateUrl: './uploader.component.html',
   styleUrls: ['./uploader.component.scss']
 })
-export class UploaderComponent implements OnInit {
-  isSubmitted: boolean;
-  formTemplate = new FormGroup({
-    caption: new FormControl('', Validators.required),
-  });
-  selectedFiles: FileList;
+export class UploaderComponent {
+  // isSubmitted: boolean;
+  // formTemplate = new FormGroup({
+  //   caption: new FormControl('', Validators.required),
+  // });
+  // selectedFiles: FileList;
   currentFileUpload: FileUpload;
   percentage: number;
-  name;
-  animal;
-
+  flag: boolean;
   constructor(private uploadService: UploadFileService, public dialog: MatDialog) { }
   isHovering: boolean;
 
@@ -29,19 +28,20 @@ export class UploaderComponent implements OnInit {
   toggleHover(event: boolean) {
     this.isHovering = event;
   }
-  onDrop(files: FileList) {
-    for (let i = 0; i < files.length; i++) {
-      this.files.push(files.item(i));
-    }
-  }
-  ngOnInit() {}
   // onDrop(files: FileList) {
   //   for (let i = 0; i < files.length; i++) {
   //     this.files.push(files.item(i));
   //   }
-  //   this.selectedFiles = files;
-  //   // this.files.push(files.item(0));
   // }
+  // ngOnInit() { }
+  onDrop(files: FileList) {
+    // for (let i = 0; i < files.length; i++) {
+    //   this.files.push(files.item(i));
+    // }
+    // this.selectedFiles = files;
+    this.flag = false;
+    this.files.push(files.item(0));
+  }
 
 
   // ngOnInit() {
@@ -76,15 +76,43 @@ export class UploaderComponent implements OnInit {
   //   this.isSubmitted = false;
   // }
 
-  f(i) {
-    debugger;
-    let dialogRef = this.dialog.open(FileUploadDialogComponent, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal}
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
+  upload() {
+    if (this.files.length) {
+      const selectFile: File = this.files[0];
+      this.files.pop();
+      const dialogConfig = new MatDialogConfig();
+
+      dialogConfig.disableClose = true;
+      dialogConfig.autoFocus = true;
+      dialogConfig.width = '40%';
+
+      const dialogRef = this.dialog.open(FileUploadDialogComponent,
+        dialogConfig);
+
+
+      dialogRef.afterClosed().subscribe(
+        val => {
+          console.log('Dialog output:', val);
+          // this.currentFileUpload = new FileUpload(file);
+          this.currentFileUpload = {
+            key: '',
+            name: '',
+            url: '',
+            file: selectFile,
+          };
+          this.flag = true;
+          this.uploadService.setFileToStorage(this.currentFileUpload, 'amr file').subscribe(
+            percentage => {
+              this.percentage = Math.round(percentage);
+            },
+            error => {
+              console.log(error);
+            }
+          );
+
+        });
+    }// else {
+
+    // }
   }
 }

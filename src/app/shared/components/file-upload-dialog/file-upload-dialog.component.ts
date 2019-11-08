@@ -1,5 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import * as moment from 'moment';
+
 
 
 @Component({
@@ -7,14 +10,38 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
   templateUrl: './file-upload-dialog.component.html',
   styleUrls: ['./file-upload-dialog.component.scss']
 })
-export class FileUploadDialogComponent {
+export class FileUploadDialogComponent implements OnInit  {
+
+  form: FormGroup;
+  description: string;
 
   constructor(
-    public dialogRef: MatDialogRef<FileUploadDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {}
+      private fb: FormBuilder,
+      private dialogRef: MatDialogRef<FileUploadDialogComponent>,
+      @Inject(MAT_DIALOG_DATA) data: any) {
 
-   onNoClick(): void {
-    this.dialogRef.close();
-   }
+      ///this.description = description;
 
+
+      this.form = fb.group({
+          description: ['' , Validators.required],
+          category: ['' , Validators.required],
+          releasedAt: [moment(), Validators.required],
+          longDescription: ['', Validators.required]
+      });
+
+  }
+
+  ngOnInit() {
+
+  }
+
+
+  save() {
+      this.dialogRef.close(this.form.value);
+  }
+
+  close() {
+      this.dialogRef.close();
+  }
 }

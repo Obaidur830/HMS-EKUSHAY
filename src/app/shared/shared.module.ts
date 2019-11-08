@@ -8,7 +8,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 // tslint:disable-next-line: max-line-length
-import { MatCardModule, MatFormFieldModule, MatInputModule, MatDividerModule, MatProgressBarModule, MatSnackBarModule } from '@angular/material';
+import { MatCardModule, MatFormFieldModule, MatInputModule, MatDividerModule, MatProgressBarModule, MatSnackBarModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule } from '@angular/material';
 import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -41,7 +41,11 @@ import { FileUploadDialogComponent } from './components/file-upload-dialog/file-
     MatProgressBarModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule
   ],
   exports: [
     MatToolbarModule,
@@ -62,7 +66,11 @@ import { FileUploadDialogComponent } from './components/file-upload-dialog/file-
     MatProgressBarModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule
   ],
   providers: [SharedService],
   entryComponents: [SnackbarComponent, MatConfirmDialogComponent, FileUploadDialogComponent]

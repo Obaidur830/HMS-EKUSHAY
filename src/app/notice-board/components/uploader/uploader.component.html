@@ -1,22 +1,18 @@
-<div class="dropzone" 
- dropzone 
- (hovered)="toggleHover($event)" 
- (dropped)="onDrop($event)" 
- [class.hovering]="isHovering">
+<div class="dropzone mt-40" dropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)" [class.hovering]="isHovering">
 
 
   <h3>AngularFire Drop Zone</h3>
   <p>Drag and Drop a File</p>
   <p>OR</p>
-  
-  <div class="file">
-    <label class=" ml-130 file-label">
+
+  <div style="background-color:#008080; align-self : auto;" class="file">
+    <label style="color:white;" class=" filelabelcss file-label">
       <input class="file-input" type="file" multiple (change)="onDrop($event.target.files)">
     </label>
   </div>
 
 </div>
-<form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
+<!-- <form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
   <div class="form-row">
    <div class="form-group col-md-6">
     <input class="form-control" formControlName="caption" placeholder="Caption">
@@ -27,19 +23,27 @@
     <button type="submit" class="btn btn-success btn-block float-right" [disabled]="!selectedFiles">Submit</button>
   </div>
   </div>
-</form>
+</form> -->
 
-<!-- <div *ngIf="currentFileUpload" class="progress">
+
+<div class="mt-30">
+  <button style="width: 50%;" class="mat-raised-button mat-primary" (click)="upload()">
+  Upload File
+</button>
+</div>
+
+<div *ngIf="flag" class="progress progressbar mt-30">
     <div class="progress-bar progress-bar-info progress-bar-striped"
       role="progressbar" attr.aria-valuenow="{{percentage}}"
       aria-valuemin="0" aria-valuemax="100"
       [ngStyle]="{width:percentage+'%'}">
-      {{percentage}}%</div>
-  </div> -->
- <h3 class="ml-40">Uploads</h3>
+      {{percentage}}%
+    </div>
+</div>
+ <!-- <h3 class="ml-40">Uploads</h3>
 
 <div class="ml-40" *ngFor="let file of files">
-  <!-- <p>file</p> -->
+  <p>file <span>f(f)</span></p>
   <button (click)="f(file)">click</button>
   <upload-task [file]="file"></upload-task>
-</div>
+</div>  -->
