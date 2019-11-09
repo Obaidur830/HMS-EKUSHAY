@@ -92,7 +92,7 @@ export class UploaderComponent {
 
       dialogRef.afterClosed().subscribe(
         val => {
-          console.log('Dialog output:', val);
+          // console.log('Dialog output:', val);
           // this.currentFileUpload = new FileUpload(file);
           this.currentFileUpload = {
             key: '',
@@ -101,7 +101,7 @@ export class UploaderComponent {
             file: selectFile,
           };
           this.flag = true;
-          this.uploadService.setFileToStorage(this.currentFileUpload, 'amr file').subscribe(
+          this.uploadService.setFileToStorage(this.currentFileUpload, val).subscribe(
             percentage => {
               this.percentage = Math.round(percentage);
             },

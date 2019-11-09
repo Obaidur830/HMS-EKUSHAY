@@ -138,5 +138,6 @@ export interface FileDetails {
     path: string;
     url: string;
     modifiedDate?: number;
-    caption?: string;
+    fileDescription?: string;
+    publisherName?: string;
   }

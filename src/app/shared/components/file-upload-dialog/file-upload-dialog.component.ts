@@ -24,10 +24,10 @@ export class FileUploadDialogComponent implements OnInit  {
 
 
       this.form = fb.group({
-          description: ['' , Validators.required],
+          publisherName: ['' , Validators.required],
           category: ['' , Validators.required],
           releasedAt: [moment(), Validators.required],
-          longDescription: ['', Validators.required]
+          fileDescription: ['', Validators.required]
       });
 
   }

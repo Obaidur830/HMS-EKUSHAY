@@ -15,7 +15,7 @@ export class UploadFileService {
 
   constructor(private db: AngularFirestore, private storage: AngularFireStorage) { }
 
-  setFileToStorage(fileUpload: FileUpload, fileCaption: string): Observable<number> {
+  setFileToStorage(fileUpload: FileUpload, extraFileDetails: any): Observable<number> {
     const filePath = `${this.basePath}/${Date.now()}_${fileUpload.file.name}`;
     const storageRef = this.storage.ref(filePath);
     const uploadTask = this.storage.upload(filePath, fileUpload.file);
@@ -37,7 +37,8 @@ export class UploadFileService {
             path: filePath,
             url: downloadURL,
             modifiedDate: Date.now(),
-            caption: fileCaption
+            fileDescription: extraFileDetails.fileDescription,
+            publisherName: extraFileDetails.publisherName
           };
           this.saveFileData(fileDetails);
         });

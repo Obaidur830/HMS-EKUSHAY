@@ -1,18 +1,25 @@
 
-<h2 mat-dialog-title>{{description}}</h2>
+<h2 mat-dialog-title style="color: navy;">selelect file name is</h2>
 
 
 <mat-dialog-content [formGroup]="form">
+    <mat-form-field>
 
+        <textarea matInput placeholder="Say something about this file"
+            formControlName="fileDescription">
+
+        </textarea>
+
+    </mat-form-field>
     <mat-form-field>
 
         <input matInput
-                placeholder="Course Description"
-               formControlName="description">
+                placeholder="File publisher name here"
+               formControlName="publisherName">
 
     </mat-form-field>
 
-    <mat-form-field>
+    <!-- <mat-form-field>
 
         <mat-select placeholder="Select category"
             formControlName="category">
@@ -26,9 +33,9 @@
 
         </mat-select>
 
-    </mat-form-field>
+    </mat-form-field> -->
 
-    <mat-form-field>
+    <!-- <mat-form-field>
 
         <input matInput [matDatepicker]="myDatepicker"
             formControlName="releasedAt">
@@ -40,16 +47,9 @@
 
         <mat-datepicker #myDatepicker></mat-datepicker>
 
-    </mat-form-field>
+    </mat-form-field> -->
 
-    <mat-form-field>
-
-        <textarea matInput placeholder="Description"
-            formControlName="longDescription">
-
-        </textarea>
-
-    </mat-form-field>
+   
 
 
 </mat-dialog-content>
@@ -58,12 +58,12 @@
 
     <button class="mat-raised-button"
             (click)="close()">
-        Close
+        No,thanks
     </button>
 
     <button class="mat-raised-button mat-primary"
             (click)="save()">
-        Save
+        Ok,done
     </button>
 
 </mat-dialog-actions>
