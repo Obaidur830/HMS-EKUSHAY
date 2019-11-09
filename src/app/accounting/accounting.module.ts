@@ -2,17 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
-import { transactionRoutes } from '../config/routes/lazyloadedRoutes.routes';
+import { accountingRoutes } from '../config/routes/lazyloadedRoutes.routes';
 import { TransactionService } from './service/transaction.service';
 import { DialogService } from '../shared/services/dialog.service';
 import { LayoutModule } from '@angular/cdk/layout';
 // tslint:disable-next-line: max-line-length
-import { MatToolbarModule, MatButtonModule, MatRadioModule, MatTableModule, MatDialogModule, MatIconModule, MatListModule, MatGridListModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, MatSortModule, MatPaginatorModule, MatInputModule, MatBadgeModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatRadioModule, MatTableModule, MatDialogModule, MatIconModule, MatListModule, MatGridListModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, MatSortModule, MatPaginatorModule, MatInputModule, MatBadgeModule, MatTabsModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { DefaultAccountingPageComponent } from './components/default-accounting-page/default-accounting-page.component';
+import { ExpenseListComponent } from './components/expense-list/expense-list.component';
+import { ProtibedonListComponent } from './components/protibedon-list/protibedon-list.component';
 
 @NgModule({
-  declarations: [TransactionListComponent, TransactionComponent],
+  // tslint:disable-next-line: max-line-length
+  declarations: [TransactionListComponent, TransactionComponent, DefaultAccountingPageComponent, ExpenseListComponent, ProtibedonListComponent],
   imports: [
     CommonModule,
     LayoutModule,
@@ -34,7 +38,9 @@ import { RouterModule } from '@angular/router';
     MatPaginatorModule,
     MatInputModule,
     MatBadgeModule,
-    RouterModule.forChild(transactionRoutes)
+    MatToolbarModule,
+    MatTabsModule,
+    RouterModule.forChild(accountingRoutes)
   ],
   providers: [TransactionService, DialogService, DatePipe],
   entryComponents: [TransactionComponent]

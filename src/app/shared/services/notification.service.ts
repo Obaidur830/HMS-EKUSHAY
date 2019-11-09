@@ -24,4 +24,9 @@ export class NotificationService {
     this.config.panelClass = ['notification', 'warn'];
     this.snackBar.open(msg, '', this.config);
   }
+
+   fileSelectionWarn(msg) {
+    this.config.panelClass = ['notification', 'warn'];
+    this.snackBar.open(msg, '', this.config);
+  }
 }

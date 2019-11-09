@@ -4,7 +4,7 @@ import { Observable, Subject, Subscription, observable, BehaviorSubject } from '
 import { map, takeUntil, first } from 'rxjs/operators';
 import { AuthenticationService } from '../../authentication/services/authentication.service';
 import { Router } from '@angular/router';
-import { defaultConst, residentialConstant, noticeBoardConstant } from '../../config/constants/defaultConstants';
+import { defaultConst, residentialConstant, noticeBoardConstant, accountingConstant } from '../../config/constants/defaultConstants';
 import { QueryDatabaseService } from '../../core/database-service/query-database.service';
 import { Entities, Roles } from '../../config/enums/default.enum';
 import { CustomerUserInformation } from '../../config/interfaces/user.interface';
@@ -84,6 +84,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
         const currentUrl = this.router.url;
         if (currentUrl === '/residence') {
             this.rootService.$ActiveLink.next(residentialConstant[0].url);
+        } else if (currentUrl === '/accounting') {
+            this.rootService.$ActiveLinkInAccounting.next(accountingConstant[0].url);
         } else if (currentUrl === '/notice-board') {
             this.rootService.$menuIndex.next(-1);
         } else if (currentUrl === '/notice') {
@@ -91,13 +93,24 @@ export class NavbarComponent implements OnInit, OnDestroy {
         } else if (currentUrl === '/profile') {
             this.rootService.$menuIndex.next(-1);
         } else {
-            let cnt = 0;
+            let flag = true;
+            // let cnt = 0;
             for (const link of residentialConstant) {
                 if (currentUrl === '/residence/' + link.url) {
+                     flag = false;
                      this.rootService.$ActiveLink.next(link.url);
-                     if (this.setResidenceRow('residence')) {return ; }
+                     if (this.setRowxxx('residence')) {return ; }
                 }
-                cnt++;
+                //cnt++;
+            }
+            if (flag) {
+                for (const link of accountingConstant) {
+                    if (currentUrl === '/accounting/' + link.url) {
+                         this.rootService.$ActiveLinkInAccounting.next(link.url);
+                         if (this.setRowxxx('accounting')) {return ; }
+                    }
+                    // cnt++;
+                }
             }
         }
         let count = 0;
@@ -109,7 +122,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
             count += 1;
         }
     }
-    setResidenceRow(checkingRow) {
+    setRowxxx(checkingRow) {
         let count = 0;
         for (const i of this.sidebar) {
             if (checkingRow === i.url) {
@@ -178,6 +191,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
             this.rootService.$menuIndex.next(-1);
         } else if (url === 'residence') {
             this.rootService.$ActiveLink.next(residentialConstant[0].url);
+        } else if (url === 'accounting') {
+            this.rootService.$ActiveLinkInAccounting.next(accountingConstant[0].url);
         } else if (url === 'notice-board') {
             this.rootService.$menuIndex.next(-1);
         } else if (url === 'notice') {

@@ -1,10 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component} from '@angular/core';
 import { UploadFileService } from '../../service/upload-file.service';
 import { FileUpload } from 'src/app/config/interfaces/user.interface';
 import { FileUploadDialogComponent } from 'src/app/shared/components/file-upload-dialog/file-upload-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material';
-import { ClassGetter } from '@angular/compiler/src/output/output_ast';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 
 @Component({
   selector: 'app-uploader',
@@ -20,7 +19,9 @@ export class UploaderComponent {
   currentFileUpload: FileUpload;
   percentage: number;
   flag: boolean;
-  constructor(private uploadService: UploadFileService, public dialog: MatDialog) { }
+  constructor(private uploadService: UploadFileService,
+              public dialog: MatDialog,
+              private notificationService: NotificationService ) { }
   isHovering: boolean;
 
   files: File[] = [];
@@ -93,6 +94,13 @@ export class UploaderComponent {
       dialogRef.afterClosed().subscribe(
         val => {
           // console.log('Dialog output:', val);
+          if (!val) {
+            val = {
+                fileDescription : '',
+                publisherName: ''
+            };
+            // console.log(val);
+          }
           // this.currentFileUpload = new FileUpload(file);
           this.currentFileUpload = {
             key: '',
@@ -111,8 +119,8 @@ export class UploaderComponent {
           );
 
         });
-    }// else {
-
-    // }
+    } else {
+        this.notificationService.fileSelectionWarn('please select a file to upload');
+    }
   }
 }

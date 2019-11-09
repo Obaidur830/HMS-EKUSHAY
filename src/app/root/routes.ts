@@ -61,7 +61,7 @@ export const routes: Routes = [
 				canActivate: [AuthguardService]
 			},
 			{
-				path: 'transaction',
+				path: 'accounting',
 				loadChildren: '../accounting/accounting.module#AccountingModule',
 				canActivate: [AuthguardService]
 			},

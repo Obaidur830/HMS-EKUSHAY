@@ -50,7 +50,7 @@
 </div>
 
 
-<div class="mat-elevation-z8 pl-10" style="width: 95%; ">
+<div class="mat-elevation-z8 pl-10" style="width: 100%; ">
   <mat-table [dataSource]="listData" matSort>
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
@@ -64,11 +64,14 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>Modified</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.modifiedDate | date}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="caption">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Caption</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.caption}}</mat-cell>
+    <ng-container matColumnDef="noticeFor">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Notice For</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.fileDescription}}</mat-cell>
     </ng-container>
-
+    <ng-container matColumnDef="publisherName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>publisher Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.publisherName}}</mat-cell>
+    </ng-container>
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let row">

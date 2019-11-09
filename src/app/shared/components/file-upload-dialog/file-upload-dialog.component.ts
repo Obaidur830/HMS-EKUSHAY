@@ -20,13 +20,13 @@ export class FileUploadDialogComponent implements OnInit  {
       private dialogRef: MatDialogRef<FileUploadDialogComponent>,
       @Inject(MAT_DIALOG_DATA) data: any) {
 
-      ///this.description = description;
+      /// this.description = description;
 
 
       this.form = fb.group({
           publisherName: ['' , Validators.required],
-          category: ['' , Validators.required],
-          releasedAt: [moment(), Validators.required],
+          // category: ['' , Validators.required],
+          // releasedAt: [moment(), Validators.required],
           fileDescription: ['', Validators.required]
       });
 

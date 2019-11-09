@@ -23,6 +23,9 @@ import { BlockListComponent } from 'src/app/room/components/block-list/block-lis
 import { LeaveListComponent } from 'src/app/leave/components/leave-list/leave-list.component';
 import { UploaderComponent } from 'src/app/notice-board/components/uploader/uploader.component';
 import { ListUploadComponent } from 'src/app/notice/components/list-upload/list-upload.component';
+import { DefaultAccountingPageComponent } from 'src/app/accounting/components/default-accounting-page/default-accounting-page.component';
+import { ExpenseListComponent } from 'src/app/accounting/components/expense-list/expense-list.component';
+import { ProtibedonListComponent } from 'src/app/accounting/components/protibedon-list/protibedon-list.component';
 
 export const authenticationRoutes: Routes = [
   {
@@ -95,12 +98,32 @@ export const assetRoutes: Routes = [
     component: AssetListComponent
   }
 ];
-export const transactionRoutes: Routes = [
+export const accountingRoutes: Routes = [
   {
     path: '',
-    component: TransactionListComponent
-  }
-];
+    component: DefaultAccountingPageComponent,
+    children: [
+      {
+        path: '',
+        // component: ResidenceStudentListComponent
+        redirectTo: 'income'
+      },
+      {
+        path: 'income',
+        component: TransactionListComponent
+      },
+      {
+        path: 'expense',
+        component: ExpenseListComponent
+      },
+      {
+        path: 'protibedon',
+        component: ProtibedonListComponent
+      }
+    ]
+
+
+}];
 export const leaveRoutes: Routes = [
   {
     path: '',

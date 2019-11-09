@@ -27,7 +27,7 @@ export const defaultConst = {
         },
         {
             name: 'Accounting',
-            url: 'transaction',
+            url: 'accounting',
             icon: 'account_tree'
         },
         {
@@ -104,6 +104,21 @@ export const defaultConst = {
     emailsent: 'Email sent successfully',
     checkEmail: 'Verification email sent'
 };
+export const accountingConstant = [
+    {
+        name: 'Hall Income',
+        url: 'income'
+     },
+
+     {
+       name: 'Hall Expense',
+       url: 'expense'
+    },
+    {
+       name: 'Protibedon',
+       url: 'protibedon'
+    }
+];
 export const residentialConstant = [
      {
          name: 'Residential Student',

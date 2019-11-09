@@ -12,7 +12,7 @@ export class ListUploadComponent implements OnInit {
 
   constructor(private uploadService: UploadFileService, private datePipe: DatePipe) { }
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['name', 'type', 'modified', 'caption', 'actions'];
+  displayedColumns: string[] = ['name', 'type', 'modified', 'noticeFor', 'publisherName', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
