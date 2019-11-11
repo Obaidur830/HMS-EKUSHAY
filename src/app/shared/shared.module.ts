@@ -18,9 +18,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatConfirmDialogComponent } from './components/mat-confirm-dialog/mat-confirm-dialog.component';
 import { FileUploadDialogComponent } from './components/file-upload-dialog/file-upload-dialog.component';
+import { PdfGeneratorComponent } from './components/pdf-generator/pdf-generator.component';
 
 @NgModule({
-  declarations: [SnackbarComponent,  MatConfirmDialogComponent, FileUploadDialogComponent],
+  declarations: [SnackbarComponent,  MatConfirmDialogComponent, FileUploadDialogComponent, PdfGeneratorComponent],
   imports: [
     MatToolbarModule,
     MatIconModule,
