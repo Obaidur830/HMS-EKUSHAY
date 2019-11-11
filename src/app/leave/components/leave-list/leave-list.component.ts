@@ -4,6 +4,7 @@ import { MatDialog, MatTableDataSource, MatSort, MatPaginator, MatDialogConfig }
 import { LeaveService } from '../../services/leave.service';
 import { DialogService } from 'src/app/shared/services/dialog.service';
 import { LeaveApplicationComponent } from '../leave-application/leave-application.component';
+// import { ExcelService } from 'src/app/shared/services/excel.service';
 
 @Component({
   selector: 'app-leave-list',
@@ -16,7 +17,8 @@ export class LeaveListComponent implements OnInit {
     private dialog: MatDialog,
     private notificationService: NotificationService,
     private leaveService: LeaveService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+   // private excelService: ExcelService
     // private studentComponent: StudentComponent
   ) { }
   totalNotification;
@@ -93,6 +95,10 @@ export class LeaveListComponent implements OnInit {
         this.notificationService.warn('! Deleted successfully');
       }
     });
+  }
+
+  generateExcel() {
+    // this.excelService.generateExcel();
   }
 
 }
