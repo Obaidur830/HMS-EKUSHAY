@@ -4,6 +4,7 @@ import { MatDialog, MatTableDataSource, MatSort, MatPaginator, MatDialogConfig }
 import { LeaveService } from '../../services/leave.service';
 import { DialogService } from 'src/app/shared/services/dialog.service';
 import { LeaveApplicationComponent } from '../leave-application/leave-application.component';
+import { ExcelService } from 'src/app/shared/services/excel.service';
 // import { ExcelService } from 'src/app/shared/services/excel.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class LeaveListComponent implements OnInit {
     private notificationService: NotificationService,
     private leaveService: LeaveService,
     private dialogService: DialogService,
-   // private excelService: ExcelService
+    private excelService: ExcelService
     // private studentComponent: StudentComponent
   ) { }
   totalNotification;
@@ -38,7 +39,8 @@ export class LeaveListComponent implements OnInit {
           return {
             $key: item.payload.doc.id,
            // departmentName,
-            ...item.payload.doc.data()
+           ...item.payload.doc.data(),
+           hireDate: new Date(item.payload.doc.get('hireDate').seconds * 1000)
           };
         });
         this.totalNotification = array.length;
@@ -98,7 +100,7 @@ export class LeaveListComponent implements OnInit {
   }
 
   generateExcel() {
-    // this.excelService.generateExcel();
+   this.excelService.exportAsExcelFile(this.listData.data, 'myfile');
   }
 
 }
