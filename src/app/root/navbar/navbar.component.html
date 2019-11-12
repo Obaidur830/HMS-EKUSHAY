@@ -14,11 +14,14 @@
           </div>
       </mat-toolbar>
 
-      <div fxLayout="row" fxLayoutAlign="center center" class="mb-48 mt-46 ">
-        <img class="border-radius-50-p w-120 h-120 profile-picture-border" src="../../../assets/images/profile_img_avatar.png"
+      <div *ngIf="photoURL; else userPhoto" fxLayout="row" fxLayoutAlign="center center" class="mb-48 mt-46 ">
+        <img class="border-radius-50-p w-120 h-120 profile-picture-border" [src]="photoURL"
           alt="Upload Profile Picture">
 
       </div>
+      
+      
+
     </div>
     <mat-nav-list>
       <div *ngFor="let content of sidebar;let i = index">
@@ -102,3 +105,11 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<ng-template #userPhoto>
+  <div fxLayout="row" fxLayoutAlign="center center" class="mb-48 mt-46 ">
+    <img class="border-radius-50-p w-120 h-120 profile-picture-border" src="../../../assets/images/profile_img_avatar.png"
+      alt="Upload Profile Picture">
+
+  </div>
+</ng-template>

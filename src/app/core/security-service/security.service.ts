@@ -34,7 +34,7 @@ export class SecurityService {
   // }
   
 
-  isAdmin():Observable<boolean>{
+  isAdmin(): Observable<boolean> {
     return new Observable((observer) => {
       this.query
         .getLoggedInUserID()

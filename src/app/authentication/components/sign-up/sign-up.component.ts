@@ -52,7 +52,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
             confirmpassword: [ '', [ Validators.required, Validators.pattern(passwordRegex) ] ],
             role: [ '', Validators.required ],
             homeAddress: [ '' ],
-            shopAddress: [ '' ]
+            shopAddress: [ '' ],
+            photoURL: [''],
         });
     }
 
@@ -87,7 +88,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
                     homeAddress: this.signupform.value.homeAddress,
                     shopAddress: this.signupform.value.shopAddress,
                     enquiryLimit: defaultConst.defaultEnquiryLimit,
-                    ratings: defaultConst.defaultRatings
+                    ratings: defaultConst.defaultRatings,
+                    photoURL: ''
                 }
             };
             this.registerUser(this.userInformation);

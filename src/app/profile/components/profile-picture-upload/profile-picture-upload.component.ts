@@ -21,6 +21,8 @@ export class ProfilePictureUploadComponent implements OnInit {
 	isHovering: boolean;
 	imageChangedEvent: any = '';
 	croppedImage: any = '';
+	croppedImageFile: any = '';
+	croppedProfilePicture: any = '';
 	user: CustomerUserInformation;
 	constructor(
 		private storage: AngularFireStorage,
@@ -55,6 +57,9 @@ export class ProfilePictureUploadComponent implements OnInit {
 	imageCropped(event: ImageCroppedEvent) {
 		this.croppedImage = event.base64;
 		console.log(this.croppedImage);
+		this.croppedImageFile = event.file;
+		// console.log(this.croppedImage.slice(22));
+		this.croppedProfilePicture = new File([this.croppedImageFile], 'test.jpg', {type: 'image/jpeg', lastModified: Date.now()});
 	}
 	imageLoaded() {
 		// show cropper
@@ -79,7 +84,7 @@ export class ProfilePictureUploadComponent implements OnInit {
 		if (this.croppedImage !== '') {
 		  const filePath = `Profiles_Pictures/my/_${new Date().getTime()}`;
 		  const fileRef = this.storage.ref(filePath);
-		  this.storage.upload(filePath, this.croppedImage).snapshotChanges().pipe(
+		  this.storage.upload(filePath, this.croppedProfilePicture).snapshotChanges().pipe(
 			finalize(() => {
 			  fileRef.getDownloadURL().subscribe((url) => {
 				this.user.photoURL = url;

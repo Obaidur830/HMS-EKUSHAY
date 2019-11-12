@@ -25,6 +25,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     title: string;
     sidebar;
     Username: string;
+    photoURL: string;
     // $username: Observable<any>;
     menuItems;
     noticeBoardConstants;
@@ -150,13 +151,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     getUserName(uid): Observable<any> {
        let personInfo: CustomerUserInformation;
-
        return new Observable((observer) => {
             this.corequery
                 .getSingleData(Entities.Person, uid)
                 .pipe(takeUntil(this._unsubscribeAll))
                 .subscribe((res) => {
                     personInfo = res;
+                    this.photoURL = personInfo.photoURL;
                     observer.next(personInfo && personInfo.name ? personInfo.name : null);
                 });
        });

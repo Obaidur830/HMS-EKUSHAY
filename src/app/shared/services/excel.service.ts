@@ -11,12 +11,21 @@ export class ExcelService {
   constructor() { }
   public exportAsExcelFile(json, excelFileName: string): void {
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
+    // const bold = workbook.add_format({'bold': True})
+    // console.log(Object.keys(json[0]));
+    // if (json.length > 0) {
+    //   const excelHeadKeys = Object.keys(json[0]);
+    //   excelHeadKeys.forEach(element => {
+    //     worksheet.write('A1', element, 'bold');
+
+    //   });
+    // }
     const workbook: XLSX.WorkBook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
     const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     this.saveAsExcelFile(excelBuffer, excelFileName);
   }
   private saveAsExcelFile(buffer: any, fileName: string): void {
      const data: Blob = new Blob([buffer], {type: EXCEL_TYPE});
-     FileSaver.saveAs(data, fileName + '_export_' + new  Date().getTime() + EXCEL_EXTENSION);
+     FileSaver.saveAs(data, fileName + EXCEL_EXTENSION);
   }
 }

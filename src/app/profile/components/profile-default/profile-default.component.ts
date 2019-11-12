@@ -22,7 +22,7 @@ export class ProfileDefaultComponent implements OnInit, OnDestroy {
 	defaultCountryOfPhoneNumber = defaultConst.defaultPhonenumberCode;
 	errormessages = errorMessages;
 	_unsubscribeall: Subject<any>;
-
+    photoURL: string;
 	constructor(
 		private fb: FormBuilder,
 		private profileService: ProfileService,
@@ -34,7 +34,11 @@ export class ProfileDefaultComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.makeProfileForm();
 		this.setProfileInformation().pipe(first()).subscribe((res) => {
+			// console.log(res.email);
+			this.photoURL = this.user.photoURL;
 			this.setProfileForm(res);
+			// console.log(this.user.photoURL);
+			
 		});
 	}
 
