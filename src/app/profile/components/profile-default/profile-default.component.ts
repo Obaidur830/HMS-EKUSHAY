@@ -34,7 +34,7 @@ export class ProfileDefaultComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.makeProfileForm();
 		this.setProfileInformation().pipe(first()).subscribe((res) => {
-			// console.log(res.email);
+		    // console.log(res.phoneNumber+ 'fsd');
 			this.photoURL = this.user.photoURL;
 			this.setProfileForm(res);
 			// console.log(this.user.photoURL);

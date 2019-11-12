@@ -56,7 +56,7 @@ export class ProfilePictureUploadComponent implements OnInit {
 	}
 	imageCropped(event: ImageCroppedEvent) {
 		this.croppedImage = event.base64;
-		console.log(this.croppedImage);
+		// console.log(this.croppedImage);
 		this.croppedImageFile = event.file;
 		// console.log(this.croppedImage.slice(22));
 		this.croppedProfilePicture = new File([this.croppedImageFile], 'test.jpg', {type: 'image/jpeg', lastModified: Date.now()});

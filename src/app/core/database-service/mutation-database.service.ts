@@ -15,14 +15,13 @@ export class MutationDatabaseService {
   //   this.angularfirestore.collection('Person').add({})
   // }
 
-  updateSingleData(EntityName:string,id:string,data:any):Observable<any>{
-    return new Observable(observer=>{
-      this.angularfirestore.collection(EntityName).doc(id).update(data).then(acc=>{
+  updateSingleData(EntityName: string, id: string, data: any): Observable<any> {
+    return new Observable(observer => {
+      this.angularfirestore.collection(EntityName).doc(id).update(data).then(acc => {
         observer.next(errorMessages.updated);
-      }).catch(err=>{
+      }).catch(err => {
         observer.next(errorMessages.error);
       });
-    })
-    
+    });
   }
 }
