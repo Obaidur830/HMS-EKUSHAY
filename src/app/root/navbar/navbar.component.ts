@@ -4,7 +4,8 @@ import { Observable, Subject, Subscription, observable, BehaviorSubject } from '
 import { map, takeUntil, first } from 'rxjs/operators';
 import { AuthenticationService } from '../../authentication/services/authentication.service';
 import { Router } from '@angular/router';
-import { defaultConst, residentialConstant, noticeBoardConstant, accountingConstant } from '../../config/constants/defaultConstants';
+// tslint:disable-next-line: max-line-length
+import { defaultConst, residentialConstant, accountingConstant, toolbarButtons } from '../../config/constants/defaultConstants';
 import { QueryDatabaseService } from '../../core/database-service/query-database.service';
 import { Entities, Roles } from '../../config/enums/default.enum';
 import { CustomerUserInformation } from '../../config/interfaces/user.interface';
@@ -28,12 +29,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     photoURL: string;
     // $username: Observable<any>;
     menuItems;
-    noticeBoardConstants;
+    toolbarButtons;
     selectedRow: number;
+    selectedRowForButton: number;
     // tslint:disable-next-line: variable-name
     _unsubscribeAll: Subject<any>;
 
-   // $menuIndex = this.menuIndex.asObservable();
+    // $menuIndex = this.menuIndex.asObservable();
     constructor(
         private breakpointObserver: BreakpointObserver,
         private aut: AuthenticationService,
@@ -57,15 +59,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
     initiateVariables() {
         this.title = defaultConst.siteName.name;
         this.menuItems = defaultConst.menu;
-        this.noticeBoardConstants = noticeBoardConstant;
+        this.toolbarButtons = toolbarButtons;
         this.makeSideBar();
 
         this.rootService.$Username.subscribe((res) => {
-             this.Username = res;
+            this.Username = res;
         });
 
         this.rootService.$menuIndex.subscribe(res => {
-           this.selectedRow = res;
+            this.selectedRow = res;
         });
     }
 
@@ -87,28 +89,25 @@ export class NavbarComponent implements OnInit, OnDestroy {
             this.rootService.$ActiveLink.next(residentialConstant[0].url);
         } else if (currentUrl === '/accounting') {
             this.rootService.$ActiveLinkInAccounting.next(accountingConstant[0].url);
-        } else if (currentUrl === '/notice-board') {
-            this.rootService.$menuIndex.next(-1);
-        } else if (currentUrl === '/notice') {
-            this.rootService.$menuIndex.next(-1);
         } else if (currentUrl === '/profile') {
             this.rootService.$menuIndex.next(-1);
+            return;
         } else {
             let flag = true;
             // let cnt = 0;
             for (const link of residentialConstant) {
                 if (currentUrl === '/residence/' + link.url) {
-                     flag = false;
-                     this.rootService.$ActiveLink.next(link.url);
-                     if (this.setRowxxx('residence')) {return ; }
+                    flag = false;
+                    this.rootService.$ActiveLink.next(link.url);
+                    if (this.setRowxxx('residence')) { return; }
                 }
                 // cnt++;
             }
             if (flag) {
                 for (const link of accountingConstant) {
                     if (currentUrl === '/accounting/' + link.url) {
-                         this.rootService.$ActiveLinkInAccounting.next(link.url);
-                         if (this.setRowxxx('accounting')) {return ; }
+                        this.rootService.$ActiveLinkInAccounting.next(link.url);
+                        if (this.setRowxxx('accounting')) { return; }
                     }
                     // cnt++;
                 }
@@ -122,6 +121,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
             }
             count += 1;
         }
+
+        let cont = 0;
+        for (const i of this.toolbarButtons) {
+            if (currentUrl === `/${i.url}`) {
+                this.rootService.$menuIndex.next(-1);
+                this.selectedRowForButton = cont;
+                break;
+            }
+            cont += 1;
+        }
+
+
     }
     setRowxxx(checkingRow) {
         let count = 0;
@@ -142,18 +153,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
                     this.Username = res;
                     this.rootService.$Username.next(this.Username);
                 });
-                
                 // here are code for picture upload imediately load/ although pipe((first)) dia niche akbar call dea ace
                 this.corequery.getSingleUserForPhotoURL(res).subscribe(
-                list => {
-				  const array = list.map(item => {
-					 return {
-					    //  ...item.payload.doc.data(),
-					     photoURL: item.payload.doc.get('photoURL')
-				  	 };
-				  });
-                this.photoURL = array[0].photoURL;
-			   });
+                    list => {
+                        const array = list.map(item => {
+                            return {
+                                photoURL: item.payload.doc.get('photoURL')
+                            };
+                        });
+                        this.photoURL = array[0].photoURL;
+                    });
 
             } else {
                 this.Username = Roles.Anonymous;
@@ -163,8 +172,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     getUserName(uid): Observable<any> {
-       let personInfo: CustomerUserInformation;
-       return new Observable((observer) => {
+        let personInfo: CustomerUserInformation;
+        return new Observable((observer) => {
             this.corequery
                 .getSingleData(Entities.Person, uid)
                 .pipe(takeUntil(this._unsubscribeAll))
@@ -173,7 +182,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                     this.photoURL = personInfo.photoURL;
                     observer.next(personInfo && personInfo.name ? personInfo.name : null);
                 });
-       });
+        });
     }
 
     logout() {
@@ -203,18 +212,32 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl(url);
         if (url === defaultConst.menu.profile.url) {
             this.rootService.$menuIndex.next(-1);
+            this.selectedRowForButton = -1;
         } else if (url === 'residence') {
             this.rootService.$ActiveLink.next(residentialConstant[0].url);
         } else if (url === 'accounting') {
             this.rootService.$ActiveLinkInAccounting.next(accountingConstant[0].url);
-        } else if (url === 'notice-board') {
-            this.rootService.$menuIndex.next(-1);
-        } else if (url === 'notice') {
-            this.rootService.$menuIndex.next(-1);
-        }
+        } // else {
+        //     let cont = 0;
+        //     for (const i of this.toolbarButtons) {
+        //       if (url === `/${i.url}`) {
+        //         // this.rootService.$menuIndex.next(-1);
+        //        // this.selectedRowForButton = cont;
+        //         break;
+        //       }
+        //       cont += 1;
+        //     }
+        // }
     }
     selectRow(index) {
         this.selectedRow = index;
+        this.selectedRowForButton = -1;
 
     }
+    selectRowForButton(index) {
+        this.selectedRow = -1;
+        this.selectedRowForButton = index;
+
+    }
+
 }

@@ -134,19 +134,30 @@ export const residentialConstant = [
         url: 'block'
      }
 ];
-export const noticeBoardConstant = {
-    noticeBoard: {
-        name: 'Notice Board',
-        url: 'notice-board',
-        icon: 'emoji_flags'
-     },
-     notice: {
-        name: 'Notice',
+// export const noticeBoardConstant = {
+//     noticeBoard: {
+//         name: 'Notice Board',
+//         url: 'notice-board',
+//         icon: 'emoji_flags'
+//      },
+//      notice: {
+//         name: 'Notice',
+//         url: 'notice',
+//         icon: 'emoji_flags'
+//      }
+// };
+export const toolbarButtons = [
+    {
+        name: 'All-Notice',
         url: 'notice',
-        icon: 'emoji_flags'
-     }
-};
-
+        icon: 'inbox'
+    },
+    {
+        name: 'Notice-Board',
+        url: 'notice-board',
+        icon: 'send'
+    }
+];
 export const signinErrorCode = {
     'Invalid Email': {
         code: 'auth/invalid-email',

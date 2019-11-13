@@ -65,27 +65,22 @@
 
           </div>
         </div>
-        <!-- <div (click)="route(noticeBoardConstants.noticeBoard.url)">
-          <i class="material-icons">
-            emoji_flags
-          </i>
-          <span>noticeBoard</span>
-        </div>  -->
-        <div fxLayout="row" fxLayoutAlign="center center" class="mr-64" (click)="route(noticeBoardConstants.notice.url)">
-          <button class="btnx" mat-button>
-            <mat-icon>inbox</mat-icon>Notice
-          </button>
+        
+
+        <div *ngFor="let btn of toolbarButtons; let i=index ">
+          <div fxLayout="row" fxLayoutAlign="center center" class="mr-64" (click)="route(btn.url) ; selectRowForButton(i)" [ngStyle]="{'background-color':i === selectedRowForButton ? 'crimson': ''}" >
+            <button class="btnx" mat-button>
+              <mat-icon>{{btn.icon}}</mat-icon>{{btn.name}}
+            </button>
+          </div>
         </div>
-        <div style="background-color: crimson;" fxLayout="row" fxLayoutAlign="center center" class="mr-64" (click)="route(noticeBoardConstants.noticeBoard.url)">
-          <!-- <mat-icon class="material-icons-outlined cursor-pointer">
-           emoji_flags
-          </mat-icon>
-          <button mat-button class="font-size-16">noticeBoard</button> -->
+        
+        <!-- <div style="background-color: crimson;" fxLayout="row" fxLayoutAlign="center center" class="mr-64" (click)="route(noticeBoardConstants.noticeBoard.url)">
           <button type="button" mdbBtn color="success" mdbWavesEffect>Success</button>
           <button class="btnx" mat-button>
             <mat-icon>send</mat-icon> NoticeBoard
           </button>
-        </div>
+        </div> -->
 
         <div [matMenuTriggerFor]="menu" fxLayout="row" fxLayoutAlign="center center" class="mr-64">
           <mat-icon class="material-icons-outlined cursor-pointer">
