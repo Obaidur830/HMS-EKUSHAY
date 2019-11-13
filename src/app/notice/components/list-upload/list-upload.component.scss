@@ -38,38 +38,41 @@
       background-color: inherit;
   }
 
-  .btn {
-    background-color: DodgerBlue;
-    border: none;
-    color: white;
-    padding: 8px 15px;
-    cursor: pointer;
-    font-size: 16px;
-    // cursor: pointer;
-    // font-size: 15px;
-    // height:20px;
-  }
+  // .btn {
+  //   background-color: DodgerBlue;
+  //   border: none;
+  //   color: white;
+  //   padding: 8px 15px;
+  //   cursor: pointer;
+  //   font-size: 16px;
+  //   // cursor: pointer;
+  //   // font-size: 15px;
+  //   // height:20px;
+  // }
   
   /* Darker background on mouse-over */
-  .btn:hover {
-    background-color: green;
+  // .btn:hover {
+  //   background-color: green;
+  // }
+  .btnx:hover {
+    background-color: darkgreen;
+    // margin: auto;
   }
-
-  .btn-trash {
-    background-color: maroon;
-    border: none;
-    color: white;
-    padding: 9px 16px;
-    cursor: pointer;
-    font-size: 16px;
-  }
+  // .btn-trash {
+  //   background-color: maroon;
+  //   border: none;
+  //   color: white;
+  //   padding: 9px 16px;
+  //   cursor: pointer;
+  //   font-size: 16px;
+  // }
   
   /* Darker background on mouse-over */
-  .btn-trash:hover {
-    background-color: red;
-  }
-  .fa_custom{
-    background-color: white;
-    color: seagreen;
-    border: none;
-  }
+  // .btn-trash:hover {
+  //   background-color: red;
+  // }
+  // .fa_custom{
+  //   background-color: white;
+  //   color: seagreen;
+  //   border: none;
+  // }

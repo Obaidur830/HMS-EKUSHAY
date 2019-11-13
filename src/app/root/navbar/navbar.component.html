@@ -72,16 +72,19 @@
           <span>noticeBoard</span>
         </div>  -->
         <div fxLayout="row" fxLayoutAlign="center center" class="mr-64" (click)="route(noticeBoardConstants.notice.url)">
-          <mat-icon class="material-icons-outlined cursor-pointer">
-           emoji_flags
-          </mat-icon>
-          <button mat-button class="font-size-16">notice</button>
+          <button class="btnx" mat-button>
+            <mat-icon>inbox</mat-icon>Notice
+          </button>
         </div>
-        <div fxLayout="row" fxLayoutAlign="center center" class="mr-64" (click)="route(noticeBoardConstants.noticeBoard.url)">
-          <mat-icon class="material-icons-outlined cursor-pointer">
+        <div style="background-color: crimson;" fxLayout="row" fxLayoutAlign="center center" class="mr-64" (click)="route(noticeBoardConstants.noticeBoard.url)">
+          <!-- <mat-icon class="material-icons-outlined cursor-pointer">
            emoji_flags
           </mat-icon>
-          <button mat-button class="font-size-16">noticeBoard</button>
+          <button mat-button class="font-size-16">noticeBoard</button> -->
+          <button type="button" mdbBtn color="success" mdbWavesEffect>Success</button>
+          <button class="btnx" mat-button>
+            <mat-icon>send</mat-icon> NoticeBoard
+          </button>
         </div>
 
         <div [matMenuTriggerFor]="menu" fxLayout="row" fxLayoutAlign="center center" class="mr-64">

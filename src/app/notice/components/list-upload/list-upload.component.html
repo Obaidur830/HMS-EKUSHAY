@@ -75,9 +75,15 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button class="btn"><i class="fa fa-external-link"></i> preview</button>
+        <!-- <button class="btn"><i class="fa fa-external-link"></i> preview</button> -->
         <!-- <button class="btn-trash"><i class="fa fa-trash"></i> Trash</button> -->
-        <button class="btn"><i class="fa fa-download"></i> Download</button>
+        <!-- <button class="btn"><i class="fa fa-download"></i> Download</button> -->
+        <button class="btnx" mat-raised-button color="primary" (click)="onEditClick()">
+          <mat-icon>launch</mat-icon> Preview
+        </button>
+        <button class="btnx" mat-raised-button color="primary" (click)="onEditClick()">
+          <mat-icon>get_app</mat-icon>Download
+        </button>
       </mat-cell>
     </ng-container>
 
