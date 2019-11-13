@@ -9,6 +9,7 @@ import { defaultConst } from 'src/app/config/constants/defaultConstants';
 import { errorMessages } from 'src/app/config/validators/errormessages.constants';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { PasswordModalService } from '../../services/password-modal.service';
+import { QueryDatabaseService } from 'src/app/core/database-service/query-database.service';
 
 @Component({
 	selector: 'app-profile-default',
@@ -22,11 +23,13 @@ export class ProfileDefaultComponent implements OnInit, OnDestroy {
 	defaultCountryOfPhoneNumber = defaultConst.defaultPhonenumberCode;
 	errormessages = errorMessages;
 	_unsubscribeall: Subject<any>;
-    photoURL: string;
+	photoURL: string;
+	$photoURL: Observable<any>;
 	constructor(
 		private fb: FormBuilder,
 		private profileService: ProfileService,
-		private passwordmodal: PasswordModalService
+		private passwordmodal: PasswordModalService,
+		private query: QueryDatabaseService,
 	) {
 		this._unsubscribeall = new Subject();
 	}
@@ -34,14 +37,23 @@ export class ProfileDefaultComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.makeProfileForm();
 		this.setProfileInformation().pipe(first()).subscribe((res) => {
-		    // console.log(res.phoneNumber+ 'fsd');
 			this.photoURL = this.user.photoURL;
 			this.setProfileForm(res);
-			// console.log(this.user.photoURL);
-			
-		});
-	}
 
+			// here are code for picture upload imediately load/ although pipe((first)) dia opore akbar call dea ace
+			this.query.getSingleUserForPhotoURL(this.user.uid).subscribe(
+				list => {
+				  const array = list.map(item => {
+					 return {
+					    //  ...item.payload.doc.data(),
+					     photoURL: item.payload.doc.get('photoURL')
+				  	 };
+				  });
+                this.photoURL = array[0].photoURL;
+			   });
+		});
+
+   }
 	makeProfileForm() {
 		this.profileform = this.fb.group({
 			name: [ '', Validators.required ],

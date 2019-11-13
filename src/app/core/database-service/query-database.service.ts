@@ -33,4 +33,8 @@ export class QueryDatabaseService {
             );
         });
     }
+
+    getSingleUserForPhotoURL(uid: string) {
+        return this.angularfirestore.collection('Person', ref => ref.where('uid', '==', uid)).snapshotChanges();
+    }
 }

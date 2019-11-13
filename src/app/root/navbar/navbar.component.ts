@@ -102,7 +102,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                      this.rootService.$ActiveLink.next(link.url);
                      if (this.setRowxxx('residence')) {return ; }
                 }
-                //cnt++;
+                // cnt++;
             }
             if (flag) {
                 for (const link of accountingConstant) {
@@ -142,6 +142,19 @@ export class NavbarComponent implements OnInit, OnDestroy {
                     this.Username = res;
                     this.rootService.$Username.next(this.Username);
                 });
+                
+                // here are code for picture upload imediately load/ although pipe((first)) dia niche akbar call dea ace
+                this.corequery.getSingleUserForPhotoURL(res).subscribe(
+                list => {
+				  const array = list.map(item => {
+					 return {
+					    //  ...item.payload.doc.data(),
+					     photoURL: item.payload.doc.get('photoURL')
+				  	 };
+				  });
+                this.photoURL = array[0].photoURL;
+			   });
+
             } else {
                 this.Username = Roles.Anonymous;
                 this.rootService.$Username.next(Roles.Anonymous);
