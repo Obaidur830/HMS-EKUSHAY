@@ -37,4 +37,14 @@ export class ListUploadComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.listData.filter = filterValue.trim().toLowerCase();
   }
+
+  goPreviewURL(url) {
+    // console.log(url, '_blank');
+    window.open(url, '_blank', 'noopener');
+
+  }
+  goDownloadURL(url) {
+    window.open(url);
+
+  }
 }
