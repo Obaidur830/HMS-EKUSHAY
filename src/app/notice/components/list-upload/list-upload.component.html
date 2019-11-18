@@ -81,9 +81,10 @@
         <button class="btnx" mat-raised-button color="primary" (click)="goPreviewURL(row.url)">
           <mat-icon>launch</mat-icon> Preview
         </button>
-        <button class="btnx" mat-raised-button color="primary" (click)="goDownloadURL(row.url)">
+        <button class="btnx" mat-raised-button color="primary" (click)="goDownloadURL(row.url, row.name)">
           <mat-icon>get_app</mat-icon>Download
         </button>
+        <!-- <a href={{row.url}} target="_blank" rel="noopener noreferrer">download</a> -->
       </mat-cell>
     </ng-container>
 
