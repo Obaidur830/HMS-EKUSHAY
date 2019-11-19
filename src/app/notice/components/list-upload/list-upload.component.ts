@@ -25,7 +25,7 @@ export class ListUploadComponent implements OnInit {
          const fileUploadDetails = list.map(item => {
           return {
             key: item.payload.doc.id,
-            //modifiedDate: new Date(item.payload.doc.get('modifiedDate').v.seconds * 1000),
+            // modifiedDate: new Date(item.payload.doc.get('modifiedDate').v.seconds * 1000),
             ...item.payload.doc.data()
           };
         });

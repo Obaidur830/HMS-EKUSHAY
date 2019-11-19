@@ -38,14 +38,20 @@ export interface firebaseUserInformation {
 }
 
 export interface StudentInformation {
+    registrationNumber: string;
     fullName: string;
+    fathersName: string;
+    mothersName: string;
+    nationality: string;
+    religion: string;
+    gender: string;
+    dateOfBirth: string;
     email: string;
     mobile: string;
-    city: string;
-    gender: string;
+    isPermanent: boolean;
     department: string;
     hireDate: string;
-    isPermanent: boolean;
+    city: string;
 }
 
 export interface EmployeeInformation {

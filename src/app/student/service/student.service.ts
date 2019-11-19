@@ -19,28 +19,41 @@ export class StudentService {
 
   studentForm = new FormGroup({
     $key: new FormControl(null),
+    registrationNumber: new FormControl('', Validators.required),
     fullName: new FormControl('', Validators.required),
+    fathersName: new FormControl('', Validators.required),
+    mothersName: new FormControl('', Validators.required),
+    nationality: new FormControl('', Validators.required),
+    religion: new FormControl(''),
+    gender: new FormControl('1'),
+    dateOfBirth: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
     mobile: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    city: new FormControl(''),
-    gender: new FormControl('1'),
     department: new FormControl(''),
     hireDate: new FormControl('', Validators.required),
-    isPermanent: new FormControl(false)
+    isPermanent: new FormControl(false),
+    city: new FormControl(''),
   });
 
 
   initializeFormGroup() {
     this.studentForm.setValue({
       $key: null,
+      registrationNumber: '',
       fullName: '',
+      fathersName: '',
+      mothersName: '',
+      nationality: '',
+      religion: '',
+      gender: '1',
+      dateOfBirth: '',
       email: '',
       mobile: '',
-      city: '',
-      gender: '1',
+      // gender: '1',
       department: '',
       hireDate: '',
-      isPermanent: false
+      isPermanent: false,
+      city: ''
     });
   }
 
