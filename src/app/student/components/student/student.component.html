@@ -4,156 +4,59 @@
   <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
 </mat-toolbar>
 <form [formGroup]="studentService.studentForm" class="normal-form" (submit)="onSubmit()">
-  <mat-grid-list cols="4" rowHeight="500px">
+  <mat-grid-list cols="2" rowHeight="500px">
     <mat-grid-tile>
-      <div class="controles-container">
-        <input type="hidden" formControlName="$key">
-        <mat-form-field>
-          <input formControlName="registrationNumber" matInput placeholder="registrationNumber*">
-          <mat-error>This field is mandatory.</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input formControlName="fullName" matInput placeholder="Full Name*">
-          <mat-error>This field is mandatory.</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input formControlName="fathersName" matInput placeholder="Father's Name*">
-          <mat-error>This field is mandatory.</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input formControlName="mothersName" matInput placeholder="Mother's Name*">
-          <mat-error>This field is mandatory.</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input formControlName="nationality" matInput placeholder="Nationality*">
-          <mat-error>This field is mandatory.</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input formControlName="religion" matInput placeholder="Religion">
-        </mat-form-field>
-        <div class="add-bottom-padding">
-          <mat-radio-group formControlName="gender">
-            <mat-radio-button  value="1">Male</mat-radio-button>
-            <mat-radio-button value="2">Female</mat-radio-button>
-            <mat-radio-button value="3">Other</mat-radio-button>
-          </mat-radio-group>
-        </div>
-        <mat-form-field>
-          <input formControlName="dateOfBirth" matInput [matDatepicker]="picker1" placeholder="Date of birth">
-          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-          <mat-datepicker #picker1></mat-datepicker>
-        </mat-form-field>
-        
-        
-        <!-- <mat-form-field>
-          <input formControlName="city" matInput placeholder="City">
-        </mat-form-field> -->
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-
-      <div class="controles-container">
-        <mat-form-field>
-              <input formControlName="email" matInput placeholder="Email">
-              <mat-error>Invalid email address.</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <input formControlName="mobile" matInput placeholder="Mobile*">
-            <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
-            <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.
-            </mat-error>
-        </mat-form-field>
-        <div >
-          <mat-radio-group formControlName="gender">
-            <mat-radio-button  value="1">Male</mat-radio-button>
-            <mat-radio-button value="2">Female</mat-radio-button>
-            <mat-radio-button value="3">Other</mat-radio-button>
-          </mat-radio-group>
-        </div>
-        <mat-form-field>
-          <mat-select formControlName="department" placeholder="Department">
-            <mat-option>None</mat-option>
-            <ng-container *ngFor="let department of departments">
-              <mat-option value="{{department}}">{{department}}</mat-option>
-            </ng-container>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <input formControlName="hireDate" matInput [matDatepicker]="picker" placeholder="Hire Date">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <div class="add-bottom-padding">
-          <mat-checkbox formControlName="isPermanent">Permanent Student</mat-checkbox>
-        </div>
-        <mat-form-field>
-          <input formControlName="city" matInput placeholder="City">
-        </mat-form-field>
-        <div class="button-row">
-          <button mat-raised-button color="primary" type="submit" [disabled]="studentService.studentForm.invalid">Submit</button>
-          <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
-        </div>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-
-        <div class="controles-container">
-          <mat-form-field>
-                <input formControlName="email" matInput placeholder="Email">
-                <mat-error>Invalid email address.</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-              <input formControlName="mobile" matInput placeholder="Mobile*">
-              <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
-              <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.
-              </mat-error>
-          </mat-form-field>
-          <div >
-            <mat-radio-group formControlName="gender">
-              <mat-radio-button  value="1">Male</mat-radio-button>
-              <mat-radio-button value="2">Female</mat-radio-button>
-              <mat-radio-button value="3">Other</mat-radio-button>
-            </mat-radio-group>
-          </div>
-          <mat-form-field>
-            <mat-select formControlName="department" placeholder="Department">
-              <mat-option>None</mat-option>
-              <ng-container *ngFor="let department of departments">
-                <mat-option value="{{department}}">{{department}}</mat-option>
-              </ng-container>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <input formControlName="hireDate" matInput [matDatepicker]="picker3" placeholder="Hire Date">
-            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-            <mat-datepicker #picker3></mat-datepicker>
-          </mat-form-field>
-          <div class="add-bottom-padding">
-            <mat-checkbox formControlName="isPermanent">Permanent Student</mat-checkbox>
-          </div>
-          <mat-form-field>
-            <input formControlName="city" matInput placeholder="City">
-          </mat-form-field>
-          <div class="button-row">
-            <button mat-raised-button color="primary" type="submit" [disabled]="studentService.studentForm.invalid">Submit</button>
-            <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
-          </div>
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-
-          <div class="controles-container">
+      
+       <!--  <div class='header-3'>Account Information</div> -->
+       <!-- <mat-divider [inset]="true"></mat-divider> -->
+       <!-- <div class="row">general Information</div> -->
+       <div class="row">
+         <!-- <p >general Information</p> -->
+          <!-- <mat-divider></mat-divider> -->
+          <div class="col controles-container">
+              
+            <input type="hidden" formControlName="$key">
             <mat-form-field>
-                  <input formControlName="email" matInput placeholder="Email">
-                  <mat-error>Invalid email address.</mat-error>
+              <input formControlName="registrationNumber" matInput placeholder="registrationNumber*">
+              <mat-error>This field is mandatory.</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input formControlName="mobile" matInput placeholder="Mobile*">
-                <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
-                <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.
-                </mat-error>
+              <input formControlName="fullName" matInput placeholder="Full Name*">
+              <mat-error>This field is mandatory.</mat-error>
             </mat-form-field>
-            <div >
+            <mat-form-field>
+              <input formControlName="fathersName" matInput placeholder="Father's Name*">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input formControlName="mothersName" matInput placeholder="Mother's Name*">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+            <!-- <mat-form-field>
+              <input formControlName="nationality" matInput placeholder="Nationality*">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field> -->
+            <mat-form-field>
+                <mat-select formControlName="nationality" placeholder="Nationality" #singleSelect>
+                  <ngx-mat-select-search [formControl]="nationalityFilterCntrl" [placeholderLabel]="'search your nationality...'" 
+                  [noEntriesFoundLabel]="'no matching nationality found'"></ngx-mat-select-search>
+                  <mat-option *ngFor="let nation of filteredNationalities | async" value={{nation}}>
+                    {{nation}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            <!-- <mat-form-field>
+              <input formControlName="religion" matInput placeholder="Religion">
+            </mat-form-field> -->
+            <mat-form-field>
+                <mat-select formControlName="religion" placeholder="Religion">
+                  <!-- <mat-option>None</mat-option> -->
+                  <ng-container *ngFor="let religion of religions">
+                    <mat-option value="{{religion}}">{{religion}}</mat-option>
+                  </ng-container>
+                </mat-select>
+            </mat-form-field>
+            <div class="add-bottom-padding">
               <mat-radio-group formControlName="gender">
                 <mat-radio-button  value="1">Male</mat-radio-button>
                 <mat-radio-button value="2">Female</mat-radio-button>
@@ -161,29 +64,161 @@
               </mat-radio-group>
             </div>
             <mat-form-field>
-              <mat-select formControlName="department" placeholder="Department">
-                <mat-option>None</mat-option>
-                <ng-container *ngFor="let department of departments">
-                  <mat-option value="{{department}}">{{department}}</mat-option>
-                </ng-container>
-              </mat-select>
+              <input formControlName="dateOfBirth" matInput [matDatepicker]="picker1" placeholder="Date of birth">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            
+            
+            <!-- <mat-form-field>
+              <input formControlName="city" matInput placeholder="City">
+            </mat-form-field> -->
+          </div>
+          <div class="col controles-container">
+              <!-- <p >general Information</p> -->
+              <!-- <mat-divider></mat-divider> -->
+            <!-- <input type="hidden" formControlName="$key"> -->
+            <mat-form-field>
+              <input formControlName="registrationNumber" matInput placeholder="registrationNumber*">
+              <mat-error>This field is mandatory.</mat-error>
             </mat-form-field>
             <mat-form-field>
-              <input formControlName="hireDate" matInput [matDatepicker]="picker4" placeholder="Hire Date">
-              <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
-              <mat-datepicker #picker4></mat-datepicker>
+              <input formControlName="fullName" matInput placeholder="Full Name*">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input formControlName="fathersName" matInput placeholder="Father's Name*">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input formControlName="mothersName" matInput placeholder="Mother's Name*">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+            <!-- <mat-form-field>
+              <input formControlName="nationality" matInput placeholder="Nationality*">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field> -->
+            <!-- <mat-form-field>
+              <input formControlName="religion" matInput placeholder="Religion">
+            </mat-form-field> -->
+            <mat-form-field>
+                <mat-select formControlName="religion" placeholder="Religion">
+                  <mat-option>None</mat-option>
+                  <ng-container *ngFor="let religion of religions">
+                    <mat-option value="{{religion}}">{{religion}}</mat-option>
+                  </ng-container>
+                </mat-select>
             </mat-form-field>
             <div class="add-bottom-padding">
-              <mat-checkbox formControlName="isPermanent">Permanent Student</mat-checkbox>
+              <mat-radio-group formControlName="gender">
+                <mat-radio-button  value="1">Male</mat-radio-button>
+                <mat-radio-button value="2">Female</mat-radio-button>
+                <mat-radio-button value="3">Other</mat-radio-button>
+              </mat-radio-group>
             </div>
-            <mat-form-field>
-              <input formControlName="city" matInput placeholder="City">
+            <!-- <mat-form-field>
+              <input formControlName="dateOfBirth" matInput [matDatepicker]="picker1" placeholder="Date of birth">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
-            <div class="button-row">
-              <button mat-raised-button color="primary" type="submit" [disabled]="studentService.studentForm.invalid">Submit</button>
-              <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
-            </div>
+             -->
+            
+            <!-- <mat-form-field>
+              <input formControlName="city" matInput placeholder="City">
+            </mat-form-field> -->
           </div>
-        </mat-grid-tile>
+       </div> 
+      
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="row">
+          <div class="col controles-container">
+              <mat-form-field>
+                    <input formControlName="email" matInput placeholder="Email">
+                    <mat-error>Invalid email address.</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                  <input formControlName="mobile" matInput placeholder="Mobile*">
+                  <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
+                  <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.
+                  </mat-error>
+              </mat-form-field>
+              <div >
+                <mat-radio-group formControlName="gender">
+                  <mat-radio-button  value="1">Male</mat-radio-button>
+                  <mat-radio-button value="2">Female</mat-radio-button>
+                  <mat-radio-button value="3">Other</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <mat-form-field>
+                <mat-select formControlName="department" placeholder="Department">
+                  <mat-option>None</mat-option>
+                  <ng-container *ngFor="let department of departments">
+                    <mat-option value="{{department}}">{{department}}</mat-option>
+                  </ng-container>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <input formControlName="hireDate" matInput [matDatepicker]="picker" placeholder="Hire Date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <div class="add-bottom-padding">
+                <mat-checkbox formControlName="isPermanent">Permanent Student</mat-checkbox>
+              </div>
+              <mat-form-field>
+                <input formControlName="city" matInput placeholder="City">
+              </mat-form-field>
+              <!-- <div class="button-row">
+                <button mat-raised-button color="primary" type="submit" [disabled]="studentService.studentForm.invalid">Submit</button>
+                <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+              </div> -->
+            </div>
+            <div class="col controles-container">
+                <mat-form-field>
+                      <input formControlName="email" matInput placeholder="Email">
+                      <mat-error>Invalid email address.</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="mobile" matInput placeholder="Mobile*">
+                    <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
+                    <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.
+                    </mat-error>
+                </mat-form-field>
+                <div >
+                  <mat-radio-group formControlName="gender">
+                    <mat-radio-button  value="1">Male</mat-radio-button>
+                    <mat-radio-button value="2">Female</mat-radio-button>
+                    <mat-radio-button value="3">Other</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                <mat-form-field>
+                  <mat-select formControlName="department" placeholder="Department">
+                    <mat-option>None</mat-option>
+                    <ng-container *ngFor="let department of departments">
+                      <mat-option value="{{department}}">{{department}}</mat-option>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                  <input formControlName="hireDate" matInput [matDatepicker]="picker4" placeholder="Hire Date">
+                  <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                  <mat-datepicker #picker4></mat-datepicker>
+                </mat-form-field>
+                <div class="add-bottom-padding">
+                  <mat-checkbox formControlName="isPermanent">Permanent Student</mat-checkbox>
+                </div>
+                <mat-form-field>
+                  <input formControlName="city" matInput placeholder="City">
+                </mat-form-field>
+                <div class="button-row">
+                  <button mat-raised-button color="primary" type="submit" [disabled]="studentService.studentForm.invalid">Submit</button>
+                  <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+                </div>
+              </div>
+      </div>
+      
+    </mat-grid-tile>
+    
   </mat-grid-list>
 </form>

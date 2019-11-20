@@ -235,4 +235,27 @@ export const urlPaths = {
         }
     },
 };
-
+export const nationalities = [
+    'Afghan', 'Albanian', 'Algerian', 'American', 'Andorran', 'Angolan', 'Antiguans', 'Argentinean', 'Armenian', 'Australian',
+    'Austrian', 'Azerbaijani', 'Bahamian', 'Bahraini', 'Bangladeshi', 'Barbadian', 'Barbudans', 'Batswana', 'Belarusian',
+    'Belgian', 'Belizean', 'Beninese', 'Bhutanese', 'Bolivian', 'Bosnian', 'Brazilian', 'British', 'Bruneian', 'Bulgarian',
+    'Burkinabe', 'Burmese', 'Burundian', 'Cambodian', 'Cameroonian', 'Canadian', 'Cape Verdean', 'Central African', 'Chadian',
+    'Chilean', 'Chinese', 'Colombian', 'Comoran', 'Congolese', 'Costa Rican', 'Croatian', 'Cuban',
+    'Cypriot', 'Czech', 'Danish', 'Djibouti', 'Dominican', 'Dutch', 'East Timorese', 'Ecuadorean', 'Egyptian', 'Emirian',
+    'Equatorial Guinean', 'Eritrean', 'Estonian', 'Ethiopian', 'Fijian', 'Filipino', 'Finnish', 'French', 'Gabonese', 'Gambian', 'Georgian',
+    'German', 'Ghanaian', 'Greek', 'Grenadian', 'Guatemalan', 'Guinea-Bissauan', 'Guinean', 'Guyanese', 'Haitian',
+    // tslint:disable-next-line: max-line-length
+    'Herzegovinian', 'Honduran', 'Hungarian', 'I-Kiribati', 'Icelander', 'Indian', 'Indonesian', 'Iranian', 'Iraqi', 'Irish', 'Israeli', 'Italian', 'Ivorian', 'Jamaican', 'Japanese', 'Jordanian', 'Kazakhstani', 'Kenyan',
+    // tslint:disable-next-line: max-line-length
+    'Kittian and Nevisian', 'Kuwaiti', 'Kyrgyz', 'Laotian', 'Latvia', 'Lebanes', 'Liberia', 'Libya', 'Liechtensteine', 'Lithuania', 'Luxembourge', 'Macedonia',
+    'Malagas', 'Malawia', 'Malaysia', 'Maldivia', 'Malia', 'Maltes', 'Marshalles', 'Mauritania', 'Mauritia', 'Mexica', 'Micronesia',
+    'Moldova', 'Monaca', 'Mongolia', 'Morocca', 'Mosoth', 'Motswan', 'Mozambica', 'Namibia', 'Naurua',
+    'Nepales', 'New Zealande', 'Ni-Vanuat', 'Nicaragua', 'Nigeria', 'Nigerie', 'North Korea', 'Northern Iris', 'Norwegia', 'Oman',
+    'Pakistan', 'Palaua',  'Panamania',  'Papua New Guinea',  'Paraguaya', 'Peruvia', 'Polis', 'Portugues', 'Qatar', 'Romania', 'Russia',
+    'Rwanda',  'Saint Lucia', 'Salvadora', 'Samoa', 'San Marines', 'Sao Tomea', 'Saud', 'Scottis', 'Senegales',
+    'Serbia', 'Seychelloi', 'Sierra Leonea', 'Singaporea', 'Slovakia', 'Slovenia', 'Solomon Islande', 'Somal',
+    // tslint:disable-next-line: max-line-length
+    'South Africa', 'South Korea', 'Spanis', 'Sri Lanka', 'Sudanes', 'Suriname', 'Swaz', 'Swedis', 'Swis', 'Syria', 'Taiwanes', 'Taji', 'Tanzania', 'Tha',
+    'Togoles', 'Tonga', 'Trinidadian or Tobagonia', 'Tunisia', 'Turkis', 'Tuvalua', 'Uganda', 'Ukrainia', 'Uruguaya', 'Uzbekistan',
+    'Venezuela', 'Vietnames', 'Wels', 'Yemenit', 'Zambia', 'Zimbabwea'
+];

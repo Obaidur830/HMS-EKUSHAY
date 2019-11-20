@@ -12,6 +12,7 @@ import { DatePipe } from '@angular/common';
 import { StudentService } from './service/student.service';
 import { StudentComponent } from './components/student/student.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 @NgModule({
   declarations: [StudentListComponent, StudentComponent],
   imports: [
@@ -35,7 +36,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatPaginatorModule,
     MatInputModule,
     MatBadgeModule,
-    RouterModule.forChild(studentRoutes)
+    NgxMatSelectSearchModule,
+   RouterModule.forChild(studentRoutes)
   ],
   providers: [StudentService, DatePipe],
   entryComponents: [StudentComponent]

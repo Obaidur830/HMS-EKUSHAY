@@ -31,14 +31,20 @@ export class ResidenceStudentComponent implements OnInit {
   onSubmit() {
     if (this.residentialStudentService.residentialStudentForm.valid) {
       this.residentialStudentInformation = {
+        registrationNumber: this.residentialStudentService.residentialStudentForm.value.registrationNumber,
         fullName: this.residentialStudentService.residentialStudentForm.value.fullName,
+        fathersName: this.residentialStudentService.residentialStudentForm.value.fathersName,
+        mothersName: this.residentialStudentService.residentialStudentForm.value.mothersName,
+        nationality: this.residentialStudentService.residentialStudentForm.value.nationality,
+        religion: this.residentialStudentService.residentialStudentForm.value.religion,
         email: this.residentialStudentService.residentialStudentForm.value.email,
         mobile: this.residentialStudentService.residentialStudentForm.value.mobile,
-        city: this.residentialStudentService.residentialStudentForm.value.city,
         gender: this.residentialStudentService.residentialStudentForm.value.gender,
+        dateOfBirth: this.residentialStudentService.residentialStudentForm.value.dateOfBirth,
         department: this.residentialStudentService.residentialStudentForm.value.department,
         hireDate: this.residentialStudentService.residentialStudentForm.value.hireDate,
-        isPermanent: this.residentialStudentService.residentialStudentForm.value.isPermanent
+        isPermanent: this.residentialStudentService.residentialStudentForm.value.isPermanent,
+        city: this.residentialStudentService.residentialStudentForm.value.city
       };
       if (!this.residentialStudentService.residentialStudentForm.get('$key').value) {
         this.residentialStudentService.insertResidentialStudent(this.residentialStudentInformation);

@@ -1,31 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { StudentService } from '../../service/student.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatSelect } from '@angular/material';
 import { StudentInformation } from 'src/app/config/interfaces/user.interface';
+import { nationalities } from 'src/app/config/constants/defaultConstants';
+import { FormControl } from '@angular/forms';
+import { ReplaySubject, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+
 
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.scss']
 })
-export class StudentComponent implements OnInit {
+export class StudentComponent implements OnInit, OnDestroy {
   studentInformation: StudentInformation;
- // studentForm: FormGroup;
   departments = ['science', 'arts', 'commerce'];
+  religions = ['Islam', 'Christianity', 'Hinduism', 'Buddhism'];
+
+
+  nationalities = nationalities;
+  public nationalityFilterCntrl: FormControl = new FormControl();
+  public filteredNationalities: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
+  @ViewChild('singleSelect') singleSelect: MatSelect;
+  // tslint:disable-next-line: variable-name
+  private _onDestroy = new Subject<void>();
   constructor(
     private studentService: StudentService,
-    // private departmentService: DepartmentService,
-   // private fb: FormBuilder,
     private notificationService: NotificationService,
     public dialogRef: MatDialogRef<StudentComponent>) { }
 
 
 
   ngOnInit() {
-    // this.service.getEmployees();
-   // this.makeStudentForm();
-    // this.initializeFormGroup();
+    this.studentService.studentForm.get('nationality').setValue(nationalities[14]);
+    this.filteredNationalities.next(this.nationalities.slice());
+    // listen for search field value changes
+    this.nationalityFilterCntrl.valueChanges
+      .pipe(takeUntil(this._onDestroy))
+      .subscribe(() => {
+        this.filterNationalities();
+      });
   }
   onClear() {
     this.studentService.studentForm.reset();
@@ -67,6 +84,31 @@ export class StudentComponent implements OnInit {
     this.studentService.studentForm.reset();
     this.studentService.initializeFormGroup();
     this.dialogRef.close();
+  }
+
+
+  ngOnDestroy() {
+    this._onDestroy.next();
+    this._onDestroy.complete();
+  }
+
+
+  private filterNationalities() {
+    if (!this.nationalities) {
+      return;
+    }
+    // get the search keyword
+    let search = this.nationalityFilterCntrl.value;
+    if (!search) {
+      this.filteredNationalities.next(this.nationalities.slice());
+      return;
+    } else {
+      search = search.toLowerCase();
+    }
+    // filter the nationality
+    this.filteredNationalities.next(
+      this.nationalities.filter(nation => nation.toLowerCase().indexOf(search) > -1)
+    );
   }
 
 
