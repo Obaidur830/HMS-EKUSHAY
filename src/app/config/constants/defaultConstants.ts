@@ -235,6 +235,19 @@ export const urlPaths = {
         }
     },
 };
+export const feeStatus = [
+    'pending', 'completed'
+];
+
+export const residentialStatus = [
+    'Residential', 'Non-Residential'
+];
+export const classYearSemesters = [
+   '1st year - 1st semester', '1st year - 2nd semester', '2nd year - 1st semester', '2nd year - 2nd semester',
+   ' 3rd year - 1st semester', '3rd year - 2nd semester', '4th year - 1st semester', '4th year - 2nd semester',
+   'masters - 1st semester', 'masters - 2nd semester', 'masters - 3rd semester'
+];
+
 export const nationalities = [
     'Afghan', 'Albanian', 'Algerian', 'American', 'Andorran', 'Angolan', 'Antiguans', 'Argentinean', 'Armenian', 'Australian',
     'Austrian', 'Azerbaijani', 'Bahamian', 'Bahraini', 'Bangladeshi', 'Barbadian', 'Barbudans', 'Batswana', 'Belarusian',
