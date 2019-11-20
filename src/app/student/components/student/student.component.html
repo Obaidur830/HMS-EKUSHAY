@@ -193,10 +193,10 @@
                   </mat-radio-group>
                 </div>
                 <mat-form-field>
-                  <mat-select formControlName="department" placeholder="Department">
-                    <mat-option>None</mat-option>
-                    <ng-container *ngFor="let department of departments">
-                      <mat-option value="{{department}}">{{department}}</mat-option>
+                  <mat-select formControlName="classYearSemester" placeholder="chose your class year">
+                    <!-- <mat-option>None</mat-option> -->
+                    <ng-container *ngFor="let classYear of classYearSemesters">
+                      <mat-option value="{{classYear}}">{{classYear}}</mat-option>
                     </ng-container>
                   </mat-select>
                 </mat-form-field>

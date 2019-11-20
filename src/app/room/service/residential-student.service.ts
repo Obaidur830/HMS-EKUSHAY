@@ -32,6 +32,7 @@ export class ResidentialStudentService {
     hireDate: new FormControl('', Validators.required),
     isPermanent: new FormControl(false),
     city: new FormControl(''),
+    classYearSemester: new FormControl('')
   });
 
 
@@ -52,7 +53,8 @@ export class ResidentialStudentService {
       department: '',
       hireDate: '',
       isPermanent: false,
-      city: ''
+      city: '',
+      classYearSemester: ''
     });
   }
 

@@ -44,7 +44,9 @@ export class ResidenceStudentComponent implements OnInit {
         department: this.residentialStudentService.residentialStudentForm.value.department,
         hireDate: this.residentialStudentService.residentialStudentForm.value.hireDate,
         isPermanent: this.residentialStudentService.residentialStudentForm.value.isPermanent,
-        city: this.residentialStudentService.residentialStudentForm.value.city
+        city: this.residentialStudentService.residentialStudentForm.value.city,
+        classYearSemester: this.residentialStudentService.residentialStudentForm.value.classYearSemester,
+
       };
       if (!this.residentialStudentService.residentialStudentForm.get('$key').value) {
         this.residentialStudentService.insertResidentialStudent(this.residentialStudentInformation);

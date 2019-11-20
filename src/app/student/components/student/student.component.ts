@@ -3,7 +3,7 @@ import { StudentService } from '../../service/student.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { MatDialogRef, MatSelect } from '@angular/material';
 import { StudentInformation } from 'src/app/config/interfaces/user.interface';
-import { nationalities } from 'src/app/config/constants/defaultConstants';
+import { nationalities, classYearSemesters } from 'src/app/config/constants/defaultConstants';
 import { FormControl } from '@angular/forms';
 import { ReplaySubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -19,6 +19,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   studentInformation: StudentInformation;
   departments = ['science', 'arts', 'commerce'];
   religions = ['Islam', 'Christianity', 'Hinduism', 'Buddhism'];
+  classYearSemesters = classYearSemesters;
 
 
   nationalities = nationalities;
@@ -66,7 +67,8 @@ export class StudentComponent implements OnInit, OnDestroy {
         department: this.studentService.studentForm.value.department,
         hireDate: this.studentService.studentForm.value.hireDate,
         isPermanent: this.studentService.studentForm.value.isPermanent,
-        city: this.studentService.studentForm.value.city
+        city: this.studentService.studentForm.value.city,
+        classYearSemester: this.studentService.studentForm.value.classYearSemester
       };
       if (!this.studentService.studentForm.get('$key').value) {
         this.studentService.insertStudent(this.studentInformation);
