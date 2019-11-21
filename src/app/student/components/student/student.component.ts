@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { StudentService } from '../../service/student.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { MatDialogRef, MatSelect } from '@angular/material';
-import { StudentInformation } from 'src/app/config/interfaces/user.interface';
-import { nationalities, classYearSemesters, allSubjects } from 'src/app/config/constants/defaultConstants';
+import { StudentInformation, District, SubDistrict, Union } from 'src/app/config/interfaces/user.interface';
+import { nationalities, classYearSemesters, allSubjects, districts, subDistricts, unions } from 'src/app/config/constants/defaultConstants';
 import { FormControl } from '@angular/forms';
 import { ReplaySubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -20,13 +20,26 @@ export class StudentComponent implements OnInit, OnDestroy {
   departments = ['science', 'arts', 'commerce'];
   religions = ['Islam', 'Christianity', 'Hinduism', 'Buddhism'];
   classYearSemesters = classYearSemesters;
+  districts = districts;
+  public districtFilterCntrl: FormControl = new FormControl();
+  public filteredDistricts: ReplaySubject<District[]> = new ReplaySubject<District[]>(1);
+  districtCode: number;
+
+  subDistricts = subDistricts;
+  public filteredSubDistricts: ReplaySubject<SubDistrict[]> = new ReplaySubject<SubDistrict[]>(1);
+  subDistrictCode: number;
+
+  unions = unions;
+  public filteredUnions: ReplaySubject<Union[]> = new ReplaySubject<Union[]>(1);
 
   allSubjects = allSubjects;
   public subjectFilterCntrl: FormControl = new FormControl();
   public filteredSubjects: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
+
   nationalities = nationalities;
   public nationalityFilterCntrl: FormControl = new FormControl();
   public filteredNationalities: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
+
   @ViewChild('singleSelect') singleSelect: MatSelect;
   // tslint:disable-next-line: variable-name
   private _onDestroy = new Subject<void>();
@@ -41,6 +54,10 @@ export class StudentComponent implements OnInit, OnDestroy {
     this.studentService.studentForm.get('nationality').setValue(nationalities[14]);
     this.filteredNationalities.next(this.nationalities.slice());
     this.filteredSubjects.next(this.allSubjects.slice());
+    this.filteredDistricts.next(this.districts.slice());
+    this.filteredSubDistricts.next(this.subDistricts.slice());
+    this.filteredUnions.next(this.unions.slice());
+
     // listen for search field value changes
     this.nationalityFilterCntrl.valueChanges
       .pipe(takeUntil(this._onDestroy))
@@ -53,6 +70,11 @@ export class StudentComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this._onDestroy))
       .subscribe(() => {
         this.filterSubjects();
+      });
+    this.districtFilterCntrl.valueChanges
+      .pipe(takeUntil(this._onDestroy))
+      .subscribe(() => {
+        this.filterDistricts();
       });
   }
   onClear() {
@@ -78,6 +100,9 @@ export class StudentComponent implements OnInit, OnDestroy {
         hireDate: this.studentService.studentForm.value.hireDate,
         isPermanent: this.studentService.studentForm.value.isPermanent,
         city: this.studentService.studentForm.value.city,
+        district: this.studentService.studentForm.value.district,
+        subDistrict: this.studentService.studentForm.value.subDistrict,
+        union: this.studentService.studentForm.value.union,
         subject: this.studentService.studentForm.value.subject,
         classYearSemester: this.studentService.studentForm.value.classYearSemester
       };
@@ -141,6 +166,54 @@ export class StudentComponent implements OnInit, OnDestroy {
     );
   }
 
+  private filterDistricts() {
+    // console.log('fgd');
+    if (!this.districts) {
+      return;
+    }
+    // get the search keyword
+    let search = this.districtFilterCntrl.value;
+    if (!search) {
+      this.filteredDistricts.next(this.districts.slice());
+      return;
+    } else {
+      search = search.toLowerCase();
+    }
+    // filter the district
+    this.filteredDistricts.next(
+      this.districts.filter(district => district.fields.name.toLowerCase().indexOf(search) > -1)
+    );
+  }
 
+  setSubDistrict(districtCode) {
+    // console.log(n);
+     if (this.districtCode !== districtCode) {
+      this.districtCode = districtCode;
+      this.studentService.studentForm.get('subDistrict').setValue('');
+      this.studentService.studentForm.get('union').setValue('');
+      this.filteredSubDistricts.next(
+        // tslint:disable-next-line: max-line-length
+        this.subDistricts.filter(subDistrict => subDistrict.fields.district === districtCode)
+        );
+      // sob theke valo hoto jodi selected district er sob union district select er sathe next() kora jeto
+
+      // this.filteredUnions.next(this.unions.slice());
+     }
+  }
+
+  setUnion(subDistrictCode) {
+    // console.log(subDistrictCode);
+    // console.log(n);
+     if (this.subDistrictCode !== subDistrictCode) {
+      this.subDistrictCode = subDistrictCode;
+      this.studentService.studentForm.get('union').setValue('');
+      // sob theke valo hoto jodi selected district er sob union district select er sathe next() kora jeto
+      // this.studentService.studentForm.get('union').setValue('');
+      this.filteredUnions.next(
+        this.unions.filter(union => union.fields.sub_district === subDistrictCode)
+        );
+      // this.filteredUnions.next(this.unions.slice());
+     }
+  }
 
 }

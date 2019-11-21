@@ -133,23 +133,49 @@
     <mat-grid-tile>
       <div class="row">
           <div class="col controles-container">
-              <mat-form-field>
+              <!-- <mat-form-field>
                     <input formControlName="email" matInput placeholder="Email">
                     <mat-error>Invalid email address.</mat-error>
-              </mat-form-field>
-              <mat-form-field>
+              </mat-form-field> -->
+              <!-- <mat-form-field>
                   <input formControlName="mobile" matInput placeholder="Mobile*">
                   <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
                   <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.
                   </mat-error>
+              </mat-form-field> -->
+              <mat-form-field>
+                <mat-select formControlName="district" placeholder="Select District" #singleSelect>
+                  <ngx-mat-select-search [formControl]="districtFilterCntrl" [placeholderLabel]="'search your district...'" 
+                  [noEntriesFoundLabel]="'no matching district found'"></ngx-mat-select-search>
+                  <mat-option *ngFor="let district of filteredDistricts | async" (click)="setSubDistrict(district.pk)" value={{district.fields.name}}>
+                    {{district.fields.name}}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
-              <div >
+              <mat-form-field>
+                <mat-select formControlName="subDistrict" placeholder="Upazilla">
+                  <mat-option>None</mat-option>
+                  <ng-container *ngFor="let subDistrict of filteredSubDistricts | async " >
+                    <mat-option (click)="setUnion(subDistrict.pk)" value="{{subDistrict.fields.name}}">{{subDistrict.fields.name}}</mat-option>
+                  </ng-container>
+                </mat-select>
+              </mat-form-field>
+              <!-- <div >
                 <mat-radio-group formControlName="gender">
                   <mat-radio-button  value="1">Male</mat-radio-button>
                   <mat-radio-button value="2">Female</mat-radio-button>
                   <mat-radio-button value="3">Other</mat-radio-button>
                 </mat-radio-group>
-              </div>
+              </div> -->
+
+              <mat-form-field>
+                <mat-select formControlName="union" placeholder="Union">
+                  <!-- <mat-option>None</mat-option> -->
+                  <ng-container *ngFor="let union of filteredUnions | async">
+                    <mat-option value="{{union.fields.name}}">{{union.fields.name}}</mat-option>
+                  </ng-container>
+                </mat-select>
+               </mat-form-field>
               <mat-form-field>
                 <mat-select formControlName="department" placeholder="Department">
                   <mat-option>None</mat-option>

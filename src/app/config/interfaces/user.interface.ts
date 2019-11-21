@@ -52,6 +52,9 @@ export interface StudentInformation {
     department: string;
     hireDate: string;
     city: string;
+    district: string;
+    subDistrict: string;
+    union: string;
     subject: string;
     classYearSemester: string;
 }
@@ -149,3 +152,31 @@ export interface FileDetails {
     fileDescription?: string;
     publisherName?: string;
   }
+export interface District {
+   model: string;
+   pk: number;
+   fields: DistrictFields ;
+}
+export interface DistrictFields {
+    name: string;
+    division: number;
+}
+
+export interface SubDistrict {
+    model: string;
+    pk: number;
+    fields: SubDistrictFields ;
+}
+export interface SubDistrictFields {
+    name: string;
+    district: number;
+}
+export interface Union {
+    model: string;
+    pk: number;
+    fields: UnionFields ;
+}
+export interface UnionFields {
+    name: string;
+    sub_district: number;
+}
