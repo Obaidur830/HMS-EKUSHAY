@@ -52,6 +52,7 @@ export interface StudentInformation {
     department: string;
     hireDate: string;
     city: string;
+    subject: string;
     classYearSemester: string;
 }
 

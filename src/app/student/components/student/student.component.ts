@@ -3,7 +3,7 @@ import { StudentService } from '../../service/student.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { MatDialogRef, MatSelect } from '@angular/material';
 import { StudentInformation } from 'src/app/config/interfaces/user.interface';
-import { nationalities, classYearSemesters } from 'src/app/config/constants/defaultConstants';
+import { nationalities, classYearSemesters, allSubjects } from 'src/app/config/constants/defaultConstants';
 import { FormControl } from '@angular/forms';
 import { ReplaySubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -21,7 +21,9 @@ export class StudentComponent implements OnInit, OnDestroy {
   religions = ['Islam', 'Christianity', 'Hinduism', 'Buddhism'];
   classYearSemesters = classYearSemesters;
 
-
+  allSubjects = allSubjects;
+  public subjectFilterCntrl: FormControl = new FormControl();
+  public filteredSubjects: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
   nationalities = nationalities;
   public nationalityFilterCntrl: FormControl = new FormControl();
   public filteredNationalities: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
@@ -38,11 +40,19 @@ export class StudentComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.studentService.studentForm.get('nationality').setValue(nationalities[14]);
     this.filteredNationalities.next(this.nationalities.slice());
+    this.filteredSubjects.next(this.allSubjects.slice());
     // listen for search field value changes
     this.nationalityFilterCntrl.valueChanges
       .pipe(takeUntil(this._onDestroy))
       .subscribe(() => {
         this.filterNationalities();
+      });
+    // this.studentService.studentForm.get('nationality').setValue(nationalities[14]);
+    // listen for search field value changes
+    this.subjectFilterCntrl.valueChanges
+      .pipe(takeUntil(this._onDestroy))
+      .subscribe(() => {
+        this.filterSubjects();
       });
   }
   onClear() {
@@ -68,6 +78,7 @@ export class StudentComponent implements OnInit, OnDestroy {
         hireDate: this.studentService.studentForm.value.hireDate,
         isPermanent: this.studentService.studentForm.value.isPermanent,
         city: this.studentService.studentForm.value.city,
+        subject: this.studentService.studentForm.value.subject,
         classYearSemester: this.studentService.studentForm.value.classYearSemester
       };
       if (!this.studentService.studentForm.get('$key').value) {
@@ -112,6 +123,24 @@ export class StudentComponent implements OnInit, OnDestroy {
       this.nationalities.filter(nation => nation.toLowerCase().indexOf(search) > -1)
     );
   }
+  private filterSubjects() {
+    if (!this.allSubjects) {
+      return;
+    }
+    // get the search keyword
+    let search = this.subjectFilterCntrl.value;
+    if (!search) {
+      this.filteredSubjects.next(this.allSubjects.slice());
+      return;
+    } else {
+      search = search.toLowerCase();
+    }
+    // filter the nationality
+    this.filteredSubjects.next(
+      this.allSubjects.filter(subject => subject.toLowerCase().indexOf(search) > -1)
+    );
+  }
+
 
 
 }

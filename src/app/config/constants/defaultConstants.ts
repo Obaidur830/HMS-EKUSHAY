@@ -65,9 +65,9 @@ export const defaultConst = {
             icon: 'weekend'
         },
         {
-           name: 'Enquiry',
-           url: 'enquiry',
-           icon: 'contact_support'
+            name: 'Enquiry',
+            url: 'enquiry',
+            icon: 'contact_support'
         },
         {
             name: 'Category',
@@ -108,31 +108,31 @@ export const accountingConstant = [
     {
         name: 'Hall Income',
         url: 'income'
-     },
+    },
 
-     {
-       name: 'Hall Expense',
-       url: 'expense'
+    {
+        name: 'Hall Expense',
+        url: 'expense'
     },
     {
-       name: 'Protibedon',
-       url: 'protibedon'
+        name: 'Protibedon',
+        url: 'protibedon'
     }
 ];
 export const residentialConstant = [
-     {
-         name: 'Residential Student',
-         url: 'student'
-      },
+    {
+        name: 'Residential Student',
+        url: 'student'
+    },
 
-      {
+    {
         name: 'Residential Room',
         url: 'room'
-     },
-     {
+    },
+    {
         name: 'Residential Block',
         url: 'block'
-     }
+    }
 ];
 // export const noticeBoardConstant = {
 //     noticeBoard: {
@@ -226,7 +226,7 @@ export const urlPaths = {
     },
     Student: {
         StudentList: {
-           url: 'student'
+            url: 'student'
         }
     },
     Product: {
@@ -235,6 +235,90 @@ export const urlPaths = {
         }
     },
 };
+export const allSubjects = [
+    'Physics', 'Mathematics',
+    'Chemistry',
+    'Statistics',
+    'Applied Mathematics',
+    'Soil, Water, and Environment Science',
+    'Botany',
+    'Zoology',
+    'Biochemistry and Motivation Science',
+    'Psychology',
+    'Microbiology',
+    'Fisheries',
+    'Genetic Engineering & Biotechnology',
+    'Pharmacy',
+    'Geography and environment',
+    'Geology',
+    'Oceanography',
+    'Disaster science and management',
+    'Electrical and Electronic Engineering',
+    'Applied Chemistry and Chemical Engineering',
+    'Computer Science and Engineering',
+    'Nuclear engineering',
+    'Robotics and Mechanics Engineering',
+    'Applied statistics',
+    'Nutrition and Food Science',
+    'Software engineering',
+    'Leather engineering',
+    'Footwear engineering',
+    'Leather Products Engineering',
+    'Bangla',
+    'English',
+    'Arabic',
+    'Persian Language and Literature',
+    'Urdu',
+    'Sanskrit',
+    'Pali and Buddhist Studies',
+    'History',
+    'Philosophy',
+    'Islamic Studies',
+    'Islamic History and Culture',
+    'Information technology and library management',
+    'Theatre and Performance Studies',
+    'Linguistics',
+    'Music',
+    'World Religion and Culture',
+    'Dance',
+    'Economics',
+    'Political Science',
+    'International Relation',
+    'Sociology',
+    'Mass Communication and Journalism',
+    'Public Administration',
+    'Anthropology',
+    'Population Science',
+    'Peace and Conflict Studies',
+    'Women and Gender Studies',
+    'Development Studies',
+    'Television, Film, and Photography',
+    'Criminology',
+    'Communication Disorders',
+    'Print and Publication Studies',
+    'Japanese studies',
+    'Law',
+    'Geography and Environment',
+    'Psychology',
+    'Social Welfare',
+    'Health Economics',
+    'Education',
+    'Disaster Managements and Vulnerability Studies',
+    'English for Speakers of Other Languages',
+    'French Language and Culture ',
+    'Chinese Language and Culture ',
+    'Japanese Language and Culture',
+    'Management',
+    'Accounting and Information System',
+    'Marketing',
+    'Finance',
+    'Banking and Insurance',
+    'Management and Information System',
+    'Tourism and Hospitality Management',
+    'International Business ',
+    'Organization Strategy and Leadership'
+];
+
 export const feeStatus = [
     'pending', 'completed'
 ];
@@ -243,9 +327,9 @@ export const residentialStatus = [
     'Residential', 'Non-Residential'
 ];
 export const classYearSemesters = [
-   '1st year - 1st semester', '1st year - 2nd semester', '2nd year - 1st semester', '2nd year - 2nd semester',
-   ' 3rd year - 1st semester', '3rd year - 2nd semester', '4th year - 1st semester', '4th year - 2nd semester',
-   'masters - 1st semester', 'masters - 2nd semester', 'masters - 3rd semester'
+    '1st year - 1st semester', '1st year - 2nd semester', '2nd year - 1st semester', '2nd year - 2nd semester',
+    ' 3rd year - 1st semester', '3rd year - 2nd semester', '4th year - 1st semester', '4th year - 2nd semester',
+    'masters - 1st semester', 'masters - 2nd semester', 'masters - 3rd semester'
 ];
 
 export const nationalities = [
@@ -264,8 +348,8 @@ export const nationalities = [
     'Malagas', 'Malawia', 'Malaysia', 'Maldivia', 'Malia', 'Maltes', 'Marshalles', 'Mauritania', 'Mauritia', 'Mexica', 'Micronesia',
     'Moldova', 'Monaca', 'Mongolia', 'Morocca', 'Mosoth', 'Motswan', 'Mozambica', 'Namibia', 'Naurua',
     'Nepales', 'New Zealande', 'Ni-Vanuat', 'Nicaragua', 'Nigeria', 'Nigerie', 'North Korea', 'Northern Iris', 'Norwegia', 'Oman',
-    'Pakistan', 'Palaua',  'Panamania',  'Papua New Guinea',  'Paraguaya', 'Peruvia', 'Polis', 'Portugues', 'Qatar', 'Romania', 'Russia',
-    'Rwanda',  'Saint Lucia', 'Salvadora', 'Samoa', 'San Marines', 'Sao Tomea', 'Saud', 'Scottis', 'Senegales',
+    'Pakistan', 'Palaua', 'Panamania', 'Papua New Guinea', 'Paraguaya', 'Peruvia', 'Polis', 'Portugues', 'Qatar', 'Romania', 'Russia',
+    'Rwanda', 'Saint Lucia', 'Salvadora', 'Samoa', 'San Marines', 'Sao Tomea', 'Saud', 'Scottis', 'Senegales',
     'Serbia', 'Seychelloi', 'Sierra Leonea', 'Singaporea', 'Slovakia', 'Slovenia', 'Solomon Islande', 'Somal',
     // tslint:disable-next-line: max-line-length
     'South Africa', 'South Korea', 'Spanis', 'Sri Lanka', 'Sudanes', 'Suriname', 'Swaz', 'Swedis', 'Swis', 'Syria', 'Taiwanes', 'Taji', 'Tanzania', 'Tha',

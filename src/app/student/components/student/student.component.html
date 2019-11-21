@@ -185,13 +185,15 @@
                     <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.
                     </mat-error>
                 </mat-form-field>
-                <div >
-                  <mat-radio-group formControlName="gender">
-                    <mat-radio-button  value="1">Male</mat-radio-button>
-                    <mat-radio-button value="2">Female</mat-radio-button>
-                    <mat-radio-button value="3">Other</mat-radio-button>
-                  </mat-radio-group>
-                </div>
+                <mat-form-field>
+                  <mat-select formControlName="subject" placeholder="subject" #singleSelect>
+                    <ngx-mat-select-search [formControl]="subjectFilterCntrl" [placeholderLabel]="'search your subject...'" 
+                    [noEntriesFoundLabel]="'no matching subject found'"></ngx-mat-select-search>
+                    <mat-option *ngFor="let subject of filteredSubjects | async" value={{subject}}>
+                      {{subject}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
                 <mat-form-field>
                   <mat-select formControlName="classYearSemester" placeholder="chose your class year">
                     <!-- <mat-option>None</mat-option> -->
