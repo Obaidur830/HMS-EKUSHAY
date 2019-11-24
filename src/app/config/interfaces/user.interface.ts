@@ -48,7 +48,9 @@ export interface StudentInformation {
     dateOfBirth: string;
     email: string;
     mobile: string;
-    isPermanent: boolean;
+    isResidential: string;
+    admissionFeesStatus: string;
+    residenceFeeStatus: string;
     department: string;
     hireDate: string;
     city: string;

@@ -190,7 +190,7 @@
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
               <div class="add-bottom-padding">
-                <mat-checkbox formControlName="isPermanent">Permanent Student</mat-checkbox>
+                <mat-checkbox formControlName="isResidential">Permanent Student</mat-checkbox>
               </div>
               <mat-form-field>
                 <input formControlName="city" matInput placeholder="City">
@@ -228,17 +228,33 @@
                     </ng-container>
                   </mat-select>
                 </mat-form-field>
-                <mat-form-field>
+                <!-- <mat-form-field>
                   <input formControlName="hireDate" matInput [matDatepicker]="picker4" placeholder="Hire Date">
                   <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
                   <mat-datepicker #picker4></mat-datepicker>
-                </mat-form-field>
+                </mat-form-field> -->
                 <div class="add-bottom-padding">
-                  <mat-checkbox formControlName="isPermanent">Permanent Student</mat-checkbox>
+                  <mat-checkbox formControlName="isResidential">Is Residential?</mat-checkbox>
                 </div>
                 <mat-form-field>
-                  <input formControlName="city" matInput placeholder="City">
+                  <mat-select formControlName="addmissionFeeStatus" placeholder="Addmission fee Status">
+                    <mat-option>None</mat-option>
+                    <ng-container *ngFor="let fee of feeStatuses">
+                      <mat-option value="{{fee}}">{{fee}}</mat-option>
+                    </ng-container>
+                  </mat-select>
                 </mat-form-field>
+                <mat-form-field>
+                  <mat-select formControlName="residenceFeeStatus" placeholder="Residence fee Status">
+                    <mat-option>None</mat-option>
+                    <ng-container *ngFor="let fee of feeStatuses">
+                      <mat-option value="{{fee}}">{{fee}}</mat-option>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field>
+                <!-- <mat-form-field>
+                  <input formControlName="city" matInput placeholder="City">
+                </mat-form-field> -->
                 <div class="button-row">
                   <button mat-raised-button color="primary" type="submit" [disabled]="studentService.studentForm.invalid">Submit</button>
                   <button mat-raised-button color="warn" (click)="onClear()">Clear</button>

@@ -3,7 +3,7 @@ import { StudentService } from '../../service/student.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { MatDialogRef, MatSelect } from '@angular/material';
 import { StudentInformation, District, SubDistrict, Union } from 'src/app/config/interfaces/user.interface';
-import { nationalities, classYearSemesters, allSubjects, districts, subDistricts, unions } from 'src/app/config/constants/defaultConstants';
+import { nationalities, classYearSemesters, allSubjects, districts, subDistricts, unions, feeStatus, feeStatuses } from 'src/app/config/constants/defaultConstants';
 import { FormControl } from '@angular/forms';
 import { ReplaySubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -19,6 +19,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   studentInformation: StudentInformation;
   departments = ['science', 'arts', 'commerce'];
   religions = ['Islam', 'Christianity', 'Hinduism', 'Buddhism'];
+  feeStatuses = feeStatuses;
   classYearSemesters = classYearSemesters;
   districts = districts;
   public districtFilterCntrl: FormControl = new FormControl();
@@ -98,7 +99,10 @@ export class StudentComponent implements OnInit, OnDestroy {
         dateOfBirth: this.studentService.studentForm.value.dateOfBirth,
         department: this.studentService.studentForm.value.department,
         hireDate: this.studentService.studentForm.value.hireDate,
-        isPermanent: this.studentService.studentForm.value.isPermanent,
+        isResidential: this.studentService.studentForm.value.isResidential ? 'Residential' : 'Non-Residential',
+        addmisionFeeStatus:this.studentService.studentForm.value.addmisionFeeStatus,
+        residenceFeeStatus:this.studentService.studentForm.value.residenceFeeStatus,
+
         city: this.studentService.studentForm.value.city,
         district: this.studentService.studentForm.value.district,
         subDistrict: this.studentService.studentForm.value.subDistrict,

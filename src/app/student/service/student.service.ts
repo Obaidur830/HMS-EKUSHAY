@@ -31,7 +31,9 @@ export class StudentService {
     mobile: new FormControl('', [Validators.required, Validators.minLength(8)]),
     department: new FormControl(''),
     hireDate: new FormControl('', Validators.required),
-    isPermanent: new FormControl(false),
+    isResidential: new FormControl(false),
+    admissionFeeStatus: new FormControl(''),
+    residenceFeeStatus: new FormControl(''),
     city: new FormControl(''),
     district: new FormControl(''),
     subDistrict: new FormControl(''),
@@ -57,7 +59,9 @@ export class StudentService {
       // gender: '1',
       department: '',
       hireDate: '',
-      isPermanent: false,
+      isResidential: false,
+      admissionFeeStatus: '',
+      residenceFeeStatus: '',
       city: '',
       district: '',
       subDistrict: '',
@@ -69,7 +73,7 @@ export class StudentService {
 
   populateForm(studentInformation) {
     // timestamp to date conversion successfully
-    //console.log(new Date(studentInformation.hireDate.seconds * 1000));
+    // console.log(new Date(studentInformation.hireDate.seconds * 1000));
     const studentFormDetails = {...studentInformation, hireDate: new Date(studentInformation.hireDate.seconds * 1000)};
     this.studentForm.setValue(studentFormDetails);
   }

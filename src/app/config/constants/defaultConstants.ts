@@ -319,7 +319,7 @@ export const allSubjects = [
     'Organization Strategy and Leadership'
 ];
 
-export const feeStatus = [
+export const feeStatuses = [
     'pending', 'completed'
 ];
 
