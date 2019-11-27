@@ -53,6 +53,7 @@ export interface StudentInformation {
     residenceFeeStatus: string;
     department: string;
     hireDate: string;
+    comment: string;
     city: string;
     district: string;
     subDistrict: string;

@@ -34,6 +34,8 @@ export class StudentService {
     isResidential: new FormControl(false),
     admissionFeeStatus: new FormControl(''),
     residenceFeeStatus: new FormControl(''),
+    comment: new FormControl(''),
+
     city: new FormControl(''),
     district: new FormControl(''),
     subDistrict: new FormControl(''),
@@ -62,6 +64,7 @@ export class StudentService {
       isResidential: false,
       admissionFeeStatus: '',
       residenceFeeStatus: '',
+      comment: '',
       city: '',
       district: '',
       subDistrict: '',

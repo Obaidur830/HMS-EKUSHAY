@@ -189,9 +189,17 @@
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
-              <div class="add-bottom-padding">
+              <!-- <div class="add-bottom-padding">
                 <mat-checkbox formControlName="isResidential">Permanent Student</mat-checkbox>
-              </div>
+              </div> -->
+              <mat-form-field>
+
+                <textarea matInput placeholder="comment about student"
+                    formControlName="comment">
+        
+                </textarea>
+        
+            </mat-form-field>
               <mat-form-field>
                 <input formControlName="city" matInput placeholder="City">
               </mat-form-field>
@@ -234,7 +242,7 @@
                   <mat-datepicker #picker4></mat-datepicker>
                 </mat-form-field> -->
                 <div class="add-bottom-padding">
-                  <mat-checkbox formControlName="isResidential">Is Residential?</mat-checkbox>
+                  <mat-checkbox formControlName="isResidential">Is Residential Student?</mat-checkbox>
                 </div>
                 <mat-form-field>
                   <mat-select formControlName="addmissionFeeStatus" placeholder="Addmission fee Status">
