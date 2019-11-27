@@ -3,10 +3,12 @@ import { StudentService } from '../../service/student.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { MatDialogRef, MatSelect } from '@angular/material';
 import { StudentInformation, District, SubDistrict, Union } from 'src/app/config/interfaces/user.interface';
-import { nationalities, classYearSemesters, allSubjects, districts, subDistricts, unions, feeStatus, feeStatuses } from 'src/app/config/constants/defaultConstants';
+// tslint:disable-next-line: max-line-length
+import { nationalities, classYearSemesters, allSubjects, districts, subDistricts, unions, feeStatuses } from 'src/app/config/constants/defaultConstants';
 import { FormControl } from '@angular/forms';
 import { ReplaySubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { RootService } from 'src/app/root/services/root.service';
 
 
 
@@ -26,12 +28,11 @@ export class StudentComponent implements OnInit, OnDestroy {
   public filteredDistricts: ReplaySubject<District[]> = new ReplaySubject<District[]>(1);
   districtCode: number;
 
-  subDistricts = subDistricts;
-  public filteredSubDistricts: ReplaySubject<SubDistrict[]> = new ReplaySubject<SubDistrict[]>(1);
+ 
   subDistrictCode: number;
 
-  unions = unions;
-  public filteredUnions: ReplaySubject<Union[]> = new ReplaySubject<Union[]>(1);
+  // unions = unions;
+  // public filteredUnions: ReplaySubject<Union[]> = new ReplaySubject<Union[]>(1);
 
   allSubjects = allSubjects;
   public subjectFilterCntrl: FormControl = new FormControl();
@@ -47,7 +48,8 @@ export class StudentComponent implements OnInit, OnDestroy {
   constructor(
     private studentService: StudentService,
     private notificationService: NotificationService,
-    public dialogRef: MatDialogRef<StudentComponent>) { }
+    public dialogRef: MatDialogRef<StudentComponent>,
+    private rootService: RootService) { }
 
 
 
@@ -56,8 +58,8 @@ export class StudentComponent implements OnInit, OnDestroy {
     this.filteredNationalities.next(this.nationalities.slice());
     this.filteredSubjects.next(this.allSubjects.slice());
     this.filteredDistricts.next(this.districts.slice());
-    this.filteredSubDistricts.next(this.subDistricts.slice());
-    this.filteredUnions.next(this.unions.slice());
+    // this.filteredSubDistricts.next(this.subDistricts.slice());
+    // this.filteredUnions.next(this.unions.slice());
 
     // listen for search field value changes
     this.nationalityFilterCntrl.valueChanges
@@ -100,8 +102,8 @@ export class StudentComponent implements OnInit, OnDestroy {
         department: this.studentService.studentForm.value.department,
         hireDate: this.studentService.studentForm.value.hireDate,
         isResidential: this.studentService.studentForm.value.isResidential ? 'Residential' : 'Non-Residential',
-        addmisionFeeStatus:this.studentService.studentForm.value.addmisionFeeStatus,
-        residenceFeeStatus:this.studentService.studentForm.value.residenceFeeStatus,
+        addmisionFeeStatus: this.studentService.studentForm.value.addmisionFeeStatus,
+        residenceFeeStatus: this.studentService.studentForm.value.residenceFeeStatus,
 
         city: this.studentService.studentForm.value.city,
         district: this.studentService.studentForm.value.district,
@@ -195,9 +197,9 @@ export class StudentComponent implements OnInit, OnDestroy {
       this.districtCode = districtCode;
       this.studentService.studentForm.get('subDistrict').setValue('');
       this.studentService.studentForm.get('union').setValue('');
-      this.filteredSubDistricts.next(
+      this.rootService.filteredSubDistricts.next(
         // tslint:disable-next-line: max-line-length
-        this.subDistricts.filter(subDistrict => subDistrict.fields.district === districtCode)
+        this.rootService.subDistricts.filter(subDistrict => subDistrict.fields.district === districtCode)
         );
       // sob theke valo hoto jodi selected district er sob union district select er sathe next() kora jeto
 
@@ -213,8 +215,8 @@ export class StudentComponent implements OnInit, OnDestroy {
       this.studentService.studentForm.get('union').setValue('');
       // sob theke valo hoto jodi selected district er sob union district select er sathe next() kora jeto
       // this.studentService.studentForm.get('union').setValue('');
-      this.filteredUnions.next(
-        this.unions.filter(union => union.fields.sub_district === subDistrictCode)
+      this.rootService.filteredUnions.next(
+        this.rootService.unions.filter(union => union.fields.sub_district === subDistrictCode)
         );
       // this.filteredUnions.next(this.unions.slice());
      }

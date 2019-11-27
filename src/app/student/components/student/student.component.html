@@ -155,7 +155,7 @@
               <mat-form-field>
                 <mat-select formControlName="subDistrict" placeholder="Upazilla">
                   <mat-option>None</mat-option>
-                  <ng-container *ngFor="let subDistrict of filteredSubDistricts | async " >
+                  <ng-container *ngFor="let subDistrict of rootService.filteredSubDistricts | async " >
                     <mat-option (click)="setUnion(subDistrict.pk)" value="{{subDistrict.fields.name}}">{{subDistrict.fields.name}}</mat-option>
                   </ng-container>
                 </mat-select>
@@ -171,7 +171,7 @@
               <mat-form-field>
                 <mat-select formControlName="union" placeholder="Union">
                   <!-- <mat-option>None</mat-option> -->
-                  <ng-container *ngFor="let union of filteredUnions | async">
+                  <ng-container *ngFor="let union of rootService.filteredUnions | async">
                     <mat-option value="{{union.fields.name}}">{{union.fields.name}}</mat-option>
                   </ng-container>
                 </mat-select>

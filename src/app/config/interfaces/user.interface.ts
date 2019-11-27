@@ -49,7 +49,7 @@ export interface StudentInformation {
     email: string;
     mobile: string;
     isResidential: string;
-    admissionFeesStatus: string;
+    addmisionFeeStatus: string;
     residenceFeeStatus: string;
     department: string;
     hireDate: string;
