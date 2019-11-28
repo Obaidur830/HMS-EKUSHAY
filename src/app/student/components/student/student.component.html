@@ -78,7 +78,7 @@
               <!-- <p >general Information</p> -->
               <!-- <mat-divider></mat-divider> -->
             <!-- <input type="hidden" formControlName="$key"> -->
-            <mat-form-field>
+            <!-- <mat-form-field>
               <input formControlName="registrationNumber" matInput placeholder="registrationNumber*">
               <mat-error>This field is mandatory.</mat-error>
             </mat-form-field>
@@ -93,7 +93,7 @@
             <mat-form-field>
               <input formControlName="mothersName" matInput placeholder="Mother's Name*">
               <mat-error>This field is mandatory.</mat-error>
-            </mat-form-field>
+            </mat-form-field> -->
             <!-- <mat-form-field>
               <input formControlName="nationality" matInput placeholder="Nationality*">
               <mat-error>This field is mandatory.</mat-error>
@@ -101,27 +101,27 @@
             <!-- <mat-form-field>
               <input formControlName="religion" matInput placeholder="Religion">
             </mat-form-field> -->
-            <mat-form-field>
+            <!-- <mat-form-field>
                 <mat-select formControlName="religion" placeholder="Religion">
                   <mat-option>None</mat-option>
                   <ng-container *ngFor="let religion of religions">
                     <mat-option value="{{religion}}">{{religion}}</mat-option>
                   </ng-container>
                 </mat-select>
-            </mat-form-field>
-            <div class="add-bottom-padding">
+            </mat-form-field> -->
+            <!-- <div class="add-bottom-padding">
               <mat-radio-group formControlName="gender">
                 <mat-radio-button  value="1">Male</mat-radio-button>
                 <mat-radio-button value="2">Female</mat-radio-button>
                 <mat-radio-button value="3">Other</mat-radio-button>
               </mat-radio-group>
-            </div>
+            </div> -->
             <!-- <mat-form-field>
               <input formControlName="dateOfBirth" matInput [matDatepicker]="picker1" placeholder="Date of birth">
               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
               <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
-             -->
+            </mat-form-field> -->
+            
             
             <!-- <mat-form-field>
               <input formControlName="city" matInput placeholder="City">
@@ -192,14 +192,10 @@
               <!-- <div class="add-bottom-padding">
                 <mat-checkbox formControlName="isResidential">Permanent Student</mat-checkbox>
               </div> -->
-              <mat-form-field>
+              <mat-form-field >
+                <textarea  formControlName="comment" matInput placeholder="Leave a comment"></textarea>
+              </mat-form-field>
 
-                <textarea matInput placeholder="comment about student"
-                    formControlName="comment">
-        
-                </textarea>
-        
-            </mat-form-field>
               <mat-form-field>
                 <input formControlName="city" matInput placeholder="City">
               </mat-form-field>

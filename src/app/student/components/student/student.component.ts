@@ -102,7 +102,7 @@ export class StudentComponent implements OnInit, OnDestroy {
         department: this.studentService.studentForm.value.department,
         hireDate: this.studentService.studentForm.value.hireDate,
         isResidential: this.studentService.studentForm.value.isResidential ? 'Residential' : 'Non-Residential',
-        addmisionFeeStatus: this.studentService.studentForm.value.addmisionFeeStatus,
+        addmisionFeeStatus: this.studentService.studentForm.value.addmissionFeeStatus,
         residenceFeeStatus: this.studentService.studentForm.value.residenceFeeStatus,
         comment: this.studentService.studentForm.value.comment,
         city: this.studentService.studentForm.value.city,

@@ -32,7 +32,7 @@ export class StudentService {
     department: new FormControl(''),
     hireDate: new FormControl('', Validators.required),
     isResidential: new FormControl(false),
-    admissionFeeStatus: new FormControl(''),
+    addmissionFeeStatus: new FormControl(''),
     residenceFeeStatus: new FormControl(''),
     comment: new FormControl(''),
 
@@ -62,7 +62,7 @@ export class StudentService {
       department: '',
       hireDate: '',
       isResidential: false,
-      admissionFeeStatus: '',
+      addmissionFeeStatus: '',
       residenceFeeStatus: '',
       comment: '',
       city: '',
