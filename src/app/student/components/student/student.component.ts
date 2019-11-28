@@ -109,6 +109,7 @@ export class StudentComponent implements OnInit, OnDestroy {
         district: this.studentService.studentForm.value.district,
         subDistrict: this.studentService.studentForm.value.subDistrict,
         union: this.studentService.studentForm.value.union,
+        postCode: this.studentService.studentForm.value.postCode,
         subject: this.studentService.studentForm.value.subject,
         classYearSemester: this.studentService.studentForm.value.classYearSemester
       };

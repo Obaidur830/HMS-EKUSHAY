@@ -58,6 +58,7 @@ export interface StudentInformation {
     district: string;
     subDistrict: string;
     union: string;
+    postCode: string;
     subject: string;
     classYearSemester: string;
 }

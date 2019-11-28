@@ -40,6 +40,7 @@ export class StudentService {
     district: new FormControl(''),
     subDistrict: new FormControl(''),
     union: new FormControl(''),
+    postCode: new FormControl(''),
     subject: new FormControl(''),
     classYearSemester: new FormControl('')
   });
@@ -69,6 +70,7 @@ export class StudentService {
       district: '',
       subDistrict: '',
       union: '',
+      postCode: '',
       subject: '',
       classYearSemester: ''
     });

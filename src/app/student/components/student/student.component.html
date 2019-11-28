@@ -32,11 +32,33 @@
               <input formControlName="mothersName" matInput placeholder="Mother's Name*">
               <mat-error>This field is mandatory.</mat-error>
             </mat-form-field>
+            <mat-form-field>
+                <mat-select formControlName="district" placeholder="Select District" #singleSelect>
+                  <ngx-mat-select-search [formControl]="districtFilterCntrl" [placeholderLabel]="'search your district...'" 
+                  [noEntriesFoundLabel]="'no matching district found'"></ngx-mat-select-search>
+                  <mat-option *ngFor="let district of filteredDistricts | async" (click)="setSubDistrict(district.pk)" value={{district.fields.name}}>
+                    {{district.fields.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            <mat-form-field>
+                  <mat-select formControlName="union" placeholder="Union">
+                    <!-- <mat-option>None</mat-option> -->
+                    <ng-container *ngFor="let union of rootService.filteredUnions | async">
+                      <mat-option value="{{union.fields.name}}">{{union.fields.name}}</mat-option>
+                    </ng-container>
+                  </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                  <input formControlName="email" matInput placeholder="Email">
+                  <mat-error>Invalid email address.</mat-error>
+            </mat-form-field>
             <!-- <mat-form-field>
               <input formControlName="nationality" matInput placeholder="Nationality*">
               <mat-error>This field is mandatory.</mat-error>
             </mat-form-field> -->
-            <mat-form-field>
+
+            <!-- <mat-form-field>
                 <mat-select formControlName="nationality" placeholder="Nationality" #singleSelect>
                   <ngx-mat-select-search [formControl]="nationalityFilterCntrl" [placeholderLabel]="'search your nationality...'" 
                   [noEntriesFoundLabel]="'no matching nationality found'"></ngx-mat-select-search>
@@ -44,37 +66,89 @@
                     {{nation}}
                   </mat-option>
                 </mat-select>
-              </mat-form-field>
+              </mat-form-field> -->
+
             <!-- <mat-form-field>
               <input formControlName="religion" matInput placeholder="Religion">
             </mat-form-field> -->
-            <mat-form-field>
+
+            <!-- <mat-form-field>
                 <mat-select formControlName="religion" placeholder="Religion">
-                  <!-- <mat-option>None</mat-option> -->
+                  <mat-option>None</mat-option>
                   <ng-container *ngFor="let religion of religions">
                     <mat-option value="{{religion}}">{{religion}}</mat-option>
                   </ng-container>
                 </mat-select>
-            </mat-form-field>
-            <div class="add-bottom-padding">
+            </mat-form-field> -->
+
+            <!-- <div class="add-bottom-padding">
               <mat-radio-group formControlName="gender">
                 <mat-radio-button  value="1">Male</mat-radio-button>
                 <mat-radio-button value="2">Female</mat-radio-button>
                 <mat-radio-button value="3">Other</mat-radio-button>
               </mat-radio-group>
-            </div>
-            <mat-form-field>
+            </div> -->
+            <!-- <mat-form-field>
               <input formControlName="dateOfBirth" matInput [matDatepicker]="picker1" placeholder="Date of birth">
               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
               <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
-            
+             -->
             
             <!-- <mat-form-field>
               <input formControlName="city" matInput placeholder="City">
             </mat-form-field> -->
           </div>
           <div class="col controles-container">
+              <div class="add-bottom-padding">
+                  <mat-radio-group formControlName="gender">
+                    <mat-radio-button  value="1">Male</mat-radio-button>
+                    <mat-radio-button value="2">Female</mat-radio-button>
+                    <mat-radio-button value="3">Other</mat-radio-button>
+                  </mat-radio-group>
+              </div>
+              <mat-form-field>
+                    <mat-select formControlName="nationality" placeholder="Nationality" #singleSelect>
+                      <ngx-mat-select-search [formControl]="nationalityFilterCntrl" [placeholderLabel]="'search your nationality...'" 
+                      [noEntriesFoundLabel]="'no matching nationality found'"></ngx-mat-select-search>
+                      <mat-option *ngFor="let nation of filteredNationalities | async" value={{nation}}>
+                        {{nation}}
+                      </mat-option>
+                    </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                      <mat-select formControlName="religion" placeholder="Religion">
+                        <!-- <mat-option>None</mat-option> -->
+                        <ng-container *ngFor="let religion of religions">
+                          <mat-option value="{{religion}}">{{religion}}</mat-option>
+                        </ng-container>
+                      </mat-select>
+              </mat-form-field>
+             
+              <mat-form-field>
+                  <input formControlName="dateOfBirth" matInput [matDatepicker]="picker1" placeholder="Date of birth">
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field>
+                  <mat-select formControlName="subDistrict" placeholder="Upazilla">
+                    <mat-option>None</mat-option>
+                    <ng-container *ngFor="let subDistrict of rootService.filteredSubDistricts | async " >
+                      <mat-option (click)="setUnion(subDistrict.pk)" value="{{subDistrict.fields.name}}">{{subDistrict.fields.name}}</mat-option>
+                    </ng-container>
+                  </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                  <input formControlName="postCode" matInput placeholder="Postcode">
+              </mat-form-field>
+              <mat-form-field>
+                  <input formControlName="mobile" matInput placeholder="Mobile*">
+                  <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
+                  <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.
+                  </mat-error>
+              </mat-form-field>
+
               <!-- <p >general Information</p> -->
               <!-- <mat-divider></mat-divider> -->
             <!-- <input type="hidden" formControlName="$key"> -->
@@ -143,7 +217,8 @@
                   <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.
                   </mat-error>
               </mat-form-field> -->
-              <mat-form-field>
+
+              <!-- <mat-form-field>
                 <mat-select formControlName="district" placeholder="Select District" #singleSelect>
                   <ngx-mat-select-search [formControl]="districtFilterCntrl" [placeholderLabel]="'search your district...'" 
                   [noEntriesFoundLabel]="'no matching district found'"></ngx-mat-select-search>
@@ -151,15 +226,19 @@
                     {{district.fields.name}}
                   </mat-option>
                 </mat-select>
-              </mat-form-field>
-              <mat-form-field>
+              </mat-form-field> -->
+
+              <!-- <mat-form-field>
                 <mat-select formControlName="subDistrict" placeholder="Upazilla">
                   <mat-option>None</mat-option>
                   <ng-container *ngFor="let subDistrict of rootService.filteredSubDistricts | async " >
                     <mat-option (click)="setUnion(subDistrict.pk)" value="{{subDistrict.fields.name}}">{{subDistrict.fields.name}}</mat-option>
                   </ng-container>
                 </mat-select>
-              </mat-form-field>
+              </mat-form-field> -->
+
+
+
               <!-- <div >
                 <mat-radio-group formControlName="gender">
                   <mat-radio-button  value="1">Male</mat-radio-button>
@@ -168,14 +247,14 @@
                 </mat-radio-group>
               </div> -->
 
-              <mat-form-field>
+              <!-- <mat-form-field>
                 <mat-select formControlName="union" placeholder="Union">
-                  <!-- <mat-option>None</mat-option> -->
+                  <mat-option>None</mat-option>
                   <ng-container *ngFor="let union of rootService.filteredUnions | async">
                     <mat-option value="{{union.fields.name}}">{{union.fields.name}}</mat-option>
                   </ng-container>
                 </mat-select>
-               </mat-form-field>
+               </mat-form-field> -->
               <mat-form-field>
                 <mat-select formControlName="department" placeholder="Department">
                   <mat-option>None</mat-option>
@@ -205,16 +284,16 @@
               </div> -->
             </div>
             <div class="col controles-container">
-                <mat-form-field>
+                <!-- <mat-form-field>
                       <input formControlName="email" matInput placeholder="Email">
                       <mat-error>Invalid email address.</mat-error>
-                </mat-form-field>
-                <mat-form-field>
+                </mat-form-field> -->
+                <!-- <mat-form-field>
                     <input formControlName="mobile" matInput placeholder="Mobile*">
                     <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
                     <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.
                     </mat-error>
-                </mat-form-field>
+                </mat-form-field> -->
                 <mat-form-field>
                   <mat-select formControlName="subject" placeholder="subject" #singleSelect>
                     <ngx-mat-select-search [formControl]="subjectFilterCntrl" [placeholderLabel]="'search your subject...'" 
