@@ -62,6 +62,12 @@ export interface StudentInformation {
     subject: string;
     classYearSemester: string;
     session: string;
+    roll: string;
+    cgpa: string;
+    roomNo: string;
+    roomApprovalStatus: string;
+    reAddmissionYear: string;
+    alumni: string;
 }
 
 export interface EmployeeInformation {

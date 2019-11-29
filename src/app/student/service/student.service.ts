@@ -43,7 +43,15 @@ export class StudentService {
     postCode: new FormControl(''),
     subject: new FormControl(''),
     classYearSemester: new FormControl(''),
-    session: new FormControl('')
+    session: new FormControl(''),
+    roll: new FormControl(''),
+    cgpa: new FormControl(''),
+    roomNo: new FormControl(''),
+    roomApprovalStatus: new FormControl(''),
+    reAddmissionYear: new FormControl(''),
+    alumni: new FormControl('')
+
+
 
   });
 
@@ -76,6 +84,12 @@ export class StudentService {
       subject: '',
       classYearSemester: '',
       session: '',
+      roll: '',
+      cgpa: '',
+      roomNo: '',
+      roomApprovalStatus: '',
+      reAddmissionYear: '',
+      alumni: ''
     });
   }
 

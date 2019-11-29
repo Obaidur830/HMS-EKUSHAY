@@ -99,7 +99,7 @@
               <input formControlName="city" matInput placeholder="City">
             </mat-form-field> -->
           </div>
-          <div class="col controles-container" style="border:3px;">
+          <div class="col controles-container">
               <div class="add-bottom-padding">
                   <mat-radio-group formControlName="gender">
                     <mat-radio-button  value="1">Male</mat-radio-button>
@@ -255,7 +255,7 @@
                   </ng-container>
                 </mat-select>
                </mat-form-field> -->
-              <mat-form-field>
+              <!-- <mat-form-field>
                 <mat-select formControlName="department" placeholder="Department">
                   <mat-option>None</mat-option>
                   <ng-container *ngFor="let department of departments">
@@ -267,34 +267,9 @@
                 <input formControlName="hireDate" matInput [matDatepicker]="picker" placeholder="Hire Date">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-              <!-- <div class="add-bottom-padding">
-                <mat-checkbox formControlName="isResidential">Permanent Student</mat-checkbox>
-              </div> -->
-              <!-- <mat-form-field >
-                <textarea  formControlName="comment" matInput placeholder="Leave a comment"></textarea>
               </mat-form-field> -->
-
+            
               <mat-form-field>
-                <input formControlName="city" matInput placeholder="City">
-              </mat-form-field>
-              <!-- <div class="button-row">
-                <button mat-raised-button color="primary" type="submit" [disabled]="studentService.studentForm.invalid">Submit</button>
-                <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
-              </div> -->
-            </div>
-            <div class="col controles-container">
-                <!-- <mat-form-field>
-                      <input formControlName="email" matInput placeholder="Email">
-                      <mat-error>Invalid email address.</mat-error>
-                </mat-form-field> -->
-                <!-- <mat-form-field>
-                    <input formControlName="mobile" matInput placeholder="Mobile*">
-                    <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
-                    <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.
-                    </mat-error>
-                </mat-form-field> -->
-                <mat-form-field>
                   <mat-select formControlName="subject" placeholder="subject" #singleSelect>
                     <ngx-mat-select-search [formControl]="subjectFilterCntrl" [placeholderLabel]="'search your subject...'" 
                     [noEntriesFoundLabel]="'no matching subject found'"></ngx-mat-select-search>
@@ -321,16 +296,97 @@
                   </mat-select>
                 </mat-form-field>
 
+              <!-- <div class="add-bottom-padding">
+                <mat-checkbox formControlName="isResidential">Permanent Student</mat-checkbox>
+              </div> -->
+              <!-- <mat-form-field >
+                <textarea  formControlName="comment" matInput placeholder="Leave a comment"></textarea>
+              </mat-form-field> -->
+              
+              <mat-form-field>
+                <input formControlName="roll" matInput placeholder="Roll">
+              </mat-form-field>
+              
+              <mat-form-field>
+                <input formControlName="cgpa" matInput placeholder="CGPA">
+              </mat-form-field>
+
+              <mat-form-field>
+                <input formControlName="readdmissionYear" matInput placeholder="Readdmission Year">
+              </mat-form-field>
+              <mat-form-field>
+                <input formControlName="alumni" matInput placeholder="alumni">
+              </mat-form-field>
+              
+              <!-- <mat-form-field >
+                <textarea  formControlName="comment" matInput placeholder="Leave a comment"></textarea>
+              </mat-form-field> -->
+
+              <!-- <mat-form-field >
+                <textarea  formControlName="comment" matInput placeholder="Leave a comment"></textarea>
+              </mat-form-field> -->
+              
+              <!-- <div class="button-row">
+                <button mat-raised-button color="primary" type="submit" [disabled]="studentService.studentForm.invalid">Submit</button>
+                <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+              </div> -->
+            </div>
+            <div class="col controles-container">
+                <!-- <mat-form-field>
+                      <input formControlName="email" matInput placeholder="Email">
+                      <mat-error>Invalid email address.</mat-error>
+                </mat-form-field> -->
+                <!-- <mat-form-field>
+                    <input formControlName="mobile" matInput placeholder="Mobile*">
+                    <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
+                    <mat-error *ngIf="studentService.studentForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.
+                    </mat-error>
+                </mat-form-field> -->
+                <!-- <mat-form-field>
+                  <mat-select formControlName="subject" placeholder="subject" #singleSelect>
+                    <ngx-mat-select-search [formControl]="subjectFilterCntrl" [placeholderLabel]="'search your subject...'" 
+                    [noEntriesFoundLabel]="'no matching subject found'"></ngx-mat-select-search>
+                    <mat-option *ngFor="let subject of filteredSubjects | async" value={{subject}}>
+                      {{subject}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-select formControlName="classYearSemester" placeholder="chose your class year">
+                    <ng-container *ngFor="let classYear of classYearSemesters">
+                      <mat-option value="{{classYear}}">{{classYear}}</mat-option>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field>
+                
+                <mat-form-field>
+                  <mat-select formControlName="session" placeholder="Session">
+                    
+                    <ng-container *ngFor="let year of years">
+                      <mat-option value="{{year}}">{{year}}</mat-option>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field> -->
+
                 <!-- <mat-form-field>
                   <input formControlName="hireDate" matInput [matDatepicker]="picker4" placeholder="Hire Date">
                   <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
                   <mat-datepicker #picker4></mat-datepicker>
                 </mat-form-field> -->
-                <div class="add-bottom-padding">
-                  <mat-checkbox formControlName="isResidential">Is Residential Student?</mat-checkbox>
-                </div>
+               
                 <mat-form-field>
                   <mat-select formControlName="addmissionFeeStatus" placeholder="Addmission fee">
+                    <mat-option>None</mat-option>
+                    <ng-container *ngFor="let fee of feeStatuses">
+                      <mat-option value="{{fee}}">{{fee}}</mat-option>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field>
+                <div style="margin-top:12%">
+                    <mat-checkbox formControlName="isResidential">Is Residential Student?</mat-checkbox>
+                </div>
+                <mat-form-field>
+                  <mat-select formControlName="roomApprovalStatus" placeholder="Room approval status">
                     <mat-option>None</mat-option>
                     <ng-container *ngFor="let fee of feeStatuses">
                       <mat-option value="{{fee}}">{{fee}}</mat-option>
@@ -345,7 +401,11 @@
                     </ng-container>
                   </mat-select>
                 </mat-form-field>
-                
+
+                <mat-form-field>
+                  <input formControlName="roomNo" matInput placeholder="room Number">
+                </mat-form-field>
+
                 <mat-form-field >
                   <textarea  formControlName="comment" matInput placeholder="Leave a comment"></textarea>
                 </mat-form-field>
@@ -361,6 +421,5 @@
       </div>
       
     </mat-grid-tile>
-    
   </mat-grid-list>
 </form>

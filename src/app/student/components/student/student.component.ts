@@ -114,7 +114,15 @@ export class StudentComponent implements OnInit, OnDestroy {
         postCode: this.studentService.studentForm.value.postCode,
         subject: this.studentService.studentForm.value.subject,
         classYearSemester: this.studentService.studentForm.value.classYearSemester,
-        session: this.studentService.studentForm.value.session
+        session: this.studentService.studentForm.value.session,
+        roll: this.studentService.studentForm.value.roll,
+        cgpa: this.studentService.studentForm.value.cgpa,
+        roomNo: this.studentService.studentForm.value.roomNo,
+        roomApprovalStatus: this.studentService.studentForm.value.roomApprovalStatus,
+        reAddmissionYear: this.studentService.studentForm.value.reAddmissionYear,
+        alumni: this.studentService.studentForm.value.alumni,
+
+
 
       };
       if (!this.studentService.studentForm.get('$key').value) {
