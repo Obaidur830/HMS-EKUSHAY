@@ -42,7 +42,9 @@ export class StudentService {
     union: new FormControl(''),
     postCode: new FormControl(''),
     subject: new FormControl(''),
-    classYearSemester: new FormControl('')
+    classYearSemester: new FormControl(''),
+    session: new FormControl('')
+
   });
 
 
@@ -72,7 +74,8 @@ export class StudentService {
       union: '',
       postCode: '',
       subject: '',
-      classYearSemester: ''
+      classYearSemester: '',
+      session: '',
     });
   }
 

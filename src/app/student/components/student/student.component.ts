@@ -21,6 +21,8 @@ export class StudentComponent implements OnInit, OnDestroy {
   studentInformation: StudentInformation;
   departments = ['science', 'arts', 'commerce'];
   religions = ['Islam', 'Christianity', 'Hinduism', 'Buddhism'];
+  // tslint:disable-next-line: max-line-length
+  years = ['2009-10', '2010-11', '2011-12', '2012-13', '2013-14', '2014-15', '2015-16', '2016-17', '2017-18', '2018-19', '2019-20'];
   feeStatuses = feeStatuses;
   classYearSemesters = classYearSemesters;
   districts = districts;
@@ -28,7 +30,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   public filteredDistricts: ReplaySubject<District[]> = new ReplaySubject<District[]>(1);
   districtCode: number;
 
- 
+
   subDistrictCode: number;
 
   // unions = unions;
@@ -101,7 +103,7 @@ export class StudentComponent implements OnInit, OnDestroy {
         dateOfBirth: this.studentService.studentForm.value.dateOfBirth,
         department: this.studentService.studentForm.value.department,
         hireDate: this.studentService.studentForm.value.hireDate,
-        isResidential: this.studentService.studentForm.value.isResidential ? 'Residential' : 'Non-Residential',
+        isResidential: this.studentService.studentForm.value.isResidential,
         addmisionFeeStatus: this.studentService.studentForm.value.addmissionFeeStatus,
         residenceFeeStatus: this.studentService.studentForm.value.residenceFeeStatus,
         comment: this.studentService.studentForm.value.comment,
@@ -111,7 +113,9 @@ export class StudentComponent implements OnInit, OnDestroy {
         union: this.studentService.studentForm.value.union,
         postCode: this.studentService.studentForm.value.postCode,
         subject: this.studentService.studentForm.value.subject,
-        classYearSemester: this.studentService.studentForm.value.classYearSemester
+        classYearSemester: this.studentService.studentForm.value.classYearSemester,
+        session: this.studentService.studentForm.value.session
+
       };
       if (!this.studentService.studentForm.get('$key').value) {
         this.studentService.insertStudent(this.studentInformation);

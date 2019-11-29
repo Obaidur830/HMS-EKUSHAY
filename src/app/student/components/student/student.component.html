@@ -99,7 +99,7 @@
               <input formControlName="city" matInput placeholder="City">
             </mat-form-field> -->
           </div>
-          <div class="col controles-container">
+          <div class="col controles-container" style="border:3px;">
               <div class="add-bottom-padding">
                   <mat-radio-group formControlName="gender">
                     <mat-radio-button  value="1">Male</mat-radio-button>
@@ -271,9 +271,9 @@
               <!-- <div class="add-bottom-padding">
                 <mat-checkbox formControlName="isResidential">Permanent Student</mat-checkbox>
               </div> -->
-              <mat-form-field >
+              <!-- <mat-form-field >
                 <textarea  formControlName="comment" matInput placeholder="Leave a comment"></textarea>
-              </mat-form-field>
+              </mat-form-field> -->
 
               <mat-form-field>
                 <input formControlName="city" matInput placeholder="City">
@@ -311,6 +311,16 @@
                     </ng-container>
                   </mat-select>
                 </mat-form-field>
+                
+                <mat-form-field>
+                  <mat-select formControlName="session" placeholder="Session">
+                    
+                    <ng-container *ngFor="let year of years">
+                      <mat-option value="{{year}}">{{year}}</mat-option>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field>
+
                 <!-- <mat-form-field>
                   <input formControlName="hireDate" matInput [matDatepicker]="picker4" placeholder="Hire Date">
                   <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
@@ -320,7 +330,7 @@
                   <mat-checkbox formControlName="isResidential">Is Residential Student?</mat-checkbox>
                 </div>
                 <mat-form-field>
-                  <mat-select formControlName="addmissionFeeStatus" placeholder="Addmission fee Status">
+                  <mat-select formControlName="addmissionFeeStatus" placeholder="Addmission fee">
                     <mat-option>None</mat-option>
                     <ng-container *ngFor="let fee of feeStatuses">
                       <mat-option value="{{fee}}">{{fee}}</mat-option>
@@ -328,13 +338,18 @@
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field>
-                  <mat-select formControlName="residenceFeeStatus" placeholder="Residence fee Status">
+                  <mat-select formControlName="residenceFeeStatus" placeholder="Residence fee">
                     <mat-option>None</mat-option>
                     <ng-container *ngFor="let fee of feeStatuses">
                       <mat-option value="{{fee}}">{{fee}}</mat-option>
                     </ng-container>
                   </mat-select>
                 </mat-form-field>
+                
+                <mat-form-field >
+                  <textarea  formControlName="comment" matInput placeholder="Leave a comment"></textarea>
+                </mat-form-field>
+
                 <!-- <mat-form-field>
                   <input formControlName="city" matInput placeholder="City">
                 </mat-form-field> -->

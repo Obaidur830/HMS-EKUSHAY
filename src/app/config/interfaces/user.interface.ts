@@ -48,7 +48,7 @@ export interface StudentInformation {
     dateOfBirth: string;
     email: string;
     mobile: string;
-    isResidential: string;
+    isResidential: boolean;
     addmisionFeeStatus: string;
     residenceFeeStatus: string;
     department: string;
@@ -61,6 +61,7 @@ export interface StudentInformation {
     postCode: string;
     subject: string;
     classYearSemester: string;
+    session: string;
 }
 
 export interface EmployeeInformation {
