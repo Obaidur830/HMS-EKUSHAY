@@ -28,15 +28,15 @@ export class StudentService {
     gender: new FormControl('1'),
     dateOfBirth: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
-    mobile: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    mobile: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(8)]),
     department: new FormControl(''),
-    hireDate: new FormControl(''),
+    // hireDate: new FormControl(''),
     isResidential: new FormControl(false),
     addmissionFeeStatus: new FormControl(''),
     residenceFeeStatus: new FormControl(''),
     comment: new FormControl(''),
 
-    city: new FormControl(''),
+    // city: new FormControl(''),
     district: new FormControl(''),
     subDistrict: new FormControl(''),
     union: new FormControl(''),
@@ -71,12 +71,12 @@ export class StudentService {
       mobile: '',
       // gender: '1',
       department: '',
-      hireDate: '',
+      // hireDate: '',
       isResidential: false,
       addmissionFeeStatus: '',
       residenceFeeStatus: '',
       comment: '',
-      city: '',
+      // city: '',
       district: '',
       subDistrict: '',
       union: '',
@@ -109,12 +109,12 @@ export class StudentService {
   insertStudent(studentInformation) {
 
     const studentCollection = this.angularFirestore.collection<StudentInformation>(Entities.Student);
-    studentCollection.doc(studentInformation.email).set(studentInformation);
+    studentCollection.doc(studentInformation.registrationNumber).set(studentInformation);
   }
 
   updateStudent(studentInformation) {
     const studentCollection = this.angularFirestore.collection<StudentInformation>(Entities.Student);
-    studentCollection.doc(studentInformation.email).update(studentInformation);
+    studentCollection.doc(studentInformation.registrationNumber).update(studentInformation);
   }
 
   deleteStudent($key: string) {

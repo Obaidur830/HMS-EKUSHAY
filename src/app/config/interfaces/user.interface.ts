@@ -52,9 +52,9 @@ export interface StudentInformation {
     addmissionFeeStatus: string;
     residenceFeeStatus: string;
     department: string;
-    hireDate: string;
+    // hireDate: string;
     comment: string;
-    city: string;
+    // city: string;
     district: string;
     subDistrict: string;
     union: string;
