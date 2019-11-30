@@ -20,17 +20,17 @@ export class StudentService {
   studentForm = new FormGroup({
     $key: new FormControl(null),
     registrationNumber: new FormControl('', Validators.required),
-    fullName: new FormControl('', Validators.required),
-    fathersName: new FormControl('', Validators.required),
-    mothersName: new FormControl('', Validators.required),
-    nationality: new FormControl('', Validators.required),
+    fullName: new FormControl(''),
+    fathersName: new FormControl(''),
+    mothersName: new FormControl(''),
+    nationality: new FormControl(''),
     religion: new FormControl(''),
     gender: new FormControl('1'),
-    dateOfBirth: new FormControl('', Validators.required),
+    dateOfBirth: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
     mobile: new FormControl('', [Validators.required, Validators.minLength(8)]),
     department: new FormControl(''),
-    hireDate: new FormControl('', Validators.required),
+    hireDate: new FormControl(''),
     isResidential: new FormControl(false),
     addmissionFeeStatus: new FormControl(''),
     residenceFeeStatus: new FormControl(''),
@@ -96,7 +96,8 @@ export class StudentService {
   populateForm(studentInformation) {
     // timestamp to date conversion successfully
     // console.log(new Date(studentInformation.hireDate.seconds * 1000));
-    const studentFormDetails = {...studentInformation, hireDate: new Date(studentInformation.hireDate.seconds * 1000)};
+    // tslint:disable-next-line: max-line-length
+    const studentFormDetails = {...studentInformation, dateOfBirth: studentInformation.dateOfBirth.seconds ? new Date( studentInformation.dateOfBirth.seconds * 1000) : ''};
     this.studentForm.setValue(studentFormDetails);
   }
 

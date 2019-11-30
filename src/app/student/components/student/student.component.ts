@@ -100,11 +100,12 @@ export class StudentComponent implements OnInit, OnDestroy {
         email: this.studentService.studentForm.value.email,
         mobile: this.studentService.studentForm.value.mobile,
         gender: this.studentService.studentForm.value.gender,
-        dateOfBirth: this.studentService.studentForm.value.dateOfBirth,
+        // tslint:disable-next-line: no-bitwise
+        dateOfBirth: this.studentService.studentForm.value.dateOfBirth ? this.studentService.studentForm.value.dateOfBirth : '',
         department: this.studentService.studentForm.value.department,
         hireDate: this.studentService.studentForm.value.hireDate,
         isResidential: this.studentService.studentForm.value.isResidential,
-        addmisionFeeStatus: this.studentService.studentForm.value.addmissionFeeStatus,
+        addmissionFeeStatus: this.studentService.studentForm.value.addmissionFeeStatus,
         residenceFeeStatus: this.studentService.studentForm.value.residenceFeeStatus,
         comment: this.studentService.studentForm.value.comment,
         city: this.studentService.studentForm.value.city,
@@ -120,7 +121,7 @@ export class StudentComponent implements OnInit, OnDestroy {
         roomNo: this.studentService.studentForm.value.roomNo,
         roomApprovalStatus: this.studentService.studentForm.value.roomApprovalStatus,
         reAddmissionYear: this.studentService.studentForm.value.reAddmissionYear,
-        alumni: this.studentService.studentForm.value.alumni,
+        alumni: this.studentService.studentForm.value.alumni
 
 
 
