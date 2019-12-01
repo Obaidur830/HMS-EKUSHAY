@@ -26,7 +26,7 @@ export class StudentService {
     mothersName: new FormControl(''),
     nationality: new FormControl(''),
     religion: new FormControl(''),
-    gender: new FormControl('1'),
+    gender: new FormControl('Male'),
     dateOfBirth: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
     mobile: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(8)]),
@@ -66,7 +66,7 @@ export class StudentService {
       mothersName: '',
       nationality: '',
       religion: '',
-      gender: '1',
+      gender: 'Male',
       dateOfBirth: '',
       email: '',
       mobile: '',
@@ -102,10 +102,21 @@ export class StudentService {
     this.studentForm.setValue(studentFormDetails);
   }
 
+  // fire store time to date formatting
+  // formatDate(time:Date){
+  //   debugger;
+  //   console.log(time.getDate());
+  //  console.log( time.toTimeString());
+  //  console.log( time.toString());
+  //  console.log( time.toISOString());
+  //   console.log(time.toLocaleDateString());
+  //   return time;
+  // }
+
   setStudentDetails(studentInformation) {
     // tslint:disable-next-line: max-line-length
-    this.studentDetails = {...studentInformation, dateOfBirth: studentInformation.dateOfBirth.seconds ? new Date( studentInformation.dateOfBirth.seconds * 1000) : ''};
-
+    const studentDetails = {...studentInformation, dateOfBirth: studentInformation.dateOfBirth.seconds ? new Date( studentInformation.dateOfBirth.seconds * 1000).toLocaleDateString() : 'Not provided'};
+    this.studentDetails = studentDetails;
   }
   getStudentDetails() {
      return this.studentDetails;

@@ -15,8 +15,7 @@ export class StudentDetailsComponent implements OnInit {
   studentDetails: StudentInformation;
   ngOnInit() {
     this.studentDetails = this.studentService.getStudentDetails();
-    debugger;
-    console.log(this.studentDetails);
+    // console.log(this.studentDetails);
   }
   onClose() {
     this.dialogRef.close();
