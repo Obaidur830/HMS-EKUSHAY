@@ -13,8 +13,9 @@ import { StudentService } from './service/student.service';
 import { StudentComponent } from './components/student/student.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { StudentDetailsComponent } from './components/student-details/student-details.component';
 @NgModule({
-  declarations: [StudentListComponent, StudentComponent],
+  declarations: [StudentListComponent, StudentComponent, StudentDetailsComponent],
   imports: [
     CommonModule,
     LayoutModule,
@@ -40,6 +41,6 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
    RouterModule.forChild(studentRoutes)
   ],
   providers: [StudentService, DatePipe],
-  entryComponents: [StudentComponent]
+  entryComponents: [StudentComponent, StudentDetailsComponent]
 })
 export class StudentModule { }

@@ -5,6 +5,7 @@ import { NotificationService } from 'src/app/shared/services/notification.servic
 import { StudentService } from '../../service/student.service';
 import { StudentComponent } from '../student/student.component';
 import { DialogService } from 'src/app/shared/services/dialog.service';
+import { StudentDetailsComponent } from '../student-details/student-details.component';
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
@@ -21,7 +22,7 @@ export class StudentListComponent implements OnInit {
   ) { }
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'department', 'actions'];
+  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
@@ -68,6 +69,18 @@ export class StudentListComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '80%';
     this.dialog.open(StudentComponent, dialogConfig);
+  }
+
+
+  onViewDetails(row) {
+    // this.studentService.getStudentDetails(row);
+    this.studentService.setStudentDetails(row);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '80%';
+    this.dialog.open(StudentDetailsComponent, dialogConfig);
+
   }
 
   onEdit(row) {

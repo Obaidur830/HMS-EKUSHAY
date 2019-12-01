@@ -102,7 +102,7 @@ export class StudentComponent implements OnInit, OnDestroy {
         gender: this.studentService.studentForm.value.gender,
         // tslint:disable-next-line: no-bitwise
         dateOfBirth: this.studentService.studentForm.value.dateOfBirth ? this.studentService.studentForm.value.dateOfBirth : '',
-        department: this.studentService.studentForm.value.department,
+        // department: this.studentService.studentForm.value.department,
         // hireDate: this.studentService.studentForm.value.hireDate,
         isResidential: this.studentService.studentForm.value.isResidential,
         addmissionFeeStatus: this.studentService.studentForm.value.addmissionFeeStatus,

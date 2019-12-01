@@ -16,6 +16,7 @@ export class StudentService {
 
   ) { }
 
+  studentDetails: StudentInformation;
 
   studentForm = new FormGroup({
     $key: new FormControl(null),
@@ -29,7 +30,7 @@ export class StudentService {
     dateOfBirth: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
     mobile: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(8)]),
-    department: new FormControl(''),
+    // department: new FormControl(''),
     // hireDate: new FormControl(''),
     isResidential: new FormControl(false),
     addmissionFeeStatus: new FormControl(''),
@@ -70,7 +71,7 @@ export class StudentService {
       email: '',
       mobile: '',
       // gender: '1',
-      department: '',
+      // department: '',
       // hireDate: '',
       isResidential: false,
       addmissionFeeStatus: '',
@@ -99,6 +100,15 @@ export class StudentService {
     // tslint:disable-next-line: max-line-length
     const studentFormDetails = {...studentInformation, dateOfBirth: studentInformation.dateOfBirth.seconds ? new Date( studentInformation.dateOfBirth.seconds * 1000) : ''};
     this.studentForm.setValue(studentFormDetails);
+  }
+
+  setStudentDetails(studentInformation) {
+    // tslint:disable-next-line: max-line-length
+    this.studentDetails = {...studentInformation, dateOfBirth: studentInformation.dateOfBirth.seconds ? new Date( studentInformation.dateOfBirth.seconds * 1000) : ''};
+
+  }
+  getStudentDetails() {
+     return this.studentDetails;
   }
 
   getStudents() {

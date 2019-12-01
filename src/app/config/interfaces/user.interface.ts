@@ -51,7 +51,7 @@ export interface StudentInformation {
     isResidential: boolean;
     addmissionFeeStatus: string;
     residenceFeeStatus: string;
-    department: string;
+   // department: string;
     // hireDate: string;
     comment: string;
     // city: string;
