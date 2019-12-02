@@ -1,61 +1,150 @@
 <mat-toolbar>
   <span>{{employeeService.employeeForm.controls['$key'].value?"Modify Employee":"New Employee"}}</span>
   <span class="fill-remaining-space"></span>
-  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1">
+    <mat-icon>clear</mat-icon>
+  </button>
 </mat-toolbar>
 <form [formGroup]="employeeService.employeeForm" class="normal-form" (submit)="onSubmit()">
-  <mat-grid-list cols="2" rowHeight="300px">
+  <mat-grid-list cols="3" rowHeight="400px">
     <mat-grid-tile>
+
       <div class="controles-container">
+
         <input type="hidden" formControlName="$key">
+        <mat-form-field>
+          <input formControlName="employeeId" matInput placeholder="Employee Id*">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
         <mat-form-field>
           <input formControlName="fullName" matInput placeholder="Full Name*">
           <mat-error>This field is mandatory.</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input formControlName="email" matInput placeholder="Email">
-          <mat-error>Invalid email address.</mat-error>
+          <mat-select formControlName="nationality" placeholder="Nationality" #singleSelect>
+            <ngx-mat-select-search [formControl]="nationalityFilterCntrl"
+              [placeholderLabel]="'search your nationality...'" [noEntriesFoundLabel]="'no matching nationality found'">
+            </ngx-mat-select-search>
+            <mat-option *ngFor="let nation of filteredNationalities | async" value={{nation}}>
+              {{nation}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <input formControlName="mobile" matInput placeholder="Mobile*">
-          <mat-error *ngIf="employeeService.employeeForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
-          <mat-error *ngIf="employeeService.employeeForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.</mat-error>
+          <mat-select formControlName="religion" placeholder="Religion">
+            <ng-container *ngFor="let religion of religions">
+              <mat-option value="{{religion}}">{{religion}}</mat-option>
+            </ng-container>
+          </mat-select>
         </mat-form-field>
-        <mat-form-field>
-          <input formControlName="city" matInput placeholder="City">
-        </mat-form-field>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <div class="controles-container">
+
         <div class="add-bottom-padding">
           <mat-radio-group formControlName="gender">
-            <mat-radio-button  value="1">Male</mat-radio-button>
-            <mat-radio-button value="2">Female</mat-radio-button>
-            <mat-radio-button value="3">Other</mat-radio-button>
+            <mat-radio-button value="Male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-radio-button value="Others">Other</mat-radio-button>
           </mat-radio-group>
         </div>
         <mat-form-field>
-          <mat-select formControlName="department" placeholder="Department">
+          <input formControlName="dateOfBirth" matInput [matDatepicker]="picker1" placeholder="Date of birth">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+
+      </div>
+
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+
+      <div class="controles-container">
+        <mat-form-field>
+        <mat-select formControlName="district" placeholder="Select District" #singleSelect>
+          <ngx-mat-select-search [formControl]="districtFilterCntrl" [placeholderLabel]="'search your district...'"
+            [noEntriesFoundLabel]="'no matching district found'"></ngx-mat-select-search>
+          <mat-option *ngFor="let district of filteredDistricts | async" (click)="setSubDistrict(district.pk)"
+            value={{district.fields.name}}>
+            {{district.fields.name}}
+          </mat-option>
+        </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select formControlName="subDistrict" placeholder="Upazilla">
             <mat-option>None</mat-option>
-            <ng-container *ngFor="let department of departments">
-              <mat-option value="{{department}}">{{department}}</mat-option>
+            <ng-container *ngFor="let subDistrict of rootService.filteredSubDistricts | async ">
+              <mat-option (click)="setUnion(subDistrict.pk)" value="{{subDistrict.fields.name}}">
+                {{subDistrict.fields.name}}</mat-option>
             </ng-container>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <input formControlName="hireDate" matInput [matDatepicker]="picker" placeholder="Hire Date">
+          <mat-select formControlName="union" placeholder="Union">
+            <ng-container *ngFor="let union of rootService.filteredUnions | async">
+              <mat-option value="{{union.fields.name}}">{{union.fields.name}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="postCode" matInput placeholder="Postcode">
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="email" matInput placeholder="Email">
+          <mat-error>Invalid email address.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input formControlName="mobile" matInput placeholder="Mobile*">
+          <mat-error *ngIf="employeeService.employeeForm.controls['mobile'].errors?.required">This field is mandatory.
+          </mat-error>
+          <mat-error
+            *ngIf="!employeeService.employeeForm.controls['mobile'].errors?.pattern && employeeService.employeeForm.controls['mobile'].errors?.minlength">
+            Minimum 8 digit needed.
+          </mat-error>
+          <mat-error *ngIf="employeeService.employeeForm.controls['mobile'].errors?.pattern">Only digit are allowed.
+          </mat-error>
+        </mat-form-field>
+
+
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="controles-container">
+        <mat-form-field>
+          <input formControlName="jobTitle" matInput placeholder="Job Title">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select formControlName="department" placeholder="Department" #singleSelect>
+            <ngx-mat-select-search [formControl]="departmentFilterCntrl"
+              [placeholderLabel]="'search your department...'" [noEntriesFoundLabel]="'no matching department found'">
+            </ngx-mat-select-search>
+            <mat-option *ngFor="let department of filteredDepartments | async" value={{department}}>
+              {{department}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input formControlName="joiningdate" matInput [matDatepicker]="picker" placeholder="Joining date">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <div class="add-bottom-padding">
-          <mat-checkbox formControlName="isPermanent">Permanent Student</mat-checkbox>
+        <div style="margin-top:12%">
+            <mat-checkbox formControlName="isResidential">Is Residential Employee?</mat-checkbox>
         </div>
+        <mat-form-field>
+          <input formControlName="jobTitle" matInput placeholder="Job Title">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
         <div class="button-row">
-          <button mat-raised-button color="primary" type="submit" [disabled]="employeeService.employeeForm.invalid">Submit</button>
+          <button mat-raised-button color="primary" type="submit"
+            [disabled]="employeeService.employeeForm.invalid">Submit</button>
           <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
         </div>
       </div>
+
+
     </mat-grid-tile>
   </mat-grid-list>
 </form>

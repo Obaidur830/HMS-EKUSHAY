@@ -13,43 +13,85 @@ export class EmployeeService {
   constructor(
     private angularFirestore: AngularFirestore,
     private datePipe: DatePipe,
-    //private fb: FormBuilder
+
   ) { }
 
-
-    employeeForm = new FormGroup({
+  employeeDetails: EmployeeInformation;
+  employeeForm = new FormGroup({
     $key: new FormControl(null),
-    fullName: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    mobile: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    city: new FormControl(''),
-    gender: new FormControl('1'),
+    employeeId: new FormControl('', Validators.required),
+    fullName: new FormControl(''),
+    nationality: new FormControl(''),
+    religion: new FormControl(''),
+    gender: new FormControl('Male'),
+    dateOfBirth: new FormControl(''),
+    district: new FormControl(''),
+    subDistrict: new FormControl(''),
+    union: new FormControl(''),
+    postCode: new FormControl(''),
+    email: new FormControl(''),
+    mobile: new FormControl(''),
+    jobTitle: new FormControl(''),
     department: new FormControl(''),
-    hireDate: new FormControl('', Validators.required),
-    isPermanent: new FormControl(false)
+    joiningDate: new FormControl(''),
+    isResidntial: new FormControl(false),
+    eventParticipation: new FormControl('')
   });
 
 
   initializeFormGroup() {
     this.employeeForm.setValue({
       $key: null,
+      employeeId: '',
       fullName: '',
+      nationality: '',
+      religion: '',
+      gender: 'Male',
+      dateOfBirth: '',
+      district: '',
+      subDistrict: '',
+      union: '',
+      postCode: '',
       email: '',
       mobile: '',
-      city: '',
-      gender: '1',
+      jobTitle: '',
       department: '',
-      hireDate: '',
-      isPermanent: false
+      joiningDate: '',
+      isResidntial: false,
+      eventParticipation: ''
     });
   }
 
   populateForm(employeeInformation) {
     // timestamp to date conversion successfully
     // console.log(new Date(studentInformation.hireDate.seconds * 1000));
-    const employeeFormDetails = {...employeeInformation, hireDate: new Date(employeeInformation.hireDate.seconds * 1000)};
+    const employeeFormDetails = {
+      ...employeeInformation,
+      dateOfBirth: employeeInformation.dateOfBirth.seconds ? new Date(employeeInformation.dateOfBirth.seconds * 1000) : '',
+      joiningDate: employeeInformation.joiningDate.seconds ? new Date(employeeInformation.joiningDate.seconds * 1000) : '',
+
+    };
+
     this.employeeForm.setValue(employeeFormDetails);
   }
+
+  setEmployeeDetails(employeeInformation) {
+    // tslint:disable-next-line: max-line-length
+    const employeeDetails = {
+      ...employeeInformation,
+      isResidential: employeeInformation.isResidential ? 'Residential' : 'Non-residential',
+      // tslint:disable-next-line: max-line-length
+      dateOfBirth: employeeInformation.dateOfBirth.seconds ? new Date(employeeInformation.dateOfBirth.seconds * 1000).toLocaleDateString() : 'Not provided',
+      // tslint:disable-next-line: max-line-length
+      joiningDate: employeeInformation.joiningDate.seconds ? new Date(employeeInformation.joiningDate.seconds * 1000).toLocaleDateString() : 'Not provided'
+
+    };
+    this.employeeDetails = employeeDetails;
+  }
+  getStudentDetails() {
+    return this.employeeDetails;
+  }
+
 
   getEmployees() {
     return this.angularFirestore.collection<EmployeeInformation>(Entities.Employee).snapshotChanges();

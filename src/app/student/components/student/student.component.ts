@@ -4,7 +4,7 @@ import { NotificationService } from 'src/app/shared/services/notification.servic
 import { MatDialogRef, MatSelect } from '@angular/material';
 import { StudentInformation, District, SubDistrict, Union } from 'src/app/config/interfaces/user.interface';
 // tslint:disable-next-line: max-line-length
-import { nationalities, classYearSemesters, allSubjects, districts, subDistricts, unions, feeStatuses } from 'src/app/config/constants/defaultConstants';
+import { nationalities, classYearSemesters, allSubjects, districts,feeStatuses } from 'src/app/config/constants/defaultConstants';
 import { FormControl } from '@angular/forms';
 import { ReplaySubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

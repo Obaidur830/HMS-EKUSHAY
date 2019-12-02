@@ -11,6 +11,7 @@ import { employeeRoutes } from '../config/routes/lazyloadedRoutes.routes';
 import { EmployeeService } from './service/employee.service';
 import { MatConfirmDialogComponent } from '../shared/components/mat-confirm-dialog/mat-confirm-dialog.component';
 import { DialogService } from '../shared/services/dialog.service';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 @NgModule({
   declarations: [EmployeeComponent, EmployeeListComponent],
@@ -35,6 +36,7 @@ import { DialogService } from '../shared/services/dialog.service';
     MatPaginatorModule,
     MatInputModule,
     MatBadgeModule,
+    NgxMatSelectSearchModule,
     RouterModule.forChild(employeeRoutes)
   ],
   providers: [EmployeeService, DialogService, DatePipe],

@@ -71,14 +71,24 @@ export interface StudentInformation {
 }
 
 export interface EmployeeInformation {
-    fullName: string;
-    email: string;
-    mobile: string;
-    city: string;
-    gender: string;
-    department: string;
-    hireDate: string;
-    isPermanent: boolean;
+     id: number;
+     fullName: string;
+     nationality: string;
+     religion: string;
+     gender: string;
+     dateOfBirth: string;
+     district: string;
+     subDistrict: string;
+     union: string;
+     postCode: string;
+     email: string;
+     mobile: string;
+     jobTitle: string;
+     department: string;
+     joiningDate: string;
+     isResidntial: string;
+     eventParticipation: string;
+
 }
 
 export interface AssetInformation {

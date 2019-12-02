@@ -115,7 +115,7 @@ export class StudentService {
 
   setStudentDetails(studentInformation) {
     // tslint:disable-next-line: max-line-length
-    const studentDetails = {...studentInformation, dateOfBirth: studentInformation.dateOfBirth.seconds ? new Date( studentInformation.dateOfBirth.seconds * 1000).toLocaleDateString() : 'Not provided'};
+    const studentDetails = {...studentInformation, isResidential: studentInformation.isResidential ? 'Residential' : 'Non-residential', dateOfBirth: studentInformation.dateOfBirth.seconds ? new Date( studentInformation.dateOfBirth.seconds * 1000).toLocaleDateString() : 'Not provided'};
     this.studentDetails = studentDetails;
   }
   getStudentDetails() {
