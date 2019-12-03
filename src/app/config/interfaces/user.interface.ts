@@ -86,7 +86,7 @@ export interface EmployeeInformation {
      jobTitle: string;
      department: string;
      joiningDate: string;
-     isResidntial: string;
+     isResidential: string;
      eventParticipation: string;
 
 }

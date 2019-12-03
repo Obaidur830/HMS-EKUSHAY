@@ -34,7 +34,7 @@ export class EmployeeService {
     jobTitle: new FormControl(''),
     department: new FormControl(''),
     joiningDate: new FormControl(''),
-    isResidntial: new FormControl(false),
+    isResidential: new FormControl(false),
     eventParticipation: new FormControl('')
   });
 
@@ -57,7 +57,7 @@ export class EmployeeService {
       jobTitle: '',
       department: '',
       joiningDate: '',
-      isResidntial: false,
+      isResidential: false,
       eventParticipation: ''
     });
   }

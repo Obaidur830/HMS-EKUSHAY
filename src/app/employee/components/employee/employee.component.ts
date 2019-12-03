@@ -30,8 +30,8 @@ export class EmployeeComponent implements OnInit, OnDestroy {
   // unions = unions;
   // public filteredUnions: ReplaySubject<Union[]> = new ReplaySubject<Union[]>(1);
 
-   departments = allSubjects;
-  public subjectFilterCntrl: FormControl = new FormControl();
+  departments = allSubjects;
+  public departmentFilterCntrl: FormControl = new FormControl();
   public filteredDepartments: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
 
   nationalities = nationalities;
@@ -66,7 +66,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
       });
     // this.studentService.studentForm.get('nationality').setValue(nationalities[14]);
     // listen for search field value changes
-    this.subjectFilterCntrl.valueChanges
+    this.departmentFilterCntrl.valueChanges
       .pipe(takeUntil(this._onDestroy))
       .subscribe(() => {
         this.filterDepartments();
@@ -110,7 +110,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
         jobTitle: this.employeeService.employeeForm.value.jobTitle,
         department: this.employeeService.employeeForm.value.department,
         joiningDate: this.employeeService.employeeForm.value.joiningDate,
-        isResidntial: this.employeeService.employeeForm.value.isResidntial,
+        isResidential: this.employeeService.employeeForm.value.isResidential,
         eventParticipation: this.employeeService.employeeForm.value.eventParticipation
       };
       if (!this.employeeService.employeeForm.get('$key').value) {
@@ -156,7 +156,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
       return;
     }
     // get the search keyword
-    let search = this.subjectFilterCntrl.value;
+    let search = this.departmentFilterCntrl.value;
     if (!search) {
       this.filteredDepartments.next(this.departments.slice());
       return;
