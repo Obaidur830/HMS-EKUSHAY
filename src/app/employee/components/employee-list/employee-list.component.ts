@@ -4,6 +4,7 @@ import { NotificationService } from 'src/app/shared/services/notification.servic
 import { EmployeeService } from '../../service/employee.service';
 import { EmployeeComponent } from '../employee/employee.component';
 import { DialogService } from 'src/app/shared/services/dialog.service';
+import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
 
 @Component({
   selector: 'app-employee-list',
@@ -21,7 +22,7 @@ export class EmployeeListComponent implements OnInit {
   ) { }
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'department', 'actions'];
+  displayedColumns: string[] = ['employeeId','fullName', 'email', 'jobTitle', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
@@ -70,6 +71,17 @@ export class EmployeeListComponent implements OnInit {
     this.dialog.open(EmployeeComponent, dialogConfig);
   }
 
+
+  onViewDetails(row) {
+    // this.studentService.getStudentDetails(row);
+    this.employeeService.setEmployeeDetails(row);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '80%';
+    this.dialog.open(EmployeeDetailsComponent, dialogConfig);
+
+  }
   onEdit(row) {
    // this.studentService.makeStudentForm();
     this.employeeService.populateForm(row);

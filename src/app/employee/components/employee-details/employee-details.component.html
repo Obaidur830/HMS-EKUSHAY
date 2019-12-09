@@ -1,0 +1,73 @@
+<mat-toolbar>
+    <span>Student Details Information</span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-toolbar>
+  <div class="container-fluid">
+  
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="shadow-sm card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <h4 class="card-title d-flex align-items-center">
+                  <i class="material-icons">
+                    account_circle
+                  </i>
+                  Personal Details</h4>
+                <div mat-content>
+                  <h4>employeeId: {{ employeeDetails.employeeId }}</h4>
+                  <h4>Name: {{ employeeDetails.fullName }}</h4>
+                  <h4>Gender: {{ employeeDetails.gender }}</h4>
+                  <h4>Nationality: {{ employeeDetails.nationality }}</h4>
+                  <h4>Religion: {{ employeeDetails.religion }}</h4>
+                  <h4>Bithday: {{ employeeDetails.dateOfBirth}}</h4>
+                </div>
+              </div>
+              <div class="col-md-4">
+                  <h4 class="d-flex align-items-center">
+                      <i class="material-icons">
+                        contacts
+                      </i>
+                      Address</h4>
+                <div mat-dialog-content>
+                  <h4>Zilla: {{ employeeDetails.district }}</h4>
+                  <h4>Upazilla: {{ employeeDetails.subDistrict  }}</h4>
+                  <h4>PostCode: {{ employeeDetails.postCode }}</h4>
+                  <h4>Union: {{ employeeDetails.union }}</h4>
+                      <h4>Email: {{ employeeDetails.email}}</h4>
+                      <h4>mobile: {{ employeeDetails.mobile }}</h4>
+                </div>
+  
+  
+              </div>
+              <div class="col-md-4">
+                  <h4 class="card-title d-flex align-items-center">
+                      <i class="material-icons">
+                        school
+                      </i>
+                      Education</h4>
+                      <div mat-dialog-content>
+                        <h4> JobTitle: {{ employeeDetails.jobTitle }}</h4>
+                        <h4>Department: {{ employeeDetails.department  }}</h4>
+                        <h4>Joiningdate: {{ employeeDetails.joiningDate }}</h4>
+                        <h4>ResidentialStatus: {{ employeeDetails.isResidential }}</h4>
+                        <h4>participationInfo: {{ employeeDetails.eventParticipation}}</h4>
+                      </div>
+            
+                      
+                    </div>
+                    
+            </div>
+          </div>
+          
+        </div>
+  
+        
+      </div>
+    </div>
+  </div>

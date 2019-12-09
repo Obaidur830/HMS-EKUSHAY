@@ -71,7 +71,7 @@ export interface StudentInformation {
 }
 
 export interface EmployeeInformation {
-     id: number;
+     employeeId: number;
      fullName: string;
      nationality: string;
      religion: string;

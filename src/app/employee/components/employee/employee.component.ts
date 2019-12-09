@@ -95,12 +95,14 @@ export class EmployeeComponent implements OnInit, OnDestroy {
         // department: this.employeeService.employeeForm.value.department,
         // // hireDate: this.employeeService.employeeForm.value.hireDate,
         // isResidntial: this.employeeService.employeeForm.value.isPermanent
-        id: this.employeeService.employeeForm.value.employeeId,
+        employeeId: this.employeeService.employeeForm.value.employeeId,
         fullName: this.employeeService.employeeForm.value.fullName ,
         nationality: this.employeeService.employeeForm.value.nationality,
         religion: this.employeeService.employeeForm.value.religion,
         gender: this.employeeService.employeeForm.value.gender,
-        dateOfBirth: this.employeeService.employeeForm.value.dateOfBirth,
+        // dateOfBirth: this.employeeService.employeeForm.value.dateOfBirth,
+        dateOfBirth: this.employeeService.employeeForm.value.dateOfBirth ? this.employeeService.employeeForm.value.dateOfBirth : '',
+
         district: this.employeeService.employeeForm.value.district,
         subDistrict: this.employeeService.employeeForm.value.subDistrict,
         union: this.employeeService.employeeForm.value.union,
@@ -109,7 +111,9 @@ export class EmployeeComponent implements OnInit, OnDestroy {
         mobile: this.employeeService.employeeForm.value.mobile,
         jobTitle: this.employeeService.employeeForm.value.jobTitle,
         department: this.employeeService.employeeForm.value.department,
-        joiningDate: this.employeeService.employeeForm.value.joiningDate,
+        // joiningDate: this.employeeService.employeeForm.value.joiningDate,
+        joiningDate: this.employeeService.employeeForm.value.joiningDate ? this.employeeService.employeeForm.value.joiningDate : '',
+
         isResidential: this.employeeService.employeeForm.value.isResidential,
         eventParticipation: this.employeeService.employeeForm.value.eventParticipation
       };

@@ -100,12 +100,12 @@ export class EmployeeService {
   insertEmployee(employeeInformation) {
 
     const employeeCollection = this.angularFirestore.collection<EmployeeInformation>(Entities.Employee);
-    employeeCollection.doc(employeeInformation.email).set(employeeInformation);
+    employeeCollection.doc(employeeInformation.employeeId).set(employeeInformation);
   }
 
   updateEmployee(employeeInformation) {
     const employeeCollection = this.angularFirestore.collection<EmployeeInformation>(Entities.Employee);
-    employeeCollection.doc(employeeInformation.email).update(employeeInformation);
+    employeeCollection.doc(employeeInformation.employeeId).update(employeeInformation);
   }
 
   deleteEmployee($key: string) {

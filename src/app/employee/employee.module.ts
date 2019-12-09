@@ -12,9 +12,10 @@ import { EmployeeService } from './service/employee.service';
 import { MatConfirmDialogComponent } from '../shared/components/mat-confirm-dialog/mat-confirm-dialog.component';
 import { DialogService } from '../shared/services/dialog.service';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
 
 @NgModule({
-  declarations: [EmployeeComponent, EmployeeListComponent],
+  declarations: [EmployeeComponent, EmployeeListComponent, EmployeeDetailsComponent],
   imports: [
     CommonModule,
     LayoutModule,
@@ -40,6 +41,6 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     RouterModule.forChild(employeeRoutes)
   ],
   providers: [EmployeeService, DialogService, DatePipe],
-  entryComponents: [EmployeeComponent]
+  entryComponents: [EmployeeComponent, EmployeeDetailsComponent]
 })
 export class EmployeeModule { }
