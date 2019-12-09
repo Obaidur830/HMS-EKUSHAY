@@ -88,7 +88,7 @@ export class EmployeeService {
     };
     this.employeeDetails = employeeDetails;
   }
-  getStudentDetails() {
+  getEmployeeDetails() {
     return this.employeeDetails;
   }
 

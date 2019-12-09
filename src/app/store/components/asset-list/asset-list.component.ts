@@ -5,6 +5,7 @@ import { MatDialog, MatDialogConfig, MatIcon } from '@angular/material';
 import { DialogService } from 'src/app/shared/services/dialog.service';
 import { AssetService } from '../../service/asset.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
+import { AssetDetailsComponent } from '../asset-details/asset-details.component';
 
 @Component({
   selector: 'app-asset-list',
@@ -22,7 +23,7 @@ export class AssetListComponent implements OnInit {
   ) { }
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'department', 'actions'];
+  displayedColumns: string[] = ['assetId', 'assetName', 'price', 'quantity', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
@@ -69,6 +70,17 @@ export class AssetListComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '60%';
     this.dialog.open(AssetComponent, dialogConfig);
+  }
+
+  onViewDetails(row) {
+    // this.studentService.getStudentDetails(row);
+    this.assetService.setAssetDetails(row);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    this.dialog.open(AssetDetailsComponent, dialogConfig);
+
   }
 
   onEdit(row) {

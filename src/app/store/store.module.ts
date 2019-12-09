@@ -9,9 +9,10 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatRadioModule, MatTableModule, MatDialogModule, MatIconModule, MatListModule, MatGridListModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, MatSortModule, MatPaginatorModule, MatInputModule, MatBadgeModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AssetDetailsComponent } from './components/asset-details/asset-details.component';
 
 @NgModule({
-  declarations: [AssetListComponent, AssetComponent],
+  declarations: [AssetListComponent, AssetComponent, AssetDetailsComponent],
   imports: [
     CommonModule,
     LayoutModule,
@@ -36,6 +37,6 @@ import { RouterModule } from '@angular/router';
     RouterModule.forChild(assetRoutes)
   ],
   providers: [AssetService, DatePipe],
-  entryComponents: [AssetComponent]
+  entryComponents: [AssetComponent, AssetDetailsComponent]
 })
 export class StoreModule { }

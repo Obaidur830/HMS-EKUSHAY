@@ -92,14 +92,23 @@ export interface EmployeeInformation {
 }
 
 export interface AssetInformation {
-    fullName: string;
-    email: string;
-    mobile: string;
-    city: string;
-    gender: string;
-    department: string;
-    hireDate: string;
-    isPermanent: boolean;
+    // fullName: string;
+    // email: string;
+    // mobile: string;
+    // city: string;
+    // gender: string;
+    // department: string;
+    // hireDate: string;
+    // isPermanent: boolean;
+     assetId: string;
+     assetName: string;
+     category: string;
+     location: string;
+     condition: string;
+     dateOfPurchase: string;
+     quantity: number;
+     price: number;
+     aboutAsset: string;
 }
 export interface TransactionInformation {
     fullName: string;

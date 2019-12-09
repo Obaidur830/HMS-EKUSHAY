@@ -16,7 +16,7 @@ export class EmployeeDetailsComponent implements OnInit {
   employeeDetails: EmployeeInformation;
 
   ngOnInit() {
-    this.employeeDetails = this.employeeService.getStudentDetails();
+    this.employeeDetails = this.employeeService.getEmployeeDetails();
     // console.log(this.studentDetails);
   }
   onClose() {

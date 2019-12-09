@@ -29,14 +29,17 @@ export class AssetComponent implements OnInit {
    onSubmit() {
      if (this.assetService.assetForm.valid) {
        this.assetInformation = {
-         fullName: this.assetService.assetForm.value.fullName,
-         email: this.assetService.assetForm.value.email,
-         mobile: this.assetService.assetForm.value.mobile,
-         city: this.assetService.assetForm.value.city,
-         gender: this.assetService.assetForm.value.gender,
-         department: this.assetService.assetForm.value.department,
-         hireDate: this.assetService.assetForm.value.hireDate,
-         isPermanent: this.assetService.assetForm.value.isPermanent
+         assetId: this.assetService.assetForm.value.assetId,
+         assetName: this.assetService.assetForm.value.assetName,
+         category: this.assetService.assetForm.value.category,
+         condition: this.assetService.assetForm.value.condition,
+         location: this.assetService.assetForm.value.location,
+         price: this.assetService.assetForm.value.price,
+         quantity: this.assetService.assetForm.value.quantity,
+         // dateOfPurchase: this.assetService.assetForm.value.dateOfPurchase,
+         dateOfPurchase: this.assetService.assetForm.value.dateOfPurchase ? this.assetService.assetForm.value.dateOfPurchase : '',
+
+         aboutAsset: this.assetService.assetForm.value.aboutAsset
        };
        if (!this.assetService.assetForm.get('$key').value) {
          this.assetService.insertAsset(this.assetInformation);
@@ -57,3 +60,4 @@ export class AssetComponent implements OnInit {
    }
 
 }
+

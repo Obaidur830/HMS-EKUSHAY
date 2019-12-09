@@ -13,38 +13,53 @@ export class AssetService {
     private angularFirestore: AngularFirestore,
     private datePipe: DatePipe,
   ) { }
-
+ 
+  assetDetails: AssetInformation;
 
   assetForm = new FormGroup({
     $key: new FormControl(null),
-    fullName: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    mobile: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    city: new FormControl(''),
-    gender: new FormControl('1'),
-    department: new FormControl(''),
-    hireDate: new FormControl('', Validators.required),
-    isPermanent: new FormControl(false)
+    assetId: new FormControl('', Validators.required),
+    assetName: new FormControl(''),
+    category: new FormControl(''),
+    condition: new FormControl(''),
+    dateOfPurchase: new FormControl(''),
+    location: new FormControl(''),
+    price: new FormControl(0),
+    quantity: new FormControl(0),
+    aboutAsset: new FormControl('')
   });
 
 
   initializeFormGroup() {
     this.assetForm.setValue({
       $key: null,
-      fullName: '',
-      email: '',
-      mobile: '',
-      city: '',
-      gender: '1',
-      department: '',
-      hireDate: '',
-      isPermanent: false
+      assetId: '',
+      assetName: '',
+      category: '',
+      condition: '',
+      dateOfPurchase: '',
+      location: '',
+      price: 0,
+      quantity: 0,
+      aboutAsset: ''
     });
   }
 
   populateForm(assetInformation) {
-    const assetFormDetails = {...assetInformation, hireDate: new Date(assetInformation.hireDate.seconds * 1000)};
+    // const assetFormDetails = {...assetInformation, dateOfPurchase: new Date(assetInformation.dateOfPurchase.seconds * 1000)};
+    const assetFormDetails = {...assetInformation, dateOfPurchase: assetInformation.dateOfPurchase.seconds ? new Date( assetInformation.dateOfPurchase.seconds * 1000) : ''};
+
     this.assetForm.setValue(assetFormDetails);
+  }
+
+
+  setAssetDetails(assetInformation) {
+    // tslint:disable-next-line: max-line-length
+    const assetDetails = {...assetInformation,  dateOfPurchase: assetInformation.dateOfPurchase.seconds ? new Date( assetInformation.dateOfPurchase.seconds * 1000).toLocaleDateString() : 'Not provided'};
+    this.assetDetails = assetDetails;
+  }
+  getAssetDetails() {
+     return this.assetDetails;
   }
 
   getAssets() {
@@ -54,12 +69,12 @@ export class AssetService {
   insertAsset(assetInformation) {
 
     const assetCollection = this.angularFirestore.collection<AssetInformation>(Entities.Asset);
-    assetCollection.doc(assetInformation.email).set(assetInformation);
+    assetCollection.doc(assetInformation.assetId).set(assetInformation);
   }
 
   updateAsset(assetInformation) {
     const assetCollection = this.angularFirestore.collection<AssetInformation>(Entities.Asset);
-    assetCollection.doc(assetInformation.email).update(assetInformation);
+    assetCollection.doc(assetInformation.assetId).update(assetInformation);
   }
 
   deleteAsset($key: string) {
