@@ -19,7 +19,7 @@ export class TransactionService {
   transactionForm = new FormGroup({
     $key: new FormControl(null),
     transactionId: new FormControl('', Validators.required),
-    transactionType: new FormControl(''),
+    transactionType: new FormControl('', Validators.required),
     categoryName: new FormControl(''),
     subCategoryName: new FormControl(''),
     amount: new FormControl(''),
@@ -85,8 +85,9 @@ export class TransactionService {
   }
 
 
-  getTransactions() {
-    return this.angularFirestore.collection<TransactionInformation>(Entities.Transaction).snapshotChanges();
+  getTransactions(transactionType: string) {
+    return this.angularFirestore.collection<TransactionInformation>(Entities.Transaction, ref=> ref.where
+      ('transactionType', '==', transactionType)).snapshotChanges();
   }
 
   insertTransaction(transactionInformation) {

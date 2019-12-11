@@ -29,7 +29,7 @@ export class TransactionListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.transactionService.getTransactions().subscribe(
+    this.transactionService.getTransactions('Income').subscribe(
       list => {
         const array = list.map(item => {
           // let departmentName = this.departmentService.getDepartmentName(item.payload.val()['department']);

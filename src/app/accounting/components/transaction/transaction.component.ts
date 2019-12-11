@@ -14,7 +14,6 @@ import { ReplaySubject } from 'rxjs';
 export class TransactionComponent implements OnInit {
 
   transactionInformation: TransactionInformation;
-  //departments = ['science', 'arts', 'commerce'];
   transactionTypes = transactionTypes;
   categories = categories;
   categoryId: number;
