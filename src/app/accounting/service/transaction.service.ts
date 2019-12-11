@@ -15,40 +15,75 @@ export class TransactionService {
     private datePipe: DatePipe
   ) { }
 
-
-    transactionForm = new FormGroup({
+  transactionDetails: TransactionInformation;
+  transactionForm = new FormGroup({
     $key: new FormControl(null),
-    fullName: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    mobile: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    city: new FormControl(''),
-    gender: new FormControl('1'),
-    department: new FormControl(''),
-    hireDate: new FormControl('', Validators.required),
-    isPermanent: new FormControl(false)
+    transactionId: new FormControl('', Validators.required),
+    transactionType: new FormControl(''),
+    categoryName: new FormControl(''),
+    subCategoryName: new FormControl(''),
+    amount: new FormControl(''),
+    dateOfTransaction: new FormControl(''),
+    editDate: new FormControl(''),
+    comment: new FormControl(''),
+    checkNo: new FormControl(''),
+
   });
 
 
   initializeFormGroup() {
     this.transactionForm.setValue({
       $key: null,
-      fullName: '',
-      email: '',
-      mobile: '',
-      city: '',
-      gender: '1',
-      department: '',
-      hireDate: '',
-      isPermanent: false
+      transactionId: '',
+      transactionType: '',
+      categoryName: '',
+      subCategoryName: '',
+      amount: '',
+      dateOfTransaction: '',
+      editDate: '',
+      comment: '',
+      checkNo: ''
+
     });
   }
+
+  // populateForm(transactionInformation) {
+  //   // timestamp to date conversion successfully
+  //   // console.log(new Date(studentInformation.hireDate.seconds * 1000));
+  //   // const transactionFormDetails = { ...transactionInformation, hireDate: new Date(transactionInformation.hireDate.seconds * 1000) };
+  //   this.transactionForm.setValue(transactionFormDetails);
+  // }
+
 
   populateForm(transactionInformation) {
     // timestamp to date conversion successfully
     // console.log(new Date(studentInformation.hireDate.seconds * 1000));
-    const transactionFormDetails = {...transactionInformation, hireDate: new Date(transactionInformation.hireDate.seconds * 1000)};
+    const transactionFormDetails = {
+      ...transactionInformation,
+      dateOfTransaction: transactionInformation.dateOfTransaction.seconds ? new Date(transactionInformation.dateOfTransaction.seconds * 1000) : '',
+      editDate: transactionInformation.editDate.seconds ? new Date(transactionInformation.editDate.seconds * 1000) : '',
+
+    };
+
     this.transactionForm.setValue(transactionFormDetails);
   }
+
+  setTransactionDetails(transactionInformation) {
+    // tslint:disable-next-line: max-line-length
+    const transactionDetails = {
+      ...transactionInformation,
+      // tslint:disable-next-line: max-line-length
+      dateOfTransaction: transactionInformation.dateOfTransaction.seconds ? new Date(transactionInformation.dateOfTransaction.seconds * 1000).toLocaleDateString() : 'Not provided',
+      // tslint:disable-next-line: max-line-length
+      editDate: transactionInformation.editDate.seconds ? new Date(transactionInformation.editDate.seconds * 1000).toLocaleDateString() : 'Not provided'
+
+    };
+    this.transactionDetails = transactionDetails;
+  }
+  getTransactionDetails() {
+    return this.transactionDetails;
+  }
+
 
   getTransactions() {
     return this.angularFirestore.collection<TransactionInformation>(Entities.Transaction).snapshotChanges();
@@ -57,12 +92,12 @@ export class TransactionService {
   insertTransaction(transactionInformation) {
 
     const transactionCollection = this.angularFirestore.collection<TransactionInformation>(Entities.Transaction);
-    transactionCollection.doc(transactionInformation.email).set(transactionInformation);
+    transactionCollection.doc(transactionInformation.transactionId).set(transactionInformation);
   }
 
   updateTransaction(transactionInformation) {
     const transactionCollection = this.angularFirestore.collection<TransactionInformation>(Entities.Transaction);
-    transactionCollection.doc(transactionInformation.email).update(transactionInformation);
+    transactionCollection.doc(transactionInformation.transactionId).update(transactionInformation);
   }
 
   deleteTransaction($key: string) {

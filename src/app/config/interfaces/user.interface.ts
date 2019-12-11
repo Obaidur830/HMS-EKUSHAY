@@ -111,15 +111,28 @@ export interface AssetInformation {
      aboutAsset: string;
 }
 export interface TransactionInformation {
-    fullName: string;
-    email: string;
-    mobile: string;
-    city: string;
-    gender: string;
-    department: string;
-    hireDate: string;
-    isPermanent: boolean;
+     transactionId : number;
+     transactionType : string;
+     categoryName : string;
+     subCategoryName : string;
+     amount : number;
+     dateOfTransaction : string;
+     editDate: string;
+     comment : string;
+     checkNo: string;
+     // editedBy: string;
 }
+export interface  Category{
+    id: number;
+    name: string;
+}
+
+export interface  SubCategory{
+    id: number;
+    name: string;
+    parentCategoryId: number;
+}
+
 export interface ResidentialRoomInformation {
     fullName: string;
     email: string;

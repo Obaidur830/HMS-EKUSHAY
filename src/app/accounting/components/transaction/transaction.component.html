@@ -1,58 +1,78 @@
 <mat-toolbar>
   <span>{{transactionService.transactionForm.controls['$key'].value?"Modify Transaction":"New Transaction"}}</span>
   <span class="fill-remaining-space"></span>
-  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1">
+    <mat-icon>clear</mat-icon>
+  </button>
 </mat-toolbar>
 <form [formGroup]="transactionService.transactionForm" class="normal-form" (submit)="onSubmit()">
-  <mat-grid-list cols="2" rowHeight="300px">
+  <mat-grid-list cols="2" rowHeight="350px">
     <mat-grid-tile>
       <div class="controles-container">
         <input type="hidden" formControlName="$key">
         <mat-form-field>
-          <input formControlName="fullName" matInput placeholder="Full Name*">
+          <input formControlName="transactionId" matInput placeholder="Transaction Id*">
           <mat-error>This field is mandatory.</mat-error>
         </mat-form-field>
+        
         <mat-form-field>
-          <input formControlName="email" matInput placeholder="Email">
-          <mat-error>Invalid email address.</mat-error>
+          <mat-select formControlName="transactionType" placeholder="Transaction Type">
+            
+            <ng-container *ngFor="let type of transactionTypes">
+              <mat-option value="{{type}}">{{type}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select formControlName="categoryName" placeholder="Select Category" #singleSelect>
+
+            <mat-option *ngFor="let category of categories " (click)="setSubCategories(category.id)"
+              value={{category.name}}>
+              {{category.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select formControlName="subCategoryName" placeholder="Sub-category">
+            <ng-container *ngFor="let subCategory of filteredSubCategories | async ">
+              <mat-option value="{{subCategory.name}}">{{subCategory.name}}</mat-option>
+            </ng-container>
+          </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <input formControlName="mobile" matInput placeholder="Mobile*">
-          <mat-error *ngIf="transactionService.transactionForm.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
-          <mat-error *ngIf="transactionService.transactionForm.controls['mobile'].errors?.minlength">Minimum 8 charactors needed.</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input formControlName="city" matInput placeholder="City">
+          <input formControlName="checkNo" matInput placeholder="checkNo">
+
         </mat-form-field>
       </div>
     </mat-grid-tile>
     <mat-grid-tile>
       <div class="controles-container">
-        <div class="add-bottom-padding">
-          <mat-radio-group formControlName="gender">
-            <mat-radio-button  value="1">Male</mat-radio-button>
-            <mat-radio-button value="2">Female</mat-radio-button>
-            <mat-radio-button value="3">Other</mat-radio-button>
-          </mat-radio-group>
-        </div>
         <mat-form-field>
-          <mat-select formControlName="department" placeholder="Department">
-            <mat-option>None</mat-option>
-            <ng-container *ngFor="let department of departments">
-              <mat-option value="{{department}}">{{department}}</mat-option>
-            </ng-container>
-          </mat-select>
+          <input formControlName="amount" matInput placeholder="Amount">
+
         </mat-form-field>
         <mat-form-field>
-          <input formControlName="hireDate" matInput [matDatepicker]="picker" placeholder="Hire Date">
+          <input formControlName="dateOfTransaction" matInput [matDatepicker]="picker" placeholder="Transaction Date">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <div class="add-bottom-padding">
-          <mat-checkbox formControlName="isPermanent">Permanent Student</mat-checkbox>
-        </div>
+
+        
+        <mat-form-field>
+          <input formControlName="editDate" matInput [matDatepicker]="picker1" placeholder="Edit Date">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea formControlName="comment" matInput placeholder="Leave a comment"></textarea>
+        </mat-form-field>
+
         <div class="button-row">
-          <button mat-raised-button color="primary" type="submit" [disabled]="transactionService.transactionForm.invalid">Submit</button>
+          <button mat-raised-button color="primary" type="submit"
+            [disabled]="transactionService.transactionForm.invalid">Submit</button>
           <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
         </div>
       </div>

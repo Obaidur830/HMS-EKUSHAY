@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <span>Asset Details Information</span>
+  <span>Transaction Details Information</span>
   <span class="fill-remaining-space"></span>
   <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1">
     <mat-icon>clear</mat-icon>
@@ -20,11 +20,11 @@
                 </i>
                 Personal Details</h4>
               <div mat-content>
-                <h4>Asset Id: {{ assetDetails.assetId }}</h4>
-                <h4>Asset Name: {{ assetDetails.assetName }}</h4>
-                <h4>Category: {{ assetDetails.category }}</h4>
-                <h4>Condition: {{ assetDetails.condition }}</h4>
-                <h4>Location: {{ assetDetails.location }}</h4>
+                <h4>Transaction Id: {{ transactionDetails.transactionId }}</h4>
+                <h4>Transaction Name: {{ transactionDetails.transactionType }}</h4>
+                <h4>Category: {{ transactionDetails.categoryName }}</h4>
+                <h4>Sub-Category: {{ transactionDetails.subCategoryName }}</h4>
+                <h4>Check No.: {{ transactionDetails.checkNo }}</h4>
               </div>
             </div>
             <div class="col-md-6">
@@ -34,10 +34,10 @@
                     </i>
                     Address</h4>
               <div mat-dialog-content>
-                <h4>Purchase Date: {{ assetDetails.dateOfPurchase }}</h4>
-                <h4>Price: {{ assetDetails.price  }}</h4>
-                <h4>Quantity: {{ assetDetails.quantity }}</h4>
-                <h4>About Asset: {{ assetDetails.aboutAsset }}</h4>
+                <h4>Amount: {{ transactionDetails.amount }}</h4>
+                <h4>Transaction Date: {{ transactionDetails.dateOfTransaction  }}</h4>
+                <h4>Edit Date: {{ transactionDetails.editDate }}</h4>
+                <h4>About Transaction: {{ transactionDetails.comment }}</h4>
               </div>
 
 
@@ -51,5 +51,5 @@
 
       
     </div>
- 
+
 </div>

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TransactionService } from '../../service/transaction.service';
-import { TransactionInformation } from 'src/app/config/interfaces/user.interface';
+import { TransactionInformation, SubCategory } from 'src/app/config/interfaces/user.interface';
 import { NotificationService } from 'src/app/shared/services/notification.service';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatSelect } from '@angular/material';
+import { categories, subCategories, transactionTypes } from 'src/app/config/constants/defaultConstants';
+import { ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'app-transaction',
@@ -12,7 +14,13 @@ import { MatDialogRef } from '@angular/material';
 export class TransactionComponent implements OnInit {
 
   transactionInformation: TransactionInformation;
-  departments = ['science', 'arts', 'commerce'];
+  //departments = ['science', 'arts', 'commerce'];
+  transactionTypes = transactionTypes;
+  categories = categories;
+  categoryId: number;
+  subCategories = subCategories;
+  public filteredSubCategories: ReplaySubject<SubCategory[]> = new ReplaySubject<SubCategory[]>(1);
+  @ViewChild('singleSelect') singleSelect: MatSelect;
   constructor(
     private transactionService: TransactionService,
     private notificationService: NotificationService,
@@ -21,6 +29,7 @@ export class TransactionComponent implements OnInit {
 
 
   ngOnInit() {
+    this.filteredSubCategories.next(this.subCategories.slice());
   }
 
   onClear() {
@@ -32,14 +41,16 @@ export class TransactionComponent implements OnInit {
   onSubmit() {
     if (this.transactionService.transactionForm.valid) {
       this.transactionInformation = {
-        fullName: this.transactionService.transactionForm.value.fullName,
-        email: this.transactionService.transactionForm.value.email,
-        mobile: this.transactionService.transactionForm.value.mobile,
-        city: this.transactionService.transactionForm.value.city,
-        gender: this.transactionService.transactionForm.value.gender,
-        department: this.transactionService.transactionForm.value.department,
-        hireDate: this.transactionService.transactionForm.value.hireDate,
-        isPermanent: this.transactionService.transactionForm.value.isPermanent
+        transactionId:this.transactionService.transactionForm.value.transactionId,
+        transactionType: this.transactionService.transactionForm.value.transactionType,
+        categoryName: this.transactionService.transactionForm.value.categoryName,
+        subCategoryName: this.transactionService.transactionForm.value.subCategoryName,
+        amount: this.transactionService.transactionForm.value.amount,
+        dateOfTransaction: this.transactionService.transactionForm.value.dateOfTransaction ? this.transactionService.transactionForm.value.dateOfTransaction : '',
+        editDate: this.transactionService.transactionForm.value.editDate ? this.transactionService.transactionForm.value.editDate : '',
+        comment: this.transactionService.transactionForm.value.comment,
+        checkNo: this.transactionService.transactionForm.value.checkNo,
+        // editedBy: ''
       };
       if (!this.transactionService.transactionForm.get('$key').value) {
         this.transactionService.insertTransaction(this.transactionInformation);
@@ -56,6 +67,18 @@ export class TransactionComponent implements OnInit {
     this.transactionService.transactionForm.reset();
     this.transactionService.initializeFormGroup();
     this.dialogRef.close();
+  }
+
+
+  setSubCategories(categoryId) {
+   if (this.categoryId !== categoryId) {
+      this.categoryId = categoryId;
+      this.transactionService.transactionForm.get('subCategoryName').setValue('');
+      this.filteredSubCategories.next(
+        // tslint:disable-next-line: max-line-length
+        this.subCategories.filter(category => category.parentCategoryId === categoryId)
+        );
+     }
   }
 
 }

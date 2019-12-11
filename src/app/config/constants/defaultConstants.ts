@@ -357,7 +357,62 @@ export const nationalities = [
     'Venezuela', 'Vietnames', 'Wels', 'Yemenit', 'Zambia', 'Zimbabwea'
 ];
 
+export const transactionTypes = [
+  'Income', 'Expense'
+]
+export const categories = [
+    {
+      id: 1,
+      name: 'University Funding'
+    },
+    {
+      id: 2,
+      name: "Hall's Money"
+    },
+    {
+      id: 3,
+      name: 'Miscellaneous'
+    }
+]
 
+export const subCategories = [
+  {
+    id: 1,
+    name: 'Hospitality Expense',
+    parentCategoryId: 1
+  },
+  {
+    id: 2,
+    name: "Garden Maintenance",
+    parentCategoryId: 1
+
+  },
+  {
+    id: 3,
+    name: 'Addmission Fee',
+    parentCategoryId: 2
+
+  },
+
+  {
+    id: 4,
+    name: 'Residential fee',
+    parentCategoryId: 2
+
+  },
+  {
+    id: 5,
+    name: "Employee Salary",
+    parentCategoryId: 3
+
+  },
+  {
+    id: 6,
+    name: 'Repairing Asset',
+    parentCategoryId: 3
+
+  }
+]
 export const districts = [
     {
       model: 'org.district',

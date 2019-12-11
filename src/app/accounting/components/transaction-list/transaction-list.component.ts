@@ -4,6 +4,7 @@ import { NotificationService } from 'src/app/shared/services/notification.servic
 import { TransactionService } from '../../service/transaction.service';
 import { DialogService } from 'src/app/shared/services/dialog.service';
 import { TransactionComponent } from '../transaction/transaction.component';
+import { TransactionDetailsComponent } from '../transaction-details/transaction-details.component';
 
 @Component({
   selector: 'app-transaction-list',
@@ -20,7 +21,7 @@ export class TransactionListComponent implements OnInit {
   ) { }
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'department', 'actions'];
+  displayedColumns: string[] = ['transactionId', 'transactionType', 'amount', 'checkNo', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
@@ -67,6 +68,17 @@ export class TransactionListComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '60%';
     this.dialog.open(TransactionComponent, dialogConfig);
+  }
+
+  onViewDetails(row) {
+    // this.studentService.getStudentDetails(row);
+    this.transactionService.setTransactionDetails(row);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    this.dialog.open(TransactionDetailsComponent, dialogConfig);
+
   }
 
   onEdit(row) {
