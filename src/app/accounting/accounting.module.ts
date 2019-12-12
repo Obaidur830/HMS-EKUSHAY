@@ -14,6 +14,10 @@ import { DefaultAccountingPageComponent } from './components/default-accounting-
 import { ExpenseListComponent } from './components/expense-list/expense-list.component';
 import { ProtibedonListComponent } from './components/protibedon-list/protibedon-list.component';
 import { TransactionDetailsComponent } from './components/transaction-details/transaction-details.component';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { NgxDateRangeModule } from 'ngx-daterange';
+// import { MatMomentDateModule } from '@angular/material-moment-adapter';
+//import { DateRangeModule } from '@progress/kendo-angular-dateinputs';
 
 @NgModule({
   // tslint:disable-next-line: max-line-length
@@ -41,6 +45,10 @@ import { TransactionDetailsComponent } from './components/transaction-details/tr
     MatBadgeModule,
     MatToolbarModule,
     MatTabsModule,
+    NgxDaterangepickerMd,
+    NgxDateRangeModule,
+        // MatMomentDateModule,
+    // DateRangeModule,
     RouterModule.forChild(accountingRoutes)
   ],
   providers: [TransactionService, DialogService, DatePipe],

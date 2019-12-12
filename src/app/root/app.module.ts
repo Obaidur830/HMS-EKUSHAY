@@ -25,6 +25,8 @@ import { SecurityService } from '../core/security-service/security.service';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+//import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+
 
 @NgModule({
   declarations: [
@@ -54,6 +56,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+   
+    
+    // NgxDaterangepickerMd
   ],
   providers: [AuthguardService, AdminguardGuard, RootService, SharedService, SecurityService],
   bootstrap: [AppComponent]

@@ -1,9 +1,80 @@
-<!-- <p>
-  protibedon-list works!
-</p>
+<!-- <div class="mt-30">
+  <mat-form-field>
+    <input matInput
+        placeholder="Choose a date"
+        [satDatepicker]="picker"
+        [value]="date">
+    <sat-datepicker #picker [rangeMode]="true"></sat-datepicker>
+    
+    <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
+  </mat-form-field>
+</div> -->
 
-<button (click)="pdfService.generatePdf()">Open PDF</button> -->
+<!-- <mat-form-field>
+  <input matInput placeholder="Période" [daterange]="daterange">
+  <daterange-toggle matSuffix [for]="daterange"></daterange-toggle>
+  <daterange #daterange></daterange>
+</mat-form-field> -->
+<date-range-picker 
+  [options]="options" 
+  [parentFormGroup]="form" 
+  [controlName]="'myDateRange'">
+</date-range-picker>
+<!-- <div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<form>
+				<div class="form-group">
+					<label for="exampleInputEmail1">The range date</label>
+					<input type="text" name="daterange" ngxDaterangepickerMd [(ngModel)]="selected" class="form-control" />
+				</div>
+			</form>
+		</div>
+	</div>
+</div> -->
+<!-- <div>
+  <input type="text" matInput
+    ngxDaterangepickerMd
+    [locale]="{applyLabel: 'ok', format: 'DD-MM-YYYY'}"
+    startKey="start"
+    endKey="end"
+    [(ngModel)]="selected"
+    name="daterange"/>
 
+
+</div> -->
+
+    <!-- <input type="text" ngxDaterangepickerMd
+[(ngModel)]="selected" placeholder="Choose date" (change)="change($event)"/> -->
+
+
+<!-- <div class="btn-group mt-30" style="width:50%; margin-left: 25%;">
+
+
+  <button style="width:50%;" class="mat-raised-button mat-primary" (click)="generatePdf()">
+    Generate Pdf
+  </button>
+
+
+  <button style="width:50%; " class="ml-3 mat-raised-button mat-primary" (click)="generateExcel()">
+    Generate Excel
+  </button>
+
+</div> -->
+
+
+
+<!-- <div class="btn-group" style="width:100%">
+  <button style="width:40%">Apple</button>
+  <button style="width:40%">Sony</button>
+</div> -->
+
+
+
+
+
+
+<!-- 
 <nav class="navbar navbar-expand navbar-light bg-primary d-flex justify-content-between">
   <div class="navbar-brand mb-0 h1 text-white">Student Details Resume</div>
 </nav>
@@ -52,7 +123,7 @@
             </div>
           </div>
         </div>
-        <!-- Skills -->
+        Skills
         <div class="shadow-sm card">
           <div class="card-body">
             <div class="d-flex justify-content-between card-title">
@@ -74,7 +145,7 @@
             </div>
           </div>
         </div>
-        <!-- Experience -->
+        Experience
         <div class="shadow-sm card">
           <div class="card-body">
             <div class="d-flex justify-content-between card-title">
@@ -114,7 +185,7 @@
             </div>
           </div>
         </div>
-        <!-- Education -->
+        Education
         <div class="shadow-sm card">
           <div class="card-body">
             <div class="d-flex justify-content-between card-title">
@@ -159,7 +230,7 @@
             </div>
           </div>
         </div>
-        <!-- Other Details -->
+        Other Details
         <div class="shadow-sm card">
           <div class="card-body">
             <h4 class="card-title d-flex align-items-center">
@@ -208,4 +279,4 @@
       </div>
     </div>
   </form>
-</div>
+</div> -->
