@@ -89,7 +89,14 @@ export class TransactionService {
     return this.angularFirestore.collection<TransactionInformation>(Entities.Transaction, ref=> ref.where
       ('transactionType', '==', transactionType)).snapshotChanges();
   }
-
+  
+  getTransactionsForReport(startDate: Date, endDate: Date){
+    return this.angularFirestore.collection<TransactionInformation>(Entities.Transaction
+      // (ref => ref
+      //   .where('dueDate', '>', startDate)
+      //   .where('dueDate', '<', endDate))
+        ).snapshotChanges();
+  }
   insertTransaction(transactionInformation) {
 
     const transactionCollection = this.angularFirestore.collection<TransactionInformation>(Entities.Transaction);

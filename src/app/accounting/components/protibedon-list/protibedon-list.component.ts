@@ -4,6 +4,10 @@ import { Resume, Experience, Education, Skill } from './resume';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import * as moment from "moment";
+import { FormGroup, FormControl } from '@angular/forms';
+import { TransactionService } from '../../service/transaction.service';
+import { MatTableDataSource } from '@angular/material';
+import { TransactionInformation } from 'src/app/config/interfaces/user.interface';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -11,9 +15,14 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
   templateUrl: './protibedon-list.component.html',
   styleUrls: ['./protibedon-list.component.scss']
 })
-export class ProtibedonListComponent {
+export class ProtibedonListComponent implements OnInit{
+  constructor(private transactionService: TransactionService){
 
+  }
+  listData: MatTableDataSource<any>;
+  array;
    selected;
+   form: FormGroup;
    //selected: {startDate: Moment, endDate: Moment};
   // ranges: any = {
   //   'Today': [moment(), moment()],
@@ -23,6 +32,152 @@ export class ProtibedonListComponent {
   //   'This Month': [moment().startOf('month'), moment().endOf('month')],
   //   'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
   // }
+
+  ngOnInit(){
+    this.form = new FormGroup({
+      'startDate': new FormControl(''),
+      'endDate': new FormControl('')
+    });
+
+   
+
+  }
+
+
+  generatePdf(){
+    const startDate = this.form.value.startDate;
+    const endDate= this.form.value.startDate;
+    this.transactionService.getTransactionsForReport(startDate, endDate).subscribe(
+      list => {
+          this.array=[];
+          this.array = list.map(item => {
+          // let departmentName = this.departmentService.getDepartmentName(item.payload.val()['department']);
+          return {
+            //$key: item.payload.doc.id,
+           // departmentName,
+            ...item.payload.doc.data()
+          };
+        });
+        //console.log(array.length);
+        //this.listData = new MatTableDataSource(array);
+        
+      });
+      
+      //this.listData? true: this.listData.data=[{id: 123, village: 'nbgd'}];
+      //array =[{id: 123, village: 'nbgd'}];
+      //console.log(array);
+      const documentDefinition = this.getDocumentDefinition();
+      pdfMake.createPdf(documentDefinition).download();
+
+  }
+
+  generateExcel(){
+     
+  }
+
+
+  getDocumentDefinition() {
+   // sessionStorage.setItem('resume', JSON.stringify(this.resume));
+      return {
+        content: [
+          {
+            text: 'RESUME',
+            bold: true,
+            fontSize: 20,
+            alignment: 'center',
+            margin: [0, 0, 0, 20]
+          },
+         
+          
+          
+          {
+            text: 'Education',
+            style: 'header'
+          },
+          this.getEducationObject(this.array),
+         
+        ],
+       
+          styles: {
+            header: {
+              fontSize: 18,
+              bold: true,
+              margin: [0, 20, 0, 10],
+              decoration: 'underline'
+            },
+            name: {
+              fontSize: 16,
+              bold: true
+            },
+            jobTitle: {
+              fontSize: 14,
+              bold: true,
+              italics: true
+            },
+            sign: {
+              margin: [0, 50, 0, 10],
+              alignment: 'right',
+              italics: true
+            },
+            tableHeader: {
+              bold: true,
+            }
+          }
+      };
+    }
+    
+      
+    getEducationObject(educations: TransactionInformation[]) {
+        console.log(educations);
+
+      return {
+        table: {
+          widths: ['*', '*', '*', '*'],
+          body: [
+            [{
+              text: 'Degree',
+              style: 'tableHeader'
+            },
+            {
+              text: 'College',
+              style: 'tableHeader'
+            },
+            {
+              text: 'Passing Year',
+              style: 'tableHeader'
+            },
+            {
+              text: 'Result',
+              style: 'tableHeader'
+            },
+            ],
+            ...educations.map(ed => {
+              return [ed.transactionId, ed.transactionType, ed.amount, ed.amount];
+            })
+          ]
+        }
+      };
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

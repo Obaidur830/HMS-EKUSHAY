@@ -15,11 +15,11 @@
   <daterange-toggle matSuffix [for]="daterange"></daterange-toggle>
   <daterange #daterange></daterange>
 </mat-form-field> -->
-<date-range-picker 
+<!-- <date-range-picker 
   [options]="options" 
   [parentFormGroup]="form" 
   [controlName]="'myDateRange'">
-</date-range-picker>
+</date-range-picker> -->
 <!-- <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
@@ -44,11 +44,35 @@
 
 </div> -->
 
-    <!-- <input type="text" ngxDaterangepickerMd
+<!-- <input type="text" ngxDaterangepickerMd
 [(ngModel)]="selected" placeholder="Choose date" (change)="change($event)"/> -->
+<!-- <form fxLayout="column" [formGroup]="form">
+  <div class="input-row" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px"> -->
+
+  <form [formGroup]="form">
+      <div class="btn-group mt-30"  style="width:50%; margin-left: 25%;">
+          <mat-form-field style="width:50%;" color="accent">
+    
+            <input formControlName="startDate" placeholder="From Date" matInput [matDatepicker]="picker1">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+      
+          <mat-form-field class="ml-3" style="width:50%;" color="accent">
+            <input formControlName="endDate" placeholder="To Date" matInput [matDatepicker]="picker2">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 color="primary"></mat-datepicker>
+          </mat-form-field>
+        </div>
+  </form>
+    
+  <!-- </div>
+
+</form> -->
 
 
-<!-- <div class="btn-group mt-30" style="width:50%; margin-left: 25%;">
+
+<div class="btn-group mt-30" style="width:50%; margin-left: 25%;">
 
 
   <button style="width:50%;" class="mat-raised-button mat-primary" (click)="generatePdf()">
@@ -60,7 +84,7 @@
     Generate Excel
   </button>
 
-</div> -->
+</div>
 
 
 
