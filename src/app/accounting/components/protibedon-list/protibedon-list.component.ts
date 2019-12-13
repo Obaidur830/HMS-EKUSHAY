@@ -3,7 +3,7 @@ import { PdfService } from 'src/app/shared/services/pdf.service';
 import { Resume, Experience, Education, Skill } from './resume';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-import * as moment from "moment";
+import * as moment from 'moment';
 import { FormGroup, FormControl } from '@angular/forms';
 import { TransactionService } from '../../service/transaction.service';
 import { MatTableDataSource } from '@angular/material';
@@ -15,149 +15,41 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
   templateUrl: './protibedon-list.component.html',
   styleUrls: ['./protibedon-list.component.scss']
 })
-export class ProtibedonListComponent implements OnInit{
-  constructor(private transactionService: TransactionService){
+export class ProtibedonListComponent implements OnInit {
+  constructor(private transactionService: TransactionService,
+              private pdfService: PdfService) {
 
   }
-  listData: MatTableDataSource<any>;
-  array;
-   selected;
-   form: FormGroup;
-   //selected: {startDate: Moment, endDate: Moment};
-  // ranges: any = {
-  //   'Today': [moment(), moment()],
-  //   'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-  //   'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-  //   'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-  //   'This Month': [moment().startOf('month'), moment().endOf('month')],
-  //   'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-  // }
 
-  ngOnInit(){
+  array;
+   form: FormGroup;
+
+  ngOnInit() {
     this.form = new FormGroup({
-      'startDate': new FormControl(''),
-      'endDate': new FormControl('')
+      startDate: new FormControl(''),
+      endDate: new FormControl('')
     });
 
-   
-
-  }
-
-
-  generatePdf(){
-    const startDate = this.form.value.startDate;
-    const endDate= this.form.value.startDate;
-    this.transactionService.getTransactionsForReport(startDate, endDate).subscribe(
+    this.transactionService.getTransactionsForReport().subscribe(
       list => {
-          this.array=[];
+          this.array = [];
           this.array = list.map(item => {
-          // let departmentName = this.departmentService.getDepartmentName(item.payload.val()['department']);
           return {
-            //$key: item.payload.doc.id,
-           // departmentName,
-            ...item.payload.doc.data()
+            ...item.payload.doc.data(),
+            // tslint:disable-next-line: max-line-length
+            dateOfTransaction: item.payload.doc.get('dateOfTransaction').seconds ? new Date(item.payload.doc.get('dateOfTransaction').seconds * 1000).toLocaleDateString() : 'Not provided',
+
           };
         });
-        //console.log(array.length);
-        //this.listData = new MatTableDataSource(array);
-        
-      });
-      
-      //this.listData? true: this.listData.data=[{id: 123, village: 'nbgd'}];
-      //array =[{id: 123, village: 'nbgd'}];
-      //console.log(array);
-      const documentDefinition = this.getDocumentDefinition();
-      pdfMake.createPdf(documentDefinition).download();
+    });
+
 
   }
 
-  generateExcel(){
-     
+
+  generatePdf() {
+    this.pdfService.generatePdfForTransaction(this.array);
   }
-
-
-  getDocumentDefinition() {
-   // sessionStorage.setItem('resume', JSON.stringify(this.resume));
-      return {
-        content: [
-          {
-            text: 'RESUME',
-            bold: true,
-            fontSize: 20,
-            alignment: 'center',
-            margin: [0, 0, 0, 20]
-          },
-         
-          
-          
-          {
-            text: 'Education',
-            style: 'header'
-          },
-          this.getEducationObject(this.array),
-         
-        ],
-       
-          styles: {
-            header: {
-              fontSize: 18,
-              bold: true,
-              margin: [0, 20, 0, 10],
-              decoration: 'underline'
-            },
-            name: {
-              fontSize: 16,
-              bold: true
-            },
-            jobTitle: {
-              fontSize: 14,
-              bold: true,
-              italics: true
-            },
-            sign: {
-              margin: [0, 50, 0, 10],
-              alignment: 'right',
-              italics: true
-            },
-            tableHeader: {
-              bold: true,
-            }
-          }
-      };
-    }
-    
-      
-    getEducationObject(educations: TransactionInformation[]) {
-        console.log(educations);
-
-      return {
-        table: {
-          widths: ['*', '*', '*', '*'],
-          body: [
-            [{
-              text: 'Degree',
-              style: 'tableHeader'
-            },
-            {
-              text: 'College',
-              style: 'tableHeader'
-            },
-            {
-              text: 'Passing Year',
-              style: 'tableHeader'
-            },
-            {
-              text: 'Result',
-              style: 'tableHeader'
-            },
-            ],
-            ...educations.map(ed => {
-              return [ed.transactionId, ed.transactionType, ed.amount, ed.amount];
-            })
-          ]
-        }
-      };
-    }
 
 
 
