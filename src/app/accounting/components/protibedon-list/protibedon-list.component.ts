@@ -22,7 +22,7 @@ export class ProtibedonListComponent implements OnInit {
   }
 
   array;
-   form: FormGroup;
+  form: FormGroup;
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -32,23 +32,46 @@ export class ProtibedonListComponent implements OnInit {
 
     this.transactionService.getTransactionsForReport().subscribe(
       list => {
-          this.array = [];
-          this.array = list.map(item => {
+        this.array = [];
+        this.array = list.map(item => {
           return {
             ...item.payload.doc.data(),
             // tslint:disable-next-line: max-line-length
-            dateOfTransaction: item.payload.doc.get('dateOfTransaction').seconds ? new Date(item.payload.doc.get('dateOfTransaction').seconds * 1000).toLocaleDateString() : 'Not provided',
+            dateOfTransaction: item.payload.doc.get('dateOfTransaction').seconds ? new Date(item.payload.doc.get('dateOfTransaction').seconds * 1000) : null,
+            // tslint:disable-next-line: max-line-length
+            dateOfTransactionStr: item.payload.doc.get('dateOfTransaction').seconds ? new Date(item.payload.doc.get('dateOfTransaction').seconds * 1000).toLocaleDateString() : '',
 
           };
         });
-    });
+      });
 
 
   }
 
 
   generatePdf() {
-    this.pdfService.generatePdfForTransaction(this.array);
+
+    // console.log(new Date(this.form.value.startDate).getSeconds());
+    const startDate = this.form.value.startDate;
+    const endDate = this.form.value.endDate;
+    console.log(startDate + ' === ' + endDate);
+    const filterdData = this.array.filter(item => {
+      const date = item.dateOfTransaction;
+      if (item.dateOfTransaction !== null) {
+        if (date === startDate || date === endDate) {
+          return true;
+        } else if (moment(date).isAfter(startDate) && moment(date).isBefore(endDate)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    });
+
+    console.log(filterdData);
+    this.pdfService.generatePdfForTransaction(filterdData);
   }
 
 

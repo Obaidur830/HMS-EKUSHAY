@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-import { TransactionInformation } from 'src/app/config/interfaces/user.interface';
+import { TransactionInformation, PdfTransactionInformation } from 'src/app/config/interfaces/user.interface';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Injectable({
@@ -16,13 +16,13 @@ export class PdfService {
     // pdfMake.createPdf(documentDefinition).open({}, window); same window
    }
 
-   generatePdfForTransaction(transactions: TransactionInformation[]) {
+   generatePdfForTransaction(transactions: PdfTransactionInformation[]) {
     const documentDefinition = this.getTransactionDocumentDefinition(transactions);
     pdfMake.createPdf(documentDefinition).download();
 
   }
 
-  getTransactionDocumentDefinition(transactions: TransactionInformation[]) {
+  getTransactionDocumentDefinition(transactions: PdfTransactionInformation[]) {
       return {
         content: [
           {
@@ -57,7 +57,7 @@ export class PdfService {
       };
     }
 
-    getEducationObject(transactions: TransactionInformation[]) {
+    getEducationObject(transactions: PdfTransactionInformation[]) {
         //  console.log(educations);
 
       return {
@@ -91,7 +91,7 @@ export class PdfService {
             ],
             ...transactions.map(transaction => {
               // tslint:disable-next-line: max-line-length
-              return [transaction.transactionId, transaction.transactionType, transaction.categoryName, transaction.subCategoryName, transaction.amount, transaction.dateOfTransaction];
+              return [transaction.transactionId, transaction.transactionType, transaction.categoryName, transaction.subCategoryName, transaction.amount, transaction.dateOfTransactionStr];
             })
           ]
         }

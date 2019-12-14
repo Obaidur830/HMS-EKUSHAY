@@ -40,11 +40,12 @@ export class TransactionComponent implements OnInit {
   onSubmit() {
     if (this.transactionService.transactionForm.valid) {
       this.transactionInformation = {
-        transactionId:this.transactionService.transactionForm.value.transactionId,
+        transactionId: this.transactionService.transactionForm.value.transactionId,
         transactionType: this.transactionService.transactionForm.value.transactionType,
         categoryName: this.transactionService.transactionForm.value.categoryName,
         subCategoryName: this.transactionService.transactionForm.value.subCategoryName,
         amount: this.transactionService.transactionForm.value.amount,
+        // tslint:disable-next-line: max-line-length
         dateOfTransaction: this.transactionService.transactionForm.value.dateOfTransaction ? this.transactionService.transactionForm.value.dateOfTransaction : '',
         editDate: this.transactionService.transactionForm.value.editDate ? this.transactionService.transactionForm.value.editDate : '',
         comment: this.transactionService.transactionForm.value.comment,
@@ -70,14 +71,14 @@ export class TransactionComponent implements OnInit {
 
 
   setSubCategories(categoryId) {
-   if (this.categoryId !== categoryId) {
+    if (this.categoryId !== categoryId) {
       this.categoryId = categoryId;
       this.transactionService.transactionForm.get('subCategoryName').setValue('');
       this.filteredSubCategories.next(
         // tslint:disable-next-line: max-line-length
         this.subCategories.filter(category => category.parentCategoryId === categoryId)
-        );
-     }
+      );
+    }
   }
 
 }

@@ -22,7 +22,7 @@ export class EmployeeListComponent implements OnInit {
   ) { }
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['employeeId','fullName', 'email', 'jobTitle', 'actions'];
+  displayedColumns: string[] = ['employeeId', 'fullName', 'email', 'jobTitle', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;

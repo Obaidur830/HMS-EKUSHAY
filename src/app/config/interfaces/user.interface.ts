@@ -51,7 +51,7 @@ export interface StudentInformation {
     isResidential: boolean;
     addmissionFeeStatus: string;
     residenceFeeStatus: string;
-   // department: string;
+    // department: string;
     // hireDate: string;
     comment: string;
     // city: string;
@@ -71,23 +71,23 @@ export interface StudentInformation {
 }
 
 export interface EmployeeInformation {
-     employeeId: number;
-     fullName: string;
-     nationality: string;
-     religion: string;
-     gender: string;
-     dateOfBirth: string;
-     district: string;
-     subDistrict: string;
-     union: string;
-     postCode: string;
-     email: string;
-     mobile: string;
-     jobTitle: string;
-     department: string;
-     joiningDate: string;
-     isResidential: string;
-     eventParticipation: string;
+    employeeId: number;
+    fullName: string;
+    nationality: string;
+    religion: string;
+    gender: string;
+    dateOfBirth: string;
+    district: string;
+    subDistrict: string;
+    union: string;
+    postCode: string;
+    email: string;
+    mobile: string;
+    jobTitle: string;
+    department: string;
+    joiningDate: string;
+    isResidential: string;
+    eventParticipation: string;
 
 }
 
@@ -100,34 +100,47 @@ export interface AssetInformation {
     // department: string;
     // hireDate: string;
     // isPermanent: boolean;
-     assetId: string;
-     assetName: string;
-     category: string;
-     location: string;
-     condition: string;
-     dateOfPurchase: string;
-     quantity: number;
-     price: number;
-     aboutAsset: string;
+    assetId: string;
+    assetName: string;
+    category: string;
+    location: string;
+    condition: string;
+    dateOfPurchase: string;
+    quantity: number;
+    price: number;
+    aboutAsset: string;
 }
 export interface TransactionInformation {
-     transactionId : number;
-     transactionType : string;
-     categoryName : string;
-     subCategoryName : string;
-     amount : number;
-     dateOfTransaction : string;
-     editDate: string;
-     comment : string;
-     checkNo: string;
-     // editedBy: string;
+    transactionId: number;
+    transactionType: string;
+    categoryName: string;
+    subCategoryName: string;
+    amount: number;
+    dateOfTransaction: string;
+    editDate: string;
+    comment: string;
+    checkNo: string;
+    // editedBy: string;
 }
-export interface  Category{
+export interface PdfTransactionInformation {
+    transactionId: number;
+    transactionType: string;
+    categoryName: string;
+    subCategoryName: string;
+    amount: number;
+    dateOfTransaction: string;
+    editDate: string;
+    comment: string;
+    checkNo: string;
+    dateOfTransactionStr: string;
+    // editedBy: string;
+}
+export interface Category {
     id: number;
     name: string;
 }
 
-export interface  SubCategory{
+export interface SubCategory {
     id: number;
     name: string;
     parentCategoryId: number;
@@ -184,7 +197,7 @@ export interface FileUpload {
     // constructor(file: File) {
     //   this.file = file;
     // }
-  }
+}
 export interface FileDetails {
     key?: string;
     name: string;
@@ -194,11 +207,11 @@ export interface FileDetails {
     modifiedDate?: number;
     fileDescription?: string;
     publisherName?: string;
-  }
+}
 export interface District {
-   model: string;
-   pk: number;
-   fields: DistrictFields ;
+    model: string;
+    pk: number;
+    fields: DistrictFields;
 }
 export interface DistrictFields {
     name: string;
@@ -208,7 +221,7 @@ export interface DistrictFields {
 export interface SubDistrict {
     model: string;
     pk: number;
-    fields: SubDistrictFields ;
+    fields: SubDistrictFields;
 }
 export interface SubDistrictFields {
     name: string;
@@ -217,7 +230,7 @@ export interface SubDistrictFields {
 export interface Union {
     model: string;
     pk: number;
-    fields: UnionFields ;
+    fields: UnionFields;
 }
 export interface UnionFields {
     name: string;
