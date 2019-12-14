@@ -6,8 +6,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 import * as moment from 'moment';
 import { FormGroup, FormControl } from '@angular/forms';
 import { TransactionService } from '../../service/transaction.service';
-import { MatTableDataSource } from '@angular/material';
-import { TransactionInformation } from 'src/app/config/interfaces/user.interface';
+import { ExcelService } from 'src/app/shared/services/excel.service';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -17,7 +16,8 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class ProtibedonListComponent implements OnInit {
   constructor(private transactionService: TransactionService,
-    private pdfService: PdfService) {
+              private pdfService: PdfService,
+              private excelService: ExcelService) {
 
   }
 
@@ -42,7 +42,6 @@ export class ProtibedonListComponent implements OnInit {
             // tslint:disable-next-line: max-line-length
             dateOfTransaction: item.payload.doc.get('dateOfTransaction').seconds ? new Date(item.payload.doc.get('dateOfTransaction').seconds * 1000) : null,
             // tslint:disable-next-line: max-line-length
-            dateOfTransactionStr: item.payload.doc.get('dateOfTransaction').seconds ? new Date(item.payload.doc.get('dateOfTransaction').seconds * 1000).toLocaleDateString() : '',
 
           };
         });
@@ -52,7 +51,8 @@ export class ProtibedonListComponent implements OnInit {
   }
 
 
-  generatePdf() {
+
+  generateReport(reportType: string) {
     const startDate = this.form.value.startDate;
     const endDate = this.form.value.endDate;
     if (!startDate || !endDate) {
@@ -74,8 +74,28 @@ export class ProtibedonListComponent implements OnInit {
       }
     });
 
-    // console.log(filterdData);
-    this.pdfService.generatePdfForTransaction(filterdData);
+    console.log(filterdData);
+
+    switch (reportType) {
+      case 'pdf': {
+        const filterdDataa = filterdData.map(item => {
+          return {
+            ...item,
+            // tslint:disable-next-line: max-line-length
+            dateOfTransactionStr: item.dateOfTransaction.seconds ? new Date(item.dateOfTransaction.seconds * 1000).toLocaleDateString() : '',
+
+          };
+        });
+        this.pdfService.generatePdfForTransaction(filterdDataa);
+        break;
+      }
+      case 'excel': {
+        this.excelService.exportAsExcelFile(filterdData, 'TransactionReport');
+        break;
+      }
+      default: break;
+    }
+
   }
 
 

@@ -1,56 +1,7 @@
-<!-- <div class="mt-30">
-  <mat-form-field>
-    <input matInput
-        placeholder="Choose a date"
-        [satDatepicker]="picker"
-        [value]="date">
-    <sat-datepicker #picker [rangeMode]="true"></sat-datepicker>
-    
-    <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
-  </mat-form-field>
-</div> -->
-
-<!-- <mat-form-field>
-  <input matInput placeholder="Période" [daterange]="daterange">
-  <daterange-toggle matSuffix [for]="daterange"></daterange-toggle>
-  <daterange #daterange></daterange>
-</mat-form-field> -->
-<!-- <date-range-picker 
-  [options]="options" 
-  [parentFormGroup]="form" 
-  [controlName]="'myDateRange'">
-</date-range-picker> -->
-<!-- <div class="container">
-	<div class="row">
-		<div class="col-sm-12">
-			<form>
-				<div class="form-group">
-					<label for="exampleInputEmail1">The range date</label>
-					<input type="text" name="daterange" ngxDaterangepickerMd [(ngModel)]="selected" class="form-control" />
-				</div>
-			</form>
-		</div>
-	</div>
-</div> -->
-<!-- <div>
-  <input type="text" matInput
-    ngxDaterangepickerMd
-    [locale]="{applyLabel: 'ok', format: 'DD-MM-YYYY'}"
-    startKey="start"
-    endKey="end"
-    [(ngModel)]="selected"
-    name="daterange"/>
-
-
-</div> -->
-
-<!-- <input type="text" ngxDaterangepickerMd
-[(ngModel)]="selected" placeholder="Choose date" (change)="change($event)"/> -->
-<!-- <form fxLayout="column" [formGroup]="form">
-  <div class="input-row" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px"> -->
-
-  <form [formGroup]="form">
-      <div class="btn-group mt-30"  style="width:50%; margin-left: 25%;">
+  
+  <form [formGroup]="form" class="mt-30">
+      <h3 style="margin-left: 41%; color: rgb(8, 97, 12);">Select report date range</h3>
+      <div class="btn-group"  style="width:50%; margin-left: 25%;">
           <mat-form-field style="width:50%;" color="accent">
     
             <input formControlName="startDate" placeholder="From Date" [(ngModel)]="startDate" matInput [matDatepicker]="picker1">
@@ -65,24 +16,18 @@
             <mat-error>End Date should be greater than Start Date</mat-error>
           </mat-form-field>
         </div>
-        <mat-error *ngIf="!isDateRangeSelected && (!startDate || !endDate)" style="margin-left: 40%; font-size: large;">Please Select a Valid Date Range to Generate Report</mat-error>
+        <mat-error *ngIf="!isDateRangeSelected && (!startDate || !endDate)" style="margin-left: 40%; font-size: xx-large;">Please Select a Valid Date Range to Generate Report</mat-error>
   </form>
-    
-  <!-- </div>
-
-</form> -->
-
-
 
 <div class="btn-group mt-30" style="width:50%; margin-left: 25%;">
 
 
-  <button style="width:50%;" class="mat-raised-button mat-primary" (click)="generatePdf()">
+  <button style="width:50%;" class="mat-raised-button mat-primary" (click)="generateReport('pdf')">
     Generate Pdf
   </button>
 
 
-  <button style="width:50%; " class="ml-3 mat-raised-button mat-primary" (click)="generateExcel()">
+  <button style="width:50%; " class="ml-3 mat-raised-button mat-primary" (click)="generateReport('excel')">
     Generate Excel
   </button>
 
@@ -94,6 +39,9 @@
   <button style="width:40%">Apple</button>
   <button style="width:40%">Sony</button>
 </div> -->
+
+
+
 
 
 

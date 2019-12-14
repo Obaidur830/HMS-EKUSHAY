@@ -134,18 +134,7 @@ export const residentialConstant = [
         url: 'block'
     }
 ];
-// export const noticeBoardConstant = {
-//     noticeBoard: {
-//         name: 'Notice Board',
-//         url: 'notice-board',
-//         icon: 'emoji_flags'
-//      },
-//      notice: {
-//         name: 'Notice',
-//         url: 'notice',
-//         icon: 'emoji_flags'
-//      }
-// };
+
 export const toolbarButtons = [
     {
         name: 'All-Notice',
@@ -323,6 +312,7 @@ export const feeStatuses = [
     'pending', 'completed'
 ];
 
+
 export const residentialStatus = [
     'Residential', 'Non-Residential'
 ];
@@ -359,7 +349,17 @@ export const nationalities = [
 
 export const transactionTypes = [
   'Income', 'Expense'
-]
+];
+
+export const leaveTypes = [
+  'Sick', 'Casual', 'Restricted holiday', 'Annual', 'Parental leave',
+  'Maternity leave', 'Long service'
+];
+
+export const approveStatus = [
+   'Pending', 'Accept', 'Reject'
+];
+
 export const categories = [
     {
       id: 1,
@@ -367,13 +367,14 @@ export const categories = [
     },
     {
       id: 2,
-      name: "Hall's Money"
+      name: 'Hall\'s Money'
     },
     {
       id: 3,
       name: 'Miscellaneous'
     }
-]
+];
+
 
 export const subCategories = [
   {
@@ -383,7 +384,7 @@ export const subCategories = [
   },
   {
     id: 2,
-    name: "Garden Maintenance",
+    name: 'Garden Maintenance',
     parentCategoryId: 1
 
   },
@@ -402,7 +403,7 @@ export const subCategories = [
   },
   {
     id: 5,
-    name: "Employee Salary",
+    name: 'Employee Salary',
     parentCategoryId: 3
 
   },
