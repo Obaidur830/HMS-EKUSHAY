@@ -39,6 +39,22 @@ export class LeaveApplicationComponent implements OnInit {
         department: this.leaveService.leaveApplicationForm.value.department,
         hireDate: this.leaveService.leaveApplicationForm.value.hireDate,
         isPermanent: this.leaveService.leaveApplicationForm.value.isPermanent
+
+
+
+     leaveType: this.leaveService.leaveApplicationForm.value.leaveType,
+     startDate: this.leaveService.leaveApplicationForm.value.startDate ? this.leaveService.leaveApplicationForm.value.startDate : '',
+     endDate: this.leaveService.leaveApplicationForm.value.endDate ? this.leaveService.leaveApplicationForm.value.endDate : '',
+     reason: this.leaveService.leaveApplicationForm.value.reason,
+     employeeId: 
+     employeeName: 
+     employeeDesignation: 
+     numberOfdays: 
+     approvalStatus: 
+     appliedDate: 
+     approvedBy: 
+
+
       };
       if (!this.leaveService.leaveApplicationForm.get('$key').value) {
         this.leaveService.insertLeave(this.leaveInformation);

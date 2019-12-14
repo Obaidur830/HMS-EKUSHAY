@@ -24,7 +24,7 @@ export class LeaveListComponent implements OnInit {
   ) { }
   totalNotification;
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'department', 'actions'];
+  displayedColumns: string[] = ['EmployeeId', 'employeeName', 'startDate', 'endDate', 'approvalStatus', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
@@ -32,15 +32,17 @@ export class LeaveListComponent implements OnInit {
 
   ngOnInit() {
 
+
+    // ai jagay employee id onojai sob nia aste hobe
     this.leaveService.getAllLeaves().subscribe(
       list => {
         const array = list.map(item => {
-          // let departmentName = this.departmentService.getDepartmentName(item.payload.val()['department']);
           return {
             $key: item.payload.doc.id,
-           // departmentName,
            ...item.payload.doc.data(),
-           hireDate: new Date(item.payload.doc.get('hireDate').seconds * 1000)
+           startDate: item.payload.doc.get('startDate').seconds ? new Date(item.payload.doc.get('startDate').seconds * 1000) : '',
+           endDate: item.payload.doc.get('endDate').seconds ? new Date(item.payload.doc.get('endDate').seconds * 1000) : '',
+           appliedDate: item.payload.doc.get('appliedDate').seconds ? new Date(item.payload.doc.get('appliedDate').seconds * 1000) : '',
           };
         });
         this.totalNotification = array.length;

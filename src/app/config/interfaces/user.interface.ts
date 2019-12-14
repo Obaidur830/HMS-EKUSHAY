@@ -98,9 +98,12 @@ export interface LeaveInformation {
      endDate: string;
      reason: string;
      employeeId: string;
+     employeeName: string;
+     employeeDesignation: string;
      numberOfdays: number;
      approvalStatus: string;
      appliedDate: string;
+     approvedBy: string;
 }
 
 export interface AssetInformation {

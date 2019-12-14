@@ -15,38 +15,60 @@ export class LeaveService {
     private datePipe: DatePipe,
   ) { }
 
-
+  leaveDetails: LeaveInformation;
   leaveApplicationForm = new FormGroup({
     $key: new FormControl(null),
-    fullName: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    mobile: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    city: new FormControl(''),
-    gender: new FormControl('1'),
-    department: new FormControl(''),
-    hireDate: new FormControl('', Validators.required),
-    isPermanent: new FormControl(false)
+     leaveType: new FormControl(''),
+     startDate: new FormControl('', Validators.required),
+     endDate: new FormControl('', Validators.required),
+     reason: new FormControl(''),
   });
 
 
   initializeFormGroup() {
     this.leaveApplicationForm.setValue({
       $key: null,
-      fullName: '',
-      email: '',
-      mobile: '',
-      city: '',
-      gender: '1',
-      department: '',
-      hireDate: '',
-      isPermanent: false
+      leaveType: '',
+      startDate: '',
+      endDate: '',
+      reason: '',
     });
   }
 
+  // populateForm(leaveInformation) {
+  //   // tslint:disable-next-line: max-line-length
+  //   const leaveFormDetails = {...leaveInformation, hireDate: new Date(leaveInformation.hireDate.seconds * 1000)};
+  //   this.leaveApplicationForm.setValue(leaveFormDetails);
+  // }
+
+
   populateForm(leaveInformation) {
-    // tslint:disable-next-line: max-line-length
-    const leaveFormDetails = {...leaveInformation, hireDate: new Date(leaveInformation.hireDate.seconds * 1000)};
+
+    const leaveFormDetails = {
+      leaveType: leaveInformation.leaveType,
+      startDate: leaveInformation.startDate.seconds ? new Date(leaveInformation.startDate.seconds * 1000) : '',
+      endDate: leaveInformation.endDate.seconds ? new Date(leaveInformation.endDate.seconds * 1000) : '',
+      reason: leaveInformation.reason
+    };
+
     this.leaveApplicationForm.setValue(leaveFormDetails);
+    this.setLeaveDetails(leaveInformation);
+
+
+  }
+
+  setLeaveDetails(leaveInformation) {
+    // tslint:disable-next-line: max-line-length
+    const leaveDetails = {
+      ...leaveInformation,
+      startDate: leaveInformation.startDate.seconds ? new Date(leaveInformation.startDate.seconds * 1000).toLocaleDateString() : '',
+      endDate: leaveInformation.endDate.seconds ? new Date(leaveInformation.endDate.seconds * 1000).toLocaleDateString() : '',
+
+    };
+    this.leaveDetails = leaveDetails;
+  }
+  getLeaveDetails() {
+    return this.leaveDetails;
   }
 
   getAllLeaves() {

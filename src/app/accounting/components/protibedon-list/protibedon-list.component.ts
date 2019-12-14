@@ -41,7 +41,6 @@ export class ProtibedonListComponent implements OnInit {
             ...item.payload.doc.data(),
             // tslint:disable-next-line: max-line-length
             dateOfTransaction: item.payload.doc.get('dateOfTransaction').seconds ? new Date(item.payload.doc.get('dateOfTransaction').seconds * 1000) : null,
-            // tslint:disable-next-line: max-line-length
 
           };
         });
