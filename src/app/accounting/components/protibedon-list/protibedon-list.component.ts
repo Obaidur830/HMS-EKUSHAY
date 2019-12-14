@@ -17,14 +17,17 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class ProtibedonListComponent implements OnInit {
   constructor(private transactionService: TransactionService,
-              private pdfService: PdfService) {
+    private pdfService: PdfService) {
 
   }
 
   array;
   form: FormGroup;
-
+  startDate;
+  endDate;
+  isDateRangeSelected: boolean;
   ngOnInit() {
+    this.isDateRangeSelected = true;
     this.form = new FormGroup({
       startDate: new FormControl(''),
       endDate: new FormControl('')
@@ -50,17 +53,18 @@ export class ProtibedonListComponent implements OnInit {
 
 
   generatePdf() {
-
-    // console.log(new Date(this.form.value.startDate).getSeconds());
     const startDate = this.form.value.startDate;
     const endDate = this.form.value.endDate;
+    if (!startDate || !endDate) {
+      this.isDateRangeSelected = false;
+      return;
+    }
+    this.isDateRangeSelected = true;
     console.log(startDate + ' === ' + endDate);
     const filterdData = this.array.filter(item => {
       const date = item.dateOfTransaction;
-      if (item.dateOfTransaction !== null) {
-        if (date === startDate || date === endDate) {
-          return true;
-        } else if (moment(date).isAfter(startDate) && moment(date).isBefore(endDate)) {
+      if (date !== null) {
+        if (moment(date).isSameOrAfter(startDate) && moment(date).isSameOrBefore(endDate)) {
           return true;
         } else {
           return false;
@@ -70,7 +74,7 @@ export class ProtibedonListComponent implements OnInit {
       }
     });
 
-    console.log(filterdData);
+    // console.log(filterdData);
     this.pdfService.generatePdfForTransaction(filterdData);
   }
 

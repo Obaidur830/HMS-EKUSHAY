@@ -53,17 +53,19 @@
       <div class="btn-group mt-30"  style="width:50%; margin-left: 25%;">
           <mat-form-field style="width:50%;" color="accent">
     
-            <input formControlName="startDate" placeholder="From Date" matInput [matDatepicker]="picker1">
+            <input formControlName="startDate" placeholder="From Date" [(ngModel)]="startDate" matInput [matDatepicker]="picker1">
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
           </mat-form-field>
       
           <mat-form-field class="ml-3" style="width:50%;" color="accent">
-            <input formControlName="endDate" placeholder="To Date" matInput [matDatepicker]="picker2">
+            <input formControlName="endDate" placeholder="To Date"  [min]="startDate" [(ngModel)]="endDate" matInput [matDatepicker]="picker2">
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2 color="primary"></mat-datepicker>
+            <mat-error>End Date should be greater than Start Date</mat-error>
           </mat-form-field>
         </div>
+        <mat-error *ngIf="!isDateRangeSelected && (!startDate || !endDate)" style="margin-left: 40%; font-size: large;">Please Select a Valid Date Range to Generate Report</mat-error>
   </form>
     
   <!-- </div>
