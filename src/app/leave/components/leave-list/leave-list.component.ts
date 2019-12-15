@@ -56,23 +56,30 @@ export class LeaveListComponent implements OnInit {
         this.listData = new MatTableDataSource(array);
         this.listData.sort = this.sort;
         this.listData.paginator = this.paginator;
-        this.listData.filterPredicate = (data, filter) => {
-          return this.displayedColumns.some(ele => {
-            return ele !== 'actions' && data[ele].toLowerCase().indexOf(filter) !== -1;
-          });
-        };
+        // this.listData.filterPredicate = (data, filter) => {
+        //   return this.displayedColumns.some(ele => {
+        //     return ele !== 'actions' && data[ele].toLowerCase().indexOf(filter) !== -1;
+        //   });
+        // };
       });
   }
 
+  // onSearchClear() {
+  //   this.searchKey = '';
+  //   this.applyFilter();
+  // }
+
+  // applyFilter() {
+  //   this.listData.filter = this.searchKey.trim().toLowerCase();
+  // }
   onSearchClear() {
     this.searchKey = '';
-    this.applyFilter();
+    this.applyFilter(this.searchKey);
   }
 
-  applyFilter() {
-    this.listData.filter = this.searchKey.trim().toLowerCase();
+  applyFilter(filterValue: string) {
+    this.listData.filter = filterValue.trim().toLowerCase();
   }
-
   onCreate() {
     // this.studentService.makeStudentForm();
     this.leaveService.initializeFormGroup();
@@ -124,3 +131,4 @@ export class LeaveListComponent implements OnInit {
   }
 
 }
+

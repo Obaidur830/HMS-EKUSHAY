@@ -4,11 +4,20 @@ import { MatDialog, MatTableDataSource, MatPaginator, MatSort, MatDialogConfig }
 import { DialogService } from 'src/app/shared/services/dialog.service';
 import { Notification_Service } from '../../service/notification_.service';
 import { NotificationComponent } from '../notification/notification.component';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-notification-list',
   templateUrl: './notification-list.component.html',
-  styleUrls: ['./notification-list.component.scss']
+  styleUrls: ['./notification-list.component.scss'],
+
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class NotificationListComponent implements OnInit {
 
@@ -21,7 +30,7 @@ export class NotificationListComponent implements OnInit {
   ) { }
   totalNotification;
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'department', 'actions'];
+  columnsToDisplay: string[] = ['fullName', 'email', 'mobile', 'city', 'department', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
@@ -43,11 +52,11 @@ export class NotificationListComponent implements OnInit {
         this.listData = new MatTableDataSource(array);
         this.listData.sort = this.sort;
         this.listData.paginator = this.paginator;
-        this.listData.filterPredicate = (data, filter) => {
-          return this.displayedColumns.some(ele => {
-            return ele !== 'actions' && data[ele].toLowerCase().indexOf(filter) !== -1;
-          });
-        };
+        // this.listData.filterPredicate = (data, filter) => {
+        //   return this.displayedColumns.some(ele => {
+        //     return ele !== 'actions' && data[ele].toLowerCase().indexOf(filter) !== -1;
+        //   });
+        // };
       });
   }
 

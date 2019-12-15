@@ -5,11 +5,7 @@ export const defaultConst = {
             url: 'home',
             icon: 'home'
         },
-        // {
-        //     name: 'Product',
-        //     url: 'product',
-        //     icon: 'weekend'
-        // },
+        
         {
             name: 'Student',
             url: 'student',
