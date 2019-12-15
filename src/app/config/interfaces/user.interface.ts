@@ -93,17 +93,17 @@ export interface EmployeeInformation {
 
 export interface LeaveInformation {
 
-     leaveType: string;
-     startDate: string;
-     endDate: string;
-     reason: string;
-     employeeId: string;
-     employeeName: string;
-     employeeDesignation: string;
-     numberOfdays: number;
-     approvalStatus: string;
-     appliedDate: string;
-     approvedBy: string;
+    leaveType: string;
+    startDate: string;
+    endDate: string;
+    reason: string;
+    employeeId: string;
+    employeeName: string;
+    employeeDesignation: string;
+    numberOfDays: number;
+    approvalStatus: string;
+    appliedDate: Date;
+    approvedBy: string;
 }
 
 export interface AssetInformation {
@@ -183,25 +183,6 @@ export interface NotificationInformation {
     department: string;
     hireDate: string;
     isPermanent: boolean;
-}
-export interface LeaveInformation {
-    // fullName: string;
-    // email: string;
-    // mobile: string;
-    // city: string;
-    // gender: string;
-    // department: string;
-    // hireDate: string;
-    // isPermanent: boolean;
-  
-     id: number;
-     employee_id: string;
-     date_to: string;
-     date_from: string;
-     approval_status: string;
-     category: string;
-     days: number;
-
 }
 
 export interface FileUpload {

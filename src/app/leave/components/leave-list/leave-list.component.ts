@@ -5,6 +5,7 @@ import { LeaveService } from '../../services/leave.service';
 import { DialogService } from 'src/app/shared/services/dialog.service';
 import { LeaveApplicationComponent } from '../leave-application/leave-application.component';
 import { ExcelService } from 'src/app/shared/services/excel.service';
+import { DatePipe } from '@angular/common';
 // import { ExcelService } from 'src/app/shared/services/excel.service';
 
 @Component({
@@ -19,19 +20,19 @@ export class LeaveListComponent implements OnInit {
     private notificationService: NotificationService,
     private leaveService: LeaveService,
     private dialogService: DialogService,
-    private excelService: ExcelService
+    private excelService: ExcelService,
+    private datePipe: DatePipe
     // private studentComponent: StudentComponent
   ) { }
   totalNotification;
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['EmployeeId', 'employeeName', 'startDate', 'endDate', 'approvalStatus', 'actions'];
+  displayedColumns: string[] = ['employeeId', 'employeeName', 'startDate', 'endDate', 'approvalStatus', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
 
 
   ngOnInit() {
-
 
     // ai jagay employee id onojai sob nia aste hobe
     this.leaveService.getAllLeaves().subscribe(
@@ -40,9 +41,13 @@ export class LeaveListComponent implements OnInit {
           return {
             $key: item.payload.doc.id,
            ...item.payload.doc.data(),
-           startDate: item.payload.doc.get('startDate').seconds ? new Date(item.payload.doc.get('startDate').seconds * 1000) : '',
-           endDate: item.payload.doc.get('endDate').seconds ? new Date(item.payload.doc.get('endDate').seconds * 1000) : '',
-           appliedDate: item.payload.doc.get('appliedDate').seconds ? new Date(item.payload.doc.get('appliedDate').seconds * 1000) : '',
+           // tslint:disable-next-line: max-line-length
+            startDate: new Date(item.payload.doc.get('startDate').seconds * 1000) ,
+            endDate: new Date(item.payload.doc.get('endDate').seconds * 1000) ,
+           // tslint:disable-next-line: max-line-length
+           //endDate: item.payload.doc.get('endDate').seconds ? new Date(item.payload.doc.get('endDate').seconds * 1000) : '',
+           // tslint:disable-next-line: max-line-length
+           //appliedDate: item.payload.doc.get('appliedDate').seconds ? new Date(item.payload.doc.get('appliedDate').seconds * 1000).toLocaleString() : '',
           };
         });
         this.totalNotification = array.length;

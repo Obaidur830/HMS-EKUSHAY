@@ -51,6 +51,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.initiateVariables();
         this.setUsername();
+        this.rootService.setLeaveEmployee();
         this.rootService.initializeSubDistrict();
         this.rootService.intitializeUnion();
         // this.route(defaultConst.sidebar[1].url);

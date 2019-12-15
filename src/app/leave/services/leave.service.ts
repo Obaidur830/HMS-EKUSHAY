@@ -14,10 +14,10 @@ export class LeaveService {
     private angularFirestore: AngularFirestore,
     private datePipe: DatePipe,
   ) { }
-
+  // public startDate;
   leaveDetails: LeaveInformation;
   leaveApplicationForm = new FormGroup({
-    $key: new FormControl(null),
+     $key: new FormControl(null),
      leaveType: new FormControl(''),
      startDate: new FormControl('', Validators.required),
      endDate: new FormControl('', Validators.required),
@@ -43,16 +43,20 @@ export class LeaveService {
 
 
   populateForm(leaveInformation) {
+    console.log(leaveInformation.startDate.seconds);
 
     const leaveFormDetails = {
+      $key: leaveInformation.$key,
       leaveType: leaveInformation.leaveType,
-      startDate: leaveInformation.startDate.seconds ? new Date(leaveInformation.startDate.seconds * 1000) : '',
-      endDate: leaveInformation.endDate.seconds ? new Date(leaveInformation.endDate.seconds * 1000) : '',
+      startDate: leaveInformation.startDate,
+      endDate: leaveInformation.endDate,
       reason: leaveInformation.reason
     };
 
+
     this.leaveApplicationForm.setValue(leaveFormDetails);
-    this.setLeaveDetails(leaveInformation);
+    // this.startDate = leaveFormDetails.startDate;
+    // this.setLeaveDetails(leaveInformation);
 
 
   }
@@ -78,12 +82,12 @@ export class LeaveService {
   insertLeave(leaveInformation) {
 
     const leaveCollection = this.angularFirestore.collection<LeaveInformation>(Entities.Leave);
-    leaveCollection.doc(leaveInformation.email).set(leaveInformation);
+    leaveCollection.doc(leaveInformation.leaveType).set(leaveInformation);
   }
 
   updateLeave(leaveInformation) {
     const leaveCollection = this.angularFirestore.collection<LeaveInformation>(Entities.Leave);
-    leaveCollection.doc(leaveInformation.email).update(leaveInformation);
+    leaveCollection.doc(leaveInformation.leaveType).update(leaveInformation);
   }
 
   deleteLeave($key: string) {

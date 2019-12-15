@@ -18,6 +18,8 @@ export class RootService {
   unions = unions;
   public filteredUnions: ReplaySubject<Union[]> = new ReplaySubject<Union[]>(1);
 
+  public leaveEmployer = { employeeId: '123', employeeName: 'tahmid', designation: 'employee' };
+  public filteredLeaveEmployee: ReplaySubject<any> = new ReplaySubject<any>(1);
   constructor() { }
   initializeSubDistrict() {
     this.filteredSubDistricts.next(this.subDistricts.slice());
@@ -25,5 +27,9 @@ export class RootService {
   }
   intitializeUnion() {
     this.filteredUnions.next(this.unions.slice());
+  }
+
+  setLeaveEmployee() {
+    this.filteredLeaveEmployee.next(this.leaveEmployer);
   }
 }

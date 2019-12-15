@@ -14,25 +14,25 @@
 <!-- <div class="row"> -->
 <div class="mat-elevation-z8 pl-10" style="width: 95%; ">
   <mat-table [dataSource]="listData" matSort>
-    <ng-container matColumnDef="fullName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Full Name</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.fullName}}</mat-cell>
+    <ng-container matColumnDef="employeeId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>EmployeeId</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.employeeId}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
+    <ng-container matColumnDef="employeeName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.employeeName}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="mobile">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Mobile</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.mobile}}</mat-cell>
+    <ng-container matColumnDef="startDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>StartDate</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.startDate | date}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="city">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.city}}</mat-cell>
+    <ng-container matColumnDef="endDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>EndDate</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{(element.endDate * 1000) | date:'yyyy-MM-dd' }}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="department">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Department</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.department}}</mat-cell>
+    <ng-container matColumnDef="approvalStatus">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.approvalStatus}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
