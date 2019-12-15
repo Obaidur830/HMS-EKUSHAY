@@ -13,7 +13,7 @@
 
         <mat-form-field>
           <mat-select formControlName="leaveType" placeholder="Leave Type">
-            <mat-option>None</mat-option>
+            <!-- <mat-option>None</mat-option> -->
             <ng-container *ngFor="let leaveType of leaveTypes">
               <mat-option value="{{leaveType}}">{{leaveType}}</mat-option>
             </ng-container>
@@ -44,13 +44,35 @@
       </div>
     </mat-grid-tile>
     <mat-grid-tile>
-      <div class="controles-container">
+      <!-- <div class="controles-container">
         <div class="button-row">
           <button mat-raised-button color="primary" type="submit"
             [disabled]="leaveService.leaveApplicationForm.invalid">Submit</button>
           <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
         </div>
+      </div> -->
+      <div class="ml-25 controles-container">
+
+      
+      <div mat-content>
+        <h4>EmployeeId: {{ this.rootService.leaveEmployer.employeeId }}</h4>
+        <h4>EmployeeName: {{ this.rootService.leaveEmployer.employeeName }}</h4>
+        <h4>Designation: {{ this.rootService.leaveEmployer.designation }}</h4>
+        <h4 *ngIf="!leaveService.leaveApplicationForm.controls['$key'].value">AppliedDate: {{ today | date }}</h4>
+
+        <h4 *ngIf="leaveService.leaveApplicationForm.controls['$key'].value">AppliedDate: {{ leaveDetails.appliedDate | date }}</h4>
+        <h4 *ngIf="leaveService.leaveApplicationForm.controls['$key'].value">Status: {{ leaveDetails.approvalStatus}}</h4>
+        <h4 *ngIf="leaveService.leaveApplicationForm.valid">{{calculateNumberOfDays()}}</h4>
+        <!-- <h4 *ngIf="leaveService.leaveApplicationForm.startDate !== previousStartDate">{{calculateNumberOfDays()}}</h4> -->
+        <h4 *ngIf="leaveService.leaveApplicationForm.valid">Leave Days: {{numberOfDays}}</h4>
+
       </div>
+      <div class="button-row">
+        <button mat-raised-button color="primary" type="submit"
+          [disabled]="leaveService.leaveApplicationForm.invalid">Submit</button>
+        <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+      </div>
+    </div>
     </mat-grid-tile>
   </mat-grid-list>
 </form>

@@ -6,6 +6,7 @@ import { DialogService } from 'src/app/shared/services/dialog.service';
 import { LeaveApplicationComponent } from '../leave-application/leave-application.component';
 import { ExcelService } from 'src/app/shared/services/excel.service';
 import { DatePipe } from '@angular/common';
+import { LeaveDetailsComponent } from '../leave-details/leave-details.component';
 // import { ExcelService } from 'src/app/shared/services/excel.service';
 
 @Component({
@@ -44,10 +45,11 @@ export class LeaveListComponent implements OnInit {
            // tslint:disable-next-line: max-line-length
             startDate: new Date(item.payload.doc.get('startDate').seconds * 1000) ,
             endDate: new Date(item.payload.doc.get('endDate').seconds * 1000) ,
+            appliedDate: new Date(item.payload.doc.get('appliedDate').seconds * 1000) ,
            // tslint:disable-next-line: max-line-length
-           //endDate: item.payload.doc.get('endDate').seconds ? new Date(item.payload.doc.get('endDate').seconds * 1000) : '',
+           // endDate: item.payload.doc.get('endDate').seconds ? new Date(item.payload.doc.get('endDate').seconds * 1000) : '',
            // tslint:disable-next-line: max-line-length
-           //appliedDate: item.payload.doc.get('appliedDate').seconds ? new Date(item.payload.doc.get('appliedDate').seconds * 1000).toLocaleString() : '',
+           // appliedDate: item.payload.doc.get('appliedDate').seconds ? new Date(item.payload.doc.get('appliedDate').seconds * 1000).toLocaleString() : '',
           };
         });
         this.totalNotification = array.length;
@@ -79,6 +81,17 @@ export class LeaveListComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '60%';
     this.dialog.open(LeaveApplicationComponent, dialogConfig);
+  }
+
+  onViewDetails(row) {
+    // this.studentService.getStudentDetails(row);
+    this.leaveService.setLeaveDetails(row);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    this.dialog.open(LeaveDetailsComponent, dialogConfig);
+
   }
 
   onEdit(row) {

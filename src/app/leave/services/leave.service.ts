@@ -57,7 +57,7 @@ export class LeaveService {
     this.leaveApplicationForm.setValue(leaveFormDetails);
     // this.startDate = leaveFormDetails.startDate;
     // this.setLeaveDetails(leaveInformation);
-
+    this.leaveDetails = leaveInformation;
 
   }
 
@@ -65,9 +65,9 @@ export class LeaveService {
     // tslint:disable-next-line: max-line-length
     const leaveDetails = {
       ...leaveInformation,
-      startDate: leaveInformation.startDate.seconds ? new Date(leaveInformation.startDate.seconds * 1000).toLocaleDateString() : '',
-      endDate: leaveInformation.endDate.seconds ? new Date(leaveInformation.endDate.seconds * 1000).toLocaleDateString() : '',
-
+      // startDate: leaveInformation.startDate.seconds ? new Date(leaveInformation.startDate.seconds * 1000).toLocaleDateString() : '',
+      // endDate: leaveInformation.endDate.seconds ? new Date(leaveInformation.endDate.seconds * 1000).toLocaleDateString() : '',
+ 
     };
     this.leaveDetails = leaveDetails;
   }

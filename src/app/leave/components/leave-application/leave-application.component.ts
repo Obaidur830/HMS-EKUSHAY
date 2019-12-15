@@ -5,6 +5,7 @@ import { MatDialogRef } from '@angular/material';
 import { RootService } from 'src/app/root/services/root.service';
 import { LeaveInformation } from 'src/app/config/interfaces/user.interface';
 import { leaveTypes } from 'src/app/config/constants/defaultConstants';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-leave-application',
@@ -14,12 +15,12 @@ import { leaveTypes } from 'src/app/config/constants/defaultConstants';
 export class LeaveApplicationComponent implements OnInit {
 
   leaveInformation: LeaveInformation;
-  // departments = ['science', 'arts', 'commerce'];
   today = new Date();
-  // startDate;
   leaveTypes = leaveTypes;
   numberOfDays = 0;
-  // appliedDate: new Date();
+  leaveDetails: LeaveInformation;
+  previousStartDate;
+  previousEndDate;
   constructor(
     private leaveService: LeaveService,
     private notificationService: NotificationService,
@@ -29,7 +30,7 @@ export class LeaveApplicationComponent implements OnInit {
 
 
   ngOnInit() {
-   // startDate = leaveService.
+    this.leaveDetails = this.leaveService.getLeaveDetails();
   }
   onClear() {
     this.leaveService.leaveApplicationForm.reset();
@@ -40,18 +41,6 @@ export class LeaveApplicationComponent implements OnInit {
   onSubmit() {
     if (this.leaveService.leaveApplicationForm.valid) {
       this.leaveInformation = {
-        // leaveType: this.leaveService.leaveApplicationForm.value.leaveType,
-        // startDate: this.leaveService.leaveApplicationForm.value.startDate ? this.leaveService.leaveApplicationForm.value.startDate : '',
-        // endDate: this.leaveService.leaveApplicationForm.value.endDate ? this.leaveService.leaveApplicationForm.value.endDate : '',
-        // reason: this.leaveService.leaveApplicationForm.value.reason,
-        // employeeId: this.rootService.leaveEmployer.employeeId,
-        // employeeName: this.rootService.leaveEmployer.employeeName,
-        // employeeDesignation: this.rootService.leaveEmployer.designation,
-        // numberOfDays: this.numberOfDays,
-        // approvalStatus: 'pending',
-        // appliedDate: new Date(),
-        // approvedBy: '',
-
         leaveType: this.leaveService.leaveApplicationForm.value.leaveType,
         startDate: this.leaveService.leaveApplicationForm.value.startDate ? this.leaveService.leaveApplicationForm.value.startDate : '',
         endDate: this.leaveService.leaveApplicationForm.value.endDate ? this.leaveService.leaveApplicationForm.value.endDate : '',
@@ -81,6 +70,20 @@ export class LeaveApplicationComponent implements OnInit {
     this.leaveService.leaveApplicationForm.reset();
     this.leaveService.initializeFormGroup();
     this.dialogRef.close();
+  }
+
+  calculateNumberOfDays() {
+    console.log(this.numberOfDays);
+
+    this.numberOfDays = 0;
+    const startDate = moment(this.leaveService.leaveApplicationForm.value.startDate) ;
+    const endDate = moment(this.leaveService.leaveApplicationForm.value.endDate);
+    this.previousStartDate = startDate;
+    this.previousEndDate = endDate;
+    if (!startDate || !endDate) {
+      return ;
+    }
+    this.numberOfDays = endDate.diff(startDate, 'days') + 1;
   }
 
 }

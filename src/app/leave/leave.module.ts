@@ -9,9 +9,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { leaveRoutes } from '../config/routes/lazyloadedRoutes.routes';
 import { LeaveService } from './services/leave.service';
+import { LeaveDetailsComponent } from './components/leave-details/leave-details.component';
 
 @NgModule({
-  declarations: [LeaveListComponent, LeaveApplicationComponent],
+  declarations: [LeaveListComponent, LeaveApplicationComponent, LeaveDetailsComponent],
   imports: [
     CommonModule,
     LayoutModule,
@@ -36,6 +37,6 @@ import { LeaveService } from './services/leave.service';
     RouterModule.forChild(leaveRoutes)
   ],
   providers: [LeaveService, DatePipe],
-  entryComponents: [LeaveApplicationComponent]
+  entryComponents: [LeaveApplicationComponent, LeaveDetailsComponent]
 })
 export class LeaveModule { }
