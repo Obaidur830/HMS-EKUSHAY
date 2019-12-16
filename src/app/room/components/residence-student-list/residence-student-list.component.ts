@@ -10,6 +10,7 @@ import { DatePipe } from '@angular/common';
 import { approveStatus } from 'src/app/config/constants/defaultConstants';
 import { LeaveDetailComponent } from 'src/app/notification/components/leave-detail/leave-detail.component';
 import { SeatApplicationDetailComponent } from '../seat-application-detail/seat-application-detail.component';
+import { RoomService } from '../../service/room.service';
 
 @Component({
   selector: 'app-residence-student-list',
@@ -23,17 +24,18 @@ export class ResidenceStudentListComponent implements OnInit {
     private seatApplicationService: SeatApplicationService,
     private dialogService: DialogService,
     private excelService: ExcelService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private roomService: RoomService
   ) { }
   totalNotification;
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['registrationNumber', 'fullName', 'session', 'classYearSemester', 'roomApprovalStatus', 'actions'];
+  displayedColumns: string[] = ['registrationNumber', 'fullName',  'classYearSemester', 'roomApprovalStatus', 'roomNo', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
 
   approveStatus = approveStatus;
-
+  hallRooms;
   ngOnInit() {
 
     // ai jagay employee id onojai sob nia aste hobe
@@ -63,6 +65,16 @@ export class ResidenceStudentListComponent implements OnInit {
         //   });
         // };
       });
+
+    this.roomService.getRooms().subscribe(
+        list => {
+          this.hallRooms = list.map(item => {
+            return {
+              $key: item.payload.doc.id,
+              ...item.payload.doc.data()
+            };
+          });
+        });
   }
 
   // onSearchClear() {
@@ -131,13 +143,21 @@ export class ResidenceStudentListComponent implements OnInit {
     this.excelService.exportAsExcelFile(this.listData.data, 'myfile');
   }
 
-  updateApproveStatus(status: string, elemnt) {
+  updateApproveStatus(status: string, element) {
 
     const seatApplicationInformation = {
-      ...elemnt,
+      ...element,
       roomApprovalStatus: status
     };
     this.seatApplicationService.updateSeatApplication(seatApplicationInformation);
 
+  }
+
+  updateRoomNo(roomNo: string, element) {
+    const seatApplicationInformation = {
+      ...element,
+      roomNo
+    };
+    this.seatApplicationService.updateSeatApplication(seatApplicationInformation);
   }
 }

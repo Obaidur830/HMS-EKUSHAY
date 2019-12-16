@@ -171,24 +171,15 @@ export interface SubCategory {
 }
 
 export interface ResidentialRoomInformation {
-    fullName: string;
-    email: string;
-    mobile: string;
-    city: string;
-    gender: string;
-    department: string;
-    hireDate: string;
-    isPermanent: boolean;
+    roomNo: string;
+    blockName: string;
+    capacity: number;
+    responsibleTeacherName: string;
 }
 export interface ResidentialBlockInformation {
-    fullName: string;
-    email: string;
-    mobile: string;
-    city: string;
-    gender: string;
-    department: string;
-    hireDate: string;
-    isPermanent: boolean;
+    blockName: string;
+    location: string;
+    numberOfRooms: number;
 }
 
 export interface NotificationInformation {

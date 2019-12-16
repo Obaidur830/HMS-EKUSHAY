@@ -134,7 +134,9 @@ export const residentialConstant = [
         url: 'block'
     }
 ];
-
+export const hallTeachers = [
+   'Md. Saeed Siddik ', 'Dr. Mohammad Shoyaib'
+];
 export const toolbarButtons = [
     {
         name: 'All-Notice',

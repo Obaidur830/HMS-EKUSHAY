@@ -17,35 +17,27 @@ export class BlockService {
 
   residentialBlockForm = new FormGroup({
     $key: new FormControl(null),
-    fullName: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    mobile: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    city: new FormControl(''),
-    gender: new FormControl('1'),
-    department: new FormControl(''),
-    hireDate: new FormControl('', Validators.required),
-    isPermanent: new FormControl(false)
+    blockName: new FormControl('', Validators.required),
+    location: new FormControl(''),
+    numberOfRooms: new FormControl(''),
   });
 
 
   initializeFormGroup() {
     this.residentialBlockForm.setValue({
       $key: null,
-      fullName: '',
-      email: '',
-      mobile: '',
-      city: '',
-      gender: '1',
-      department: '',
-      hireDate: '',
-      isPermanent: false
+      blockName: '',
+      location: '',
+      numberOfRooms: 0
     });
   }
 
   populateForm(residentialBlockInformation) {
     // tslint:disable-next-line: max-line-length
-    const residentialBlockFormDetails = {...residentialBlockInformation, hireDate: new Date(residentialBlockInformation.hireDate.seconds * 1000)};
-    this.residentialBlockForm.setValue(residentialBlockFormDetails);
+    // const residentialBlockFormDetails = {...residentialBlockInformation, hireDate: new Date(residentialBlockInformation.hireDate.seconds * 1000)};
+    // this.residentialBlockForm.setValue(residentialBlockFormDetails);
+
+    this.residentialBlockForm.setValue(residentialBlockInformation);
   }
 
   getBlocks() {
@@ -55,12 +47,12 @@ export class BlockService {
   insertBlock(residentialBlockInformation) {
 
     const blockCollection = this.angularFirestore.collection<ResidentialBlockInformation>(Entities.Block);
-    blockCollection.doc(residentialBlockInformation.email).set(residentialBlockInformation);
+    blockCollection.doc(residentialBlockInformation.blockName).set(residentialBlockInformation);
   }
 
   updateBlock(residentialBlockInformation) {
     const blockCollection = this.angularFirestore.collection<ResidentialBlockInformation>(Entities.Block);
-    blockCollection.doc(residentialBlockInformation.email).update(residentialBlockInformation);
+    blockCollection.doc(residentialBlockInformation.blockName).update(residentialBlockInformation);
   }
 
   deleteBlock($key: string) {

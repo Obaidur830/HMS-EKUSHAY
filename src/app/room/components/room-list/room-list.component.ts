@@ -18,47 +18,43 @@ export class RoomListComponent implements OnInit {
     private dialog: MatDialog,
     private notificationService: NotificationService,
     private roomService: RoomService,
-    private dialogService: DialogService
-    // private studentComponent: StudentComponent
+    private dialogService: DialogService,
   ) { }
-
+  // blocks;
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'department', 'actions'];
+  displayedColumns: string[] = ['roomNo', 'blockName', 'capacity', 'responsibleTeacherName', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
 
 
   ngOnInit() {
-
     this.roomService.getRooms().subscribe(
       list => {
         const array = list.map(item => {
-          // let departmentName = this.departmentService.getDepartmentName(item.payload.val()['department']);
           return {
             $key: item.payload.doc.id,
-           // departmentName,
             ...item.payload.doc.data()
           };
         });
         this.listData = new MatTableDataSource(array);
         this.listData.sort = this.sort;
         this.listData.paginator = this.paginator;
-        this.listData.filterPredicate = (data, filter) => {
-          return this.displayedColumns.some(ele => {
-            return ele !== 'actions' && data[ele].toLowerCase().indexOf(filter) !== -1;
-          });
-        };
+        // this.listData.filterPredicate = (data, filter) => {
+        //   return this.displayedColumns.some(ele => {
+        //     return ele !== 'actions' && data[ele].toLowerCase().indexOf(filter) !== -1;
+        //   });
+        // };
       });
   }
 
   onSearchClear() {
     this.searchKey = '';
-    this.applyFilter();
+    this.applyFilter(this.searchKey);
   }
 
-  applyFilter() {
-    this.listData.filter = this.searchKey.trim().toLowerCase();
+  applyFilter(filterValue: string) {
+    this.listData.filter = filterValue.trim().toLowerCase();
   }
 
   onCreate() {
@@ -67,7 +63,7 @@ export class RoomListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '60%';
+    dialogConfig.width = '40%';
     this.dialog.open(RoomComponent, dialogConfig);
   }
 
@@ -77,7 +73,7 @@ export class RoomListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '60%';
+    dialogConfig.width = '40%';
     this.dialog.open(RoomComponent, dialogConfig);
   }
 

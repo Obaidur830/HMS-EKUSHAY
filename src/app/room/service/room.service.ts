@@ -17,35 +17,28 @@ export class RoomService {
 
   residentialRoomForm = new FormGroup({
     $key: new FormControl(null),
-    fullName: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    mobile: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    city: new FormControl(''),
-    gender: new FormControl('1'),
-    department: new FormControl(''),
-    hireDate: new FormControl('', Validators.required),
-    isPermanent: new FormControl(false)
+    roomNo: new FormControl('', Validators.required),
+    blockName: new FormControl('', Validators.required),
+    capacity: new FormControl(''),
+    responsibleTeacherName: new FormControl('')
   });
 
 
   initializeFormGroup() {
     this.residentialRoomForm.setValue({
       $key: null,
-      fullName: '',
-      email: '',
-      mobile: '',
-      city: '',
-      gender: '1',
-      department: '',
-      hireDate: '',
-      isPermanent: false
+      roomNo: '',
+      blockName: '',
+      capacity: 0,
+      responsibleTeacherName: ''
     });
   }
 
   populateForm(residentialRoomInformation) {
     // tslint:disable-next-line: max-line-length
-    const residentialRoomFormDetails = {...residentialRoomInformation, hireDate: new Date(residentialRoomInformation.hireDate.seconds * 1000)};
-    this.residentialRoomForm.setValue(residentialRoomFormDetails);
+    // const residentialRoomFormDetails = {...residentialRoomInformation, hireDate: new Date(residentialRoomInformation.hireDate.seconds * 1000)};
+    // this.residentialRoomForm.setValue(residentialRoomFormDetails);
+    this.residentialRoomForm.setValue(residentialRoomInformation);
   }
 
   getRooms() {
@@ -55,12 +48,12 @@ export class RoomService {
   insertRoom(residentialRoomInformation) {
 
     const roomCollection = this.angularFirestore.collection<ResidentialRoomInformation>(Entities.Room);
-    roomCollection.doc(residentialRoomInformation.email).set(residentialRoomInformation);
+    roomCollection.doc(residentialRoomInformation.roomNo).set(residentialRoomInformation);
   }
 
   updateRoom(residentialRoomInformation) {
     const roomCollection = this.angularFirestore.collection<ResidentialRoomInformation>(Entities.Room);
-    roomCollection.doc(residentialRoomInformation.email).update(residentialRoomInformation);
+    roomCollection.doc(residentialRoomInformation.roomNo).update(residentialRoomInformation);
   }
 
   deleteRoom($key: string) {

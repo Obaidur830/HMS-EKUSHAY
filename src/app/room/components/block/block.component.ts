@@ -11,7 +11,7 @@ import { MatDialogRef } from '@angular/material';
 })
 export class BlockComponent implements OnInit {
   residentialBlockInformation: ResidentialBlockInformation;
-  departments = ['science', 'arts', 'commerce'];
+  // departments = ['science', 'arts', 'commerce'];
   constructor(
     private blockService: BlockService,
     private notificationService: NotificationService,
@@ -30,14 +30,9 @@ export class BlockComponent implements OnInit {
   onSubmit() {
     if (this.blockService.residentialBlockForm.valid) {
       this.residentialBlockInformation = {
-        fullName: this.blockService.residentialBlockForm.value.fullName,
-        email: this.blockService.residentialBlockForm.value.email,
-        mobile: this.blockService.residentialBlockForm.value.mobile,
-        city: this.blockService.residentialBlockForm.value.city,
-        gender: this.blockService.residentialBlockForm.value.gender,
-        department: this.blockService.residentialBlockForm.value.department,
-        hireDate: this.blockService.residentialBlockForm.value.hireDate,
-        isPermanent: this.blockService.residentialBlockForm.value.isPermanent
+        blockName: this.blockService.residentialBlockForm.value.blockName,
+        location: this.blockService.residentialBlockForm.value.location,
+        numberOfRooms: this.blockService.residentialBlockForm.value.numberOfRooms
       };
       if (!this.blockService.residentialBlockForm.get('$key').value) {
         this.blockService.insertBlock(this.residentialBlockInformation);

@@ -23,17 +23,36 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.fullName}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="session">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Session</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.session}}</mat-cell>
-    </ng-container>
+    
     <ng-container matColumnDef="classYearSemester">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Semester</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>ClassYear</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.classYearSemester}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="roomApprovalStatus">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.roomApprovalStatus}}</mat-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <mat-select [value]="element.roomApprovalStatus" >
+
+            <mat-option (click)="updateApproveStatus(status,element)" *ngFor="let status of approveStatus" value="{{status}}">
+              {{status}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="roomNo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>RoomNo</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <mat-select [value]="element.roomNo" >
+
+            <mat-option (click)="updateRoomNo(room.roomNo,element)" *ngFor="let room of hallRooms" value="{{room.roomNo}}">
+              {{room.roomNo}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="actions">
