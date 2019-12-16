@@ -71,19 +71,19 @@ export class SeatApplicationService {
     return this.angularFirestore.collection<SeatApplicationInformation>(Entities.SeatApplication).snapshotChanges();
   }
 
-  insertLeave(seatApplicationInformation) {
+  insertSeatApplication(seatApplicationInformation) {
 
-    const leaveCollection = this.angularFirestore.collection<SeatApplicationInformation>(Entities.SeatApplication);
-    leaveCollection.doc(seatApplicationInformation.registrationNumber).set(seatApplicationInformation);
+    const seatApplicationCollection = this.angularFirestore.collection<SeatApplicationInformation>(Entities.SeatApplication);
+    seatApplicationCollection.doc(seatApplicationInformation.registrationNumber).set(seatApplicationInformation);
   }
 
-  updateLeave(seatApplicationInformation) {
-    const leaveCollection = this.angularFirestore.collection<SeatApplicationInformation>(Entities.SeatApplication);
-    leaveCollection.doc(seatApplicationInformation.registrationNumber).update(seatApplicationInformation);
+  updateSeatApplication(seatApplicationInformation) {
+    const seatApplicationCollection = this.angularFirestore.collection<SeatApplicationInformation>(Entities.SeatApplication);
+    seatApplicationCollection.doc(seatApplicationInformation.registrationNumber).update(seatApplicationInformation);
   }
 
-  deleteLeave($key: string) {
-    const leaveCollection = this.angularFirestore.collection<SeatApplicationInformation>(Entities.SeatApplication);
-    leaveCollection.doc($key).delete();
+  deleteSeatApplication($key: string) {
+    const seatApplicationCollection = this.angularFirestore.collection<SeatApplicationInformation>(Entities.SeatApplication);
+    seatApplicationCollection.doc($key).delete();
   }
 }

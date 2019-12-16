@@ -22,7 +22,6 @@ export class SeatApplicationListComponent implements OnInit {
     private dialogService: DialogService,
     private excelService: ExcelService,
     private datePipe: DatePipe
-    // private studentComponent: StudentComponent
   ) { }
   totalNotification;
   listData: MatTableDataSource<any>;
@@ -104,7 +103,7 @@ export class SeatApplicationListComponent implements OnInit {
     this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
     .afterClosed().subscribe(res => {
       if (res) {
-        this.seatApplicationService.deleteLeave($key);
+        this.seatApplicationService.deleteSeatApplication($key);
         this.notificationService.warn('! Deleted successfully');
       }
     });

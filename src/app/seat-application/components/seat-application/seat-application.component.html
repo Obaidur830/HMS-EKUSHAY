@@ -1,16 +1,18 @@
 <mat-toolbar>
-  <span>{{leaveService.leaveApplicationForm.controls['$key'].value?"Modify Leave Application":"New leave Application"}}</span>
+  <span>{{seatApplicationService.seatApplicationForm.controls['$key'].value?"Modify Seat Application":"New Seat Application"}}</span>
   <span class="fill-remaining-space"></span>
   <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1">
     <mat-icon>clear</mat-icon>
   </button>
 </mat-toolbar>
-<form [formGroup]="leaveService.leaveApplicationForm" class="normal-form" (submit)="onSubmit()">
+<form [formGroup]="seatApplicationService.seatApplicationForm" class="normal-form" (submit)="onSubmit()">
   <mat-grid-list cols="1" rowHeight="300px">
     <mat-grid-tile>
       <div class="controles-container">
         <input type="hidden" formControlName="$key">
-
+        <mat-form-field>
+          <textarea formControlName="reason" matInput placeholder="Leave a reason"></textarea>
+        </mat-form-field>
         <!-- <div mat-content>
           <h4>EmployeeId: {{ this.rootService.leaveEmployer.employeeId }}</h4>
           <h4>EmployeeName: {{ this.rootService.leaveEmployer.employeeName }}</h4>
@@ -26,7 +28,7 @@
     
       <div class="button-row">
         <button mat-raised-button color="primary" type="submit"
-          [disabled]="leaveService.leaveApplicationForm.invalid">Submit</button>
+          [disabled]="seatApplicationService.seatApplicationForm.invalid">Submit</button>
         <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
       </div>
     </div>

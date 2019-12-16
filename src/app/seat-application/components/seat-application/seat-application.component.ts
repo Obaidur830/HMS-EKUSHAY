@@ -42,7 +42,7 @@ export class SeatApplicationComponent implements OnInit {
         session: this.rootService.studentInfo.session,
         cgpa: this.rootService.studentInfo.session,
         roll: this.rootService.studentInfo.roll,
-        roomApprovalStatus: 'pending',
+        roomApprovalStatus: this.rootService.studentInfo.roomApprovalStatus ? this.rootService.studentInfo.roomApprovalStatus : 'Pending' ,
         roomNo: this.rootService.studentInfo.roomNo,
         reason: this.seatApplicationService.seatApplicationForm.value.reason,
         appliedDate: new Date(),
@@ -50,9 +50,9 @@ export class SeatApplicationComponent implements OnInit {
       };
       if (!this.seatApplicationService.seatApplicationForm.get('$key').value) {
         // debugger;
-        this.seatApplicationService.insertLeave(this.seatApplicationInformation);
+        this.seatApplicationService.insertSeatApplication(this.seatApplicationInformation);
       } else {
-        this.seatApplicationService.updateLeave(this.seatApplicationInformation);
+        this.seatApplicationService.updateSeatApplication(this.seatApplicationInformation);
       }
       this.seatApplicationService.seatApplicationForm.reset();
       this.seatApplicationService.initializeFormGroup();
