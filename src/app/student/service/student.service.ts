@@ -127,6 +127,13 @@ export class StudentService {
     return this.angularFirestore.collection<StudentInformation>(Entities.Student).snapshotChanges();
   }
 
+  getRoomWiseStudents() {
+    return this.angularFirestore.collection<StudentInformation>(Entities.Student).snapshotChanges();
+
+  }
+
+  
+
   insertStudent(studentInformation) {
 
     const studentCollection = this.angularFirestore.collection<StudentInformation>(Entities.Student);
@@ -137,7 +144,14 @@ export class StudentService {
     const studentCollection = this.angularFirestore.collection<StudentInformation>(Entities.Student);
     studentCollection.doc(studentInformation.registrationNumber).update(studentInformation);
   }
-
+  updateStudentRoomApprovalStatus(id: string, value) {
+    const studentCollection = this.angularFirestore.collection<StudentInformation>(Entities.Student);
+    studentCollection.doc(id).update({roomApprovalStatus: value});
+  }
+  updateStudentRoomNo(id: string, value) {
+    const studentCollection = this.angularFirestore.collection<StudentInformation>(Entities.Student);
+    studentCollection.doc(id).update({roomNo: value});
+  }
   deleteStudent($key: string) {
     const studentCollection = this.angularFirestore.collection<StudentInformation>(Entities.Student);
     studentCollection.doc($key).delete();

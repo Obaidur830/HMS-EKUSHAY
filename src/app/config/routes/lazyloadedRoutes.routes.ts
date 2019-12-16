@@ -27,6 +27,7 @@ import { DefaultAccountingPageComponent } from 'src/app/accounting/components/de
 import { ExpenseListComponent } from 'src/app/accounting/components/expense-list/expense-list.component';
 import { ProtibedonListComponent } from 'src/app/accounting/components/protibedon-list/protibedon-list.component';
 import { SeatApplicationListComponent } from 'src/app/seat-application/components/seat-application-list/seat-application-list.component';
+import { RoomWiseStudentListComponent } from 'src/app/room/components/room-wise-student-list/room-wise-student-list.component';
 
 export const authenticationRoutes: Routes = [
   {
@@ -157,6 +158,10 @@ export const residenceRoutes: Routes = [
       {
         path: 'seat-application',
         component: ResidenceStudentListComponent
+      },
+      {
+        path: 'room-wise-student',
+        component: RoomWiseStudentListComponent
       },
       {
         path: 'room',

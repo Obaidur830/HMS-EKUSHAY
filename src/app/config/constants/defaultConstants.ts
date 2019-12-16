@@ -126,6 +126,11 @@ export const residentialConstant = [
     },
 
     {
+      name: 'RoomWise Student',
+      url: 'room-wise-student'
+    },
+
+    {
         name: 'Residential Room',
         url: 'room'
     },

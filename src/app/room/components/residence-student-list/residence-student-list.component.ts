@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatTableDataSource, MatSort, MatPaginator, MatDialogConfig } from '@angular/material';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { ResidentialStudentService } from '../../service/residential-student.service';
 import { DialogService } from 'src/app/shared/services/dialog.service';
@@ -11,6 +10,8 @@ import { approveStatus } from 'src/app/config/constants/defaultConstants';
 import { LeaveDetailComponent } from 'src/app/notification/components/leave-detail/leave-detail.component';
 import { SeatApplicationDetailComponent } from '../seat-application-detail/seat-application-detail.component';
 import { RoomService } from '../../service/room.service';
+import { MatTableDataSource, MatSort, MatPaginator, MatDialogConfig, MatDialog } from '@angular/material';
+import { StudentService } from 'src/app/student/service/student.service';
 
 @Component({
   selector: 'app-residence-student-list',
@@ -25,7 +26,8 @@ export class ResidenceStudentListComponent implements OnInit {
     private dialogService: DialogService,
     private excelService: ExcelService,
     private datePipe: DatePipe,
-    private roomService: RoomService
+    private roomService: RoomService,
+    private studentService: StudentService
   ) { }
   totalNotification;
   listData: MatTableDataSource<any>;
@@ -150,6 +152,7 @@ export class ResidenceStudentListComponent implements OnInit {
       roomApprovalStatus: status
     };
     this.seatApplicationService.updateSeatApplication(seatApplicationInformation);
+    this.studentService.updateStudentRoomApprovalStatus(seatApplicationInformation.registrationNumber, status);
 
   }
 
@@ -159,5 +162,7 @@ export class ResidenceStudentListComponent implements OnInit {
       roomNo
     };
     this.seatApplicationService.updateSeatApplication(seatApplicationInformation);
+    this.studentService.updateStudentRoomNo(seatApplicationInformation.registrationNumber, roomNo);
+
   }
 }
