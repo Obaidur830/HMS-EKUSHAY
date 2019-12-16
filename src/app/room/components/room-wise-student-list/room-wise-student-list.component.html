@@ -30,9 +30,9 @@
     <ng-container matColumnDef="migration">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Migration Room</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        
+        <!-- [value]="element.roomNo" -->
         <mat-form-field>
-          <mat-select [value]="element.roomNo" >
+          <mat-select  >
 
             <mat-option (click)="updateRoomNo(room.roomNo,element)" *ngFor="let room of hallRooms" value="{{room.roomNo}}">
               {{room.roomNo}}
