@@ -5,7 +5,6 @@ export const defaultConst = {
             url: 'home',
             icon: 'home'
         },
-        
         {
             name: 'Student',
             url: 'student',
@@ -25,6 +24,11 @@ export const defaultConst = {
             name: 'Accounting',
             url: 'accounting',
             icon: 'account_tree'
+        },
+        {
+          name: 'Seat Application',
+          url: 'seat-application',
+          icon: 'airline_seat_recline_extra'
         },
         {
             name: 'Leave',
@@ -354,6 +358,10 @@ export const leaveTypes = [
 
 export const approveStatus = [
    'Pending', 'Accept', 'Reject'
+];
+
+export const approveStatusColor = [
+  'Pending', 'Accept', 'Reject'
 ];
 
 export const categories = [

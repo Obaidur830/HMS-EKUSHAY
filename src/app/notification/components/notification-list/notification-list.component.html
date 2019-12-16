@@ -37,7 +37,7 @@
       <mat-cell *matCellDef="let element">
         
         <mat-form-field>
-          <mat-select [value]="element.approvalStatus">
+          <mat-select [value]="element.approvalStatus" >
 
             <mat-option (click)="updateApproveStatus(status,element)" *ngFor="let status of approveStatus" value="{{status}}">
               {{status}}

@@ -70,6 +70,18 @@ export interface StudentInformation {
     alumni: string;
 }
 
+export interface SeatApplicationInformation {
+    registrationNumber: string;
+    fullName: string;
+    subject: string;
+    classYearSemester: string;
+    session: string;
+    roll: string;
+    cgpa: string;
+    roomNo: string;
+    roomApprovalStatus: string;
+}
+
 export interface EmployeeInformation {
     employeeId: number;
     fullName: string;

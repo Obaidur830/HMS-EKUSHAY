@@ -65,6 +65,12 @@ export const routes: Routes = [
 				loadChildren: '../accounting/accounting.module#AccountingModule',
 				canActivate: [AuthguardService]
 			},
+
+			{
+				path: 'seat-application',
+				loadChildren: '../seat-application/seat-application.module#SeatApplicationModule',
+				canActivate: [AuthguardService]
+			},
 			{
 				path: 'leave',
 				loadChildren: '../leave/leave.module#LeaveModule',

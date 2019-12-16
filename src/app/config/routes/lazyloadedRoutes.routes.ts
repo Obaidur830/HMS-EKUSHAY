@@ -130,6 +130,13 @@ export const leaveRoutes: Routes = [
     component: LeaveListComponent
   }
 ];
+
+export const seatApplicationRoutes: Routes = [
+  {
+    path: '',
+    component: SeatApplicationListComponent
+  }
+];
 export const notificationRoutes: Routes = [
   {
     path: '',
