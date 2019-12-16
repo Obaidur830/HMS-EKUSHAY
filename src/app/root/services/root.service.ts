@@ -20,7 +20,7 @@ export class RootService {
 
   public leaveEmployer = { employeeId: '123', employeeName: 'tahmid', designation: 'employee' };
   // tslint:disable-next-line: max-line-length
-  public studentInfo = { registrationNumber: '123', fullName: 'tahmid', subject: 'employee', classYearSemester: '1st year', session: '15-16', cgpa: '3.4', roll: '23', roomNo: '44', roomApprovalStatus: 'no room' };
+  public studentInfo = { registrationNumber: '123', fullName: 'tahmid', subject: 'employee', classYearSemester: '1st year', session: '15-16', cgpa: '3.4', roll: '23', roomNo: '44', roomApprovalStatus: '' };
   public filteredLeaveEmployee: ReplaySubject<any> = new ReplaySubject<any>(1);
   constructor() { }
   initializeSubDistrict() {

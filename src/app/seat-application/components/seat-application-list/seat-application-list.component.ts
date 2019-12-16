@@ -40,6 +40,8 @@ export class SeatApplicationListComponent implements OnInit {
           return {
             $key: item.payload.doc.id,
            ...item.payload.doc.data(),
+           appliedDate: new Date(item.payload.doc.get('appliedDate').seconds * 1000) ,
+
           };
         });
         this.totalNotification = array.length;

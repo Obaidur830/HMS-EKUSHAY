@@ -121,8 +121,8 @@ export const accountingConstant = [
 ];
 export const residentialConstant = [
     {
-        name: 'Residential Student',
-        url: 'student'
+        name: 'Residency Application',
+        url: 'seat-application'
     },
 
     {

@@ -18,7 +18,9 @@ export class SeatApplicationService {
   seatApplicationDetails: SeatApplicationInformation;
   seatApplicationForm = new FormGroup({
      $key: new FormControl(null),
-     reason: new FormControl(),
+     reason: new FormControl(''),
+     monthlyIncome: new FormControl(''),
+     presentAddress: new FormControl(''),
 
   });
 
@@ -27,6 +29,8 @@ export class SeatApplicationService {
     this.seatApplicationForm.setValue({
       $key: null,
       reason: '',
+      monthlyIncome: '',
+      presentAddress: ''
     });
   }
 
@@ -42,7 +46,9 @@ export class SeatApplicationService {
 
     const seatapllicationFormDetails = {
       $key: seatApplicationInformation.$key,
-      reason: seatApplicationInformation.reason
+      reason: seatApplicationInformation.reason,
+      monthlyIncome: seatApplicationInformation.monthlyIncome,
+      presentAddress: seatApplicationInformation.monthlyIncome,
     };
 
 

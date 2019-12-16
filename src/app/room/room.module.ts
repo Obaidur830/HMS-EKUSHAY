@@ -16,10 +16,12 @@ import { BlockComponent } from './components/block/block.component';
 import { BlockService } from './service/block.service';
 import { ResidenceStudentComponent } from './components/residence-student/residence-student.component';
 import { ResidentialStudentService } from './service/residential-student.service';
+import { SeatApplicationDetailComponent } from './components/seat-application-detail/seat-application-detail.component';
+import { SeatApplicationService } from '../seat-application/services/seat-application.service';
 
 @NgModule({
   // tslint:disable-next-line: max-line-length
-  declarations: [RoomListComponent, DefaultResidencePageComponent, ResidenceStudentListComponent, BlockListComponent, BlockComponent, RoomComponent, ResidenceStudentComponent],
+  declarations: [RoomListComponent, DefaultResidencePageComponent, ResidenceStudentListComponent, BlockListComponent, BlockComponent, RoomComponent, ResidenceStudentComponent, SeatApplicationDetailComponent],
   imports: [
     CommonModule,
     LayoutModule,
@@ -45,7 +47,7 @@ import { ResidentialStudentService } from './service/residential-student.service
     MatTabsModule,
     RouterModule.forChild(residenceRoutes)
   ],
-  providers: [ResidentialStudentService, RoomService, BlockService, DatePipe],
-  entryComponents: [RoomComponent, BlockComponent, ResidenceStudentComponent]
+  providers: [ResidentialStudentService, SeatApplicationService, RoomService, BlockService, DatePipe],
+  entryComponents: [RoomComponent, BlockComponent, ResidenceStudentComponent, SeatApplicationDetailComponent]
 })
 export class RoomModule { }

@@ -14,7 +14,7 @@ export class SeatApplicationComponent implements OnInit {
 
   seatApplicationInformation: SeatApplicationInformation;
   seatApplicationDetails: SeatApplicationInformation;
-
+  today = new Date();
   constructor(
     private seatApplicationService: SeatApplicationService,
     private notificationService: NotificationService,
@@ -47,9 +47,10 @@ export class SeatApplicationComponent implements OnInit {
         reason: this.seatApplicationService.seatApplicationForm.value.reason,
         appliedDate: new Date(),
         approvedBy: '',
+        monthlyIncome: this.seatApplicationService.seatApplicationForm.value.reason,
+        presentAddress: this.seatApplicationService.seatApplicationForm.value.reason
       };
       if (!this.seatApplicationService.seatApplicationForm.get('$key').value) {
-        // debugger;
         this.seatApplicationService.insertSeatApplication(this.seatApplicationInformation);
       } else {
         this.seatApplicationService.updateSeatApplication(this.seatApplicationInformation);

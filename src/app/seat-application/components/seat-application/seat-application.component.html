@@ -6,23 +6,31 @@
   </button>
 </mat-toolbar>
 <form [formGroup]="seatApplicationService.seatApplicationForm" class="normal-form" (submit)="onSubmit()">
-  <mat-grid-list cols="1" rowHeight="300px">
+  <mat-grid-list cols="1" rowHeight="450px">
     <mat-grid-tile>
       <div class="controles-container">
         <input type="hidden" formControlName="$key">
+       
+        <div mat-content>
+          <h4>RegiNo: {{ this.rootService.studentInfo.registrationNumber }}</h4>
+          <h4>Name: {{ this.rootService.studentInfo.fullName }}</h4>
+          <h4>ClassYear: {{ this.rootService.leaveEmployer.classYearSemester }}</h4>
+          <h4 *ngIf="!seatApplicationService.seatApplicationForm.controls['$key'].value">AppliedDate: {{ today | date }}</h4>
+  
+          <h4 *ngIf="seatApplicationService.seatApplicationForm.controls['$key'].value">AppliedDate: {{ seatApplicationDetails.appliedDate | date }}</h4>
+          <h4 *ngIf="seatApplicationService.seatApplicationForm.controls['$key'].value">Status: {{ seatApplicationDetails.roomApprovalStatus}}</h4>
+          
+        </div>
+
+        <mat-form-field>
+          <input formControlName="monthlyIncome" matInput placeholder="Family Monthly Income">
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="presentAddress" matInput placeholder="Present Address">
+        </mat-form-field>
         <mat-form-field>
           <textarea formControlName="reason" matInput placeholder="Leave a reason"></textarea>
         </mat-form-field>
-        <!-- <div mat-content>
-          <h4>EmployeeId: {{ this.rootService.leaveEmployer.employeeId }}</h4>
-          <h4>EmployeeName: {{ this.rootService.leaveEmployer.employeeName }}</h4>
-          <h4>Designation: {{ this.rootService.leaveEmployer.designation }}</h4>
-          <h4 *ngIf="!leaveService.leaveApplicationForm.controls['$key'].value">AppliedDate: {{ today | date }}</h4>
-  
-          <h4 *ngIf="leaveService.leaveApplicationForm.controls['$key'].value">AppliedDate: {{ leaveDetails.appliedDate | date }}</h4>
-          <h4 *ngIf="leaveService.leaveApplicationForm.controls['$key'].value">Status: {{ leaveDetails.approvalStatus}}</h4>
-          
-        </div> -->
       
     
     

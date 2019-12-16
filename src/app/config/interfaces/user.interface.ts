@@ -83,6 +83,8 @@ export interface SeatApplicationInformation {
     reason: string;
     appliedDate: Date;
     approvedBy: string;
+    monthlyIncome: string;
+    presentAddress: string;
 }
 
 export interface EmployeeInformation {

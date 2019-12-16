@@ -152,10 +152,10 @@ export const residenceRoutes: Routes = [
       {
         path: '',
         // component: ResidenceStudentListComponent
-        redirectTo: 'student'
+        redirectTo: 'seat-application'
       },
       {
-        path: 'student',
+        path: 'seat-application',
         component: ResidenceStudentListComponent
       },
       {

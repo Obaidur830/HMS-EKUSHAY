@@ -12,14 +12,14 @@ export class LeaveDetailComponent implements OnInit {
   constructor(private leaveService: LeaveService,
               public dialogRef: MatDialogRef<LeaveDetailComponent>) { }
 
-leaveDetails: LeaveInformation;
+  leaveDetails: LeaveInformation;
 
-ngOnInit() {
-this.leaveDetails = this.leaveService.getLeaveDetails();
-// console.log(this.studentDetails);
-}
-onClose() {
-this.dialogRef.close();
-}
+  ngOnInit() {
+    this.leaveDetails = this.leaveService.getLeaveDetails();
+    // console.log(this.studentDetails);
+  }
+  onClose() {
+    this.dialogRef.close();
+  }
 
 }
