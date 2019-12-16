@@ -80,6 +80,9 @@ export interface SeatApplicationInformation {
     cgpa: string;
     roomNo: string;
     roomApprovalStatus: string;
+    reason: string;
+    appliedDate: Date;
+    approvedBy: string;
 }
 
 export interface EmployeeInformation {

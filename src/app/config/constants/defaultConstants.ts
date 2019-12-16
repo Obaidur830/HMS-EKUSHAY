@@ -26,7 +26,7 @@ export const defaultConst = {
             icon: 'account_tree'
         },
         {
-          name: 'Seat Application',
+          name: 'Hall Seat',
           url: 'seat-application',
           icon: 'airline_seat_recline_extra'
         },

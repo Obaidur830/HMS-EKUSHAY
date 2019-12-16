@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatDialog, MatTableDataSource, MatSort, MatPaginator, MatDialogConfig } from '@angular/material';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { SeatApplicationService } from '../../services/seat-application.service';
 import { DialogService } from 'src/app/shared/services/dialog.service';
 import { DatePipe } from '@angular/common';
 import { ExcelService } from 'src/app/shared/services/excel.service';
+import { SeatApplicationComponent } from '../seat-application/seat-application.component';
+import { SeatApplicationDetailsComponent } from '../seat-application-details/seat-application-details.component';
 
 @Component({
   selector: 'app-seat-application-list',
@@ -24,7 +26,7 @@ export class SeatApplicationListComponent implements OnInit {
   ) { }
   totalNotification;
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['employeeId', 'employeeName', 'startDate', 'endDate', 'approvalStatus', 'actions'];
+  displayedColumns: string[] = ['registrationNumber', 'fullName', 'session', 'classYearSemester', 'roomApprovalStatus', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
@@ -33,20 +35,12 @@ export class SeatApplicationListComponent implements OnInit {
   ngOnInit() {
 
     // ai jagay employee id onojai sob nia aste hobe
-    this.seatApplicationService.getAllLeaves().subscribe(
+    this.seatApplicationService.getAllSeatApplications().subscribe(
       list => {
         const array = list.map(item => {
           return {
             $key: item.payload.doc.id,
            ...item.payload.doc.data(),
-           // tslint:disable-next-line: max-line-length
-            startDate: new Date(item.payload.doc.get('startDate').seconds * 1000) ,
-            endDate: new Date(item.payload.doc.get('endDate').seconds * 1000) ,
-            appliedDate: new Date(item.payload.doc.get('appliedDate').seconds * 1000) ,
-           // tslint:disable-next-line: max-line-length
-           // endDate: item.payload.doc.get('endDate').seconds ? new Date(item.payload.doc.get('endDate').seconds * 1000) : '',
-           // tslint:disable-next-line: max-line-length
-           // appliedDate: item.payload.doc.get('appliedDate').seconds ? new Date(item.payload.doc.get('appliedDate').seconds * 1000).toLocaleString() : '',
           };
         });
         this.totalNotification = array.length;
@@ -61,14 +55,7 @@ export class SeatApplicationListComponent implements OnInit {
       });
   }
 
-  // onSearchClear() {
-  //   this.searchKey = '';
-  //   this.applyFilter();
-  // }
-
-  // applyFilter() {
-  //   this.listData.filter = this.searchKey.trim().toLowerCase();
-  // }
+ 
   onSearchClear() {
     this.searchKey = '';
     this.applyFilter(this.searchKey);
@@ -84,17 +71,17 @@ export class SeatApplicationListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '60%';
-    this.dialog.open(LeaveApplicationComponent, dialogConfig);
+    this.dialog.open(SeatApplicationComponent, dialogConfig);
   }
 
   onViewDetails(row) {
     // this.studentService.getStudentDetails(row);
-    this.seatApplicationService.setLeaveDetails(row);
+    this.seatApplicationService.setSeatApplicationDetails(row);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '60%';
-    this.dialog.open(LeaveDetailsComponent, dialogConfig);
+    this.dialog.open(SeatApplicationDetailsComponent, dialogConfig);
 
   }
 
@@ -105,7 +92,7 @@ export class SeatApplicationListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '60%';
-    this.dialog.open(LeaveApplicationComponent, dialogConfig);
+    this.dialog.open(SeatApplicationComponent, dialogConfig);
   }
 
   onDelete($key) {

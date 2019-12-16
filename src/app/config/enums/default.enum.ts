@@ -27,6 +27,7 @@ export enum Entities {
     Block= 'Block',
     Leave= 'Leave',
     Notification = 'Notification',
+    SeatApplication= 'SeatApplication',
     Upload= 'Upload',
     Category = 'Category',
     Location = 'Location',

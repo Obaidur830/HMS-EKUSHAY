@@ -26,6 +26,7 @@ import { ListUploadComponent } from 'src/app/notice/components/list-upload/list-
 import { DefaultAccountingPageComponent } from 'src/app/accounting/components/default-accounting-page/default-accounting-page.component';
 import { ExpenseListComponent } from 'src/app/accounting/components/expense-list/expense-list.component';
 import { ProtibedonListComponent } from 'src/app/accounting/components/protibedon-list/protibedon-list.component';
+import { SeatApplicationListComponent } from 'src/app/seat-application/components/seat-application-list/seat-application-list.component';
 
 export const authenticationRoutes: Routes = [
   {

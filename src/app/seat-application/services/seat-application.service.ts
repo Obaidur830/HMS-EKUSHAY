@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { DatePipe } from '@angular/common';
 import { SeatApplicationInformation } from 'src/app/config/interfaces/user.interface';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Entities } from 'src/app/config/enums/default.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -14,21 +16,16 @@ export class SeatApplicationService {
   ) { }
   // public startDate;
   seatApplicationDetails: SeatApplicationInformation;
-  leaveApplicationForm = new FormGroup({
+  seatApplicationForm = new FormGroup({
      $key: new FormControl(null),
-     leaveType: new FormControl(''),
-     startDate: new FormControl('', Validators.required),
-     endDate: new FormControl('', Validators.required),
-     reason: new FormControl(''),
+     reason: new FormControl(),
+
   });
 
 
   initializeFormGroup() {
-    this.leaveApplicationForm.setValue({
+    this.seatApplicationForm.setValue({
       $key: null,
-      leaveType: '',
-      startDate: '',
-      endDate: '',
       reason: '',
     });
   }
@@ -40,56 +37,53 @@ export class SeatApplicationService {
   // }
 
 
-  populateForm(leaveInformation) {
-    console.log(leaveInformation.startDate.seconds);
+  populateForm(seatApplicationInformation) {
+    // console.log(seatApplicationInformation.startDate.seconds);
 
-    const leaveFormDetails = {
-      $key: leaveInformation.$key,
-      leaveType: leaveInformation.leaveType,
-      startDate: leaveInformation.startDate,
-      endDate: leaveInformation.endDate,
-      reason: leaveInformation.reason
+    const seatapllicationFormDetails = {
+      $key: seatApplicationInformation.$key,
+      reason: seatApplicationInformation.reason
     };
 
 
-    this.leaveApplicationForm.setValue(leaveFormDetails);
+    this.seatApplicationForm.setValue(seatapllicationFormDetails);
     // this.startDate = leaveFormDetails.startDate;
     // this.setLeaveDetails(leaveInformation);
-    this.seatApplicationDetails = leaveInformation;
+    this.seatApplicationDetails = seatApplicationInformation;
 
   }
 
-  setLeaveDetails(leaveInformation) {
+  setSeatApplicationDetails(seatApplicationInformation) {
     // tslint:disable-next-line: max-line-length
-    const leaveDetails = {
-      ...leaveInformation,
+    const seatApplicationDetails = {
+      ...seatApplicationInformation,
       // startDate: leaveInformation.startDate.seconds ? new Date(leaveInformation.startDate.seconds * 1000).toLocaleDateString() : '',
       // endDate: leaveInformation.endDate.seconds ? new Date(leaveInformation.endDate.seconds * 1000).toLocaleDateString() : '',
- 
+
     };
-    this.seatApplicationDetails = leaveDetails;
+    this.seatApplicationDetails = seatApplicationDetails;
   }
-  getLeaveDetails() {
+  getSeatApplicationDetails() {
     return this.seatApplicationDetails;
   }
 
-  getAllLeaves() {
-    return this.angularFirestore.collection<LeaveInformation>(Entities.Leave).snapshotChanges();
+  getAllSeatApplications() {
+    return this.angularFirestore.collection<SeatApplicationInformation>(Entities.SeatApplication).snapshotChanges();
   }
 
-  insertLeave(leaveInformation) {
+  insertLeave(seatApplicationInformation) {
 
-    const leaveCollection = this.angularFirestore.collection<LeaveInformation>(Entities.Leave);
-    leaveCollection.doc(leaveInformation.leaveType).set(leaveInformation);
+    const leaveCollection = this.angularFirestore.collection<SeatApplicationInformation>(Entities.SeatApplication);
+    leaveCollection.doc(seatApplicationInformation.registrationNumber).set(seatApplicationInformation);
   }
 
-  updateLeave(leaveInformation) {
-    const leaveCollection = this.angularFirestore.collection<LeaveInformation>(Entities.Leave);
-    leaveCollection.doc(leaveInformation.leaveType).update(leaveInformation);
+  updateLeave(seatApplicationInformation) {
+    const leaveCollection = this.angularFirestore.collection<SeatApplicationInformation>(Entities.SeatApplication);
+    leaveCollection.doc(seatApplicationInformation.registrationNumber).update(seatApplicationInformation);
   }
 
   deleteLeave($key: string) {
-    const leaveCollection = this.angularFirestore.collection<LeaveInformation>(Entities.Leave);
+    const leaveCollection = this.angularFirestore.collection<SeatApplicationInformation>(Entities.SeatApplication);
     leaveCollection.doc($key).delete();
   }
 }
