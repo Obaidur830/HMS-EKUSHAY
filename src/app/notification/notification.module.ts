@@ -9,9 +9,11 @@ import { MatToolbarModule, MatButtonModule, MatRadioModule, MatTableModule, MatD
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationComponent } from './components/notification/notification.component';
 import { Notification_Service } from './service/notification_.service';
+import { LeaveService } from '../leave/services/leave.service';
+import { LeaveDetailComponent } from './components/leave-detail/leave-detail.component';
 
 @NgModule({
-  declarations: [NotificationListComponent, NotificationComponent],
+  declarations: [NotificationListComponent, NotificationComponent, LeaveDetailComponent],
   imports: [
     CommonModule,
     LayoutModule,
@@ -35,7 +37,7 @@ import { Notification_Service } from './service/notification_.service';
     MatBadgeModule,
     RouterModule.forChild(notificationRoutes)
   ],
-  providers: [Notification_Service, DatePipe],
-  entryComponents: [NotificationComponent]
+  providers: [LeaveService, DatePipe],
+  entryComponents: [LeaveDetailComponent]
 })
 export class NotificationModule { }

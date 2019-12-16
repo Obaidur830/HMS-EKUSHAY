@@ -1,62 +1,67 @@
 <div class="search-div pt-20">
-  <button color="primary" mat-raised-button (click)="onCreate()">
+  <!-- <button color="primary" mat-raised-button (click)="onCreate()">
     <mat-icon>add</mat-icon>new
-  </button>
+  </button> -->
   <mat-form-field class="search-form-field" floatLabel="never">
-    <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+    <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter($event.target.value)">
     <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
   <mat-icon class="ml-50" matBadge={{totalNotification}} matBadgeColor="primary">wc</mat-icon>
+  <button class="ml-30" (click)="generateExcel()"> Generate Excel</button>
 
 </div>
-<!-- <div class="mat-elevation-z8 pl-10">
-  <mat-table [dataSource]="listData" matSort>
-    <ng-container matColumnDef="fullName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Full Name</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.fullName}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="mobile">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Mobile</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.mobile}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="city">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.city}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="department">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Department</mat-header-cell>
-      <mat-cell *matCellDef="let element">
 
+
+<div class="mat-elevation-z8 pl-10" style="width: 95%; ">
+  <mat-table [dataSource]="listData" matSort>
+    <ng-container matColumnDef="employeeId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>EmployeeId</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.employeeId}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="employeeName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.employeeName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="startDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>StartDate</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.startDate | date}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="endDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>EndDate</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.endDate | date}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="approvalStatus">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        
         <mat-form-field>
-          <mat-select [(value)]="selected">
-            <mat-option>None</mat-option>
-            <mat-option value="option1">Option 1</mat-option>
-            <mat-option value="option2">Option 2</mat-option>
-            <mat-option value="option3">Option 3</mat-option>
+          <mat-select [value]="element.approvalStatus">
+
+            <mat-option (click)="updateApproveStatus(status,element)" *ngFor="let status of approveStatus" value="{{status}}">
+              {{status}}
+            </mat-option>
           </mat-select>
         </mat-form-field>
-
-
-
+        
+      
       </mat-cell>
     </ng-container>
+    
     <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button mat-icon-button (click)="onEdit(row)">
-          <mat-icon>launch</mat-icon>
+        <button mat-icon-button color="primary" (click)="onViewDetails(row)">
+          <mat-icon>reorder</mat-icon>
         </button>
+        
         <button mat-icon-button color="warn" (click)="onDelete(row.$key)">
-          <mat-icon>delete_outline</mat-icon>
+          <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>
     </ng-container>
+
     <ng-container matColumnDef="loading">
       <mat-footer-cell *matFooterCellDef colspan="6">
         Loading data...
@@ -74,112 +79,5 @@
     </mat-footer-row>
   </mat-table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
-</div> -->
 
-
-
-<div class="mat-elevation-z8 pl-10">
-  <mat-table [dataSource]="listData" matSort>
-    <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-      <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-      <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
-    </ng-container>
-    <ng-container matColumnDef="fullName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Full Name</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.fullName}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="mobile">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Mobile</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.mobile}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="city">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.city}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="department">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Department</mat-header-cell>
-      <mat-cell *matCellDef="let element">
-
-        <mat-form-field>
-          <mat-select [(value)]="selected">
-            <mat-option>None</mat-option>
-            <mat-option value="option1">Option 1</mat-option>
-            <mat-option value="option2">Option 2</mat-option>
-            <mat-option value="option3">Option 3</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-
-
-      </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <button mat-icon-button (click)="onEdit(row)">
-          <mat-icon>launch</mat-icon>
-        </button>
-        <button mat-icon-button color="warn" (click)="onDelete(row.$key)">
-          <mat-icon>delete_outline</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="loading">
-      <mat-footer-cell *matFooterCellDef colspan="6">
-        Loading data...
-      </mat-footer-cell>
-    </ng-container>
-    <ng-container matColumnDef="noData">
-      <mat-footer-cell *matFooterCellDef colspan="6">
-        No data.
-      </mat-footer-cell>
-    </ng-container>
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
-    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}">
-    </mat-footer-row>
-  </mat-table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
 </div>
-
-<table mat-table
-       [dataSource]="listData" multiTemplateDataRows
-       class="mat-elevation-z8">
-  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
-  </ng-container>
-
-  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-  <ng-container matColumnDef="expandedDetail">
-    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
-      <div class="example-element-detail"
-           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-        <div class="example-element-diagram">
-          <div class="example-element-position"> {{element.position}} </div>
-          <div class="example-element-symbol"> {{element.symbol}} </div>
-          <div class="example-element-name"> {{element.name}} </div>
-          <div class="example-element-weight"> {{element.weight}} </div>
-        </div>
-        <div class="example-element-description">
-          {{element.description}}
-          <span class="example-element-description-attribution"> -- Wikipedia </span>
-        </div>
-      </div>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
-      class="example-element-row"
-      [class.example-expanded-row]="expandedElement === element"
-      (click)="expandedElement = expandedElement === element ? null : element">
-  </tr>
-  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-</table>
-
