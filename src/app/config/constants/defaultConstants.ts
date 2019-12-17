@@ -1,5 +1,5 @@
 export const defaultConst = {
-    sidebarforcustomersupplier: [
+    adminSidebar: [
         {
             name: 'Dashboard',
             url: 'home',
@@ -48,37 +48,119 @@ export const defaultConst = {
             icon: 'school'
         }
     ],
-    sidebar: [
-        {
-            name: 'Admin Panel',
-            url: 'admin',
-            icon: 'security'
-        },
-        {
-            name: 'Student',
-            url: 'student',
-            icon: 'wc'
-        },
-        {
-            name: 'Product',
-            url: 'product',
-            icon: 'weekend'
-        },
-        {
-            name: 'Enquiry',
-            url: 'enquiry',
-            icon: 'contact_support'
-        },
-        {
-            name: 'Category',
-            url: 'category',
-            icon: 'widgets'
-        },
-        {
-            name: 'Purchase',
-            url: 'purchase',
-            icon: 'shopping_cart'
-        }
+    provostSidebar: [
+      {
+          name: 'Dashboard',
+          url: 'home',
+          icon: 'home'
+      },
+      {
+          name: 'Student',
+          url: 'student',
+          icon: 'wc'
+      },
+      {
+          name: 'Employee',
+          url: 'employee',
+          icon: 'emoji_people'
+      },
+      {
+          name: 'Asset',
+          url: 'asset',
+          icon: 'store'
+      },
+      {
+          name: 'Accounting',
+          url: 'accounting',
+          icon: 'account_tree'
+      },
+      {
+          name: 'Notification',
+          url: 'notification',
+          icon: 'notification_important'
+      },
+      {
+          name: 'Residence',
+          // residence can not be changed as it used in nav bar component
+          // directly. if you change, change in navbar and routes.ts
+          url: 'residence',
+          icon: 'school'
+      }
+  ],
+    studentSidebar: [
+      {
+        name: 'Dashboard',
+        url: 'home',
+        icon: 'home'
+      },
+      {
+        name: 'Hall Seat',
+        url: 'seat-application',
+        icon: 'airline_seat_recline_extra'
+      },
+    ],
+
+    hallOfficerSidebar: [
+      {
+        name: 'Dashboard',
+        url: 'home',
+        icon: 'home'
+      },
+      {
+        name: 'Student',
+        url: 'student',
+        icon: 'wc'
+      },
+    ],
+    employeeSidebar: [
+      {
+        name: 'Dashboard',
+        url: 'home',
+        icon: 'home'
+      },
+      {
+        name: 'Leave',
+        url: 'leave',
+        icon: 'flight_takeoff'
+    },
+    ],
+
+    hallAccountantSidebar: [
+      {
+        name: 'Dashboard',
+        url: 'home',
+        icon: 'home'
+      },
+      {
+        name: 'Asset',
+        url: 'asset',
+        icon: 'store'
+    },
+    {
+        name: 'Accounting',
+        url: 'accounting',
+        icon: 'account_tree'
+    },
+    ],
+
+    houseTutorSidebar: [
+      {
+        name: 'Dashboard',
+        url: 'home',
+        icon: 'home'
+      },
+      {
+        name: 'Notification',
+        url: 'notification',
+        icon: 'notification_important'
+    },
+    {
+        name: 'Residence',
+        // residence can not be changed as it used in nav bar component
+        // directly. if you change, change in navbar and routes.ts
+        url: 'residence',
+        icon: 'school'
+    }
     ],
     menu: {
         profile: {

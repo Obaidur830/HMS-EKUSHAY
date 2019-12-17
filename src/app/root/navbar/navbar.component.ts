@@ -6,6 +6,7 @@ import { AuthenticationService } from '../../authentication/services/authenticat
 import { Router } from '@angular/router';
 // tslint:disable-next-line: max-line-length
 import { defaultConst, residentialConstant, accountingConstant, toolbarButtons } from '../../config/constants/defaultConstants';
+
 import { QueryDatabaseService } from '../../core/database-service/query-database.service';
 import { Entities, Roles } from '../../config/enums/default.enum';
 import { CustomerUserInformation } from '../../config/interfaces/user.interface';
@@ -59,6 +60,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     initiateVariables() {
+        debugger;
         this.title = defaultConst.siteName.name;
         this.menuItems = defaultConst.menu;
         this.toolbarButtons = toolbarButtons;
@@ -75,10 +77,26 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     makeSideBar() {
         this.security.isAdmin().pipe(first()).subscribe(res => {
-            if (res) {
-                this.sidebar = defaultConst.sidebar;
-            } else {
-                this.sidebar = defaultConst.sidebarforcustomersupplier;
+            console.log(defaultConst)
+            // if (res) {
+            //     this.sidebar = defaultConst.sidebar;
+            // } else {
+            //     this.sidebar = defaultConst.sidebarforcustomersupplier;
+            // }
+
+
+            if (res === 'Admin') {
+                this.sidebar = defaultConst.adminSidebar;
+            } else if (res === 'HallOfficer') {
+                this.sidebar = defaultConst.hallOfficerSidebar;
+            } else if (res === 'HouseTutor') {
+                this.sidebar = defaultConst.houseTutorSidebar;
+            } else if (res === 'Provost') {
+                this.sidebar = defaultConst.provostSidebar;
+            } else if (res === 'Employee') {
+                this.sidebar = defaultConst.employeeSidebar;
+            } else if (res === 'Student') {
+                this.sidebar = defaultConst.studentSidebar;
             }
             this.checkAndSetRow();
         });
@@ -86,6 +104,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     }
     checkAndSetRow() {
+        debugger;
         const currentUrl = this.router.url;
         if (currentUrl === '/residence') {
             this.rootService.$ActiveLink.next(residentialConstant[0].url);

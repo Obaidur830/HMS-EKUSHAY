@@ -13,12 +13,10 @@ export interface CustomerUserInformation {
     uid?: string;
     name?: string;
     email: string;
-    role: Roles[];
+    role: string;
     phoneNumber?: string;
-    ratings?: number;
     homeAddress?: Place;
-    shopAddress?: Place;
-    enquiryLimit?: number;
+    presentAddress?: Place;
     photoURL?: string;
 }
 

@@ -140,7 +140,7 @@
               <div>
                 <mat-form-field appearance="outline">
                   <mat-label>User Type</mat-label>
-                  <mat-select formControlName='role' multiple disableOptionCentering>
+                  <mat-select formControlName='role'  disableOptionCentering>
                     <mat-option *ngFor='let role of roles | keyvalue' [value]='role.key'>{{role.value}}</mat-option>
                   </mat-select>
                   <mat-error *ngIf="signupform.get('role').touched && signupform.get('role').invalid">
@@ -177,8 +177,8 @@
               </div>
               <div>
                 <mat-form-field appearance="outline">
-                  <mat-label>Shop Address</mat-label>
-                  <input type="text" matInput placeholder="Type in Shop Address " formControlName="shopAddress">
+                  <mat-label>Present Address</mat-label>
+                  <input type="text" matInput placeholder="Type in Present Address " formControlName="presentAddress">
                 </mat-form-field>
               </div>
             </div>

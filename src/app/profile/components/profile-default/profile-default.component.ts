@@ -14,7 +14,7 @@ import { QueryDatabaseService } from 'src/app/core/database-service/query-databa
 @Component({
 	selector: 'app-profile-default',
 	templateUrl: './profile-default.component.html',
-	styleUrls: [ './profile-default.component.scss' ]
+	styleUrls: ['./profile-default.component.scss']
 })
 export class ProfileDefaultComponent implements OnInit, OnDestroy {
 	profileform: FormGroup;
@@ -43,24 +43,24 @@ export class ProfileDefaultComponent implements OnInit, OnDestroy {
 			// here are code for picture upload imediately load/ although pipe((first)) dia opore akbar call dea ace
 			this.query.getSingleUserForPhotoURL(this.user.uid).subscribe(
 				list => {
-				  const array = list.map(item => {
-					 return {
-					    //  ...item.payload.doc.data(),
-					     photoURL: item.payload.doc.get('photoURL')
-				  	 };
-				  });
-                this.photoURL = array[0].photoURL;
-			   });
+					const array = list.map(item => {
+						return {
+							//  ...item.payload.doc.data(),
+							photoURL: item.payload.doc.get('photoURL')
+						};
+					});
+					this.photoURL = array[0].photoURL;
+				});
 		});
 
-   }
+	}
 	makeProfileForm() {
 		this.profileform = this.fb.group({
-			name: [ '', Validators.required ],
-			phoneNumber: [ '' ],
+			name: ['', Validators.required],
+			phoneNumber: [''],
 			// role: [ '', Validators.required ],
-			homeAddress: [ '' ],
-			shopAddress: [ '' ]
+			homeAddress: [''],
+			presentAddress: ['']
 		});
 	}
 
@@ -80,7 +80,7 @@ export class ProfileDefaultComponent implements OnInit, OnDestroy {
 		this.profileform.controls.phoneNumber.patchValue(user.phoneNumber);
 		// this.profileform.controls.role.patchValue(user.role);
 		this.profileform.controls.homeAddress.patchValue(user.homeAddress);
-		this.profileform.controls.shopAddress.patchValue(user.shopAddress);
+		this.profileform.controls.presentAddress.patchValue(user.presentAddress);
 	}
 
 	onSubmit() {
@@ -89,7 +89,7 @@ export class ProfileDefaultComponent implements OnInit, OnDestroy {
 			// this.user.role = [ ...this.profileform.value.role ];
 			this.user.phoneNumber = this.profileform.value.phoneNumber;
 			this.user.homeAddress = this.profileform.value.homeAddress;
-			this.user.shopAddress = this.profileform.value.shopAddress;
+			this.user.presentAddress = this.profileform.value.presentAddress;
 			this.profileService.updateProfileInformation(Entities.Person, this.user.uid, this.user);
 		} else {
 			this.updateForm();
