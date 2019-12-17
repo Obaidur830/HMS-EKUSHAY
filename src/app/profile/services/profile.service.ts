@@ -29,7 +29,7 @@ export class ProfileService {
 		private sharedService: SharedService,
 		private rootService: RootService,
 		public dialog: MatDialog
-	) {}
+	) { }
 
 	updatePassword(oldpassword: string, newpassword: string) {
 		const currentEmail = this.afauth.auth.currentUser.email;
@@ -84,6 +84,20 @@ export class ProfileService {
 		});
 	}
 
+	updateProfileInformation1(entity, id, data) {
+		this.mutate.updateProfileSingleData(entity, id, data).pipe(first()).subscribe((response) => {
+			if (response === errorMessages.updated) {
+				this.openUpdatedSnackBar();
+				if (data && data.name) {
+
+					this.rootService.$Username.next(data.name);
+				}
+			} else {
+				this.openErrorSnackBar();
+			}
+		});
+	}
+
 	touchAllfields(formgroup: FormGroup) {
 		// tslint:disable-next-line: indent
 		this.util.touchAllFieldsOfForm(formgroup);
@@ -93,7 +107,7 @@ export class ProfileService {
 		this.sharedService.openSnackBar({
 			data: { message: errorMessages.updated, isAccepted: true },
 			duration: 2,
-			panelClass: [ 'default-snackbar' ],
+			panelClass: ['default-snackbar'],
 			horizontalPosition: 'right',
 			verticalPosition: 'top'
 		});
@@ -102,18 +116,18 @@ export class ProfileService {
 		this.sharedService.openSnackBar({
 			data: { message: message ? message : errorMessages.error, isAccepted: false },
 			duration: 2,
-			panelClass: [ 'default-snackbar' ],
+			panelClass: ['default-snackbar'],
 			horizontalPosition: 'right',
 			verticalPosition: 'top'
 		});
 	}
 	getProfilePictureDetails() {
 		// this.imageDetailList = this.firebase.list('imageDetails');
-	  }
-	
-	  insertProfilePictureDetails(imageDetails) {
+	}
+
+	insertProfilePictureDetails(imageDetails) {
 		// this.imageDetailList.push(imageDetails);
-	  }
+	}
 
 
 }

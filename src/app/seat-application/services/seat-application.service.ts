@@ -17,10 +17,10 @@ export class SeatApplicationService {
   // public startDate;
   seatApplicationDetails: SeatApplicationInformation;
   seatApplicationForm = new FormGroup({
-     $key: new FormControl(null),
-     reason: new FormControl(''),
-     monthlyIncome: new FormControl(''),
-     presentAddress: new FormControl(''),
+    $key: new FormControl(null),
+    reason: new FormControl(''),
+    monthlyIncome: new FormControl(''),
+    presentAddress: new FormControl(''),
 
   });
 

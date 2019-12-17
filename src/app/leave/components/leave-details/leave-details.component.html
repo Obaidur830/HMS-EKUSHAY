@@ -8,7 +8,7 @@
 
 
 <div class="container-fluid">
-  <div >
+  <div>
     <div class="shadow-sm card">
       <div class="card-body">
         <div class="row">
@@ -20,37 +20,33 @@
               Personal Details</h4>
             <div mat-content>
               <h4>employeeId: {{ leaveDetails.employeeId }}</h4>
-                <h4>EmployeeName: {{ leaveDetails.employeeName }}</h4>
-                <h4>Designation: {{ leaveDetails.employeeDesignation }}</h4>
-                <h4>StartDate: {{ leaveDetails.startDate | date }}</h4>
-                <h4>EndDate: {{ leaveDetails.endDate | date}}</h4>
-                <h4>Leave Days: {{ leaveDetails.numberOfDays}}</h4>
+              <h4>EmployeeName: {{ leaveDetails.employeeName }}</h4>
+              <h4>Designation: {{ leaveDetails.employeeDesignation }}</h4>
+              <h4>StartDate: {{ leaveDetails.startDate | date }}</h4>
+              <h4>EndDate: {{ leaveDetails.endDate | date}}</h4>
+              <h4>Leave Days: {{ leaveDetails.numberOfDays}}</h4>
             </div>
           </div>
           <div class="col-md-6">
-              <h4 class="d-flex align-items-center">
-                  <i class="material-icons">
-                    contacts
-                  </i>
-                  Address</h4>
+
             <div mat-dialog-content>
               <h4>Status: {{ leaveDetails.approvalStatus }}</h4>
-                <h4>ApprovedBy: {{ leaveDetails.approvedBy  }}</h4>
-                <h4>AppliedDate: {{ leaveDetails.appliedDate | date }}</h4>
-                <h4>Type: {{ leaveDetails.leaveType }}</h4>
-                <h4>Reason: {{ leaveDetails.reason}}</h4>
+              <h4>ApprovedBy: {{ leaveDetails.approvedBy  }}</h4>
+              <h4>AppliedDate: {{ leaveDetails.appliedDate | date }}</h4>
+              <h4>Type: {{ leaveDetails.leaveType }}</h4>
+              <h4>Reason: {{ leaveDetails.reason}}</h4>
             </div>
 
 
           </div>
-         
-                
+
+
         </div>
       </div>
-      
+
     </div>
 
-    
+
   </div>
 
 </div>

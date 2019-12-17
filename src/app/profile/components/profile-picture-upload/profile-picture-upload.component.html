@@ -69,13 +69,13 @@
 
 
 <div class="pb-32 px-16 pt-16">
-  <div class="font-size-28" mat-dialog-title>Change Password</div>
+  <div class="font-size-28" mat-dialog-title>Change Profile Picture</div>
   <mat-divider></mat-divider>
   <div mat-dialog-content class=" py-24">
 
     <input type="file" (change)="fileChangeEvent($event)" />
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px" class="w-100-p h-100-p">
-      <image-cropper  [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1"
+      <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1"
         [resizeToWidth]="120" [resizeToHeight]="120" format="png" (imageCropped)="imageCropped($event)"
         (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
       </image-cropper>
@@ -91,5 +91,5 @@
   </div>
 
 
-  
+
 </div>

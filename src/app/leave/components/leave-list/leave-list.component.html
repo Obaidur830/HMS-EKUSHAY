@@ -3,13 +3,14 @@
     <mat-icon>add</mat-icon>new
   </button>
   <mat-form-field class="search-form-field" floatLabel="never">
-    <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter($event.target.value)">
+    <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off"
+      (keyup)="applyFilter($event.target.value)">
     <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
-  <mat-icon class="ml-50" matBadge={{totalNotification}} matBadgeColor="primary">wc</mat-icon>
-  <button class="ml-30" (click)="generateExcel()"> Generate Excel</button>
+  <!-- <mat-icon class="ml-50" matBadge={{totalNotification}} matBadgeColor="primary">wc</mat-icon> -->
+  <!-- <button class="ml-30" (click)="generateExcel()"> Generate Excel</button> -->
 </div>
 <!-- <div class="row"> -->
 <div class="mat-elevation-z8 pl-10" style="width: 95%; ">
@@ -45,7 +46,7 @@
         </button>
       </mat-cell>
     </ng-container> -->
-   
+
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
       <mat-cell *matCellDef="let row">

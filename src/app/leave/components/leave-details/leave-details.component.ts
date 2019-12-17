@@ -11,8 +11,8 @@ import { LeaveInformation } from 'src/app/config/interfaces/user.interface';
 export class LeaveDetailsComponent implements OnInit {
 
   constructor(private leaveService: LeaveService,
-              public dialogRef: MatDialogRef<LeaveDetailsComponent>) { }
-    
+    public dialogRef: MatDialogRef<LeaveDetailsComponent>) { }
+
   leaveDetails: LeaveInformation;
 
   ngOnInit() {

@@ -60,7 +60,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     initiateVariables() {
-        debugger;
         this.title = defaultConst.siteName.name;
         this.menuItems = defaultConst.menu;
         this.toolbarButtons = toolbarButtons;
@@ -104,7 +103,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     }
     checkAndSetRow() {
-        debugger;
+
         const currentUrl = this.router.url;
         if (currentUrl === '/residence') {
             this.rootService.$ActiveLink.next(residentialConstant[0].url);

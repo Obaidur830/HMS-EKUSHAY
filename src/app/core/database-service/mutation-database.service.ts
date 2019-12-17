@@ -24,4 +24,17 @@ export class MutationDatabaseService {
       });
     });
   }
+
+  updateProfileSingleData(EntityName: string, id: string, data: any): Observable<any> {
+    return new Observable(observer => {
+      this.angularfirestore.collection(EntityName).doc(id).update({
+        name: data.name,
+        phoneNumber: data.phoneNumber, homeAddress: data.homeAddress, presentAddress: data.presentAddress
+      }).then(acc => {
+        observer.next(errorMessages.updated);
+      }).catch(err => {
+        observer.next(errorMessages.error);
+      });
+    });
+  }
 }

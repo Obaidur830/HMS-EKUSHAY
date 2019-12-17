@@ -90,7 +90,7 @@ export class ProfileDefaultComponent implements OnInit, OnDestroy {
 			this.user.phoneNumber = this.profileform.value.phoneNumber;
 			this.user.homeAddress = this.profileform.value.homeAddress;
 			this.user.presentAddress = this.profileform.value.presentAddress;
-			this.profileService.updateProfileInformation(Entities.Person, this.user.uid, this.user);
+			this.profileService.updateProfileInformation1(Entities.Person, this.user.uid, this.user);
 		} else {
 			this.updateForm();
 		}

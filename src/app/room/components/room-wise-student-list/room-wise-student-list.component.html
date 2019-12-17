@@ -1,25 +1,26 @@
 <div class="search-div">
   <mat-form-field class="search-form-field" floatLabel="never">
-    <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter($event.target.value)">
-    <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey"  (click)="onSearchClear()">
+    <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off"
+      (keyup)="applyFilter($event.target.value)">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
-  <mat-icon matBadge="15" matBadgeColor="primary">wc</mat-icon>
- 
+  <!-- <mat-icon matBadge="15" matBadgeColor="primary">wc</mat-icon> -->
+
 </div>
 <div class="mat-elevation-z8">
-  <mat-table [dataSource]="listData"  matSort>
+  <mat-table [dataSource]="listData" matSort>
     <ng-container matColumnDef="roomNo">
-      <mat-header-cell *matHeaderCellDef  mat-sort-header>Room No</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Room No</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.roomNo}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="registrationNumber">
-      <mat-header-cell *matHeaderCellDef  mat-sort-header>RegiNo</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>RegiNo</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.registrationNumber}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="fullName">
-      <mat-header-cell *matHeaderCellDef  mat-sort-header>Full Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Full Name</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.fullName}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="gender">
@@ -32,21 +33,22 @@
       <mat-cell *matCellDef="let element">
         <!-- [value]="element.roomNo" -->
         <mat-form-field>
-          <mat-select  >
+          <mat-select>
 
-            <mat-option (click)="updateRoomNo(room.roomNo,element)" *ngFor="let room of hallRooms" value="{{room.roomNo}}">
+            <mat-option (click)="updateRoomNo(room.roomNo,element)" *ngFor="let room of hallRooms"
+              value="{{room.roomNo}}">
               {{room.roomNo}}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </mat-cell>
     </ng-container>
-    
 
 
 
-    
-    
+
+
+
     <ng-container matColumnDef="loading">
       <mat-footer-cell *matFooterCellDef colspan="6">
         Loading data...
@@ -60,7 +62,8 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
-    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}"></mat-footer-row>
+    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}">
+    </mat-footer-row>
   </mat-table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
 </div>

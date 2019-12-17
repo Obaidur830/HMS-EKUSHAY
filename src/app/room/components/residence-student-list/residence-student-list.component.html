@@ -1,16 +1,16 @@
-
 <div class="search-div pt-20">
   <!-- <button color="primary" mat-raised-button (click)="onCreate()">
     <mat-icon>add</mat-icon>new
   </button> -->
   <mat-form-field class="search-form-field" floatLabel="never">
-    <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter($event.target.value)">
+    <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off"
+      (keyup)="applyFilter($event.target.value)">
     <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
   <mat-icon class="ml-50" matBadge={{totalNotification}} matBadgeColor="primary">wc</mat-icon>
-  <button class="ml-30" (click)="generateExcel()"> Generate Excel</button>
+  <!-- <button class="ml-30" (click)="generateExcel()"> Generate Excel</button> -->
 </div>
 <!-- <div class="row"> -->
 <div class="mat-elevation-z8 pl-10" style="width: 95%; ">
@@ -23,7 +23,7 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.fullName}}</mat-cell>
     </ng-container>
-    
+
     <ng-container matColumnDef="classYearSemester">
       <mat-header-cell *matHeaderCellDef mat-sort-header>ClassYear</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.classYearSemester}}</mat-cell>
@@ -32,9 +32,10 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
       <mat-cell *matCellDef="let element">
         <mat-form-field>
-          <mat-select [value]="element.roomApprovalStatus" >
+          <mat-select [value]="element.roomApprovalStatus">
 
-            <mat-option (click)="updateApproveStatus(status,element)" *ngFor="let status of approveStatus" value="{{status}}">
+            <mat-option (click)="updateApproveStatus(status,element)" *ngFor="let status of approveStatus"
+              value="{{status}}">
               {{status}}
             </mat-option>
           </mat-select>
@@ -45,9 +46,10 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>RoomNo</mat-header-cell>
       <mat-cell *matCellDef="let element">
         <mat-form-field>
-          <mat-select [value]="element.roomNo" >
+          <mat-select [value]="element.roomNo">
 
-            <mat-option (click)="updateRoomNo(room.roomNo,element)" *ngFor="let room of hallRooms" value="{{room.roomNo}}">
+            <mat-option (click)="updateRoomNo(room.roomNo,element)" *ngFor="let room of hallRooms"
+              value="{{room.roomNo}}">
               {{room.roomNo}}
             </mat-option>
           </mat-select>

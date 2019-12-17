@@ -31,7 +31,7 @@ export class ResidenceStudentListComponent implements OnInit {
   ) { }
   totalNotification;
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['registrationNumber', 'fullName',  'classYearSemester', 'roomApprovalStatus', 'roomNo', 'actions'];
+  displayedColumns: string[] = ['registrationNumber', 'fullName', 'classYearSemester', 'roomApprovalStatus', 'roomNo', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
@@ -50,7 +50,7 @@ export class ResidenceStudentListComponent implements OnInit {
             // tslint:disable-next-line: max-line-length
             // startDate: new Date(item.payload.doc.get('startDate').seconds * 1000),
             // endDate: new Date(item.payload.doc.get('endDate').seconds * 1000),
-             appliedDate: new Date(item.payload.doc.get('appliedDate').seconds * 1000),
+            appliedDate: new Date(item.payload.doc.get('appliedDate').seconds * 1000),
             // tslint:disable-next-line: max-line-length
             // endDate: item.payload.doc.get('endDate').seconds ? new Date(item.payload.doc.get('endDate').seconds * 1000) : '',
             // tslint:disable-next-line: max-line-length
@@ -69,14 +69,14 @@ export class ResidenceStudentListComponent implements OnInit {
       });
 
     this.roomService.getRooms().subscribe(
-        list => {
-          this.hallRooms = list.map(item => {
-            return {
-              $key: item.payload.doc.id,
-              ...item.payload.doc.data()
-            };
-          });
+      list => {
+        this.hallRooms = list.map(item => {
+          return {
+            $key: item.payload.doc.id,
+            ...item.payload.doc.data()
+          };
         });
+      });
   }
 
   // onSearchClear() {

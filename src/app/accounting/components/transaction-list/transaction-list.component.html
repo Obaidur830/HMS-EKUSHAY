@@ -1,27 +1,27 @@
 <div class="search-div">
-  <button color="primary" mat-raised-button  (click)="onCreate()">
+  <button color="primary" mat-raised-button (click)="onCreate()">
     <mat-icon>add</mat-icon>Create
   </button>
   <mat-form-field class="search-form-field" floatLabel="never">
     <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
-    <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey"  (click)="onSearchClear()">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
-  <mat-icon matBadge="15" matBadgeColor="primary">wc</mat-icon>
+  <!-- <mat-icon matBadge="15" matBadgeColor="primary">wc</mat-icon> -->
   <!-- Include text description of the icon's meaning for screen-readers -->
   <!-- <span class="cdk-visually-hidden">
     Example with a home icon with overlaid badge showing the number 15
   </span> -->
 </div>
 <div class="mat-elevation-z8">
-  <mat-table [dataSource]="listData"  matSort>
+  <mat-table [dataSource]="listData" matSort>
     <ng-container matColumnDef="transactionId">
-      <mat-header-cell *matHeaderCellDef  mat-sort-header>Transactionbn Id</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Transactionbn Id</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.transactionId}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="transactionType">
-      <mat-header-cell *matHeaderCellDef  mat-sort-header>Type</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.transactionType}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="amount">
@@ -72,7 +72,8 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
-    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}"></mat-footer-row>
+    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}">
+    </mat-footer-row>
   </mat-table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
 </div>

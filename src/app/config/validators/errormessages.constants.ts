@@ -5,7 +5,7 @@ export const errorMessages = {
     email_exists: 'Email already exists',
     phonenumber_invalid: 'Invalid phonenumber',
     roles_required: 'One type of user type is required',
-    weak_password: 'Password must be more than 8 characters and contain uppercase, lowercase and digit',
+    weak_password: 'Password must be more than 8',
     verify_email: 'Please verify your email',
     password_updated: 'Password updated',
     updated: 'Updated',

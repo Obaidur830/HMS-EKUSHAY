@@ -8,48 +8,45 @@
 <div class="container-fluid">
 
 
- 
-    <div >
-      <div class="shadow-sm card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-6">
-              <h4 class="card-title d-flex align-items-center">
-                <i class="material-icons">
-                  account_circle
-                </i>
-                Personal Details</h4>
-              <div mat-content>
-                <h4>Transaction Id: {{ transactionDetails.transactionId }}</h4>
-                <h4>Transaction Name: {{ transactionDetails.transactionType }}</h4>
-                <h4>Category: {{ transactionDetails.categoryName }}</h4>
-                <h4>Sub-Category: {{ transactionDetails.subCategoryName }}</h4>
-                <h4>Check No.: {{ transactionDetails.checkNo }}</h4>
-              </div>
-            </div>
-            <div class="col-md-6">
-                <h4 class="d-flex align-items-center">
-                    <i class="material-icons">
-                      contacts
-                    </i>
-                    Address</h4>
-              <div mat-dialog-content>
-                <h4>Amount: {{ transactionDetails.amount }}</h4>
-                <h4>Transaction Date: {{ transactionDetails.dateOfTransaction  }}</h4>
-                <h4>Edit Date: {{ transactionDetails.editDate }}</h4>
-                <h4>About Transaction: {{ transactionDetails.comment }}</h4>
-              </div>
 
-
+  <div>
+    <div class="shadow-sm card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="card-title d-flex align-items-center">
+              <i class="material-icons">
+                account_circle
+              </i>
+              Personal Details</h4>
+            <div mat-content>
+              <h4>Transaction Id: {{ transactionDetails.transactionId }}</h4>
+              <h4>Transaction Name: {{ transactionDetails.transactionType }}</h4>
+              <h4>Category: {{ transactionDetails.categoryName }}</h4>
+              <h4>Sub-Category: {{ transactionDetails.subCategoryName }}</h4>
+              <h4>Check No.: {{ transactionDetails.checkNo }}</h4>
             </div>
-           
-                  
           </div>
+          <div class="col-md-6">
+            <h4 class="d-flex align-items-center">
+            </h4>
+            <div mat-dialog-content>
+              <h4>Amount: {{ transactionDetails.amount }}</h4>
+              <h4>Transaction Date: {{ transactionDetails.dateOfTransaction  }}</h4>
+              <h4>Edit Date: {{ transactionDetails.editDate }}</h4>
+              <h4>About Transaction: {{ transactionDetails.comment }}</h4>
+            </div>
+
+
+          </div>
+
+
         </div>
-        
       </div>
 
-      
     </div>
+
+
+  </div>
 
 </div>
